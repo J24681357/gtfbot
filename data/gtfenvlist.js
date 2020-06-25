@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtftools = require("/app/functions/misc/f_tools");
+var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
 
 var rwet = function() {
   return gtftools.randomInt(5, 100)

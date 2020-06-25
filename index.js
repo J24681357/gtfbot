@@ -13,7 +13,7 @@ var gtffile = process.env;
 ////////////////////////////////////////////////////
 var gtfraces = require('/home/runner/gtfbot/functions/races/f_currentraces');
 var gtfuser = require('/home/runner/gtfbot/index');
-var extra = require("/app/functions/misc/f_extras");
+var extra = require("/home/runner/gtfbot/functions/misc/f_extras");
 var emote = require('/home/runner/gtfbot/index');
 var fs = require('fs');
 
@@ -396,7 +396,7 @@ client.on('message', msg => {
           embed.setColor(0x216c2a);
           embed.setDescription('**✅ Join The Fitness Race!**');
           msg.edit(embed);
-          require("/app/commands/update").execute(msg, [""] , author)
+          require("/home/runner/gtfbot/commands/update").execute(msg, [""] , author)
         }
         var emojilist = [[emote.yes, 'Yes', start]];
         gtftools.createreactions(emojilist, msg, userid);

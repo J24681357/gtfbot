@@ -1,9 +1,9 @@
-var gtf = require("/app/functions/f_gtf");
-var stats = require("/app/functions/profile/f_stats");
-var emote = require("/app/index");
-var gtftools = require("/app/functions/misc/f_tools");
-var gtfperf = require("/app/functions/marketplace/f_perf");
-var exp = require("/app/profile/expprofile");
+var gtf = require("/home/runner/gtfbot/functions/f_gtf");
+var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
+var emote = require("/home/runner/gtfbot/index");
+var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
+var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
+var exp = require("/home/runner/gtfbot/profile/expprofile");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -55,12 +55,12 @@ module.exports = {
       function daily() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
-        require("/app/commands/daily").execute(msg, '', msgauthorid) 
+        require("/home/runner/gtfbot/commands/daily").execute(msg, '', msgauthorid) 
     }
       function gtf() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
-        require("/app/commands/gtf").execute(msg, '', msgauthorid) 
+        require("/home/runner/gtfbot/commands/gtf").execute(msg, '', msgauthorid) 
     }
       var emojilist = [['🚘','🚘', daily], ['❔', "❔", gtf]]
       
@@ -95,79 +95,79 @@ module.exports = {
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/career").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/career").execute(msg, '', msgauthorid)
       }
       function arcade() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/arcade").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/arcade").execute(msg, '', msgauthorid)
       }
       function drift() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/drift").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/drift").execute(msg, '', msgauthorid)
       }
       function ssrx() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/ssrx").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/ssrx").execute(msg, '', msgauthorid)
       }
       function gtfdealership() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/car").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/car").execute(msg, '', msgauthorid)
       }
       function gtftuning() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/tune").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/tune").execute(msg, '', msgauthorid)
       }
       function gtfpaints() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/paint").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/paint").execute(msg, '', msgauthorid)
       }
       function garage() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/garage").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/garage").execute(msg, '', msgauthorid)
       }
       function profile() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/profile").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/profile").execute(msg, '', msgauthorid)
       }
       function replay() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/replay").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/replay").execute(msg, '', msgauthorid)
       }
       function levels() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/levels").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/levels").execute(msg, '', msgauthorid)
       }
       function settings() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/settings").execute(msg, '', msgauthorid)
+        require("/home/runner/gtfbot/commands/settings").execute(msg, '', msgauthorid)
       }
       function misc() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/app/commands/myhome").execute(msg, ['2'], msgauthorid) 
+        require("/home/runner/gtfbot/commands/myhome").execute(msg, ['2'], msgauthorid) 
       }
       var emojilist = [['🏁','🏁', career, "Once"], ['🅰','🅰', arcade], ['🇩','🇩', drift], ['🇸','🇸', ssrx], ['🛒','🛒', gtfdealership], ['🛠','🛠', gtftuning],  ['🎨','🎨', gtfpaints], ['🚘','🚘', garage], ['👤','👤', profile], ["🎞", "🎞", replay], ["⚙", "⚙", settings], ["🇱", "🇱", levels], ["🌀", "🌀", misc]]
     

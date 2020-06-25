@@ -1,10 +1,10 @@
-var gtf = require("/app/functions/f_gtf");
-var stats = require("/app/functions/profile/f_stats");
-var emote = require("/app/index");
-var gtftools = require("/app/functions/misc/f_tools");
-var gtferror = require("/app/functions/misc/f_errors");
-var gtfperf = require("/app/functions/marketplace/f_perf");
-var exp = require("/app/profile/expprofile");
+var gtf = require("/home/runner/gtfbot/functions/f_gtf");
+var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
+var emote = require("/home/runner/gtfbot/index");
+var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
+var gtferror = require("/home/runner/gtfbot/functions/misc/f_errors");
+var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
+var exp = require("/home/runner/gtfbot/profile/expprofile");
 
 
 const Discord = require("discord.js");
@@ -76,7 +76,7 @@ module.exports = {
     msg.channel.send(embed).then(msg => {
       function careerprofile() {
         embed.setTitle("__Career Progress__");
-        var list1 = [["__Beginner__", require("/app/data/career/races").beginner()],  ["__Amateur__", require("/app/data/career/races").amateur()], ["__IC League__", require("/app/data/career/races").icleague()],  ["__IB League__", require("/app/data/career/races").ibleague()], ["__IA League__", require("/app/data/career/races").ialeague()]]
+        var list1 = [["__Beginner__", require("/home/runner/gtfbot/data/career/races").beginner()],  ["__Amateur__", require("/home/runner/gtfbot/data/career/races").amateur()], ["__IC League__", require("/home/runner/gtfbot/data/career/races").icleague()],  ["__IB League__", require("/home/runner/gtfbot/data/career/races").ibleague()], ["__IA League__", require("/home/runner/gtfbot/data/career/races").ialeague()]]
         results2 = ""
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n"

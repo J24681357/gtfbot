@@ -1,17 +1,17 @@
-var gtf = require("/app/functions/f_gtf");
-var stats = require("/app/functions/profile/f_stats");
-var emote = require("/app/index");
-var gtftools = require("/app/functions/misc/f_tools");
-var gtfperf = require("/app/functions/marketplace/f_perf");
-var parts = require("/app/functions/marketplace/f_parts");
-var exp = require("/app/profile/expprofile");
+var gtf = require("/home/runner/gtfbot/functions/f_gtf");
+var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
+var emote = require("/home/runner/gtfbot/index");
+var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
+var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
+var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
+var exp = require("/home/runner/gtfbot/profile/expprofile");
 
-var extra = require("/app/functions/misc/f_extras");
+var extra = require("/home/runner/gtfbot/functions/misc/f_extras");
 const Discord = require("discord.js");
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var emote = require("/app/index");
-var gtfuser = require("/app/index");
+var emote = require("/home/runner/gtfbot/index");
+var gtfuser = require("/home/runner/gtfbot/index");
 var fs = require("fs");
 
 
@@ -157,7 +157,7 @@ module.exports.updatecommandslist = function(client) {
       if (commandslist[index] == "gift" || commandslist[index] == "lobby") {
         index++
       } else {
-      var results = require("/app/commands/gtfhelp").execute("", [commandslist[index]], "TEXT")
+      var results = require("/home/runner/gtfbot/commands/gtfhelp").execute("", [commandslist[index]], "TEXT")
 
       extra.message(client, results[0], results[1], results[2], "", '703096311129571358', [], index + 1);
       index++;

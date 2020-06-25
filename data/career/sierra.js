@@ -4,7 +4,7 @@ var gtffile = process.env
 var probibitall = ["🏎️4️⃣ GT4 Race Car", "Concepts & Specials", "Forza Edition", "Gran Turismo Special", "🔧 Tuner / Custom"]
 var gtfourcarsonly = ["⭐ Production", "Concepts & Specials", "Forza Edition", "Gran Turismo Special", "🔧 Tuner / Custom"]
 
-var emote = require("/app/index");
+var emote = require("/home/runner/gtfbot/index");
 var str1 = [["Sierra Test Event", 10, ["N100"], "Day", "Dry", 100],
   ["<a:goldtrophy:549167939807608832> 1st|1000", "<a:silvertrophy:549169214200741889> 2nd|800", "<a:bronzetrophy:549169213676322857> 3rd|600", "4th|500", "5th|400", "6th|300", "7th|200", "8th|100"],
   [[1, "Circuito de la Sierra", 1], [2, "Suzuka Circuit East", 3]],

@@ -1,19 +1,19 @@
-var gtf = require("/app/functions/f_gtf");
-var stats = require("/app/functions/profile/f_stats");
-var emote = require("/app/index");
-var gtftools = require("/app/functions/misc/f_tools");
-var gtfperf = require("/app/functions/marketplace/f_perf");
-var parts = require("/app/functions/marketplace/f_parts");
-var exp = require("/app/profile/expprofile");
+var gtf = require("/home/runner/gtfbot/functions/f_gtf");
+var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
+var emote = require("/home/runner/gtfbot/index");
+var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
+var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
+var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
+var exp = require("/home/runner/gtfbot/profile/expprofile");
 var fs = require("fs");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfreplay = require("/app/functions/replays/f_replay");
-var gtfraces = require("/app/functions/races/f_currentraces");
-var gtfuser = require("/app/index");
+var gtfreplay = require("/home/runner/gtfbot/functions/replays/f_replay");
+var gtfraces = require("/home/runner/gtfbot/functions/races/f_currentraces");
+var gtfuser = require("/home/runner/gtfbot/index");
 //SSRX//
 
 module.exports.ssrxracelength = function(
@@ -222,7 +222,7 @@ module.exports.driftresults = function(
 ) {
   stats.addmileage(racesettings["km"], racesettings["mi"], id);
   var medal = "COMPLETE"
-  let final = require("/app/functions/races/f_races_2ex").driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, id, true);
+  let final = require("/home/runner/gtfbot/functions/races/f_races_2ex").driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, id, true);
   racesettings["points"] += final[0]
   if (racesettings["points"] >= final[3]) {
     medal = emote.bronzetrophy + " BRONZE"
@@ -296,7 +296,7 @@ module.exports.createfinalreactions = function(
     function goback() {
       gtfuser.gtfuserdata[id]["raceinprogress"] = [false, ["", ""], "", id];
       var e = racesettings["raceid"].split("-");
-      var btevent = require("/app/commands/career");
+      var btevent = require("/home/runner/gtfbot/commands/career");
       msg.channel.messages.fetch().then(messages => {
         var m = messages
           .filter(
