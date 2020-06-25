@@ -1,0 +1,102 @@
+/*Licenses Rewards
+
+
+B License Commands
+
+
+A License (2,500pts) 
+A License Commands
+#🥺meme-lobby-ⓐ 
+#▶ᴊ24681357-ⓐ
+Novice (VC)
+Ability to speak in Music (VC)
+
+IC License (5,000pts)
+IC License Commands
+#🐦gt-twitter-ⓘⓒ 
+#🏅gtf-medals-ⓘⓒ 
+#🤝gtf-partnerships-ⓘⓒ 
+Amateur (VC) 
+
+IB License (10,000pts)
+IB License Commands
+#🔞gtf-gallery-nsfw📷-ⓘⓑ 
+#🌐gt-reddit-ⓘⓑ 
+#👤b-spec-mode-ⓘⓑ 
+Professional (VC)
+Send messages in #🐦gt-twitter-ⓘⓒ 
+
+IA License (25,000pts)
+IA License Commands
+#🚗jalopnik-news-ⓘⓐ 
+#🖼photo-mode-ⓘⓐ 
+Endurance (VC) 
+Send messages in #🌐gt-reddit-ⓘⓑ
+
+S License (50,000pts) 
+S License Commands
+#🎬ending-ⓢ
+#🌲tree-mode-ⓢ 
+Send messages in #🚗jalopnik-news-ⓘⓐ 
+
+J License (100,000pts)
+J License Commands
+#🎨color-picker-ⓙ 
+Access to the Audit Log
+Eligible for Moderator
+Go Live Feature
+
+J2 License (250,000pts)
+Eligible for Adminstrator*/
+      
+Francisco
+181812 + 157700
+
+Nick Katanishi
+140252
+
+ENTERED INTO BETA
+Chris99673 101520
+Pasqua 33950
+
+/* [
+  [
+    'Honda Festival - Race 1',
+    8,
+    [ 'N200' ],
+    '☀️ 9:00',
+    '☀️ Clear',
+    3,
+    85
+  ],
+  [ '4th|500', '5th|400', '6th|300', '7th|200', '8th|100' ],
+  [ 'Tokyo Expressway - Central Inner Loop', 2, 8.738, 5.43 ],
+  [
+    'CAREER',
+    [
+      23,
+      'Honda',
+      'Honda Civic Type R 2007',
+      [Array],
+      '⭐2',
+      269,
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array],
+      [Array]
+    ],*/
+
+   var tracksettings = [['Special Stage Route X - 10000m Top Speed Run','1','N/A','R','R',0,0],['<a:goldtrophy:549167939807608832> 1st|0'],[ 'Special Stage Route X', 0, 10.000, 6.21 ],["SSRX"]];
+      var racesettings = race.setrace(tracksettings)
+      racesettings[3].push(car)
+      var finalgrid = race.creategrid(1, "", "", "", "", [car])

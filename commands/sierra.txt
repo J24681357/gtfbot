@@ -1,0 +1,179 @@
+var gtf = require("/app/functions/f_gtf");
+var stats = require("/app/functions/profile/f_stats");
+var emote = require("/app/index");
+var gtftools = require("/app/functions/misc/f_tools");
+var gtferror = require("/app/functions/misc/f_errors");
+var gtfperf = require("/app/functions/marketplace/f_perf");
+var exp = require("/app/profile/expprofile");
+
+const Discord = require("discord.js");
+const client = new Discord.Client();
+var gtffile = process.env
+////////////////////////////////////////////////////
+var gtfuser = require("/app/index");
+
+module.exports = {
+  name: "sierra",
+  cooldown: 3,
+  delete: true,
+  usedduringrace: false,
+  usedinlobby: false,
+  description: "Test",
+  execute(msg, query, msgauthorid) {
+    const embed = new Discord.RichEmbed();
+    embed.setColor(0x0151b0);
+    gtferror.error("❌ Error", "This is unavailable in the demo.", embed, msg, msgauthorid)
+
+    var user = msg.guild.members.get(msgauthorid).user.username
+    embed.setAuthor(user, msg.guild.members.get(msgauthorid).user.displayAvatarURL);
+    var args = "\n" + "`Args: !sierra [(number)]`" + "\n"
+
+    /* Setup */
+        if (msgauthorid != "237450759233339393") {
+      return msg.channel.send("No.")
+    }
+ 
+    var userm = msg.author.toString();
+    var results = " ";
+    var results2 = " ";
+
+    var league;
+    var ready = false;
+    var racesettings
+    var finalgrid
+    if (query.length == 0) {
+      league = "Menu"
+    } else {
+      league = query[0];
+    }
+    
+    var racedetails = ""
+    league = "STR-1"
+    var races = require("/app/data/career/sierra").sierra;
+    if (!exp.checklevel(17, embed, msg)) {
+        return
+    }
+
+    embed.setTitle("__Sierra__")
+     var number = parseInt(query[1])
+    if (number <= 0 || isNaN(number) || number > races.length) {
+      if (!isNaN(number)) {
+        gtferror.warning("⚠ Warning", "This event does not exist.", embed, msg);
+      }
+      var results2 = ""
+      for (var t = 0; t < races.length; t++) {
+        var raceevent = races[t]
+
+        results2 = results2 + (t + 1) + ". " + raceevent[0][0] + " - " + raceevent[2].length + " Sections " + stats.eventstatus(league + "-" + (t + 1)) + "\n\n"
+      }
+      results2 = results2 + "**❓ Choose a number that corresponds to the events above.**"
+      embed.setTitle("__Sierra - " + league + "__")
+      embed.setDescription(results2)
+      embed.addField(stats.main(), args + stats.currentcarmain());
+      msg.channel.send(embed)
+      return
+
+    }
+
+    function asyncrace(event) {
+    if (event == "Invalid") {
+      return
+    }
+    embed.fields = [];
+      /*  var racesettings = [
+    [title, grid, category, env[0], env[1], 0, chance],
+    place,
+    [track[0][0], distance[0], distance[1], distance[2]]
+                     ]*/
+    var racesettings = require(gtffile.RACE).setrace("sierra", event)
+    var racesettingstitle = racesettings[0][0]
+    var racesettingsmakes = racesettings[3][2][2].filter(x => !x.includes("M "))
+    var racesettingsmodels = racesettings[3][2][2].filter(x => x.includes("M "))
+
+    var finalgrid = require(gtffile.RACE).creategrid([racesettings[0][1]], racesettingsmakes, racesettingsmodels, "", "", [racesettings[3][1]])
+      embed.setTitle("__" + racesettingstitle + "__")
+      results = "**READY**"
+
+      var racedetails = "__Race Details__" + "\n" +
+      "**Track:** " + racesettings[2][0] + "\n" +
+      "**Time/Weather:** " + racesettings[0][3] + " | " + racesettings[0][4] + "\n" +
+      "**Total Distance:** " + racesettings[2][2] + " km" + " | " + racesettings[2][3] + " mi" + "\n" +
+      "**Cars:** " + racesettings[0][1] + " cars"
+
+    embed.setDescription(results + "\n\n" + racedetails);
+    embed.addField(stats.main(), args + stats.currentcarmain());
+        msg.channel.send(embed).then(msg => {
+        var startingrace = false;
+        stats.raceinprogress(false);
+        var racefinished = false;
+
+        function flagstartrace() {
+          embed.setColor(0x0151b0);
+          embed.fields = [];
+          embed.addField(stats.main(), args);
+
+          require("/app/functions/races/f_races_2").readysetgosierra(
+            user,
+            userm,
+            racedetails,
+            racesettings,
+            finalgrid,
+            startingrace,
+            racefinished,
+            embed,
+            msg,
+            args,
+            [false, gtfuser.profile()]
+          );
+        }
+        function trackdetails() {
+          if (racefinished) {
+            results = results2;
+          } else {
+            results = "**READY**";
+          }
+          embed.setDescription(results + "\n\n" + racedetails);
+          msg.edit(embed);
+        }
+        function cargrid() {
+          results =
+            "__Starting Grid - " +
+            racesettings[0][2] +
+            " | " +
+            racesettings[0][1] +
+            " cars" +
+            "__" +
+            "\n" +
+            finalgrid.join("\n");
+
+          embed.setDescription(results);
+          msg.edit(embed);
+        }
+        function help() {
+          results = gtftools.emojilist([
+            emote.flag + " Start Race (in pre-race)",
+            emote.tracklogo + " Race Details",
+            emote.cargrid + " Starting Grid"
+          ]);
+
+          embed.setDescription(results);
+          msg.edit(embed);
+        }
+        var emojilist = [
+          [emote.flag, "flag", flagstartrace],
+          [emote.tracklogo, "trackgtfitness", trackdetails],
+          [emote.cargrid, "gtfcargrid", cargrid],
+          ["❓", "❓", help]
+        ];
+
+        gtftools.createreactions(emojilist, msg);
+      });
+    }
+
+    embed.addField(stats.main(), args + stats.currentcarmain());
+    var event = require(gtffile.RACE).sierraevent(races, number, embed, msg, asyncrace)
+
+
+
+  }
+};
