@@ -8,7 +8,7 @@ var probibitall = [
   '🔧 Tuner / Custom',
 ];
 
-var emote = require('/app/index');
+var emote = require('/home/runner/gtfbot/index');
 
 /*90-87*/
 

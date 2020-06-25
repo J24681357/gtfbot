@@ -1,20 +1,20 @@
-var gtf = require('/app/functions/f_gtf');
-var race = require('/app/functions/races/f_races');
-var car = require('/app/data/gtfcarlist');
-var stats = require('/app/functions/profile/f_stats');
-var gtftools = require('/app/functions/misc/f_tools');
-var gtfperf = require('/app/functions/marketplace/f_perf');
-var parts = require('/app/functions/marketplace/f_parts');
-var exp = require('/app/profile/expprofile');
+var gtf = require('/home/runner/gtfbot/functions/f_gtf');
+var race = require('/home/runner/gtfbot/functions/races/f_races');
+var car = require('/home/runner/gtfbot/data/gtfcarlist');
+var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
+var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
+var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
+var parts = require('/home/runner/gtfbot/functions/marketplace/f_parts');
+var exp = require('/home/runner/gtfbot/profile/expprofile');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfraces = require('/app/functions/races/f_currentraces');
-var gtfuser = require('/app/index');
+var gtfraces = require('/home/runner/gtfbot/functions/races/f_currentraces');
+var gtfuser = require('/home/runner/gtfbot/index');
 var extra = require("/app/functions/misc/f_extras");
-var emote = require('/app/index');
+var emote = require('/home/runner/gtfbot/index');
 var fs = require('fs');
 
 const prefix = '!';
@@ -124,7 +124,7 @@ client.on('ready', () => {
 
   module.exports.gt6progressbar = client.emojis.cache.get('713512070213140542').toString();
   module.exports.gt6progressbarblack = client.emojis.cache.get('713512070477512786').toString();
-  var emote = require('/app/index');
+  var emote = require('/home/runner/gtfbot/index');
 
   const http = require('http');
   const express = require('express');
@@ -308,7 +308,7 @@ client.on('message', msg => {
       require(gtffile.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
       msg.channel.send(embed).then(msg => {
         function exit() {
-          return require('/app/commands/cancel').execute(msg, ['✨✨✨'], author);
+          return require('/home/runner/gtfbot/commands/cancel').execute(msg, ['✨✨✨'], author);
         }
         var emojilist = [[emote.exit, 'gtfexit', exit]];
         gtftools.createreactions(emojilist, msg, author);
@@ -357,23 +357,23 @@ client.on('message', msg => {
   }
   timestamps.set(author, now);
   setTimeout(() => timestamps.delete(author), cooldownAmount);
-  
+
   if (!exp.checklevel(command.level, embed, msg, author)) {
       return;
   }
-  
+
   if (command.requirecar) {
   if (require(gtffile.EMBED).checknocars(author)) {
       require(gtffile.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, author);
       return;
     }
   }
-  
+
   if (msg.guild.members.cache.get(stats.userid(author)).user.username == 'everyone' || msg.guild.members.cache.get(stats.userid(author)).user.username == 'here') {
     require(gtffile.EMBED).error('❌ Username Not Allowed', 'Your username is not allowed from this bot. Please choose another username.', embed, msg);
     return;
   }
-  
+
   if (!(command.name === 'jay' || command.name === 'dw' || command.name === 'dw4' || command.name === 'gtf')) {
     if (points[author]['t'] == 'N/A') {
       var embed = new Discord.MessageEmbed();
@@ -475,7 +475,7 @@ client.on('message', msg => {
 
 client.login(process.env.SECRET).then(function() {
   setTimeout(function() {
-    
+
     //extra.updatecommandslist(client)
     var index1 = 0;
     var userkeys = Object.keys(points);

@@ -1,16 +1,16 @@
-var gtf = require('/app/functions/f_gtf');
-var stats = require('/app/functions/profile/f_stats');
-var emote = require('/app/index');
-var gtftools = require('/app/functions/misc/f_tools');
-var gtferror = require('/app/functions/misc/f_errors');
-var gtfperf = require('/app/functions/marketplace/f_perf');
-var exp = require('/app/profile/expprofile');
+var gtf = require('/home/runner/gtfbot/functions/f_gtf');
+var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
+var emote = require('/home/runner/gtfbot/index');
+var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
+var gtferror = require('/home/runner/gtfbot/functions/misc/f_errors');
+var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
+var exp = require('/home/runner/gtfbot/profile/expprofile');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfuser = require('/app/index');
+var gtfuser = require('/home/runner/gtfbot/index');
 var fs = require('fs');
 
 module.exports = {
@@ -48,7 +48,7 @@ module.exports = {
 
     if (query[0] == 'updatecommandslist') {
       var success = true;
-      var extra = require('/app/functions/misc/f_extras');
+      var extra = require('/home/runner/gtfbot/functions/misc/f_extras');
       return;
     }
     if (query[0] == 'arcaderacelength') {
@@ -92,7 +92,7 @@ module.exports = {
       success = true;
       gtfuser.gtfbotconfig['maintenance'] = !gtfuser.gtfbotconfig['maintenance'];
       setTimeout(function() {
-        require('/app/commands/restart').execute(msg, [''], id);
+        require('/home/runner/gtfbot/commands/restart').execute(msg, [''], id);
       }, 1000);
     }
 
@@ -181,19 +181,19 @@ module.exports = {
         return;
       }
       if (query[1].split('-')[0] == 'b') {
-        var races = require('/app/data/career/races').beginner();
+        var races = require('/home/runner/gtfbot/data/career/races').beginner();
       }
       if (query[1].split('-')[0] == 'a') {
-        var races = require('/app/data/career/races').amateur();
+        var races = require('/home/runner/gtfbot/data/career/races').amateur();
       }
       if (query[1].split('-')[0] == 'ic') {
-        var races = require('/app/data/career/races').icleague();
+        var races = require('/home/runner/gtfbot/data/career/races').icleague();
       }
       if (query[1].split('-')[0] == 'ib') {
-        var races = require('/app/data/career/races').ibleague();
+        var races = require('/home/runner/gtfbot/data/career/races').ibleague();
       }
       if (query[1].split('-')[0] == 'ia') {
-        var races = require('/app/data/career/races').ialeague();
+        var races = require('/home/runner/gtfbot/data/career/races').ialeague();
       }
       var event = races[Object.keys(races)[query[1].split('-')[1] - 1]];
       var tracks = event['tracks'];

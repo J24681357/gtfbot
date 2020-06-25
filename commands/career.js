@@ -1,15 +1,15 @@
-var gtf = require('/app/functions/f_gtf');
-var stats = require('/app/functions/profile/f_stats');
-var emote = require('/app/index');
-var gtftools = require('/app/functions/misc/f_tools');
-var gtfperf = require('/app/functions/marketplace/f_perf');
-var exp = require('/app/profile/expprofile');
+var gtf = require('/home/runner/gtfbot/functions/f_gtf');
+var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
+var emote = require('/home/runner/gtfbot/index');
+var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
+var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
+var exp = require('/home/runner/gtfbot/profile/expprofile');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfuser = require('/app/index');
+var gtfuser = require('/home/runner/gtfbot/index');
 
 module.exports = {
   name: 'career',
@@ -82,7 +82,7 @@ module.exports = {
     if (league == 'beginner' || league == 'b' || league == 'B') {
       var ready = true;
       league = 'B';
-      var races = require('/app/data/career/races').beginner();
+      var races = require('/home/runner/gtfbot/data/career/races').beginner();
     }
     if (league == 'amateur' || league == 'a' || league == 'A') {
       if (!exp.checklevel(5, embed, msg, msgauthorid)) {
@@ -90,7 +90,7 @@ module.exports = {
       }
       var ready = true;
       league = 'A';
-      var races = require('/app/data/career/races').amateur();
+      var races = require('/home/runner/gtfbot/data/career/races').amateur();
     }
     if (league == 'icleague' || league == 'ic' || league == 'IC') {
       if (!exp.checklevel(10, embed, msg, msgauthorid)) {
@@ -98,7 +98,7 @@ module.exports = {
       }
       var ready = true;
       league = 'IC';
-      var races = require('/app/data/career/races').icleague();
+      var races = require('/home/runner/gtfbot/data/career/races').icleague();
     }
     if (league == 'ibleague' || league == 'ib' || league == 'IB') {
       if (!exp.checklevel(20, embed, msg, msgauthorid)) {
@@ -106,7 +106,7 @@ module.exports = {
       }
       var ready = true;
       league = 'IB';
-      var races = require('/app/data/career/races').ibleague();
+      var races = require('/home/runner/gtfbot/data/career/races').ibleague();
     }
     if (league == 'ialeague' || league == 'ia' || league == 'IA') {
       if (!exp.checklevel(30, embed, msg, msgauthorid)) {
@@ -114,7 +114,7 @@ module.exports = {
       }
       var ready = true;
       league = 'IA';
-      var races = require('/app/data/career/races').ialeague();
+      var races = require('/home/runner/gtfbot/data/career/races').ialeague();
     }
     if (league == 'sleague' || league == 's' || league == 'S') {
       return;
@@ -123,7 +123,7 @@ module.exports = {
       }
       var ready = true;
       league = 'S';
-      var races = require('/app/data/career/races').sleague();
+      var races = require('/home/runner/gtfbot/data/career/races').sleague();
     } else {
       if (!ready && query.length != 0) {
         require(gtffile.EMBED).warning('⚠ Warning', 'This league does not exist.', embed, msg, msgauthorid);

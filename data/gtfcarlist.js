@@ -1,9 +1,9 @@
-var gtf = require('/app/functions/f_gtf');
-var stats = require('/app/functions/profile/f_stats');
-var gtftools = require('/app/functions/misc/f_tools');
-var gtfperf = require('/app/functions/marketplace/f_perf');
-var exp = require('/app/profile/expprofile');
-var emote = require('/app/index');
+var gtf = require('/home/runner/gtfbot/functions/f_gtf');
+var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
+var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
+var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
+var exp = require('/home/runner/gtfbot/profile/expprofile');
+var emote = require('/home/runner/gtfbot/index');
 
 var gtffile = process.env;
 const Discord = require('discord.js');

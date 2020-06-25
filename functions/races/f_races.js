@@ -1,10 +1,10 @@
-var gtf = require('/app/functions/f_gtf');
-var stats = require('/app/functions/profile/f_stats');
-var emote = require('/app/index');
-var gtftools = require('/app/functions/misc/f_tools');
-var gtfperf = require('/app/functions/marketplace/f_perf');
-var parts = require('/app/functions/marketplace/f_parts');
-var exp = require('/app/profile/expprofile');
+var gtf = require('/home/runner/gtfbot/functions/f_gtf');
+var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
+var emote = require('/home/runner/gtfbot/index');
+var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
+var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
+var parts = require('/home/runner/gtfbot/functions/marketplace/f_parts');
+var exp = require('/home/runner/gtfbot/profile/expprofile');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -226,7 +226,7 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
           embed.setColor(0x0151b0);
           var user = msg.guild.members.cache.get(id).toString();
 
-          require('/app/functions/races/f_races_2').readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], id);
+          require('/home/runner/gtfbot/functions/races/f_races_2').readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], id);
         }
         function trackdetails() {
           if (racefinished) {
@@ -370,7 +370,7 @@ module.exports.careerevent = function(races, number, embed, msg, callback, id) {
       .error('❌ Regulations Breached', 'Your **' + currentcar['name'] + '** does not meet the regulations for **' + event['title'] + '**.' + '\n\n' + regulations[1].join('\n') + '\n\n' + 'React to 🚘 to see what cars in your garage are currently eligible.', embed, msg, id)
       .then(msg => {
         function func() {
-          var btgarage = require('/app/commands/garage');
+          var btgarage = require('/home/runner/gtfbot/commands/garage');
           btgarage.execute(msg, ['regulate!🏴', event], id);
         }
         var emojilist = [['🚘', '🚘', func]];
