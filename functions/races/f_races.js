@@ -1,0 +1,464 @@
+var gtf = require('/app/functions/f_gtf');
+var stats = require('/app/functions/profile/f_stats');
+var emote = require('/app/index');
+var gtftools = require('/app/functions/misc/f_tools');
+var gtfperf = require('/app/functions/marketplace/f_perf');
+var parts = require('/app/functions/marketplace/f_parts');
+var exp = require('/app/profile/expprofile');
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+var gtffile = process.env;
+////////////////////////////////////////////////////
+
+module.exports.setrace = function(racemode, extra) {
+  if (racemode == 'beginner') {
+    var title = 'Arcade Mode - Beginner';
+    var track = require(gtffile.TRACKS).RandomTrack();
+    var km = track.length;
+    var limit = 10.0;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['8', '9', '10', '11', '12'];
+    var category = [['N100'], ['N200'], ['N300'], ['Gr.4'], ['N100', 'N200'], ['N200', 'N300']];
+    var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|600', '4th|500', '5th|400', '6th|300', '7th|200', '8th|100'];
+    var chance = 60;
+    var clean = 5;
+  } else if (racemode == 'amateur') {
+    var title = 'Arcade Mode - Amateur';
+    var track = require(gtffile.TRACKS).RandomTrack();
+    var km = track.length;
+    var limit = 15.0;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['10', '11', '12', '13', '14', '15', '16'];
+    var category = [['N300'], ['N400'], ['N500'], ['N600'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['N300', 'N400'], ['N400', 'N500'], ['N500', 'N600']];
+    var place = [emote.gold + ' 1st|2500', emote.silver + ' 2nd|2000', emote.bronze + ' 3rd|1500', '4th|1300', '5th|1100', '6th|900', '7th|700', '8th|500', '9th|400', '10th|300'];
+    var chance = 55;
+    var clean = 4;
+  } else if (racemode == 'professional') {
+    var title = 'Arcade Mode - Professional';
+    var track = require(gtffile.TRACKS).RandomTrack();
+    var km = track.length;
+    var limit = 30.0;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['12', '13', '14', '15', '16', '17', '18', '19', '20'];
+    var category = [['N700'], ['N800'], ['N1000'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['Gr.2'], ['Gr.1'], ['N700', 'N800'], ['N800', 'N900', 'N1000']];
+    var place = [emote.gold + ' 1st|5000', emote.silver + ' 2nd|4000', emote.bronze + ' 3rd|3000', '4th|2700', '5th|2400', '6th|2100', '7th|1800', '8th|1500', '9th|1300', '10th|1200', '11th|1100', '12th|1000'];
+    var chance = 50;
+    var clean = 3;
+  } else if (racemode == 'driftbeginner') {
+    var title = 'Drift Trial - Beginner';
+    var track = require(gtffile.TRACKS).RandomTrack({ drift: 'Drift' });
+    var km = track.length;
+    var limit = 1;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['1'];
+    var category = [['N100', 'N200', 'N300', 'N400', 'N500', 'N600', 'N700', 'N800', 'N900', 'N1000']];
+    var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|500', '4th|200'];
+    var chance = 50;
+    var clean = 0;
+  } else if (racemode == 'endurance') {
+    var track = require(gtffile.TRACKS).RandomTrack();
+    var km = 0;
+    var limit = ['1 Hour', '2 Hours', '3 Hours', '4 Hours', '8 Hours', '12 Hours', '24 Hours'];
+    limit = limit[Math.floor(Math.random() * limit.length)];
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['24'];
+    var category = [['N100'], ['N200'], ['N300'], ['N400'], ['N500'], ['N600'], ['N700'], ['N800'], ['N900'], ['N1000'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['Gr.2'], ['Gr.1']];
+    var place = [emote.gold + ' 1st|10000', emote.silver + ' 2nd|9000', emote.bronze + ' 3rd|8000', '4th|7500', '5th|7000', '6th|6500', '7th|6000', '8th|5500', '9th|5000', '10th|4700', '11th|4000', '12th|3700', '13th|3400', '14th|3100', '15th|2800', '16th|2500'];
+    place = place.map(function(x) {
+      x = x.split('|');
+      x[1] = parseInt(x[1]) * parseInt(limit.split(' ')[0]);
+      return x.join('|');
+    });
+    var chance = 35;
+    var clean = 1;
+
+    var title = 'Arcade Mode - ' + limit + ' of ' + track[0][0];
+  } else if (racemode == 'R' || racemode == 'Online') {
+    var title = 'ONLINE LOBBY';
+    var track = require(gtffile.TRACKS).RandomTrack();
+    var km = track.length;
+    var limit = 0;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = [['ONLINE']];
+    var category = ['ONLINE'];
+    var place = ['ONLINE'];
+    var chance = 50;
+    var clean = 1;
+  } else {
+    racesettings = racemode;
+    var env = require(gtffile.ENV).RandomEnv({ time: racesettings['time'], weather: racesettings['weather'] });
+    racesettings['time'] = env.timeemote + ' ' + env.time;
+    racesettings['weather'] = env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%';
+    return racesettings;
+  }
+
+  if (!isNaN(limit)) {
+    var distance = gtftools.lapcalc(km, limit);
+  } else {
+    distance = [limit, 'N/A', 'N/A'];
+  }
+  grid = grid[Math.floor(Math.random() * grid.length)];
+  if (extra == 'GARAGE') {
+    category = ['N/A'];
+  } else {
+    category = category[Math.floor(Math.random() * category.length)];
+  }
+
+  var racesettings = {
+    title: title,
+    grid: grid,
+    category: category,
+    time: env.timeemote + ' ' + env.time,
+    weather: env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%',
+    positions: place,
+    track: track.name,
+    cleanbonus: clean,
+    difficulty: chance,
+    laps: distance[0],
+    km: distance[1],
+    mi: distance[2],
+  };
+
+  if (racemode == 'driftbeginner') {
+    racesettings['sectors'] = 5;
+    racesettings['current'] = 0;
+    racesettings['points'] = 0;
+  }
+  return racesettings;
+};
+
+module.exports.preparerace = function(mode, levelselect, carmode, event, args, embed, msg, id) {
+  var results2 = '';
+  if (mode == 'CAREER') {
+    embed.fields = [];
+    var racesettings = require(gtffile.RACE).setrace(event);
+    var loading = event['misc']['loading'];
+  } else if (mode == 'SSRX') {
+    var tracksettings = {
+      title: 'Special Stage Route X - 10000m Top Speed Run',
+      grid: 1,
+      category: 'N/A',
+      time: 'R',
+      weather: 'R',
+      positions: [emote.goldtrophy + '1st|0'],
+      track: 'Special Stage Route X',
+      cleanbonus: 0,
+      difficulty: 0,
+      laps: 1,
+      km: 10.0,
+      mi: 6.21,
+      mode: mode,
+      misc: {},
+    };
+    var racesettings = require(gtffile.RACE).setrace(tracksettings);
+  } else {
+    var racesettings = require(gtffile.RACE).setrace(levelselect, mode);
+  }
+
+  racesettings['mode'] = mode;
+
+  if (carmode == 'GARAGE') {
+    var car = stats.currentcar(id);
+    var carname = car['name'];
+    racesettings['misc'] = { car: car };
+    if (mode == 'CAREER') {
+      var racesettingsmakes = racesettings['racegrid'].filter(x => !x.includes('M '));
+      var racesettingsmodels = racesettings['racegrid'].filter(x => x.includes('M '));
+
+      var finalgrid = require(gtffile.RACE).creategrid(racesettings['grid'], racesettingsmakes, racesettingsmodels, '', '', [racesettings['misc']['car']]);
+
+      var grid = racesettings['grid'];
+    } else {
+      var makes = gtf.createcat(car['originalsell'], car['rating']);
+
+      var finalgrid = require(gtffile.RACE).creategrid(racesettings['grid'], makes, [], '', '', [car]);
+      var grid = racesettings['grid'];
+    }
+  } else {
+    racesettings['misc'] = { car: '' };
+    var finalgrid = require(gtffile.RACE).creategrid(racesettings['grid'], '', '', racesettings['category'], '', '');
+    var carname = '';
+
+    if (carmode == 'GTSPORT') {
+      var grid = racesettings['category'].join(' ') + ' | ' + racesettings['grid'];
+      if (mode == 'DRIFT') {
+        var grid = racesettings['grid'];
+      }
+    } else {
+      var grid = racesettings['grid'];
+    }
+  }
+
+  embed.setTitle('__' + racesettings['title'] + '__');
+  var results = '**READY**';
+  var track = racesettings['track'];
+  var time = racesettings['time'];
+  var weather = racesettings['weather'];
+  var laps = racesettings['laps'];
+  var distancekm = racesettings['km'];
+  var distancemi = racesettings['mi'];
+  var racedetails = '__Race Details__' + '\n' + '**Track:** ' + track + '\n' + '**Time/Weather:** ' + time + ' | ' + weather + '\n' + '**Lap(s):** ' + laps + '\n' + '**Total Distance:** ' + distancekm + ' km' + ' | ' + distancemi + ' mi' + '\n' + '**Grid:** ' + grid + ' cars';
+
+  if (mode == 'CAREER') {
+    loading = gtf.loadingscreen(loading, '');
+  } else {
+    var loading = gtf.loadingscreen('**' + racesettings['track'] + '**', carname);
+  }
+  embed.setDescription(loading);
+
+  msg.channel.send(embed).then(msg => {
+    setTimeout(function() {
+      embed.setDescription(results + '\n\n' + racedetails);
+      embed.thumbnail = [];
+
+      if (mode == 'GARAGE') {
+        embed.addField(stats.main(id), args + stats.currentcarmain(id));
+      } else {
+        embed.addField(stats.main(id), args);
+      }
+      msg.edit(embed).then(msg => {
+        var startingrace = false;
+        stats.raceinprogress(false, undefined, undefined, id);
+        var racefinished = false;
+
+        function flagstartrace() {
+          embed.setColor(0x0151b0);
+          var user = msg.guild.members.cache.get(id).toString();
+
+          require('/app/functions/races/f_races_2').readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], id);
+        }
+        function trackdetails() {
+          if (racefinished) {
+            results = results2;
+          } else {
+            results = '**READY**';
+          }
+          embed.setDescription(results + '\n\n' + racedetails);
+          msg.edit(embed);
+        }
+        function cargrid() {
+          if (carmode == 'GARAGE' || mode == 'DRIFT') {
+            results = '__Starting Grid | ' + racesettings['grid'] + ' cars' + '__' + '\n' + finalgrid.join('\n');
+          } else {
+            results = '__Starting Grid - ' + racesettings['category'] + ' | ' + racesettings['grid'] + ' cars' + '__' + '\n' + finalgrid.join('\n');
+          }
+
+          embed.setDescription(results);
+          msg.edit(embed);
+        }
+        function help() {
+          results = gtftools.emojilist([emote.flag + ' Start Race', emote.tracklogo + ' Race Details', emote.cargrid + ' Starting Grid']);
+
+          embed.setDescription(results + '\n\n' + '❓ **To quit from a session in progress, use __!cancel__.**');
+          msg.edit(embed);
+        }
+        var emojilist = [[emote.flag, 'flag', flagstartrace, 'Once'], [emote.tracklogo, 'trackgtfitness', trackdetails], [emote.cargrid, 'gtfcargrid', cargrid], ['❓', '❓', help]];
+
+        gtftools.createreactions(emojilist, msg, id);
+      });
+    }, 3000);
+  });
+};
+
+module.exports.creategrid = function(amount, make, model, carclass, country, custom) {
+  var grid = [];
+  if (amount == 1) {
+    if (custom == '') {
+      var carname = require(gtffile.GTSCARS).RandomGTSCar({ name: model, category: carclass, country: country }).name;
+      console.log(carname);
+    } else {
+      var carname = custom[0]['name'];
+    }
+    var finalgrid = ['**1. ' + carname + '**' + ' `You`'];
+    return finalgrid;
+  }
+
+  if (custom != '') {
+    var randomcars = require(gtffile.CARS).randomcars(make, model, amount);
+    var finalgrid = [];
+    var index = 0;
+    var position = gtftools.randomInt(2, amount - 1);
+    while (index < randomcars.length) {
+      if (position == amount) {
+        finalgrid.push('**' + (index + 1) + '. ' + custom[0]['name'] + '**' + ' `You`');
+        index++;
+      }
+      finalgrid.push(index + 1 + '. ' + randomcars[index][0]);
+      amount--;
+      index++;
+    }
+    return finalgrid;
+  }
+
+  grid = require(gtffile.GTSCARS).GTSCars({ name: model, category: carclass, country: country });
+  var finalgrid = [];
+  var index = 0;
+  var position = gtftools.randomInt(2, amount - 1);
+  while (amount > 1) {
+    if (position == amount) {
+      finalgrid.push('**' + (index + 1) + '. ' + grid[Math.floor(Math.random() * grid.length)].name + '**' + ' `You`');
+      index++;
+    }
+    finalgrid.push(index + 1 + '. ' + grid[Math.floor(Math.random() * grid.length)].name);
+    amount--;
+    index++;
+  }
+  return finalgrid;
+};
+
+module.exports.start = function(racesettings, racedetails, user, id) {
+  var score;
+  var clean = gtftools.randomInt(1, 10);
+  var position;
+  var place = racesettings['positions'];
+  var prize = 0;
+  var cprize = 0;
+  var difficulty = racesettings['difficulty'];
+
+  //////CAREER/////
+  if (racesettings['mode'] == 'CAREER') {
+    difficulty = gtfperf.careerdifficultycalc(difficulty, racesettings['misc']['car'], racesettings['fpplimit']);
+  }
+
+  var index = 0;
+  for (index; index < place.length; index++) {
+    score = gtftools.randomInt(0, 100);
+    if (score < difficulty) {
+      position = place[index].split('|')[0];
+      break;
+    }
+  }
+  if (place.length == index) {
+    index--;
+    position = place[index].split('|')[0];
+  }
+
+  prize = parseFloat(place[index].split('|')[1]);
+  if (clean < racesettings['cleanbonus']) {
+    cprize = prize * 0.5;
+  }
+  var exp = Math.round(prize / 10);
+  //////CAREER/////
+  if (racesettings['mode'] == 'CAREER') {
+    exp = Math.round(Math.round(prize / 10) * 1.6);
+  }
+  stats.addcredits(prize + cprize, id);
+  stats.addmileage(racesettings['km'], racesettings['mi'], id);
+  stats.addexp(exp, id);
+
+  if (racesettings['mode'] == 'CAREER') {
+    stats.updatecareerrace(racesettings['raceid'], position, id);
+  }
+
+  return '__**' + position + ' Place**__ ' + '**+' + prize + emote.credits + ' +' + exp + emote.exp + '**' + '\n' + '`Clean Race Bonus:` ' + '**+' + cprize + emote.credits + '**';
+};
+///////////////CAREER/////////////////
+
+module.exports.careerevent = function(races, number, embed, msg, callback, id) {
+  var event = races[Object.keys(races)[number - 1]];
+  if (stats.currentcarmain(id) == 'No car.') {
+    require(gtffile.EMBED).error('❌ Error', 'You do not have a current car.', embed, msg, id);
+    return;
+  }
+
+  var currentcar = stats.currentcar(id);
+  var regulations = gtf.checkregulations(currentcar, event);
+
+  if (!regulations[0]) {
+    require(gtffile.EMBED)
+      .error('❌ Regulations Breached', 'Your **' + currentcar['name'] + '** does not meet the regulations for **' + event['title'] + '**.' + '\n\n' + regulations[1].join('\n') + '\n\n' + 'React to 🚘 to see what cars in your garage are currently eligible.', embed, msg, id)
+      .then(msg => {
+        function func() {
+          var btgarage = require('/app/commands/garage');
+          btgarage.execute(msg, ['regulate!🏴', event], id);
+        }
+        var emojilist = [['🚘', '🚘', func]];
+        gtftools.createreactions(emojilist, msg, id);
+      });
+    return 'Invalid';
+  }
+
+  var tracks = event['tracks'];
+  var results = '';
+  var numberlist = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'];
+  embed.setTitle('__' + event['title'] + ' (' + tracks.length + ' Races)' + '__');
+  for (var j = 0; j < tracks.length; j++) {
+    var raceid = event['eventid'] + '-' + (j + 1).toString();
+    results = results + numberlist[j] + ' ' + tracks[j][1] + ' - ' + tracks[j][2] + ' Laps ' + stats.checkcareerrace(raceid, id) + '\n';
+  }
+  var prizemoney = event['positions'].slice(0, 3).map(function(x) {
+    var credits = x
+      .split('|')[1]
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return '**' + x.split('|')[0] + '**' + ' **' + credits + '**' + emote.credits;
+  });
+  results =
+    prizemoney.join(' ') +
+    '\n' +
+    results +
+    '\n' +
+    '**FPP Limit: ' +
+    event['fpplimit'] +
+    emote.fpp +
+    '**' +
+    '\n' +
+    '🎲 **All Gold Car Reward:** ' +
+    event['prize'][0]
+      .split(' ')
+      .slice(0, -1)
+      .join(' ') +
+    ' ' +
+    event['prize'][1].replace('M ', '').replace('None', '') +
+    ' `' +
+    event['prize'][0].split(' ').pop() +
+    '`' +
+    '\n\n' +
+    '**❓ React to one of the numbers below this message that corresponds to a specific race for entry.**';
+
+  embed.setDescription(results);
+  msg.channel.send(embed).then(msg => {
+    var emojilist = [];
+
+    function func(index) {
+      var trackname = tracks[index][1];
+      var track = require(gtffile.TRACKS).Track(trackname);
+      var racesettings = require(gtffile.RACE).setcareerrace(event, track, currentcar, index);
+      racesettings['misc']['loading'] = '__**Race ' + (index + 1) + ' - ' + track.name + '**__\n' + prizemoney.join(' ') + '\n\n' + '🚘' + '**' + currentcar['name'] + '**';
+      console.log(racesettings['misc']);
+      callback(racesettings);
+    }
+    for (var index = 0; index < tracks.length; index++) {
+      emojilist.push([numberlist[index], numberlist[index], func, index]);
+    }
+    gtftools.createreactions(emojilist, msg, id);
+  });
+};
+
+module.exports.setcareerrace = function(event, track, currentcar, index) {
+  var racesettings = {
+    title: event['title'] + ' - ' + 'Race ' + (index + 1),
+    grid: event['grid'],
+    category: event['category'],
+    time: event['time'],
+    weather: event['weather'],
+    positions: event['positions'],
+    track: track.name,
+    cleanbonus: 3,
+    difficulty: event['difficulty'],
+    laps: event['tracks'][index][2],
+    km: Math.round(1000 * track.length * event['tracks'][index][2]) / 1000,
+    mi: Math.round(100 * ((track.length * event['tracks'][index][2]) / 1.609)) / 100,
+
+    mode: 'CAREER',
+    raceid: event['eventid'] + '-' + event['tracks'][index][0],
+    racegrid: event['models'],
+    eventlength: event['tracks'].length,
+    fpplimit: event['fpplimit'],
+    prize: event['prize'],
+    misc: { car: currentcar },
+  };
+
+  return racesettings;
+};
