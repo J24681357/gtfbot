@@ -1,15 +1,10 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtferror = require("../functions/misc/f_errors");
-var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfuser = require("../index");
 var fs = require("fs");
 
 module.exports = {
@@ -57,8 +52,8 @@ module.exports = {
       /*.then(function(){
     var dbo = db.db("GTFitness");
   dbo.collection("GTFBOT").find({}).forEach(row => {
-    delete gtfuser.gtfbotconfig["_id"]
-      dbo.collection("GTFBOT").replaceOne({}, gtfuser.gtfbotconfig)
+    delete require(gtffile.MAIN).gtfbotconfig["_id"]
+      dbo.collection("GTFBOT").replaceOne({}, require(gtffile.MAIN).gtfbotconfig)
       })
   })*/
     });
@@ -126,10 +121,10 @@ module.exports = {
       }
       if (query[0] == "maintenance") {
         success = true;
-        if (gtfuser.gtfbotconfig["maintenance"] == "YES") {
-          gtfuser.gtfbotconfig["maintenance"] = "NO";
+        if (require(gtffile.MAIN).gtfbotconfig["maintenance"] == "YES") {
+          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "NO";
         } else {
-          gtfuser.gtfbotconfig["maintenance"] = "YES";
+          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "YES";
         }
         setTimeout(function() {
           require("../commands/restart").execute(msg, [""], userdata);
@@ -137,10 +132,10 @@ module.exports = {
       }
       if (query[0] == "partialmaintenance") {
         success = true;
-        if (gtfuser.gtfbotconfig["maintenance"] == "PARTIAL") {
-          gtfuser.gtfbotconfig["maintenance"] = "NO";
+        if (require(gtffile.MAIN).gtfbotconfig["maintenance"] == "PARTIAL") {
+          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "NO";
         } else {
-          gtfuser.gtfbotconfig["maintenance"] = "PARTIAL";
+          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "PARTIAL";
         }
         setTimeout(function() {
           require("../commands/restart").execute(msg, [""], userdata);

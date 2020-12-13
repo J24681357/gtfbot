@@ -1,13 +1,9 @@
 var gtf = require("../functions/f_gtf");
-var gtftracks = require("../data/allgtftracks");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtfperf = require("../functions/marketplace/f_perf");
-var parts = require("../functions/marketplace/f_parts");
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
 

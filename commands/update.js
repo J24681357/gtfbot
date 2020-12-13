@@ -15,7 +15,7 @@ module.exports = {
   title: 'GTF Updater',
   cooldown: 3,
   level: 0, 
-    channels: ["gtf-mode", "testing"],
+  channels: ["gtf-mode", "testing"],
 
   delete: true,
   availinmaint:false,

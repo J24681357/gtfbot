@@ -3,9 +3,6 @@ var race = require("../../functions/races/f_races");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
-var gtfperf = require("../../functions/marketplace/f_perf");
-var parts = require("../../functions/marketplace/f_parts");
-var exp = require("../../profile/expprofile");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -114,7 +111,7 @@ module.exports.progressbar = function(results, number, query, embed, msg, userda
     success = false;
   } else {
     if (list[number-1][0].includes(emote.exp)) {
-    if (!exp.checklevel(parseInt(list[number-1][0].split(emote.exp + "`Lv.")[1].split("`")[0]), embed, msg, userdata)) {
+    if (!require(gtffile.EXP).checklevel(parseInt(list[number-1][0].split(emote.exp + "`Lv.")[1].split("`")[0]), embed, msg, userdata)) {
       success = false 
       return "INVALID"
       }

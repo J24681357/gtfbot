@@ -2,7 +2,6 @@ var gtf = require("/home/runner/gtfbot/functions/f_gtf")
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats")
 var emote = require("/home/runner/gtfbot/index")
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools")
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
@@ -23,7 +22,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   if (type == "CAR") {
     var name = item["name"] + " " + item["year"]
     
-    var fpp = gtfperf.perf(item, "DEALERSHIP")["fpp"]
+    var fpp = require(gtffile.PERF).perf(item, "DEALERSHIP")["fpp"]
     var dealershipcost = require(gtffile.MARKETPLACE).costcalc(item, fpp)
     var mcost = dealershipcost
     var link = item["image"]
@@ -75,8 +74,8 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
       part_in_inv = true
     }
 
-    var perf1 = gtfperf.partpreview(oldpart, car, "GARAGE")
-    var perf2 = gtfperf.partpreview(item, car, "GARAGE")
+    var perf1 = require(gtffile.PERF).partpreview(oldpart, car, "GARAGE")
+    var perf2 = require(gtffile.PERF).partpreview(item, car, "GARAGE")
 
     var powerdesc = ""
     var weightdesc = ""
@@ -149,10 +148,10 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
       }
       if (type == "PART") {
         if (part_tostock) {
-          gtfperf.partinstall(item, userdata)
+          require(gtffile.PERF).partinstall(item, userdata)
         } else {
           stats.addcredits(-cost, userdata)
-          gtfperf.partinstall(item, userdata)
+          require(gtffile.PERF).partinstall(item, userdata)
           installedoncurrentcar = "Installed **" + name + "** on **" + car["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + emote.credits
         }
       }
@@ -193,7 +192,7 @@ module.exports.sell = function(user, item, type, embed, msg, userdata) {
   if (type == "CAR") {
     var id = item["ID"]
     var name = item["name"]
-    var sell = gtfperf.perf(item, "GARAGE")["sell"]
+    var sell = require(gtffile.PERF).perf(item, "GARAGE")["sell"]
     if (stats.currentcar(userdata) != null) {
       if (stats.currentcar(userdata)[0] == id) {
         require(gtffile.EMBED).error("❌ Current Car", "You cannot sell a car you are currently in.", embed, msg, userdata)

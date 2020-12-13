@@ -55,13 +55,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "11": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo 4C Gr.3 2014",
-    "image": "https://i.ytimg.com/vi/spREBFUGlz0/maxresdefault.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 15000
-  },
   "12": {
     "make": "Alfa-Romeo",
     "name": "Alfa Romeo 4C Gr.3 Road Car",
@@ -74,13 +67,6 @@
     "name": "Alfa Romeo 4C Gr.4 2014",
     "image": "https://vignette.wikia.nocookie.net/gran-turismo/images/2/23/Alfa_Romeo_4C_Gr.4.jpg/revision/latest?cb=20171011095815",
     "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 15000
-  },
-  "14": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo 4C Launch Edition 2015",
-    "image": "https://s13252.pcdn.co/wp-content/uploads/2017/01/IMG_2928-1-940x627.jpg",
-    "rating": "⭐2",
     "manufacturercost": 15000
   },
   "15": {

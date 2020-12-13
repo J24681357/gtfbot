@@ -1,13 +1,10 @@
-var gtf = require('../functions/f_gtf');
 var stats = require('../functions/profile/f_stats');
 var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfuser = require('../index');
 
 module.exports = {
   name: 'arcade',
@@ -56,7 +53,7 @@ module.exports = {
       racemode = query[0];
       if (parseInt(racemode) == 1) {
         racemode = 'beginner';
-      }
+    }
       if (parseInt(racemode) == 2) {
         racemode = 'amateur';
       }
@@ -64,20 +61,22 @@ module.exports = {
         racemode = 'pro';
       }
     }
+
+
     if (racemode == 'beginner' || racemode == 'b' || racemode == 'sunday') {
-      var ready = true;
+      ready = true;
       levelselect = 'beginner';
     } else if (racemode == 'amateur' || racemode == 'a') {
-      var ready = true;
       if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
         return;
-      }
+    }
+      ready = true;
       levelselect = 'amateur';
     } else if (racemode == 'professional' || racemode == 'pro') {
-      var ready = true;
       if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
         return;
       }
+      ready = true;
       levelselect = 'professional';
     } else {
       embed.setTitle('__Arcade Mode__');
@@ -91,7 +90,7 @@ module.exports = {
     
     results2 = gtftools.list(list, page, "", "", true, "", 3, [query, "arcade"], embed, msg, userdata)
       
-      embed.setDescription(results)
+      embed.setDescription(results2)
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "arcade", reactionson, info], embed, msg, userdata)
       

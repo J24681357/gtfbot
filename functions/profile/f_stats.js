@@ -2,9 +2,6 @@ var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
-var gtfperf = require("../../functions/marketplace/f_perf");
-var parts = require("../../functions/marketplace/f_parts");
-var exp = require("../../profile/expprofile");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -230,7 +227,7 @@ module.exports.addexp = function(number, userdata) {
 module.exports.view = function(gtfcar,userdata) {
   var ocar  = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
   var garage = stats.garage(userdata)
-  var perf = gtfperf.perf(gtfcar, "GARAGE")
+  var perf = require(gtffile.PERF).perf(gtfcar, "GARAGE")
   var cardetails = "**Car:** " + gtfcar["name"] + " `🚘ID:" + gtftools.index(garage, gtfcar) + "`\n" +
   "**Type:** " + ocar["type"] + "\n" +
   "**" + ocar["drivetrain"] + " | " + perf["fpp"] + emote.fpp + " | " + 
@@ -244,6 +241,13 @@ module.exports.view = function(gtfcar,userdata) {
   "**Turbo Kits:** " + gtfcar["turbo"]["current"] + "\n" +
   "**Nitrous:** " + gtfcar["nitrous"]["current"] + "\n";
  
+  return cardetails
+}
+
+module.exports.view2 = function(gtfcar,userdata) {
+  var cardetails = "__**Suspension**__" + "\n" + 
+  "**Camber Angle:**" + gtfcar["suspension"]["tuning"][0] + "in" + "\n" + 
+  "**Toe Angle**" + gtfcar["suspension"]["tuning"][1] + "in" + "\n"
   return cardetails
 }
 
@@ -292,7 +296,7 @@ module.exports.addcar = function(car, arg, userdata) {
   
   //RH Tires + Eng Stage 2 A + FC Transmission + weight reduction 1 + FC Suspension
   
-var fpp = gtfperf.perf(car, "DEALERSHIP")["fpp"]
+var fpp = require(gtffile.PERF).perf(car, "DEALERSHIP")["fpp"]
 var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
   userdata["numcarpurchase"]++
   var id1 = userdata["numcarpurchase"]
@@ -418,7 +422,7 @@ var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
     newcar["sell"] = newcar["sell"] + newcar["tires"]["sell"] 
   }
   */
-  newcar["fpp"] = gtfperf.perf(newcar, "GARAGE")["fpp"]
+  newcar["fpp"] = require(gtffile.PERF).perf(newcar, "GARAGE")["fpp"]
   
   if (arg == "ITEM") {
     return newcar
@@ -571,9 +575,9 @@ module.exports.removecars = function(start, end, userdata) {
   var i = 0
   while (i < count) {
     car = stats.garage(userdata)[start - 1]
-    total += gtfperf.perf(car, "GARAGE")["sell"]
+    total += require(gtffile.PERF).perf(car, "GARAGE")["sell"]
     
-    stats.removecar(car, car["ID"], gtfperf.perf(car, "GARAGE")["sell"], userdata)
+    stats.removecar(car, car["ID"], require(gtffile.PERF).perf(car, "GARAGE")["sell"], userdata)
     
     i++
   }
@@ -632,7 +636,7 @@ module.exports.main = function(userdata) {
   userdata["count"]++
   userdata["mileage"] = [Math.round(100 * userdata["mileage"][0]) / 100, Math.round(100 * userdata["mileage"][1]) / 100]
   
-  var levelup = exp.islevelup(userdata)
+  var levelup = require(gtffile.EXP).islevelup(userdata)
   var gifts = ""
   if (levelup[0]) {
     levelup = "`LEVEL UP`"

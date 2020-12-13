@@ -2,15 +2,11 @@ var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
-var gtfperf = require("../../functions/marketplace/f_perf");
-var fs = require("fs");
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfreplay = require("../../functions/replays/f_replay");
-var gtfraces = require("../../functions/races/f_currentraces");
+
 //SSRX//
 
 module.exports.ssrxracelength = function(
@@ -27,7 +23,7 @@ module.exports.ssrxracelength = function(
   userdata
 ) {
   var numx = gtftools.catcalc(racesettings["category"], "0%", racesettings["misc"]["car"]);
-  var carspeed = gtfperf.speedcalc(numx)
+  var carspeed = require(gtffile.PERF).speedcalc(numx)
   var showcar =
     "\n🚘 " +
     racesettings["misc"]["car"]["name"] +

@@ -8,8 +8,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var gtfraces = require('./functions/races/f_currentraces');
-var gtfuser = require('./index');
 var extra = require("./functions/misc/f_extras");
 var emote = require('./index');
 
@@ -22,16 +20,12 @@ let MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
 const prefix = '!';
-
 var dw = JSON.parse(fs.readFileSync('./users/dw.json', 'utf8'));
 module.exports.dwcar = dw;
-
-
 var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist.json', 'utf8'));
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
 module.exports.gtfcarlist = gtfcars
 module.exports.gtfpartlist = gtfparts
-
 module.exports.embedcounts = {}
 
 var data = {}
@@ -50,7 +44,7 @@ module.exports.alluserdata = function() {
       db.close())
     })
 }
-gtfuser.alluserdata()
+require(gtffile.MAIN).alluserdata()
 
 
 
@@ -192,7 +186,7 @@ client.on('ready', () => {
   function check(row) {
     module.exports.gtfbotconfig = row
     module.exports.gt6progressbarblack
-    if (gtfuser.gtfbotconfig['maintenance'] == "YES") {
+    if (require(gtffile.MAIN).gtfbotconfig['maintenance'] == "YES") {
       client.user.setActivity('Commands are not available at the moment.', {
         type: 'PLAYING',
       });
@@ -200,7 +194,7 @@ client.on('ready', () => {
         .get('239493425131552778')
         .members.cache.get(gtffile.USERID)
         .setNickname('🛠 Maintenance');
-    } else if (gtfuser.gtfbotconfig['maintenance'] == "PARTIAL") {
+    } else if (require(gtffile.MAIN).gtfbotconfig['maintenance'] == "PARTIAL") {
       client.user.setActivity('Many commands are unavailable. | Working commands: ' + listinmaint.map(x => "!" + x).join(" "), {
         type: 'PLAYING',
       });
@@ -215,7 +209,7 @@ client.on('ready', () => {
         .members.cache.get(gtffile.USERID)
         .setNickname('! | GT Fitness');
     }
-    gtfuser.gtfbotconfig['executions'] = 0;
+    require(gtffile.MAIN).gtfbotconfig['executions'] = 0;
 
     if (dw['daily']['car'] != 'None') {
       dw['daily'] = {
@@ -259,8 +253,8 @@ client.on('message', msg => {
   }
 
   // Profile
-  console.log(gtfuser.gtfbotconfig['maintenance'])
-    if (gtfuser.gtfbotconfig['maintenance']) {
+  console.log(require(gtffile.MAIN).gtfbotconfig['maintenance'])
+    if (require(gtffile.MAIN).gtfbotconfig['maintenance']) {
     if (msg.author.id != '237450759233339393' && !command.availinmaint) {
       var embed = new Discord.MessageEmbed();
       var user = msg.author.username;
@@ -318,7 +312,7 @@ client.on('message', msg => {
   // Updates
 
   if (command.name != 'update') {
-    if (userdata['version'] === undefined || userdata['version'] < gtfuser.gtfbotconfig['version']) {
+    if (userdata['version'] === undefined || userdata['version'] < require(gtffile.MAIN).gtfbotconfig['version']) {
       require(gtffile.EMBED).error('❌ Version Incompatible', 'Your save data needs to be updated in order to use current features. Use **!update** to update your save to the latest version.', embed, msg, userdata);
       return;
     }
@@ -456,13 +450,13 @@ client.on('message', msg => {
         if (err) console.log('error', err);
       });
     }
-    fs.writeFile('./users/botconfig.json', JSON.stringify(gtfuser.gtfbotconfig), function(err, result) {
+    fs.writeFile('./users/botconfig.json', JSON.stringify(require(gtffile.MAIN).gtfbotconfig), function(err, result) {
       if (err) console.log('error', err);
     });
     */
 
 
-    /*  fs.writeFile('./users/races.json', JSON.stringify(gtfuser.allraces), function(err, result) {
+    /*  fs.writeFile('./users/races.json', JSON.stringify(require(gtffile.MAIN).allraces), function(err, result) {
         if (err) {
           console.log('error', err);
       });
@@ -540,23 +534,21 @@ client.login(process.env.SECRET).then(function() {
     })
 
 
-
-
 });
 
 var executecommand = function(command, args, msg, userdata) {
   try {
-  gtfuser.gtfbotconfig['executions']++;
-    if (gtfuser.gtfbotconfig['executions'] >= 3) {
+  require(gtffile.MAIN).gtfbotconfig['executions']++;
+    if (require(gtffile.MAIN).gtfbotconfig['executions'] >= 3) {
       console.log('WAITING');
       setTimeout(function() {
-        command.execute(msg, args, userdata), 1000 * gtfuser.gtfbotconfig['executions'];
-        gtfuser.gtfbotconfig['executions']--;
+        command.execute(msg, args, userdata), 1000 * require(gtffile.MAIN).gtfbotconfig['executions'];
+        require(gtffile.MAIN).gtfbotconfig['executions']--;
       });
     } else {
       command.execute(msg, args, userdata);
-      if (gtfuser.gtfbotconfig['executions'] == 1) {
-        setTimeout(() => (gtfuser.gtfbotconfig['executions'] = 0), 5000);
+      if (require(gtffile.MAIN).gtfbotconfig['executions'] == 1) {
+        setTimeout(() => (require(gtffile.MAIN).gtfbotconfig['executions'] = 0), 5000);
       }
     }
 
@@ -566,12 +558,3 @@ var executecommand = function(command, args, msg, userdata) {
     console.error(error);
   }
   }
-
-/* setInterval(function() {
-     fs.writeFile('./backups/user.txt', JSON.stringify(data), function(err, result) {
-       if (err) {
-         console.log('error', err);
-       }
-     });
-     console.log('User backup saved.');
-   }, 3600000);*/

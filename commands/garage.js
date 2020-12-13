@@ -1,11 +1,8 @@
-var gtf = require('../functions/f_gtf');
 var stats = require('../functions/profile/f_stats');
 var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
-var gtfperf = require('../functions/marketplace/f_perf');
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
 
@@ -23,7 +20,6 @@ module.exports = {
    requireuserdata:true,
   usedduringrace: false,
   usedinlobby: true,
-
   description: [
     '!garage - Displays the list of all of your cars.\nFPP is displayed for each car.',
     '!garage [view] [(number)] - Views information about a car associated with the [(number)] from the list in your garage.',
@@ -52,7 +48,7 @@ module.exports = {
     var reactionson = true;
     var command = "garage";
 
-    embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + gtf.garagelimit + ' Cars__');
+    embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + require(gtffile.GTF).garagelimit + ' Cars__');
 
     if (stats.garagecount(userdata) == 0) {
       require(gtffile.EMBED).error('❌ No Cars', 'You do not have any cars in your garage.', embed, msg, userdata);
@@ -126,7 +122,7 @@ module.exports = {
       var event = query[1];
       viewonly = true;
       var filter = stats.garage(userdata).filter(function(x) {
-        var regulations = gtf.checkregulations(x, event);
+        var regulations = require(gtffile.GTF).checkregulations(x, event);
         return regulations[0];
       });
       query.pop();

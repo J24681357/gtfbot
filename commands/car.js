@@ -1,11 +1,8 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
 
@@ -85,7 +82,7 @@ if (query.length == 0) {
     var make = list[0]["make"]
     var carlist = []
     for (var i = 0; i < list.length; i++) {
-      var fpp = gtfperf.perf(list[i], "DEALERSHIP")["fpp"]
+      var fpp = require(gtffile.PERF).perf(list[i], "DEALERSHIP")["fpp"]
       var cost = require(gtffile.MARKETPLACE).costcalc(list[i], fpp)
       var name = list[i]["name"]
       var year = list[i]["year"]

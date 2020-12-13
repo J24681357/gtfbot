@@ -31,6 +31,35 @@
       "image": "http://www.autoviva.com/img/photos/817/abarth_grande_punto_abarth_1_4t_jet_155cv_large_13817.jpg"
     }
   ],
+  "alfa-romeo": [{
+    "make": "Alfa-Romeo",
+    "name": "Alfa Romeo 4C",
+    "year:": "2016",
+       "type": "Production",
+      "power": 237,
+      "weight": 2465,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+    "image": "https://s13252.pcdn.co/wp-content/uploads/2017/01/IMG_2928-1-940x627.jpg"
+  },{
+    "make": "Alfa-Romeo",
+    "name": "Alfa Romeo 4C Gr.3 (Gran Turismo)",
+    "year": "2014",
+      "type": "Race Car: GT3",
+      "power": 495,
+      "weight": 2690,
+      "tires": "Racing: Hard",
+      "drivetrain": "MR",
+      "carcostm": 10,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+    "image": "https://pbs.twimg.com/media/EI6u9p2WkAA5EJ8.jpg"
+  }],
   "alpine": [
     {
       "make": "Alpine",
@@ -348,7 +377,7 @@
       "tires": "Racing: Hard",
       "drivetrain": "FR",
       "carcostm": 10,
-      "aerom": 5,
+      "aerom": 4,
       "condition": 100,
       "special": [],
       "image": "https://media.caradvice.com.au/image/private/c_fill,q_auto,f_auto,w_1200,h_900/a5ed861f7ff3c939dc26924daeab7e90.jpg"
@@ -504,7 +533,7 @@
       "tires": "Racing: Hard",
       "drivetrain": "FF",
       "carcostm": 8,
-      "aerom": 5,
+      "aerom": 4,
       "condition": 100,
       "special": [],
       "image": "https://car-images.bauersecure.com/upload/30599/images/01renaultcliorscupreview.jpg"
