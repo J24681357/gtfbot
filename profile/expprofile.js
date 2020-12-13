@@ -2,7 +2,6 @@ var gtf = require("/home/runner/gtfbot/functions/f_gtf");
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
 var emote = require("/home/runner/gtfbot/index");
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
 var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
 var exp = require("/home/runner/gtfbot/profile/expprofile");
 
@@ -51,13 +50,3 @@ for (var i = level; i < Object.keys(explevels).length; i++) {
 return [levelupbool, levelup, leveldetails]
 }
 
-module.exports.checklevel = function(level, embed, msg, id) {
-  var exp = stats.exp(id)
-  var currentlevel = stats.level(id)
-  if (currentlevel >= level || level == 0) {
-    return true
-  } else {
-  require(gtffile.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,id)
-    return false
-  }
-}

@@ -1,15 +1,14 @@
-var gtf = require('/home/runner/gtfbot/functions/f_gtf');
-var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
-var emote = require('/home/runner/gtfbot/index');
-var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
-var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
-var exp = require('/home/runner/gtfbot/profile/expprofile');
+var gtf = require('../functions/f_gtf');
+var stats = require('../functions/profile/f_stats');
+var emote = require('../index');
+var gtftools = require('../functions/misc/f_tools');
+var gtfperf = require('../functions/marketplace/f_perf');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var gtffile = process.env;
 ////////////////////////////////////////////////////
-var dw = require('/home/runner/gtfbot/index');
+var dw = require('../index');
 
 module.exports = {
   name: 'dw',
@@ -17,18 +16,26 @@ module.exports = {
   cooldown: 3,
     level: 0,
   delete: true,
+  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
   requirecar: false,
+  availitoeveryone:true,
+  availinmaint:true,
+   requireuserdata:true,
   usedduringrace: true,
   usedinlobby: true,
   description: ['!dw - Chooses a random car from the GT Sport car list.', '!dw ["challenge"] - Starts a random Daily Workout challenge where you would need to earn a car that meets a category.\nYou can earn credits here.'],
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username;
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '';
+    var page = 0
+    var results = ''
+    var info = ''
 
     /* Setup */
     var modeselect = [
@@ -90,11 +97,11 @@ module.exports = {
 
     if (query[0] == 'challenge') {
       if (dw.dwcar['daily']['start']) {
-        require(gtffile.EMBED).error('❌ Daily Workout Challenge Active', 'There is already a Daily Workout Challenge in progress.', embed, msg, msgauthorid);
+        require(gtffile.EMBED).error('❌ Daily Workout Challenge Active', 'There is already a Daily Workout Challenge in progress.', embed, msg, userdata);
         return;
       }
       if (new Date().getTime() < dw.dwcar['daily']['time']) {
-        require(gtffile.EMBED).error('❌ Global Cooldown', 'A challenge cannot be started yet. Please wait in ' + '`' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + '` minutes.', embed, msg, msgauthorid);
+        require(gtffile.EMBED).error('❌ Global Cooldown', 'A challenge cannot be started yet. Please wait in ' + '`' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + '` minutes.', embed, msg, userdata);
         return;
       }
       var modenumber = gtftools.randomInt(0, 2);
@@ -113,8 +120,7 @@ module.exports = {
       embed.setTitle('🚘 __**Daily Workout Challenge Started**__');
       results = 'The first person to earn a car with a ' + mode[number] + ' of **' + select + '** from the `!dw` command in 3 minutes will win ' + '**' + prize + '**' + emote.credits + '. Good luck!';
       embed.setDescription(results);
-      msg.channel.send('**START**\n' + '<@&663248894003773440>');
-      msg.channel.send(embed).then(msg => {
+      msg.channel.send('**START**\n' + '<@&663248894003773440>',embed).then(msg => {
         gtftools.interval(
           function() {
             if (!dw.dwcar['daily']['completed']) {
@@ -129,8 +135,7 @@ module.exports = {
               results = "⏲ Time's up! No one has won the Daily Workout Challenge.";
               embed.setDescription(results);
               embed.setTitle('🚘 __**Daily Workout Challenge Ended**__');
-              msg.channel.send('**FINISH**\n' + '<@&663248894003773440>');
-              msg.channel.send(embed);
+              msg.channel.send('**FINISH**\n' + '<@&663248894003773440>', embed);
             }
           },
           180 * 1000,
@@ -138,7 +143,6 @@ module.exports = {
         );
       });
     } else {
-      var results = ' ';
 
       embed.setTitle(emote.gtlogowhite + ' __GTF Daily Workout__');
       var prize = '';
@@ -164,7 +168,7 @@ module.exports = {
             mode: 0,
             time: dw.dwcar['daily']['time'],
           };
-          stats.addcredits(prize, msgauthorid);
+          //stats.addcredits(prize, userdata);
           embed.setColor(0x216c2a);
           msg.channel.send('**FINISH**\n' + '<@&663248894003773440>');
           prize = '\n\n' + user + ' has won the Daily Workout Challenge! ' + '**+' + prize + '**' + emote.credits + '\n\n' + '`Global Cooldown: ' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + ' minutes`';

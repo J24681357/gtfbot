@@ -1,10 +1,7 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../../functions/f_gtf");
+var stats = require("../../functions/profile/f_stats");
+var emote = require("../../index");
+var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -65,11 +62,7 @@ module.exports.lapcalc = function(km, limit) {
   return [laps, totalkm, totalmi]
 }
 
-module.exports.speedcalc = function(car) {
-  var topspeed = gtfperf.topspeed(car)[0]
-  return [topspeed, (1/(topspeed/60))]
-}
-module.exports.catcalc = function(category, weather, sell) {
+module.exports.catcalc = function(category, weather, car) {
   category = category[0]
 
   if (weather.includes("%")){
@@ -78,27 +71,23 @@ module.exports.catcalc = function(category, weather, sell) {
   }
   var weather = 0;
   var multiplier = 0
-  
-  var cat = [[0, 0, 70], ["N100", require(gtffile.MARKETPLACE).sellcalc(4000), 80], ["N200", require(gtffile.MARKETPLACE).sellcalc(10000), 100], ["N300", require(gtffile.MARKETPLACE).sellcalc(20000), 115], ["N400", require(gtffile.MARKETPLACE).sellcalc(30000), 125], ["N500", require(gtffile.MARKETPLACE).sellcalc(40000), 135], 
-            ["N600", require(gtffile.MARKETPLACE).sellcalc(60000), 145], ["N700", require(gtffile.MARKETPLACE).sellcalc(80000), 155], ["N800", require(gtffile.MARKETPLACE).sellcalc(100000), 165], ["N900", require(gtffile.MARKETPLACE).sellcalc(120000), 170], ["N1000", require(gtffile.MARKETPLACE).sellcalc(150000), 175]]
-  
-  if (sell.length != 0) {
-   for (var i = 0; i < cat.length; i++) {
-    if (sell <= cat[i][1]) {
-      var percentage = (sell - cat[i-1][1]) / (cat[i][1] - cat[i-1][1])
-      var percentage2 = cat[i-1][2] + (cat[i][2]-cat[i-1][2]) * percentage 
-      console.log(percentage2)
-      return percentage2 + (weather * 15)
-    }
-      
+  //70 - 195
+
+  if (category == "CUSTOM") {
+    var fpp = require(gtffile.PERF).perf(car, "GARAGE")["fpp"]
+    var percentage = fpp / 1200
+    percentage = ((195-70) * percentage) + 70
+    return percentage + (weather * 15)
   }
+ 
     
-    
-  }
   
+   var cat = [["N100", 80], ["N200", 100], ["N300", 115], ["N400", 125], ["N500", 135], 
+            ["N600", 145], ["N700", 155], ["N800" , 165], ["N900", 170], ["N1000", 175]]
+
   for (var i = 0; i < cat.length; i++) {
     if (cat[i][0] == category) {
-      return (cat[i][2]) + (weather * 15)
+      return (cat[i][1]) + (weather * 15)
     }
   }
   
@@ -118,7 +107,7 @@ module.exports.catcalc = function(category, weather, sell) {
 }
 
 
-module.exports.list = function(dlist, page, statfront, statback, numbers, special, count, id) {
+module.exports.list = function(dlist, page, statfront, statback, numbers, special, count, userdata) {
   var list = ""
   var listnumber = ""
   var extra = ""
@@ -170,19 +159,19 @@ module.exports.emojilist = function(list) {
   return nlist
 }
 
-module.exports.createpages = function(results, list, page, statfront, statback, numbers, special, count, [query, name], embed, msg, id) {
+module.exports.createpages = function(results, list, page, statfront, statback, numbers, special, count, [query, name, reactionson, info], embed, msg, userdata) {
     var select = 0
     var reset = true
     var index = 0
-    
+     stats.addcount(userdata)
     results = JSON.stringify(results).split("\\n").map(function(x) {
         if (reset) {
-          x = stats.setting("PROGRESSBAR", id)[0] + " " + x
+          x = stats.setting("PROGRESSBAR", userdata)[0] + " " + x
           reset=false
         }
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results)
+    embed.setDescription(results + "\n\n" + info)
   
     msg.channel.send(embed).then(msg => {
       
@@ -191,11 +180,16 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
         var pick = list[select + (page*count)][0].split(" ")[0]
       } else {
         var pick = select + 1 + (page*count)
+      } 
+      if (name == "garage_regulate") {
+        var pick = parseInt(list[select + (page*count)][0].split(":")[1].split("`")[0])
+        name = "garage"
+        query = []
       }
-      console.log(pick)
       query.push(pick)
         
-      return require("/home/runner/gtfbot/commands/" + name).execute(msg,query,id)
+      require("../../commands/" + name).execute(msg,query,userdata)
+      return stats.save(userdata)
       }
     
 
@@ -205,14 +199,15 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       page--
     }
     select = 0
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, id)
+    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
     results = JSON.stringify(results).split("\\n").map(function(x) {
         if (reset) {
-          x =  stats.setting("PROGRESSBAR", id)[0]  + " " + x
+          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
           reset=false
         }
-        return x.replace(/\\r/gi, "\n")})
-    embed.setDescription(results)
+        return x.replace(/\\r/gi, "\n")
+        }).join("\n").replace(/\"/gi, "")
+    embed.setDescription(results + "\n\n" + info)
     msg.edit(embed)
     }
   
@@ -223,24 +218,23 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
     }
     select = 0
       
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, id)
+    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
     results = JSON.stringify(results).split("\\n").map(function(x) {
         if (reset) {
-          x =  stats.setting("PROGRESSBAR", id)[0] + " " + x
+          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
           reset=false
         }
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
       
-      
-    embed.setDescription(results)
+    embed.setDescription(results + "\n\n" + info)
     msg.edit(embed)
     }
       
     function up() {
     var index = 0
 
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, id)
+    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
       
     select--
     if (select <= -1) {
@@ -248,19 +242,19 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
     }
     results = JSON.stringify(results).split("\\n").map(function(x) {
       if (select == index) {
-          x =  stats.setting("PROGRESSBAR", id)[0] + " " + x
+          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
         }
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results)
+    embed.setDescription(results + "\n\n" + info)
     msg.edit(embed)
     }
       
     function down() {
     var index = 0
 
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, id)
+    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
       
     select++
       
@@ -270,19 +264,20 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       
     results = JSON.stringify(results).split("\\n").map(function(x) {
         if (select == index) {
-          x =  stats.setting("PROGRESSBAR", id)[0]  + " " + x
+          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
         }
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results)
+    embed.setDescription(results + "\n\n" + info)
     msg.edit(embed)
     }
-      console.log(emojilist)
     
     var emojilist = [[emote.yes, "Yes", selectoption, "Once"], [emote.leftarrow, "leftarrow", back], [emote.rightarrow, "rightarrow", next], [emote.uparrow, "uparrow", up], [emote.downarrow, "downarrow", down]]
-    
-    gtftools.createreactions(emojilist, msg, id)
+ 
+    if (reactionson) {
+      gtftools.createreactions(emojilist, msg, userdata)
+    }
     })
  
 }
@@ -327,14 +322,13 @@ module.exports.index = function(list, item) {
   return -1
 }
 // OFFSET PST 16
-module.exports.getFormattedDate = function(date,id) {
+module.exports.getFormattedDate = function(date,userdata) {
     var localTime = date.getTime();
     var localOffset = date.getTimezoneOffset() * 60000;
     var utc = localTime + localOffset
-    var offset = stats.setting("TIME OFFSET", id)
+    var offset = stats.setting("TIME OFFSET", userdata)
     var usertime = utc + (3600000*offset);
     usertime = new Date(usertime);
-
     var year = usertime.getFullYear();
 
   var month = (1 + usertime.getMonth()).toString();
@@ -373,9 +367,14 @@ module.exports.milltominandsecs = function(millis) {
   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
-module.exports.createreactions = function(emojilist, msg, id) {
+module.exports.numFormat = function(number) {
+ return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+module.exports.createreactions = function(emojilist, msg, userdata) {
   var i = 0;
-  var reactid = stats.count(id)
+  var id = userdata["id"]
+  var reactid = stats.count(userdata); 
   filter(i)
   
   function filter(i) {
@@ -395,12 +394,15 @@ module.exports.createreactions = function(emojilist, msg, id) {
         const notbot = r.users.cache
           .filter(clientuser => clientuser.id == id)
           .first();
+        if (reactid != stats.count(userdata)) {
+            return
+        }
         if (typeof emojilist[i][3] !== 'undefined') {
           if (emojilist[i][3] == "Once") {
-            if (reactid != stats.count(id)) {
+            if (reactid != stats.count(userdata)) {
               return
             }
-            stats.addcount(id)
+            stats.addcount(userdata)
           }
           
         }
@@ -418,12 +420,15 @@ module.exports.createreactions = function(emojilist, msg, id) {
         const notbot = r.users.cache
           .filter(clientuser => clientuser.id == id)
           .first();
+            if (reactid != stats.count(userdata)) {
+            return
+        }
         if (typeof emojilist[i][3] !== 'undefined') {
           if (emojilist[i][3] == "Once") {
-                        if (reactid != stats.count(id)) {
+                        if (reactid != stats.count(userdata)) {
               return
             }
-            stats.addcount(id)
+            stats.addcount(userdata)
           }
           
         }

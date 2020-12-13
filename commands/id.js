@@ -1,9 +1,8 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,23 +14,29 @@ module.exports = {
   title: "GT Fitness: ID Database",
   cooldown: 3,
     level: 0,
+  channels: ["gtf-mode"],
+
   delete: true,
+  availitoeveryone:true,
+  availinmaint:false,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
   description: ["!id [car] [(number)] - Shows information about a car from the [(number)] associated with GT Sport car list from alphabetical order.\nNo number returns a random car.", "!id [track] [(number)] - Shows information about a track from the [(number)] associated with all used GTF tracks from alphabetical order.\nNo number returns a random track."],
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = "\n" + "`Args: !id [car|track] [(number)|\"query\"]`" + "\n"
+    var page = 0
+    var results = ''
+    var info = ''
 
     /* Setup */
 
-    var results = " ";
     var selected = false;
 
     if (query[0] == "track") {
@@ -44,7 +49,7 @@ module.exports = {
           var track = require(gtffile.TRACKS).RandomTrack()
         } else {
           if (number + 1 > require(gtffile.TRACKS).trackslength || number < 0) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, msgauthorid);
+            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
             var track = require(gtffile.TRACKS).RandomTrack()
           } else {
             var track = require(gtffile.TRACKS).Track(number)
@@ -57,12 +62,12 @@ module.exports = {
           "**Type:** " + track.type + " Circuit";
           } else {
             if (query[1].length <= 2) {
-            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, msgauthorid);
+            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
             return;
           } else {
             var list = require(gtffile.TRACKS).Tracks({name:query[1]})
             if (list.length == 0) {
-               require(gtffile.EMBED).error("❌ No Tracks", "No tracks has been found from your query.", embed, msg, msgauthorid);
+               require(gtffile.EMBED).error("❌ No Tracks", "No tracks has been found from your query.", embed, msg, userdata);
               return;
             }
             list = list.map(gttrack => "`ID:" + gttrack.id + "` " + gttrack.name).slice(0, 10);
@@ -81,7 +86,7 @@ module.exports = {
           var car = require(gtffile.GTSCARS).RandomGTSCar()
         } else {
           if (number + 1 > total || number < 0) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, msgauthorid);
+            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
             var car = require(gtffile.GTSCARS).RandomGTSCar()
           } else {
             var car = require(gtffile.GTSCARS).GTSCar(number)
@@ -91,15 +96,15 @@ module.exports = {
         embed.setTitle("__GT Sport Car List: " + car.id + "/" + total + " Cars__");
         results = "**Car:** " + car.name + " `ID:" + car.id + "`" + "\n" + 
           "**Category: ** " + car.category + "\n" + 
-          "**Country** " + car.country;
+          "**Country: **" + car.country;
           } else {
             if (query[1].length <= 2) {
-            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, msgauthorid);
+            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
             return;
           } else {
             list = require(gtffile.GTSCARS).GTSCars({name:query[1]})
             if (list.length == 0) {
-               require(gtffile.EMBED).error("❌ No Tracks", "No cars has been found from your query.", embed, msg, msgauthorid);
+               require(gtffile.EMBED).error("❌ No Tracks", "No cars has been found from your query.", embed, msg, userdata);
               return;
             }
             list = list.map(gtscar => "`ID:" + gtscar.id + "` " + gtscar.name).slice(0, 10);
@@ -113,7 +118,7 @@ module.exports = {
       msg.channel.send(embed);
       return 
     } else {
-      require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, msgauthorid)
+      require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata)
       return
     }
   }

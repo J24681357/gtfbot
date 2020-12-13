@@ -1,19 +1,16 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../../functions/f_gtf");
+var stats = require("../../functions/profile/f_stats");
+var emote = require("../../index");
+var gtftools = require("../../functions/misc/f_tools");
+var gtfperf = require("../../functions/marketplace/f_perf");
 var fs = require("fs");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfreplay = require("/home/runner/gtfbot/functions/replays/f_replay");
-var gtfraces = require("/home/runner/gtfbot/functions/races/f_currentraces");
-var gtfuser = require("/home/runner/gtfbot/index");
+var gtfreplay = require("../../functions/replays/f_replay");
+var gtfraces = require("../../functions/races/f_currentraces");
 //SSRX//
 
 module.exports.ssrxracelength = function(
@@ -27,26 +24,23 @@ module.exports.ssrxracelength = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
-  var carspeed = gtftools.speedcalc(racesettings["misc"]["car"]);
-  var speed = carspeed[0];
-  var multiplier = carspeed[1] * 4;
+  var numx = gtftools.catcalc(racesettings["category"], "0%", racesettings["misc"]["car"]);
+  var carspeed = gtfperf.speedcalc(numx)
   var showcar =
     "\n🚘 " +
     racesettings["misc"]["car"]["name"] +
     " **" +
-    racesettings["misc"]["car"]["FPP"] +
+    racesettings["misc"]["car"]["fpp"] +
     emote.fpp +
     "**";
-  var racelength =
-    (((Math.round(racesettings["km"] * 120000) / 10000) * 10000 - 300000) / 2) *
-    multiplier;
-  return [carspeed, speed, multiplier, showcar, racelength];
+  var racelength = (racesettings["km"] / numx) * 3600 * 1000;
+  return [carspeed[0], carspeed[1], showcar, racelength];
 };
 
 module.exports.ssrxmiandresults = function(
-  speed,
+  [speedmph, speedkmh],
   user,
   racedetails,
   racesettings,
@@ -57,21 +51,22 @@ module.exports.ssrxmiandresults = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
-  stats.addmileage(racesettings["km"], racesettings["mi"], id);
+  stats.addmileage(racesettings["km"], racesettings["mi"], userdata);
+  stats.addtotalmileage(racesettings['km'], racesettings['mi'], userdata);
   // stats.updatecurrentcarclean(-1)
   var results2 =
     "**Top Speed:** " +
-    Math.round(speed / 1.609) +
+    speedmph +
     " MPH / " +
-    speed +
+    speedkmh +
     " KMH" +
     "\n" +
     "**Car:** " +
     racesettings["misc"]["car"]["name"] +
     " **" +
-    racesettings["misc"]["car"]["FPP"] +
+    racesettings["misc"]["car"]["fpp"] +
     emote.fpp +
     "**";
   return results2;
@@ -88,13 +83,13 @@ module.exports.careerracelength = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
   var showcar =
     "\n🚘 " +
     racesettings["misc"]["car"]["name"] +
     " **" +
-    racesettings["misc"]["car"]["FPP"] +
+    racesettings["misc"]["car"]["fpp"] +
     emote.fpp +
     "**";
   var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
@@ -115,7 +110,7 @@ module.exports.arcaderacelength = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
   var showcar = "";
   if (racesettings["misc"]["car"].length != 0) {
@@ -123,10 +118,10 @@ module.exports.arcaderacelength = function(
       "\n🚘 " +
       racesettings["misc"]["car"]["name"] +
       " **" +
-      racesettings["misc"]["car"]["FPP"] +
+      racesettings["misc"]["car"]["fpp"] +
       emote.fpp +
       "**";
-    var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], racesettings["misc"]["car"]["sell"]);
+    var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], racesettings["misc"]["car"]);
   } else {
     var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
   }
@@ -147,7 +142,7 @@ module.exports.driftracelength = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
   var showcar = "";
   if (racesettings["misc"]["car"].length != 0) {
@@ -155,7 +150,7 @@ module.exports.driftracelength = function(
       "\n🚘 " +
       racesettings["misc"]["car"]["name"] +
       " **" +
-      racesettings["misc"]["car"]["FPP"] +
+      racesettings["misc"]["car"]["fpp"] +
       emote.fpp +
       "**";
   }
@@ -175,7 +170,7 @@ module.exports.driftsection = function(
   msg,
   args,
   checkpoint,
-  id,
+  userdata,
    last
 ) {
   var difficulty = 60 // low numbers - more difficult
@@ -218,11 +213,12 @@ module.exports.driftresults = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
-  stats.addmileage(racesettings["km"], racesettings["mi"], id);
+  stats.addmileage(racesettings["km"], racesettings["mi"], userdata);
+  stats.addtotalmileage(racesettings['km'], racesettings['mi'], userdata);
   var medal = "COMPLETE"
-  let final = require("/home/runner/gtfbot/functions/races/f_races_2ex").driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, id, true);
+  let final = require("../../functions/races/f_races_2ex").driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, userdata, true);
   racesettings["points"] += final[0]
   if (racesettings["points"] >= final[3]) {
     medal = emote.bronzetrophy + " BRONZE"
@@ -236,7 +232,7 @@ module.exports.driftresults = function(
   var garage =  "**Car:** " +
     racesettings["misc"]["car"]["name"] +
     " **" +
-    racesettings["misc"]["car"]["FPP"] +
+    racesettings["misc"]["car"]["fpp"] +
     emote.fpp +
     "**";
   var results2 =
@@ -260,15 +256,12 @@ module.exports.createfinalreactions = function(
   msg,
   args,
   checkpoint,
-  id
+  userdata
 ) {
   if (!checkpoint[0]) {
     function func() {
-      gtfreplay.save(
-        racesettings["title"],
-        results2,
-        racedetails,
-        "__Starting Grid - " +
+      console.log("start")
+      require(gtffile.REPLAY).savem( racesettings["title"],results2,racedetails,"__Starting Grid - " +
           racesettings["category"] +
           " | " +
           racesettings["grid"] +
@@ -277,26 +270,18 @@ module.exports.createfinalreactions = function(
           "\n" +
           finalgrid +
           "\n",
-        id
+        userdata
       );
-      embed.setDescription(results2 + "\n\n☑️ Replay saved.");
+      embed.setDescription(results2 + "\n" + racedetails + "\n\n☑️ Replay saved.");
       embed.setColor(0x8b0000);
       msg.edit(embed);
       gtftools.removereactions(["🎥"], msg);
-      fs.writeFile(
-        "./users/replays.json",
-        JSON.stringify(gtfuser.allreplays),
-        function(err, result) {
-          if (err) console.log("error", err);
-        }
-      );
     }
 
     var emojilist = [["🎥", "🎥", func]];
     function goback() {
-      gtfuser.gtfuserdata[id]["raceinprogress"] = [false, ["", ""], "", id];
+      userdata["raceinprogress"] = [false, ["", ""], "", userdata["id"]];
       var e = racesettings["raceid"].split("-");
-      var btevent = require("/home/runner/gtfbot/commands/career");
       msg.channel.messages.fetch().then(messages => {
         var m = messages
           .filter(
@@ -308,7 +293,13 @@ module.exports.createfinalreactions = function(
         m.delete({timeout:1000});
       });
       msg.delete({timeout:1000});
-      btevent.execute(msg, [e[0], e[1]], id);
+      if (racesettings["title"].includes("Seasonal Event")) {
+        var btevent = require("../../commands/seasonal");
+        btevent.execute(msg, [e[1]], userdata);
+      }else {
+      var btevent = require("../../commands/career");
+      btevent.execute(msg, [e[0], e[1]], userdata);
+      }
     }
 
       if (racesettings["mode"] == "CAREER") {
@@ -318,6 +309,6 @@ module.exports.createfinalreactions = function(
         }
       }
 
-    gtftools.createreactions(emojilist, msg, id);
+    gtftools.createreactions(emojilist, msg, userdata);
   }
 };

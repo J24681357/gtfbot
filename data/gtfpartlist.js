@@ -1,9 +1,7 @@
-var gtf = require("../../functions/f_gtf");
-var stats = require("../../functions/profile/f_stats");
-var emote = require("../../index");
-var gtftools = require("../../functions/misc/f_tools");
-var gtfperf = require("../../functions/marketplace/f_perf");
-var exp = require("../../profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -12,45 +10,6 @@ var gtffile = process.env
 
 ///100,000 Car - 30000
 /// All cars - 300000
-module.exports.transmission = function() {
-  return [["5-Speed Transmission", 2000, "", [300000]], ["6-Speed Transmission", 5000, "", [300000]], ["7-Speed Transmission", 6000, "", [300000]], ["8-Speed Transmission", 8000, "", [300000]], 
-          ["Fully Customizable Transmission", 15000, "", ["<:gt4:", "<:gt3:","<:gt1:",300000]]];
-}
-
-module.exports.suspension = function() {
-  return [["Sports Suspension Kit", 2000, "FPP", ""], ["Rally Suspension Kit", 5000, "FPP",[30000]], ["Fully Customizable Suspension Kit", 10000, "FPP", ["<:gt4:", "<:gt3:","<:gt1:", 300000]]];
-}
-
-module.exports.tires = function() {
-  return [["Comfort Hard Tires", 1000, "FPP", ["<:gt4:", "<:gt3:","<:gt1:", 300000]],
-          ["Comfort Medium Tires", 1500, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]],
-          ["Comfort Soft Tires", 2000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Sports Hard Tires", 5000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Sports Medium Tires", 6000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Sports Soft Tires", 7000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Hard Tires", 10000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Medium Tires", 15000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Soft Tires", 20000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Super Soft Tires", 25000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Intermediate Tires", 10000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Racing Heavy Wet Tires", 10000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:",300000]], 
-          ["Dirt Tires", 7500, "FPP",""], 
-          ["Snow Tires", 7500, "FPP",""]];
-}
-
-module.exports.weightreduction = function() {
-  return [
-    ["Weight Reduction Stage 1", 5000, "FPP", ["<:gt4:", 300000]],
-          ["Weight Reduction Stage 2", 10000, "FPP", ["<:gt4:", 300000]], 
-          ["Weight Reduction Stage 3", 20000, "FPP", ["<:gt4:", "<:gt3:", 30000]], 
-          ["Weight Reduction Stage 4", 30000, "FPP", ["<:gt4:", "<:gt3:", 30000]], 
-          ["Weight Reduction Stage 5", 40000, "FPP", ["<:gt1:", 0]]
-          ]
-}
-
-module.exports.turbo = function() {
-  return  [["Low RPM Range Turbo Kit", 4000, "FPP", ["<:gt4:", 30000]], ["Mid RPM Range Turbo Kit", 20000, "FPP", ["<:gt4:",  30000]], ["High RPM Range Turbo Kit", 40000, "FPP", ["<:gt4:", "<:gt3:", "<:gt1:", 300000]], ["Supercharger", 20000, "FPP", ["<:gt4:",  300000]]];
-}
 
 module.exports.nitrous = function() {
   return [["Normal (NOS)", 10000, "FPP", [300000]], ["Red (NOS)", 10000, "FPP", [300000]], ["Orange (NOS)", 10000, "FPP", [300000]], ["Yellow (NOS)", 10000, "FPP", [300000]],["Lime (NOS)", 10000, "FPP", [300000]], ["Green (NOS)", 10000, "FPP", [300000]], ["Aqua (NOS)", 10000, "FPP", [300000]], ["Blue (NOS)", 10000, "FPP", [300000]], ["Purple (NOS)", 10000, "FPP", [300000]], ["Brown (NOS)", 10000, "FPP", [300000]], ["White (NOS)", 10000, "FPP", [300000]]]
@@ -175,11 +134,99 @@ module.exports.specialpaints = paints.filter(x => x[0].includes("Special"))
 var oilchange = ["Oil Change", 1000, "FPP"];
 var fuel = ["Fuel", 1000]
 
+
+//////////////////
+
+module.exports.list = function(args) {
+  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var results = ""
+  if (args.length == 0) {
+    return results
+  }
+  if (args == "type") {
+    results = Object.keys(gtfparts).map(function(x) {
+      return x.split("-").map(name => name.charAt(0).toUpperCase() + name.slice(1)).join()
+    })
+    return results
+  }
+}
+
+module.exports.find = function(args) {
+  if (args === undefined) {
+    return ""
+  }
+  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var final = []
+  var total = Object.keys(args).length
+
+  var types = Object.keys(gtfparts)
+
+  for (var key = 0; key < types.length; key++) {
+
+    var typekey = gtfparts[types[key]]
+    for (var i = 0; i < typekey.length; i++) {
+      var count = 0
+      if (args["type"] !== undefined) {
+
+        var type = args["type"]
+        var x = typekey[i]["type"]
+        if (x.toLowerCase().replace(/ /g, "-") === type.toLowerCase().replace(/ /g, "-")) {
+          count++
+        }
+      }
+
+      if (args["name"] !== undefined) {
+        var name = args["name"]
+        var x = typekey[i]["name"]
+        if (x === name) {
+          count++
+        }
+      }
+   
+      if (count == total) {
+        final.unshift(typekey[i])
+      }
+
+    }
+  }
+  if (final.length == 0) {
+    return ""
+  }
+  return final.sort((x,y) => x["cost"] - y["cost"])
+}
+
 // Functions /////////////////////////////////////////////////////////////////////////////////
 //id, type, name, cost, fpp
 
+module.exports.tuninglist = function(part, gtfcar, embed, msg, userdata) {
+  if (part["type"] == "Suspension") {
+    var names = [["__**Camber Angle**__", "in", function(x){return x}], ["__**Toe Angle**__", "in", function(x){return x}]]
+  }
+  var tunevalues = gtfcar[part["type"].toLowerCase()]["tuning"]
 
+ var list = []
 
+  for (var i = 0; i < names.length; i++) {
+    if (tunevalues[i] < part["min"]) {
+      tunevalues[i] = part["min"]
+    }
+    if (tunevalues[i] > part["max"]) {
+      tunevalues[i] = part["max"]
+    }
+   var bar = []
+      for (var j = part["min"]; j < part["max"] + 1; j++) {
+        if (j == tunevalues[i]) {  
+          bar.push(stats.setting("PROGRESSBAR",userdata)[0])
+        } else {
+          bar.push(stats.setting("PROGRESSBAR",userdata)[1])
+        }
+    }
+    list.push([names[i][0] + " " + names[i][2](tunevalues[i]) + names[i][1] + "\r" + bar.join("") + "\r", " "])
+  }
+
+  return list
+
+}
 
 module.exports.paintid = function (painttype, number) {
   if (painttype.includes("Gloss")) {
@@ -203,7 +250,28 @@ module.exports.paintid = function (painttype, number) {
   }
 }
 
+module.exports.checkpartsavail = function(part, gtfcar) {
+  var ocar = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
+var perf = require(gtffile.PERF).perf(ocar, "DEALERSHIP")
+  var bfpplimit = perf["fpp"] < part["fpplimit"]
+  var bweightlimit = perf["oweight"] > part["weightlowerlimit"]
+  var btype = part["eligible"].includes(ocar["type"])
+ if (btype && bfpplimit && bweightlimit) { 
+   console.log(part["type"].toLowerCase().replace(/ /g, "-"))
+   if (gtfcar[part["type"].toLowerCase()]["list"].includes(part["name"])) {
+      if (gtfcar[part["type"].toLowerCase()]["current"] == part["name"]) {
+        return "✅"
+      } else {
+        return "📦"
+      }
+   } else {
+     return " "
+   }
+ } else {
+   return "❌"
+ }
 
+}
 
 
 

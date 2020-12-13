@@ -1,9 +1,8 @@
-var gtf = require('/home/runner/gtfbot/functions/f_gtf');
-var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
-var emote = require('/home/runner/gtfbot/index');
-var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
-var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
-var exp = require('/home/runner/gtfbot/profile/expprofile');
+var gtf = require('../functions/f_gtf');
+var stats = require('../functions/profile/f_stats');
+var emote = require('../index');
+var gtftools = require('../functions/misc/f_tools');
+var gtfperf = require('../functions/marketplace/f_perf');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -13,9 +12,18 @@ var gtffile = process.env;
 module.exports = {
   name: 'garage',
   title: 'My Garage',
-  level:0,
+  level: 0,
   cooldown: 3,
+  aliases: ['g'],
+  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
   delete: true,
+  availitoeveryone:true,
+  availinmaint:false,
+   requireuserdata:true,
+  usedduringrace: false,
+  usedinlobby: true,
+
   description: [
     '!garage - Displays the list of all of your cars.\nFPP is displayed for each car.',
     '!garage [view] [(number)] - Views information about a car associated with the [(number)] from the list in your garage.',
@@ -23,29 +31,33 @@ module.exports = {
     '!garage sell [(number)] - Sells a car with its Selling Price. The car is associated with the [(number)] from the list in your garage.',
     'You can also sell a range of cars using **!garage sell** [(number)-(number)].',
   ],
-  aliases: ['g'],
-  requirecar: true,
-  usedduringrace: false,
-  usedinlobby: true,
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username;
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '\n' + '`Args: !garage [(number)|sell (number)|view (number)|select (number)]`' + '\n';
+    var page = 0
+    var results = ''
+    var info = ''
 
     /* Setup */
-    var results = ' ';
-    var page = 0;
     var selected = false;
     var purchase = false;
     var viewonly = false;
     var accept = true;
     var regulate = false;
+    var reactionson = true;
+    var command = "garage";
 
-    embed.setTitle('__My Garage: ' + stats.garagecount(msgauthorid) + ' / ' + gtf.garagelimit + ' Cars__');
+    embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + gtf.garagelimit + ' Cars__');
+
+    if (stats.garagecount(userdata) == 0) {
+      require(gtffile.EMBED).error('❌ No Cars', 'You do not have any cars in your garage.', embed, msg, userdata);
+        return;
+    }
 
     if (!isNaN(query[0])) {
       query.unshift('select');
@@ -63,58 +75,57 @@ module.exports = {
       } else {
         number2 = number;
       }
-      console.log(number);
-      console.log(number2);
 
-      if (number <= 0 || (isNaN(number) || isNaN(number2)) || (number === undefined || number2 === undefined) || (number > stats.garagecount(msgauthorid) || number2 > stats.garagecount(msgauthorid)) || number2 < number) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, msgauthorid);
+      if (number <= 0 || (isNaN(number) || isNaN(number2)) || (number === undefined || number2 === undefined) || (number > stats.garagecount(userdata) || number2 > stats.garagecount(userdata)) || number2 < number) {
+        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       }
-      if (number <= stats.currentcarnum(msgauthorid) && number2 >= stats.currentcarnum(msgauthorid)) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'You cannot sell your current car.', embed, msg, msgauthorid);
+      if (number <= stats.currentcarnum(userdata) && number2 >= stats.currentcarnum(userdata)) {
+        require(gtffile.EMBED).error('❌ Invalid ID', 'You cannot sell your current car.', embed, msg, userdata);
         return;
       }
-      console.log(number);
       if (number2 == number) {
-        var car = stats.garage(msgauthorid)[number - 1];
-        require(gtffile.MARKETPLACE).sell(user, car, 'CAR', embed, msg, msgauthorid);
+        var car = stats.garage(userdata)[number - 1];
+        require(gtffile.MARKETPLACE).sell(user, car, 'CAR', embed, msg, userdata);
       } else {
-        require(gtffile.MARKETPLACE).sell(user, [number, number2], 'CARS', embed, msg, msgauthorid);
+        require(gtffile.MARKETPLACE).sell(user, [number, number2], 'CARS', embed, msg, userdata);
       }
     } else if (query[0] == 'view') {
       var number = query[1];
       if (number === undefined) {
-        number = stats.currentcarnum(msgauthorid);
+        number = stats.currentcarnum(userdata);
       }
-      if (number <= 0 || isNaN(number) || number > stats.garagecount(msgauthorid)) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, msgauthorid);
+      if (number <= 0 || isNaN(number) || number > stats.garagecount(userdata)) {
+        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       }
-      var car = stats.garage(msgauthorid)[number - 1];
-      results = stats.view(car, msgauthorid);
-      stats.addcount(msgauthorid);
+      var car = stats.garage(userdata)[number - 1];
+      var ocar = require(gtffile.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
+      results = stats.view(car, userdata);
+      stats.addcount(userdata);
+      embed.setThumbnail(ocar["image"])
       embed.setDescription(results);
       msg.channel.send(embed);
       return;
     } else if (query[0] == 'select') {
       selected = true;
       var number = parseInt(query[1]);
-      var changecar = stats.setcurrentcar(number, msgauthorid);
+      var changecar = stats.setcurrentcar(number, userdata);
       if (changecar == 'Invalid') {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, msgauthorid);
+        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       } else {
-        stats.addcount(msgauthorid);
-        var car = stats.garage(msgauthorid)[number - 1];
-        require(gtffile.EMBED).success('✅ Success', 'Selected the **' + car['name'] + ' ' + car['FPP'] + emote.fpp + '**' + ' `🚘ID:' + number + '`.', 5000, true, embed, msg, msgauthorid);
+        stats.addcount(userdata);
+        var car = stats.garage(userdata)[number - 1];
+        require(gtffile.EMBED).success('✅ Success', 'Selected the **' + car['name'] + ' ' + car['fpp'] + emote.fpp + '**' + ' `🚘ID:' + number + '`.', 5000, true, embed, msg, userdata);
       }
       return;
     } else if (query[0] == 'regulate!🏴') {
       regulate = true;
-      stats.addcount(msgauthorid);
+      stats.addcount(userdata);
       var event = query[1];
       viewonly = true;
-      var filter = stats.garage(msgauthorid).filter(function(x) {
+      var filter = stats.garage(userdata).filter(function(x) {
         var regulations = gtf.checkregulations(x, event);
         return regulations[0];
       });
@@ -138,36 +149,43 @@ module.exports = {
           embed.setTitle('❗ **' + filter.length + ' Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')**');
         } else {
           embed.setTitle('❗ **No Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')**');
-          require(gtffile.EMBED).warning('⚠ Warning', '0 garage cars are eligible for this event.', embed, msg, msgauthorid);
+          require(gtffile.EMBED).warning('⚠ Warning', '0 garage cars are eligible for this event.', embed, msg, userdata);
+          return
         }
         var list = [];
         var findex = 1;
-        var cars = stats.garage(msgauthorid);
-        for (var i = 0; i < stats.garagecount(msgauthorid); i++) {
+        var cars = stats.garage(userdata);
+        for (var i = 0; i < stats.garagecount(userdata); i++) {
           if (typeof filter[findex - 1] !== 'undefined') {
             if (cars[i]['ID'] == filter[findex - 1]['ID']) {
-              list.push(['`🚘ID:' + (i + 1) + '` ' + '**' + cars[i]['name'] + '**', cars[i]['FPP']]);
+              list.push(['`🚘ID:' + (i + 1) + '` ' + '**' + cars[i]['name'] + '**', cars[i]['fpp']]);
               findex++;
             }
           }
         }
       } else {
-        var list = stats.garage(msgauthorid).map(function(car) {
-          return [car['name'], car['FPP']];
+        var list = stats.garage(userdata).map(function(car) {
+          return [car['name'], car['fpp']];
         });
       }
       if (regulate) {
-        results = gtftools.list(list, page, '', emote.fpp, false, '', 10, msgauthorid);
+        results = gtftools.list(list, page, '', emote.fpp, false, '', 10, userdata);
+        command = 'garage_regulate'
+        info = "❓ **Select a car from the list above that is eligible for this event.**"
+       // embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
+         gtftools.createpages(results, list, page, '', emote.fpp, false, '', 10, [query, command, reactionson, info], embed, msg, userdata);
+        return
       } else {
-        results = gtftools.list(list, page, '🚘ID:', emote.fpp, true, '`', 10, msgauthorid);
+        results = gtftools.list(list, page, '🚘ID:', emote.fpp, true, '`', 10, userdata);
       }
 
       embed.setDescription(results);
 
       if (!viewonly) {
-        embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+        embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       }
-      gtftools.createpages(results, list, page, '🚘ID:', emote.fpp, true, '`', 10, [query, 'garage'], embed, msg, msgauthorid);
+      
+      gtftools.createpages(results, list, page, '🚘ID:', emote.fpp, true, '`', 10, [query, command, reactionson, info], embed, msg, userdata);
       return;
     }
     /*   var newcar = [id, make, name, sell, rating, ["FPP " + fpp], ["Col 0"], ["E S 0"], ["Tr S 0"], ["Su S 0"], ["We S 0"], ["Tu S 0"], ["Nos S 0"], ["Oil 100"], ["Clean 100"], ["Dam 100"], ["Rim 0"]] */

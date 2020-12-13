@@ -316,6 +316,7 @@ var gtscarlist = function() {
 [ "Toyota TS030 Hybrid 2012", "Gr.1", "Japan"],
 [ "Toyota TS050 Hybrid (Toyota Gazoo Racing) 2016", "Gr.1", "Japan"],
 [ "Toyota Tundra TRD Pro 2019", "N400", "Japan"],
+[ "Toyota GR Yaris First Edition RZ (High Performance) 2020", "N300", "Japan"],
 [ "TVR Tuscan Speed 6 2000", "N400", "UK"],
 [ "Volkswagen 1200 1966", "N100" , "Germany"],
 [ "Volkswagen Beetle Gr.3", "Gr.3" , "Germany"],
@@ -418,8 +419,6 @@ function filtergtscarlist(args) {
     if (category !== undefined) {
       for (var index = 0; index < category.length; index++) {
       if (category[index] == x[2]) {
-        console.log(category[index])
-        console.log(x[2])
         good++
         break;
       }

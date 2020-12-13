@@ -1,9 +1,8 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,20 +14,23 @@ module.exports = {
   title: "Jay The Fox",
   cooldown: 5,
     level: 0,
-  delete: true,
+  channels: ["gtf-mode"],
+
   roles: ["🦊-enabled"],
+  availinmaint:false,
+    delete: true,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
   description: ["!jay [\"text\"] - Responds to [\"text\"] with a yes, no, or others.", 
                 "!jay [rate] [\"text\"] - Rates [\"text\"] out of 10 (or higher)."],
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0xF77C14);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = ""
 
     /* Setup */
@@ -260,7 +262,7 @@ module.exports = {
       results = "Not so fast mister UwU.";
     } else if (food) {
       results = "Thanks for the **" + foods[item] + "** " + user + ", *" + rnom + "*. " + " **+" + 1 + "**" + emote.credits;
-      stats.addcredits(1, msgauthorid);
+      stats.addcredits(1, userdata);
     memory["Jay"]["hunger"] += 50
     if (memory["Jay"]["hunger"] >= 100) {
         memory["Jay"]["hunger"] = 100

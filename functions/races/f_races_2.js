@@ -1,19 +1,19 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../../functions/f_gtf");
+var stats = require("../../functions/profile/f_stats");
+var emote = require("../../index");
+var gtftools = require("../../functions/misc/f_tools");
+var gtfperf = require("../../functions/marketplace/f_perf");
+var parts = require("../../functions/marketplace/f_parts");
+var exp = require("../../profile/expprofile");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfreplay = require("/home/runner/gtfbot/functions/replays/f_replay");
-var gtfraces = require("/home/runner/gtfbot/functions/races/f_currentraces");
-var race2ex = require("/home/runner/gtfbot/functions/races/f_races_2ex");
-var gtfuser = require("/home/runner/gtfbot/index");
+var gtfreplay = require("../../functions/replays/f_replay");
+var gtfraces = require("../../functions/races/f_currentraces");
+var race2ex = require("../../functions/races/f_races_2ex");
+var gtfuser = require("../../index");
 var fs = require("fs");
 
 module.exports.readysetgo = function(
@@ -27,8 +27,7 @@ module.exports.readysetgo = function(
   msg,
   args,
   checkpoint,
-  id
-) {
+  userdata) {
   startingrace = true;
   var results2 = " ";
   var index = 0;
@@ -38,8 +37,8 @@ module.exports.readysetgo = function(
   var racelength = 0;
   var startracetime = 4000;
   var resumerace = "";
-  var progressbarblackarcolor = stats.setting("PROGRESSBAR", id)[0];
-  var progressbarblack = stats.setting("PROGRESSBAR",id)[1]
+  var progressbarblackarcolor = stats.setting("PROGRESSBAR", userdata)[0];
+  var progressbarblack = stats.setting("PROGRESSBAR",userdata)[1]
 
   var lights = [
     [
@@ -76,13 +75,12 @@ module.exports.readysetgo = function(
         msg,
         args,
         checkpoint,
-        id
+        userdata
       );
-      var carspeed = ssrx1[0];
-      var speed = ssrx1[1];
-      var multiplier = ssrx1[2];
-      showcar = ssrx1[3];
-      racelength = ssrx1[4];
+      var speedmph = ssrx1[0];
+      var speedkmh = ssrx1[1];
+      showcar = ssrx1[2];
+      racelength = ssrx1[3];
     }else if (racesettings["mode"] == "CAREER") {
       let career1 = race2ex.careerracelength(
         user,
@@ -95,7 +93,7 @@ module.exports.readysetgo = function(
         msg,
         args,
         checkpoint,
-        id
+        userdata
       );
       var showcar = career1[0];
       racelength = career1[1];
@@ -111,7 +109,7 @@ module.exports.readysetgo = function(
         msg,
         args,
         checkpoint,
-        id
+        userdata
       );
       var showcar = arcade1[0];
       racelength = arcade1[1];
@@ -127,7 +125,7 @@ module.exports.readysetgo = function(
         msg,
         args,
         checkpoint,
-        id
+        userdata
       );
       var showcar = drift1[0];
       racelength = drift1[1];
@@ -135,19 +133,21 @@ module.exports.readysetgo = function(
 
   if (!checkpoint[0]) {
     var totaltime = new Date().getTime() + racelength + 4000;
-    gtfuser.gtfuserdata[id]["raceinprogress"] = [
+    userdata["raceinprogress"] = [
       true,
       [msg.channel.id, msg.id],
       totaltime,
-      id
+      userdata["id"]
     ];
     gtftools.removereactions(
       ["flag", "trackgtfitness", "gtfcargrid", "❓"],
       msg
     );
-    stats.addracedetails(racesettings, racedetails, finalgrid, args, id);
+    stats.addracedetails(racesettings, racedetails, finalgrid, args, userdata);
+    
+      stats.save(userdata)
   } else {
-    var totaltime = gtfuser.gtfuserdata[id]["raceinprogress"][2];
+    var totaltime = userdata["raceinprogress"][2];
     resumerace =
       "\n⚠ Bot has restarted while in progress. Reactions will not appear in the race results.";
     startracetime = 0;
@@ -201,7 +201,7 @@ module.exports.readysetgo = function(
   
   setTimeout(function() {
     var check = function() {
-      if (gtfuser.gtfuserdata[id]["raceinprogress"][2] == "EXIT") {
+      if (userdata["raceinprogress"][2] == "EXIT") {
  
       }
       var currenttime = new Date().getTime();
@@ -209,23 +209,23 @@ module.exports.readysetgo = function(
       temptime = timeleft;
       tempindex = 0;
       
-      if (gtfuser.gtfuserdata[id]["raceinprogress"][2] <= currenttime) {
+      if (userdata["raceinprogress"][2] <= currenttime) {
         clearInterval(progress)
-        gtfuser.gtfuserdata[id]["raceinprogress"] = [
+        userdata["raceinprogress"] = [
           false,
           ["", ""],
           undefined,
-          id
+          userdata["id"]
         ];
         msg.delete({timeout:1});
 
-        stats.removeracedetails(id)
+        stats.removeracedetails(userdata)
         startingrace = false;
         racefinished = true;
 
           if (racesettings["mode"] == "SSRX") {
             let ssrx2 = race2ex.ssrxmiandresults(
-              speed,
+              [speedmph, speedkmh],
               user,
               racedetails,
               racesettings,
@@ -236,42 +236,33 @@ module.exports.readysetgo = function(
               msg,
               args,
               checkpoint,
-              id
+              userdata
             );
             var results2 = ssrx2;
           } else if (racesettings["mode"] == "DRIFT") {
-               let drift2 = race2ex.driftresults(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, id, racesettings["points"]);
+               let drift2 = race2ex.driftresults(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, userdata, racesettings["points"]);
             var results2 = drift2
       } else {
-            results2 = require(gtffile.RACE).start(racesettings, racedetails, user, id);
+            results2 = require(gtffile.RACE).start(racesettings, racedetails, user, userdata);
         }
-    if (racesettings["mode"] == "CAREER") {
-            gtftools.interval(function() {
-              var achieve = stats.isracescomplete(racesettings["raceid"].split("-").slice(0, -1).join("-"), racesettings["eventlength"], 1, id)
-              if (achieve) {
-                stats.eventcomplete(racesettings["raceid"].split("-").slice(0, -1).join("-"), id)
-                stats.gift(emote.goldmedal + " Congrats! All GOLD in " + racesettings["title"].split(" - ")[0] + " " + emote.goldmedal, racesettings["prize"], "RANDOMCAR", embed, msg, id)
-              }
-          }, 3000, 1)
-            }  
+
 
         embed.setDescription(results2 + "\n\n" + racedetails);
        
         if (racesettings["misc"]["car"] == "") {
-          var field2 = args
+          var field2 = emote.transparent
         } else {
-        var field2 =  args + stats.currentcarmain(id)
+        var field2 = stats.currentcarmain(userdata)
         }
-        
-        embed.addField(stats.main(id));
-        gtfuser.gtfuserdata[id]["raceinprogress"] = [
+        embed.addField(stats.main(userdata), field2);
+        userdata["raceinprogress"] = [
           false,
           ["", ""],
           undefined,
-          id
+          userdata["id"]
         ];
         
-        msg.channel.send("<@" + id + ">" + " **FINISH**",embed).then(msg => {
+        msg.channel.send("<@" + userdata["id"] + ">" + " **FINISH**", embed).then(msg => {
           race2ex.createfinalreactions(
             user,
             racedetails,
@@ -284,10 +275,21 @@ module.exports.readysetgo = function(
             msg,
             args,
             checkpoint,
-            id
+            userdata
           );
+              if (racesettings["mode"] == "CAREER") {
+            gtftools.interval(function() {
+              var achieve = stats.isracescomplete(racesettings["raceid"].split("-").splice(0,2).join("-"), racesettings["eventlength"], 1, userdata)
+              if (achieve) {
+                stats.eventcomplete(racesettings["raceid"], userdata)
+                stats.gift(emote.goldmedal + " Congrats! All GOLD in " + racesettings["title"].split(" - ")[0] + " " + emote.goldmedal, racesettings["prize"], embed, msg, userdata)
+              }
+          }, 3000, 1)
+            }  
         });
-        return
+        
+      stats.save(userdata)
+      return
       } else {
         for (temptime; temptime <= racelength; ) {
           start[tempindex - 1] = progressbarblackarcolor;
@@ -304,7 +306,7 @@ module.exports.readysetgo = function(
           " ~" +gtftools.milltominandsecs(timeleft) + " minutes" + showcar + resumerace
       );
             if (racesettings["mode"] == "DRIFT") {
-              let drift1 = race2ex.driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, id, false);
+              let drift1 = race2ex.driftsection(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, userdata, false);
               var icon = emote.transparent
               if (drift1[0] > 0) {
                 icon = emote.driftflag
@@ -317,16 +319,16 @@ module.exports.readysetgo = function(
       msg.edit(embed).catch(function(){
         clearInterval(progress);
         console.log("Race has ended. (Message is not there.)");
-        gtfuser.gtfuserdata[id]["raceinprogress"] = [false, ["", ""], undefined, id];
+        userdata["raceinprogress"] = [false, ["", ""], undefined, userdata["id"]] ;
         return;
       })
       
-      if (gtfuser.gtfuserdata[id]["raceinprogress"][2] != "EXIT") {
-        gtfuser.gtfuserdata[id]["raceinprogress"] = [
+      if (userdata["raceinprogress"][2] != "EXIT") {
+        userdata["raceinprogress"] = [
           true,
           [msg.channel.id, msg.id],
           totaltime,
-          id
+          userdata["id"]
         ];
       }
     }, racelength / 10);

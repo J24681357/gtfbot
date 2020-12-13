@@ -1,10 +1,8 @@
-var gtf = require('/home/runner/gtfbot/functions/f_gtf');
-var stats = require('/home/runner/gtfbot/functions/profile/f_stats');
-var emote = require('/home/runner/gtfbot/index');
-var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
-var gtferror = require('/home/runner/gtfbot/functions/misc/f_errors');
-var gtfperf = require('/home/runner/gtfbot/functions/marketplace/f_perf');
-var exp = require('/home/runner/gtfbot/profile/expprofile');
+var gtf = require('../functions/f_gtf');
+var stats = require('../functions/profile/f_stats');
+var emote = require('../index');
+var gtftools = require('../functions/misc/f_tools');
+var gtfperf = require('../functions/marketplace/f_perf');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -15,45 +13,50 @@ module.exports = {
   name: 'gift',
   cooldown: 3,
   level:0,
+  channels: ["gtf-mode", "testing"],
+  
   delete: true,
+  availinmaint:false,
   description: ["Test"],
   aliases: ['inv', 'inventory', 'gifts'],
   requirecar: true,
   usedduringrace: false,
   usedinlobby: true,
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(stats.userid(msgauthorid)).user
+    var user = msg.guild.members.cache.get(userdata["id"]).user
       .username;
     embed.setAuthor(
       user,
       msg.guild.members.cache
-        .get(stats.userid(msgauthorid))
+        .get(userdata["id"])
         .user.displayAvatarURL()
     );
-    var args = '\n' + '`Args: !gifts `' + '\n';
+    var args = '\n' + '`Args: !gifts [(number)]`' + '\n';
+    var page = 0
+    var results = ''
+    var info = ''
 
     /* Setup */
-    var results = ' ';
-    var page = 0;
     var selected = false;
+    var reactionson = true
 
-    if (stats.gifts(msgauthorid).length == 0) {
+    if (stats.gifts(userdata).length == 0) {
       require(gtffile.EMBED).error(
         '❌ No Gifts',
         'You do not have any gifts available.',
         embed,
         msg,
-        msgauthorid
+        userdata
       );
       return;
     }
     embed.setTitle(
       '__📦 My Inventory: ' +
-        stats.gifts(msgauthorid).length +
+        stats.gifts(userdata).length +
         ' / ' +
         gtf.giftlimit +
         ' Items__'
@@ -63,30 +66,29 @@ module.exports = {
       query.unshift('accept');
       query[1] = parseInt(query[1]);
     }
-    console.log(query)
     if (query[0] == "accept") {
       selected = true
       var number = query[1]
-      var gifts = stats.gifts(msgauthorid)
-      stats.gift(gifts[number - 1]["name"], gifts[number - 1], gifts[number - 1]["type"], embed, msg, msgauthorid)
+      var gift = stats.gifts(userdata)[number - 1]
+      stats.gift("✅**" + gift[1]["name"] + "** has been redeemed!", gift, embed, msg, userdata)
     }
 
     if (selected) {
       return
     } else {
-      var list = stats.gifts(msgauthorid).map(function(item) {
-        return [item['author'] + "\r" + item['name'] + " " + item['type'], ' '];
+      var list = stats.gifts(userdata).map(function(item) {
+        return [item[1]['author'] + "\r" + item[1]['name'] + " " + item[0], ' '];
       });
     }
-    results = gtftools.list(list, page, '', '', true, '', 10, msgauthorid);
+    results = gtftools.list(list, page, '', '', true, '', 10, userdata);
 
     embed.setDescription(results);
-    embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
 
     if (selected) {
       embed.addField(
-        stats.main(msgauthorid),
-        args + stats.currentcarmain(msgauthorid)
+        stats.main(userdata),
+        args + stats.currentcarmain(userdata)
       );
     } else {
       gtftools.createpages(
@@ -98,10 +100,10 @@ module.exports = {
         false,
         '',
         10,
-        [query, 'gift'],
+        [query, 'gift', reactionson, info],
         embed,
         msg,
-        msgauthorid
+        userdata
       );
       return;
     }

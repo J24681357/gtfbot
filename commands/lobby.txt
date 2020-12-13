@@ -1,32 +1,34 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtflobby = require("/home/runner/gtfbot/index");
+var gtflobby = require("../index");
 
 module.exports = {
   name: "lobby",
   cooldown: 3,
-  delete: true,
   level:0,
-  description: ["Test"],
+    channels: ["gtf-mode"],
+
+  delete: true,
+  availinmaint:false,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: true,
-  execute(msg, query, msgauthorid) {
+   description: ["Test"],
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = "\n" + "`Args: !lobby [create|list|settings|exit]`" + "\n"
 
     /* Setup */
@@ -42,15 +44,14 @@ module.exports = {
     }
 
     if (query[0] == "create") {
-      console.log(server.channels.cache.find(channel => channel.name === "lobby-" + msgauthorid))
-      if (server.channels.cache.find(channel => channel.name === "lobby-" + msgauthorid) !== undefined) {
-         require(gtffile.EMBED).error("❌ Error", "You cannot host more than 1 lobby.", embed, msg, msgauthorid);
+      if (server.channels.cache.find(channel => channel.name === "lobby-" + userdata["id"]) !== undefined) {
+         require(gtffile.EMBED).error("❌ Error", "You cannot host more than 1 lobby.", embed, msg, userdata);
         return
       }
 
       server.roles.create({
         data: {
-          name: 'lobby-' + msgauthorid,
+          name: 'lobby-' + userdata["id"],
         color: 'BLUE',
         permissions: [],
       }
@@ -60,13 +61,13 @@ module.exports = {
       }).then(function() {
 
         var everyonerole = server.roles.cache.find(r => r.name === '@everyone');
-        var hostrole = server.roles.cache.find(r => r.name === 'lobby-' + msgauthorid);
+        var hostrole = server.roles.cache.find(r => r.name === 'lobby-' + userdata["id"]);
 
         var numberid = Object.keys(lobby).length + 1
 
-        lobby[msgauthorid] = {
-            id: "lobby-" + msgauthorid,
-            channelname: "lobby-" + msgauthorid,
+        lobby[userdata["id"]] = {
+            id: "lobby-" + userdata["id"],
+            channelname: "lobby-" + userdata["id"],
             numberid: numberid,
             mode: "RACE",
             host: msg.author.id,
@@ -74,7 +75,7 @@ module.exports = {
             players: [msg.author.id],
             racesettings: require(gtffile.RACE).setrace("Online")
           }
-        var currentlobby = lobby[msgauthorid]
+        var currentlobby = lobby[userdata["id"]]
           server.channels.create(currentlobby["channelname"], {
           type: 'text',
             permissionOverwrites: [
@@ -88,11 +89,11 @@ module.exports = {
               },
             ],
           })
-          stats.inlobby(true, currentlobby["host"], msgauthorid)
+          stats.inlobby(true, currentlobby["host"], userdata)
 
           gtftools.interval(function() {
             
-            require(gtffile.EMBED).success('✅ Success', "Created new lobby: " + server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).toString() + ".", 0, true, embed, msg, msgauthorid);
+            require(gtffile.EMBED).success('✅ Success', "Created new lobby: " + server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).toString() + ".", 0, true, embed, msg, userdata);
 
           }, 3000, 1)
           gtftools.interval(function() {
@@ -111,14 +112,14 @@ module.exports = {
         })
     }
     else if (query[0] == "join") {
-      if (stats.inlobbystat(msgauthorid)[0]) {
-        require(gtffile.EMBED).error("❌ Error", "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed, msg, msgauthorid);
+      if (stats.inlobbystat(userdata)[0]) {
+        require(gtffile.EMBED).error("❌ Error", "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed, msg, userdata);
         return
       }
       
       var number = query[1]
       if (number <= 0 || isNaN(number) || number === undefined || number > Object.keys(lobby).length) {
-        require(gtffile.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, msgauthorid);
+        require(gtffile.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, userdata);
         return
       }
       //server.channels.find(channel => channel.name === stats.inlobby()[1])
@@ -132,32 +133,32 @@ module.exports = {
         }
       }
       
-      if (stats.currentcar(msgauthorid) == "No car.") {
-         require(gtffile.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, msgauthorid);
+      if (stats.currentcar(userdata) == "No car.") {
+         require(gtffile.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, userdata);
         return
       }
 
       if (!success) {
-        require(gtffile.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, msgauthorid);
+        require(gtffile.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, userdata);
         return
       }
-      if (stats.currentcar(msgauthorid) == "No car.") {
-         require(gtffile.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, msgauthorid);
+      if (stats.currentcar(userdata) == "No car.") {
+         require(gtffile.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, userdata);
         return
       }
 
       gtftools.interval(function() {
         if (currentlobby["players"] >= 16) {
-          require(gtffile.EMBED).error("❌ Error", "This lobby is full.", embed, msg, msgauthorid);
+          require(gtffile.EMBED).error("❌ Error", "This lobby is full.", embed, msg, userdata);
           return
         }
-      stats.inlobby(true, currentlobby["host"], msgauthorid)
-      currentlobby["players"].push(msgauthorid)
+      stats.inlobby(true, currentlobby["host"], userdata)
+      currentlobby["players"].push(userdata["id"])
       results = "☑️ You have joined a lobby: " + server.channels.find(channel => channel.name === name).toString() + "."
 
       embed.setColor(0x216C2A)
       embed.setDescription(results);
-          embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+          embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
           msg.channel.send(embed);
           }, 3000, 1)
       gtftools.interval(function() {
@@ -188,24 +189,24 @@ module.exports = {
       }
       embed.setTitle("__GTF Lobbies - List__");
       embed.setDescription(results);
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed);
     }
     else if (query[0] == "exit" || query[0] == "delete") {
-      if (!stats.inlobbystat(msgauthorid)[0]) {
-        require(gtffile.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, msgauthorid);
+      if (!stats.inlobbystat(userdata)[0]) {
+        require(gtffile.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, userdata);
         return
       }
-      var currentlobby = lobby[stats.inlobbystat(msgauthorid)[1]]
-      if (msg.channel.name !== "lobby-" + stats.inlobbystat(msgauthorid)[1]) {
-        require(gtffile.EMBED).error("❌ Error", "This lobby command can only be used in lobbies.", embed, msg, msgauthorid);
+      var currentlobby = lobby[stats.inlobbystat(userdata)[1]]
+      if (msg.channel.name !== "lobby-" + stats.inlobbystat(userdata)[1]) {
+        require(gtffile.EMBED).error("❌ Error", "This lobby command can only be used in lobbies.", embed, msg, userdata);
         return
       }
 
-      var user = msg.guild.members.cache.get(msgauthorid)
+      var user = msg.guild.members.cache.get(userdata["id"])
       var member = msg.member;
 
-      var isHost = currentlobby["host"] == msgauthorid
+      var isHost = currentlobby["host"] == userdata["id"]
 
       embed.setColor(0xFFFF00)
       var results = "⚠ Leave from the lobby?" + "\n\n" + "❓ **This is a fixed host room, so if the host leaves then all players will be booted from this lobby.**"
@@ -215,12 +216,12 @@ module.exports = {
       msg.channel.send(embed).then(msg => {
         
         function exit() {
-        currentlobby["players"] = currentlobby["players"].filter(x => (x[0] != msgauthorid))
+        currentlobby["players"] = currentlobby["players"].filter(x => (x[0] != userdata["id"]))
         if (isHost) {
           server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).delete()
           server.roles.cache.find(s => s.name === currentlobby["channelname"]).delete()
-          stats.inlobby(false, "", msgauthorid)
-          delete lobby[msgauthorid]
+          stats.inlobby(false, "", userdata)
+          delete lobby[userdata["id"]]
         } else {
         msg.delete({timeout:1000})
         let role = msg.guild.roles.find(r => r.name === "lobby-" + currentlobby["host"]);
@@ -230,19 +231,19 @@ module.exports = {
         results = "ℹ️ " + user + " has left the room."
         embed.setDescription(results)
         server.channels.find(channel => channel.name === currentlobby["channelname"]).send(embed)
-        stats.inlobby(false, "", msgauthorid)
+        stats.inlobby(false, "", userdata)
 
         }
         }
         var emotelist = [[emote.yes, "Yes", exit, "Once"]]
-         gtftools.createreactions(emotelist, msg, msgauthorid)
+         gtftools.createreactions(emotelist, msg, userdata)
 
       })
 
     }
     else if (query[0] == "settings") {
-      var currentlobby = lobby[stats.inlobbystat(msgauthorid)[1]]
-      if (!(currentlobby["host"] == msgauthorid))  {return "NO"}
+      var currentlobby = lobby[stats.inlobbystat(userdata)[1]]
+      if (!(currentlobby["host"] == userdata["id"]))  {return "NO"}
       var changes = []
       for (var i = 1; i < query.length; i++) {
         var setting = query[i]
@@ -252,15 +253,15 @@ module.exports = {
              return "NO"
           } else {
             var track = require(gtffile.TRACKS).Track(number - 1)
-            lobby[stats.inlobbystat(msgauthorid)[1]]["racesettings"]["track"] = track.name
-            lobby[stats.inlobbystat(msgauthorid)[1]]["racesettings"]["km"] = track.length
-            lobby[stats.inlobbystat(msgauthorid)[1]]["racesettings"]["mi"] = (Math.round((100 *((track.length)/ 1.609)))) / 100
+            lobby[stats.inlobbystat(userdata)[1]]["racesettings"]["track"] = track.name
+            lobby[stats.inlobbystat(userdata)[1]]["racesettings"]["km"] = track.length
+            lobby[stats.inlobbystat(userdata)[1]]["racesettings"]["mi"] = (Math.round((100 *((track.length)/ 1.609)))) / 100
             changes.push("**Track:** " + track.name)
           }
         }
       }
       if (changes.length == 0) {
-        require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, msgauthorid);
+        require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
         return
       } else {
         var embed2 = new Discord.MessageEmbed()
@@ -274,16 +275,16 @@ module.exports = {
       }
 
     } else if (query[0] == "info") {
-      if (!stats.inlobbystat(msgauthorid)[0]) {
-        require(gtffile.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, msgauthorid);
+      if (!stats.inlobbystat(userdata)[0]) {
+        require(gtffile.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, userdata);
         return
       }
 
-      if (msg.channel.name !== "lobby-" + stats.inlobbystat(msgauthorid)[1]) {
-        require(gtffile.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, msgauthorid);
+      if (msg.channel.name !== "lobby-" + stats.inlobbystat(userdata)[1]) {
+        require(gtffile.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
         return
       }
-      var currentlobby = lobby[stats.inlobbystat(msgauthorid)[1]]
+      var currentlobby = lobby[stats.inlobbystat(userdata)[1]]
       embed.setTitle(msg.guild.members.cache.get(currentlobby['host']).toString() + "\'s Lobby")
       var racesettings = currentlobby["racesettings"]
       var playerlist = currentlobby["players"].map(x => msg.guild.members.cache.get(x[0])).join(", ")
@@ -297,7 +298,7 @@ module.exports = {
       "**Total Distance:** " + racesettings["km"] + " km" + " | " + racesettings["mi"] + " mi" + "\n";
 
       embed.setDescription(results + "\n\n" + racedetails)
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed).then(msg => {
             function func() {
               var results2 = "__Starting Grid__" + "\n"
@@ -316,14 +317,14 @@ module.exports = {
 
 
           var emojilist = [[emote.tracklogo, 'trackgtfitness', goback], [emote.cargrid,'gtfcargrid', func]]
-          gtftools.createreactions(emojilist, msg, msgauthorid)
+          gtftools.createreactions(emojilist, msg, userdata)
       })
 
     }
     else if (query[0] == "r") {
 
     } else {
-       require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, msgauthorid);
+       require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
     }
   }
 };

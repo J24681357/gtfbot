@@ -1,10 +1,10 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var gtftracks = require("/home/runner/gtfbot/data/allgtftracks");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
+var gtf = require("../functions/f_gtf");
+var gtftracks = require("../data/allgtftracks");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
+var parts = require("../functions/marketplace/f_parts");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -17,59 +17,65 @@ module.exports.replaylimit = 50;
 module.exports.giftlimit = 10;
 
 ////////////////////////////
-module.exports.checkregulations = function(car, regulations) {
+module.exports.checkregulations = function(gtfcar, regulations) {
+  
+  var car = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
   
   var fpplimit = regulations["fpplimit"]
   var fppexist = (fpplimit != "")
 
-  var makes = regulations["models"].filter(x => !x.includes("M "))
-  var models = regulations["models"].filter(x => x.includes("M "))
-  var types = regulations["type"]
-  var makeexist = makes.length > 0
-  var modelexist = models.length > 0
+  var makes = regulations["makes"]
+  var models = regulations["models"]
+  var types = regulations["types"]
+  var drivetrains = regulations["drivetrains"]
 
-  var typeexist = regulations["type"].length > 0
+  var makeexist = makes.length > 0 && makes[0] != "Any"
+  var modelexist = models.length > 0
+  var typeexist = types.length > 0
+  var dtexist = drivetrains.length > 0
 
   var errors1 = [];
 
+  var fppsuccess = false;
   if (fppexist) {
-    if (parseInt(car["FPP"]) <= fpplimit) {
-    } else {
-      errors1.push("**FPP Limit:** " +  "**" + car["FPP"] + "**" + emote.fpp + " -> " + "**" + fpplimit + "**" + emote.fpp)
+    var fpp = gtfcar["fpp"]
+    if (fpp <= fpplimit) {
+      fppsuccess = true
     }
+  }
+
+  if (!fppsuccess) {
+    errors1.push("**FPP Limit:** " +  "**" + fpp + "**" + emote.fpp + " -> " + "**" + fpplimit + "**" + emote.fpp)
   }
   
   var makesuccess = false;
   if (makeexist) {
     var index = 0;
     while (index < makes.length) {
-      if (makes[index].includes("License") || makes[index].includes("Any")) {
+      if (makes[index].includes(car["make"])) {
         makesuccess = true
           break;
-      }
-      if (car["make"] == makes[index].split(" ⭐")[0]) {
-        makesuccess = true
-        break;
       }
       index++
   }
   if (!makesuccess) {
-    errors1.push("**Makes:** " + car["make"] + " -> " + gtftools.removeDups(makes.map(x=> x.split(" ")[0])).join(", "))
+    errors1.push("**Makes:** " + car["make"] + " -> " + gtftools.removeDups(makes).join(", "))
   }
+
   }
 
   var modelsuccess = false;
   if (modelexist) {
     var index = 0;
     while (index < models.length) {
-      if (car["name"].includes(" " + models[index].split(" ")[1] + " ")) {
+      if (car["name"].includes(models[index])) {
         modelsuccess = true
         break;
       }
       index++
     }
   if (!modelsuccess) {
-    errors1.push("**Model:** " + car["name"] + " -> " + models.map(x => x.replace("M ", "")).join(", "))
+    errors1.push("**Model:** " + car["name"] + " -> " + models.join(", "))
   }
   }
 
@@ -77,17 +83,32 @@ module.exports.checkregulations = function(car, regulations) {
   if (typeexist) {
     var index = 0;
     while (index < types.length) {
-      var emoji = types[index].split(" ")[0]
-      if (car["rating"].includes(emoji)) {
+      if (car["type"] == types[index]) {
         typesuccess = true
         break;
       }
       index++
     }
   if (!typesuccess) {
-    errors1.push("**Type:** " + car["rating"] + " -> " + types.join(", "))
+    errors1.push("**Type:** " + car["type"] + " -> " + types.join(", "))
   }
   }
+
+  var dtsuccess = false
+  if (dtexist) {
+    var index = 0;
+    while (index < drivetrains.length) {
+      if (car["drivetrain"].includes(drivetrains[index])) {
+        dtsuccess = true
+        break;
+      }
+      index++
+    }
+  if (!dtsuccess) {
+    errors1.push("**Drivetrain:** " + car["drivetrain"] + " -> " + drivetrains.join(", "))
+  }
+  }
+
   
 
   if (errors1.length == 0) {
@@ -107,68 +128,7 @@ module.exports.loadingscreen = function(title, carname) {
   return title + "\n" + emote.loading + " **Loading** " + emote.loading + carname
 }
 
-module.exports.dealercarslist = function(carlist, make, cost) {
-      var simplecarlist = carlist.map(function(car) {
-      var numberid = carlist.indexOf(car) + 1
-      var stars = 0
-      var multiplier = 1
-      var tempcost = cost
-      var mcost = cost
-      var special = false
-      
-      car = car.split(" ")
-      var link = car.pop()
-      
-      var rating = car[car.length-1]
-      car = car.join(" ")   
-        
-      if (rating.includes("⭐")) {
-      } else if (rating.includes("🔧")) {
-        multiplier = 1.75
-      } else if (rating.includes("<:gt4:")) {
-        special = true
-        tempcost = require(gtffile.MARKETPLACE).sellcalc(parts.tires()[6][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[4][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.engine()[2][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[2][1]) + (-Math.ceil((-5000 * 0.3 + 1) / 100) * 100) + 16200
-        //RH Tires + Eng Stage 2 A + FC Transmission + weight reduction 1 + FC susp
-        multiplier = 5
-      } else if (rating.includes("<:gt3:")) {
-        special = true
-        
-        tempcost = require(gtffile.MARKETPLACE).sellcalc(parts.tires()[6][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[4][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.engine()[4][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[2][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.weightreduction()[2][1]) + 18700
-        //RH Tires + Eng Stage 3 A + FC Transmission + weight reduction 3 + FC susp
-        multiplier = 6.25
-      } else if (rating.includes("<:gt1:")) {
-        special = true
-        
-        tempcost = require(gtffile.MARKETPLACE).sellcalc(parts.tires()[6][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[4][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.engine()[5][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[2][1]) + require(gtffile.MARKETPLACE).sellcalc(parts.weightreduction()[4][1]) + 20500
-        
-        //RH Tires + Eng Stage 3 B + FC Transmission + weight reduction 5 + FC susp
-        multiplier = 10
-      } else {
-        mcost = tempcost * multiplier
-        car = [car, [cost, tempcost, mcost], link, make, numberid, "⭐1"]
-        return car
-      }
-      car = car.split(" " + rating)[0]
-        if (special) {
-        mcost = tempcost * multiplier
-        car = [car, [cost, tempcost, mcost], link, make, numberid, rating]
-          return car
-        } else {
-        stars = parseFloat(rating.split(/(\d?[\.\d+]+)/)[1])
-        if (stars > 1) {
-          stars = Math.pow(2, stars - 1)
-          tempcost = (Math.round((cost * stars) / 10000) * 10000)
-          mcost = tempcost * multiplier
-          } else {
-            tempcost = cost * stars
-            mcost = tempcost * multiplier
-        }
-          car = [car, [cost, tempcost, mcost], link, make, numberid, rating]
-        }
-      return car;
-    })
-    return simplecarlist
-}
+
 
 module.exports.createcat = function(sell, rating) {
   var emojis = ["⭐", "🔧"]
@@ -201,3 +161,64 @@ module.exports.createcat = function(sell, rating) {
   }
   return final
 }
+ /*
+ var cost = -4000
+var sellingprice = -Math.ceil((cost * 0.3 + 1) / 100) * 100
+var lowest = Math.floor(100 + (sellingprice**0.475) - 30)
+var highest = Math.floor(100 + (sellingprice**0.475))
+
+GT4 cars Gr.4) top speed --- 40000
+
+
+```NORMAL```
+0.4 4000: 97-127 (97-100-110)
+1 10000 2900: 114-144 (110-135)
+2 20000 5900: 131-161 (136-160)
+3 40000 : 156-186 (161-185)
+3.5 60000 174-204 (186-200)
+4 80000 : 190-220 (201-220)
+5 160000 : 237-267 (252)
+
+`A License`
+
+0.3 4500: 100-130 (100-123)
+1 15000 123-153 (124-150)
+2 30000 145-175 (151-170)
+2.5 40000 156-186 (171-185)
+3 60000 174-204 (186-210)
+4 120000 215-245 (210-240)
+5 240000
+
+`IC License`
+
+0.5 10000 114-144 (110-135)
+1 20000 131-161 (136-150)
+1.5 30000 145-175  (151-170)
+2 40000 156-186 (171-190)
+3 80000 190-220 (191-215)
+3.5  110000 209-239 (216-240)
+4 160000 237-267 (252-270)
+4.3 200000 255-285 (271)
+
+`IB License`
+0.2 6000 104-134 
+0.5 15000 123-153 (120-140)
+1 30000 131-161 (141-160)
+1.5 40000 156-186 (161-186)
+2 60000 174-204 (187-200)
+2.5 80000 190-220 (200-215)
+3 120000 215-245 (215-242)
+3.5 170000 242-272 (242-260)
+3.8 210000 260-290
+
+`IA License`
+
+0.5 20000 131-161 (130-160)
+1 40000 156-186 (160-190)
+2 80000 190-220 (190-210)
+2.3 100000 203-233 (210-230)
+3 120000 215-245 (230-245)
+3.8  150000 232-262 (245-260)
+4.5 180000 246-276 (260-280)
+5.5 220000 264-294 (280-
+*/

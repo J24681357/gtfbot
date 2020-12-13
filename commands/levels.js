@@ -1,9 +1,8 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,30 +14,36 @@ module.exports = {
   title: "GTF Experience Levels",
   cooldown: 5,
     level: 0,
+      aliases: ["explevels", "level"],
+  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
   delete: true,
-  description: ["!levels - Display a list of EXP levels with their rewards.", "!levels [info] [(number)] - Shows information about an EXP level including the required EXP and prizes."],
-  aliases: ["explevels", "level"],
+  availitoeveryone:true,
+  availinmaint:false,
+  available:true,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
-  execute(msg, query, msgauthorid) {
+    description: ["!levels - Display a list of EXP levels with their rewards.", "!levels [info] [(number)] - Shows information about an EXP level including the required EXP and prizes."],
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args =
       "\n" +
       "`Args: !levels [info] [(number)]`" +
       "\n";
-
-    /* Setup */
-    var results = " ";
     var page = 0;
+    var results = " ";
+    var info = '**❓ Select a level from the list above using the levels associated or reactions.**'
+    /* Setup */
+    var reactionson = true
 
     embed.setTitle(
-      emote.exp + "__GTF Level Milestones: " + exp.explevels().length + " Levels" + "__"
+      emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtffile.EXP).ExpLevels()).length + " Levels" + "__"
     );
 
     if (!isNaN(query[0])) {
@@ -54,44 +59,38 @@ module.exports = {
           number <= 0 ||
           isNaN(number) ||
           number === undefined ||
-          number > exp.explevels().length
+          number > require(gtffile.EXP).ExpLevels().length
         ) {
           require(gtffile.EMBED).error(
             "❌ Invalid Number",
             "This level does not exist.",
             embed,
-            msg, msgauthorid
+            msg, userdata
           );
           return;
         }
-        var levelchosen = exp.explevels()[number-1]
-        var rewards = "None."
-        if (levelchosen.length === 3) {
-          rewards = levelchosen[2].join("\n")
-        }
-        results = "__Level " + levelchosen[0] + "__" + "\n" +
-          "**Experience Required: " + levelchosen[1] + emote.exp + "**\n\n" +
+        number = number - 1
+        var levelchosen = require(gtffile.EXP).ExpLevels()[(number+1).toString()]
+
+        results = "__Level " + (number+1).toString() + "__" + "\n" +
+          "**Experience Required: " + levelchosen["exp"] + emote.exp + "**\n\n" +
           "**__Rewards__** " + "\n" +
-            rewards
+            levelchosen["rewards"].join("\r")
       }
       embed.setDescription(results);
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
       msg.channel.send(embed);
       return;
     } else {
-      var list = exp.explevels().map(function(level) {
-        var extra = " "
-        if (level.length === 3) {
-          extra = "\r" + level[2].join("\r")
-        }
-        return ["", level[1], extra];
-      });
+    var explevels = require(gtffile.EXP).ExpLevels()
+    var list = Object.keys(explevels).map(function(level) {
+        return ["", explevels[level]["exp"], explevels[level]["rewards"].join("\r")];
+    })
 
-      results = gtftools.list(list, page, "Level ", emote.exp, true, "__",5, msgauthorid);
+      results = gtftools.list(list, page, "Level ", emote.exp, true, "__", 5, userdata);
 
       embed.setDescription(results);
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
-      gtftools.createpages(results, list, page, "Level ", emote.exp, true, "__", 5, [query, "levels"], embed, msg, msgauthorid);
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
+      gtftools.createpages(results, list, page, "Level ", emote.exp, true, "__", 5, [query, "levels", reactionson, info], embed, msg, userdata);
     }
   }
 };

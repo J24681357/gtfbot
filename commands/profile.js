@@ -1,10 +1,9 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtferror = require("/home/runner/gtfbot/functions/misc/f_errors");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtferror = require("../functions/misc/f_errors");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 
 const Discord = require("discord.js");
@@ -17,35 +16,44 @@ module.exports = {
   title: "My Profile",
   cooldown: 3,
    level:0,
+     channels: ["gtf-mode","testing", "gtf-test-mode"],
+
   delete: true,
-  description: ["!profile - Displays your information, stats, and career progression."],
+  availinmaint:false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
-  execute(msg, query, msgauthorid) {
+    description: ["!profile - Displays your information, stats, and career progression."],
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = ""
+    var page = 0
+    var results = ""
+    var info = ''
 
     /* Setup */
 
-    var results = " ";
 
     //////////EXP//////////
-    var progress = stats.setting("PROGRESSBAR",msgauthorid)[0]
-    var progressb = stats.setting("PROGRESSBAR",msgauthorid)[1]
+    var progress = stats.setting("PROGRESSBAR",userdata)[0]
+    var progressb = stats.setting("PROGRESSBAR",userdata)[1]
     var expbar = [progressb,progressb,progressb,progressb,progressb,progressb,progressb,progressb,progressb,progressb]
-    var exp1 = stats.exp(msgauthorid)
-    var nextlevel = (stats.level(msgauthorid) + 1)
+    var exp1 = stats.exp(userdata)
+    var nextlevel = (stats.level(userdata) + 1)
     if (nextlevel >= 51) {
       nextlevel = 50
     }
-    var exppoints = require(gtffile.EXP).ExpLevels()[exp.getpoints(stats.level(msgauthorid) + 1)]
-    var currentexppoints = require(gtffile.EXP).getpoints(stats.level(msgauthorid))
+    var curr = (stats.level(userdata) + 1)
+    if (curr >= 51) {
+      curr = 50
+    }
+    var exppoints = require(gtffile.EXP).ExpLevels()[curr.toString()]["exp"]
+    var currentexppoints = curr - 1
 
     for (var i = 0; i < expbar.length; i++) {
      if (exp1 >= currentexppoints) {
@@ -59,32 +67,32 @@ module.exports = {
     embed.setTitle("__My Profile__");
 
     results = "__Credits__" + "\n" +
-      "**" + stats.credits(msgauthorid).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + emote.credits + "**\n" +
+      "**" + stats.credits(userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + emote.credits + "**\n" +
 
     "__Experience__ " + "\n" +
-    "**" + stats.exp(msgauthorid).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + emote.exp + "**\n" +
-      "Lv." + stats.level(msgauthorid) + " " + expbar.join("") + " " + "Lv." + nextlevel + "\n" +
+    "**" + stats.exp(userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + emote.exp + "**\n" +
+      "Lv." + stats.level(userdata) + " " + expbar.join("") + " " + "Lv." + nextlevel + "\n" +
 
     "__Total Distance Driven__ " + "\n" +
-    stats.mileage("KM", undefined, msgauthorid).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "km | " + stats.mileage("MI", undefined, msgauthorid).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "mi" + emote.mileage + "\n\n" +
+    stats.totalmileage("KM", undefined, userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "km | " + stats.totalmileage("MI", undefined, userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "mi" + emote.mileage + "\n\n" +
 
-    "**Total Car Purchases:** " + stats.numcarpurchase(msgauthorid).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Cars" + "\n" +
-    "**Garage:** " + stats.garagecount(msgauthorid) + " Cars";
+    "**Total Car Purchases:** " + stats.numcarpurchase(userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " Cars" + "\n" +
+    "**Garage:** " + stats.garagecount(userdata) + " Cars";
 
     embed.setDescription(results);
-    embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
     msg.channel.send(embed).then(msg => {
       function careerprofile() {
         embed.setTitle("__Career Progress__");
-        var list1 = [["__Beginner__", require("/home/runner/gtfbot/data/career/races").beginner()],  ["__Amateur__", require("/home/runner/gtfbot/data/career/races").amateur()], ["__IC League__", require("/home/runner/gtfbot/data/career/races").icleague()],  ["__IB League__", require("/home/runner/gtfbot/data/career/races").ibleague()], ["__IA League__", require("/home/runner/gtfbot/data/career/races").ialeague()]]
+        var list1 = [["__Beginner__", require("../data/career/races").beginner()], ["__Amateur__", require("../data/career/races").amateur()], ["__IC League__", require("../data/career/races").icleague()]]
         results2 = ""
+        //  , ,  ["__IB League__", require("../data/career/races").ibleague()], ["__IA League__", require("../data/career/races").ialeague()]
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n"
           var certainraces = list1[level][1]
           var array = Object.keys(certainraces)
-          console.log(array)
           for (var i = 0; i < array.length; i++) {
-            results2 = results2 + certainraces[array[i]]["eventid"] + " " + stats.eventstatus(certainraces[array[i]]["eventid"], msgauthorid) + " "
+            results2 = results2 + certainraces[array[i]]["eventid"] + " " + stats.eventstatus(certainraces[array[i]]["eventid"], userdata) + " "
           }
           results2 = results2 + "\n"
         }
@@ -101,7 +109,7 @@ module.exports = {
 
       var emojilist = [[emote.leftarrow,'leftarrow', profile], [emote.rightarrow, 'rightarrow', careerprofile]]
 
-      gtftools.createreactions(emojilist, msg, msgauthorid)
+      gtftools.createreactions(emojilist, msg, userdata)
     });
     return
   }

@@ -1,9 +1,8 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,18 +14,21 @@ module.exports = {
   title: "GTF Auto - Paints",
   cooldown: 3,
    level:0,
+    channels: ["gtf-mode"],
+
   delete: true,
-  description: ["!paint - Displays the list of types of paints in GTF Auto.", "!paint [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!paint [\"type\"] [(number)] - Purchases a paint from the [(number)] associated from the list of [\"type\"] paints.\nThis applies to your current car."],
+  availinmaint:false,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,
-  execute(msg, query, msgauthorid) {
+    description: ["!paint - Displays the list of types of paints in GTF Auto.", "!paint [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!paint [\"type\"] [(number)] - Purchases a paint from the [(number)] associated from the list of [\"type\"] paints.\nThis applies to your current car."],
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = "\n" + "`Args: !paint [type] [(number)]`" + "\n"
 
     /* Setup */
@@ -68,7 +70,7 @@ module.exports = {
       embed.setTitle("__GTF Auto - " + name + ": " + select.length + " Paints__");
       if (number <= 0 || isNaN(number) || number === undefined || number > select.length) {
         if (number !== undefined) {
-        require(gtffile.EMBED).warning("⚠ Invalid ID", "Please use the numbers associated with the list above.", embed, msg, msgauthorid);
+        require(gtffile.EMBED).warning("⚠ Invalid ID", "Please use the numbers associated with the list above.", embed, msg, userdata);
         }
         itempurchase = false;
       }
@@ -76,11 +78,11 @@ module.exports = {
       if (itempurchase) {
         var item = [number, type, select[number - 1][0], select[number - 1][1]]
 
-        require(gtffile.MARKETPLACE).purchase(msg.member, item, "PAINT", embed, msg, msgauthorid)
+        require(gtffile.MARKETPLACE).purchase(msg.member, item, "PAINT", embed, msg, userdata)
 
         return
       } else {
-      var car = stats.currentcar(msgauthorid)
+      var car = stats.currentcar(userdata)
       if (car == "No car.") {
          require(gtffile.EMBED).error("❌ Error", "You do not have a current car.", embed, msg);
         return
@@ -94,16 +96,16 @@ module.exports = {
         }
         return [x[0], x[1], x[3]]
       })
-      results = gtftools.list(select2, page, "", "", true, "",10, msgauthorid)
+      results = gtftools.list(select2, page, "", "", true, "",10, userdata)
       embed.setDescription(results);
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
 
-      gtftools.createpages(results, select2, page, "", "", true, "", 10, [query, "paint"], embed, msg, msgauthorid)
+      gtftools.createpages(results, select2, page, "", "", true, "", 10, [query, "paint"], embed, msg, userdata)
       return
       }
     } else {
       if (query.length !== 0) {
-        require(gtffile.EMBED).warning("⚠ Invalid Arguments", "This does not exist.", embed, msg, msgauthorid);
+        require(gtffile.EMBED).warning("⚠ Invalid Arguments", "This does not exist.", embed, msg, userdata);
       }
     }
 
@@ -116,7 +118,7 @@ module.exports = {
 
 
     embed.setDescription(results);
-    embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
     msg.channel.send(embed);
   }
 };

@@ -1,9 +1,8 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -17,33 +16,39 @@ module.exports = {
   title: "GTF Help",
   cooldown: 3,
     level: 0,
+    channels: ["gtf-mode","testing", "gtf-test-mode"],
+
   delete: true,
+  availinmaint:false,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
   description: ["!gtfhelp [\"command\"] - Shows arguments for a [\"command\"]."],
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0xBE1931);
     
-    if (msgauthorid != "TEXT") {
-    var user = msg.guild.members.cache.get(msgauthorid).user.username;
+    if (userdata["id"] != "TEXT") {
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(
       user,
-      msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL()
+      msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()
     );
     }
     var args = "\n" + "`Args: !help`" + "\n";
+    var page = 0
+    var results = ''
+    var info = "❓ **[ ] Arguments | [()] Numbers | [\" \"] Strings/Words**"
 
     /* Setup */
     var commandName = query[0];
     const commandFiles = fs
-      .readdirSync("/app/commands")
+      .readdirSync("/home/runner/gtfbot/commands")
       .filter(file => file.endsWith(".js"));
 
     for (const file of commandFiles) {
-      const command = require(`/app/commands/${file}`);
+      const command = require(`../commands/${file}`);
       client.commands.set(command.name, command);
     }
     const command =
@@ -53,7 +58,7 @@ module.exports = {
       );
 
     if (!command) {
-      require(gtffile.EMBED).error("❌ Error", "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed, msg, msgauthorid);
+      require(gtffile.EMBED).error("❌ Error", "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed, msg, userdata);
       return;
     }
     var description = command.description.map(function(x) {
@@ -78,9 +83,8 @@ module.exports = {
       var level = ""
     }
     var title = "❓ __**" + command.title + level + "**__"
-    var description = description.join("\n") + aliases + "\n\n" + "❓ **[ ] Arguments | [()] Numbers | [\" \"] Strings/Words**"
-    if (msgauthorid == "TEXT") {
-      console.log(title)
+    var description = description.join("\n") + aliases + "\n\n" + info
+    if (userdata["id"] == "TEXT") {
       return [title, description, 0xBE1931]
     } else {
     embed.setTitle(title)

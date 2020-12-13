@@ -2,9 +2,6 @@ var gtf = require("/home/runner/gtfbot/functions/f_gtf");
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
 var emote = require("/home/runner/gtfbot/index");
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var parts = require("/home/runner/gtfbot/functions/marketplace/f_parts");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,14 +12,14 @@ var explevels = function() {
   return [ [ 1, 0 ],
   [ 2, 350 ],
   [ 3, 791 , ["Daily Workout (4 Cars) - **!dw4**"]],
-  [ 4, 1325 , ["GTF Daily Workout - **!daily**"]],
+  [ 4, 1325 ],
   [ 5, 1954 , ["Career Mode - Amateur - **!career [a]**", "Arcade Mode - Amateur - **!dw4**", "Drift Trial - Beginner - **!drift [beginner]**"]],
-  [ 6, 2680, ["Manufacturers: " + require(gtffile.CARS).amakes().join(", ").replace("-", " ") + " - **!car (make)**"]],
+  [ 6, 2680],
   [ 7, 3505 ],
   [ 8, 4431, ["Special Stage Route X - Top Speed Run - **!ssrx**"]],
   [ 9, 5460 ],
   [ 10, 6594 , ["Career Mode - IC League - **career [ic]**"]],
-  [ 11, 7835, ["Manufacturers: " + require(gtffile.CARS).icmakes().join(", ").replace("-", " ") + " - **!car (make)**"]],
+  [ 11, 7835],
   [ 12, 9185 ],
   [ 13, 10646 ],
   [ 14, 12220 ],
@@ -30,9 +27,9 @@ var explevels = function() {
   [ 16, 15715 ],
   [ 17, 17640  ],
   [ 18, 19686 ],
-  [ 19, 21855, ["GTF Auto - Licenses - **!license**"]],
+  [ 19, 21855],
   [ 20, 24149, ["Career Mode - IB League - **career [ib]**", "Arcade Mode - Professional - **!arcade pro**"]],
-  [ 21, 26570 , ["Manufacturers: " + require(gtffile.CARS).ibmakes().join(", ").replace("-", " ") + " - **!car (make)**"] ],
+  [ 21, 26570],
   [ 22, 29120  ],
   [ 23, 31801 ],
   [ 24, 34615 ],
@@ -42,7 +39,7 @@ var explevels = function() {
   [ 28, 47241 ],
   [ 29, 50750 ],
   [ 30, 54404, ["Career Mode - IA League - **career [ia]**"]],
-  [ 31,  58205, ["Manufacturers: " + require(gtffile.CARS).iamakes().join(", ").replace("-", " ") + " - **!car (make)**"]],
+  [ 31,  58205],
   [ 32, 62155 ],
   [ 33, 66256 ],
   [ 34,  70510],
@@ -71,12 +68,23 @@ module.exports.ExpLevels = function() {
   for (var i = 0; i < explevels().length; i++) {
   var e = explevels()[i][2] 
   if (e === undefined) {
-    e = ""
+    e = [""]
   }
   dict[(i + 1).toString()] = {
     "exp":explevels()[i][1],
-    "rewards":e
+    "rewards": e
   } 
   }
   return dict
+}
+
+module.exports.checklevel = function(level, embed, msg, id) {
+  var exp = stats.exp(id)
+  var currentlevel = stats.level(id)
+  if (currentlevel >= level || level == 0) {
+    return true
+  } else {
+  require(gtffile.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,id)
+    return false
+  }
 }

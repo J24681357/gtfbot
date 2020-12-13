@@ -1,47 +1,78 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
+var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var replaystats = require("/home/runner/gtfbot/functions/replays/f_replay");
+var replaystats = require("../functions/replays/f_replay");
 
 module.exports = {
   name: "replay",
   title: "Replay Theater",
   cooldown: 3,
   level:0,
+    aliases: ["r", "replays"],
+    channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
   delete: true,
-  description: ["!replay - Displays the list of your saved replays.","!replay [load] [(number)] - Loads a saved replay from the [(number)] associated with the list of saved replays.", "!replay [delete] [(number)] - Deletes a saved replay from the [(number)] associated with the list of saved replays.", "!replay [clear] - Clears all of your saved replays."],
-  aliases: ["r", "replays"],
+  availinmaint:false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: true,
-  execute(msg, query, msgauthorid) {
+    description: ["!replay - Displays the list of your saved replays.","!replay [load] [(number)] - Loads a saved replay from the [(number)] associated with the list of saved replays.", "!replay [delete] [(number)] - Deletes a saved replay from the [(number)] associated with the list of saved replays.", "!replay [clear] - Clears all of your saved replays."],
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x8b0000);
 
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args =
       "\n" +
       "`Args: !replay [load (number)|delete (number)|clear]`" +
       "\n";
+    var page = 0
+    var results = ''
+    var info = "**❓ Choose a number that corresponds to the replays above.**"
 
     /* Setup */
-    var results = " ";
-    var page = 0;
     var success = false;
+    var replaystats = []
+
+    var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+
+  MongoClient.connect(url, { useUnifiedTopology: true },
+    function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("GTFitness");
+      dbo.collection("REPLAYS").find({"id":userdata["id"]}).forEach(row => {
+            replaystats = row["replays"]
+      }).then(() => 
+      {replay()}
+      )
+})
+
+        
+  function replay() {
+    var reactionson = true
+    if (Object.keys(replaystats).length == 0) {
+                require(gtffile.EMBED).error(
+            "❌ No Replays",
+            "There are no replays saved.",
+            embed,
+            msg, userdata
+          );
+      return
+    }
 
     embed.setTitle(
       "__Replay Theater: " +
-        replaystats.replays(msgauthorid).length +
+        Object.keys(replaystats).length +
         " / " +
         gtf.replaylimit +
         " Replays__"
@@ -51,16 +82,7 @@ module.exports = {
       query.unshift("load");
       query[1] = parseInt(query[1]);
     }
-    
-    if (replaystats.replays(msgauthorid).length == 0) {
-                require(gtffile.EMBED).error(
-            "❌ No Replays",
-            "There are no replays saved.",
-            embed,
-            msg, msgauthorid
-          );
-      return
-    }
+
 
     /*if (!isNaN(query[0])) {
       query.unshift("select");
@@ -71,18 +93,18 @@ module.exports = {
     
       embed.setDescription("⚠ Clear all of your saved replays? This is permanent.")
        embed.setColor(0xFFFF00)
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed).then(msg => {
         
       function clearreplay() {
-        replaystats.clear(msgauthorid)
+        replaystats.clear(userdata)
         embed.setDescription("✅ Replay data cleared.")
         embed.setColor(0x216C2A)
         msg.edit(embed).then(msg => {msg.delete({timeout:5000})})
       } 
         
       var emojilist = [[emote.yes, 'Yes', clearreplay]]
-       gtftools.createreactions(emojilist, msg, msgauthorid)
+       gtftools.createreactions(emojilist, msg, userdata)
       })
     }
     if (query[0] == "delete") {
@@ -92,31 +114,31 @@ module.exports = {
           number <= 0 ||
           isNaN(number) ||
           number === undefined ||
-          number > replaystats.replays(msgauthorid).length
+          number > replaystats.length
         ) {
           require(gtffile.EMBED).error(
             "❌ Invalid ID",
             "This ID does not exist in your replay theater.",
             embed,
-            msg, msgauthorid
+            msg, userdata
           );
           return;
         }
-      var name = replaystats.replays(msgauthorid)[number-1][1][0]
-      embed.setDescription("⚠ Delete **" + name + "**?")
+      var name = replaystats[number.toString()][0]
+      embed.setDescription("⚠ Delete " + "`🕛ID:" + number + "` " + "**" + name + "**?")
        embed.setColor(0xFFFF00)
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed).then(msg => {
         
       function deletereplay() {
-        replaystats.delete(number, msgauthorid)
-        embed.setDescription("✅ Deleted **" + name + "**.")
+        require(gtffile.REPLAY).delete(number, replaystats, userdata)
+        embed.setDescription("✅ Deleted "  + "`🕛ID:" + number + "` " + "**" + name + "**.")
         embed.setColor(0x216C2A)
         msg.edit(embed).then(msg => {msg.delete({timeout:5000})})
       } 
         
       var emojilist = [[emote.yes, 'Yes', deletereplay]]
-       gtftools.createreactions(emojilist, msg, msgauthorid)
+       gtftools.createreactions(emojilist, msg, userdata)
       })
     }
     if (query[0] == "load") {
@@ -126,23 +148,24 @@ module.exports = {
           number <= 0 ||
           isNaN(number) ||
           number === undefined ||
-          number > replaystats.replays(msgauthorid).length
+          number > replaystats.length
         ) {
           require(gtffile.EMBED).error(
             "❌ Invalid ID",
             "This ID does not exist in your replay theater.",
             embed,
-            msg, msgauthorid
+            msg, userdata
           );
           return;
         }
-        var replaydetails = replaystats.load(number, msgauthorid)
-        embed.setDescription("**" + replaydetails[0] + "**" + "\n" + "⌛ **Loading**")
+        var replaydetails = replaystats[number.toString()]
+        var loading = gtf.loadingscreen("**" + replaydetails[0] + "**", '')
+        embed.setDescription(loading)
         msg.channel.send(embed).then(msg => {
           gtftools.interval(function() {
             embed.setTitle(replaydetails[0])
             embed.setDescription(replaydetails[1] + "\n\n" + replaydetails[2])
-            embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
+            embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
             msg.edit(embed)
 
             function grid() {
@@ -155,7 +178,7 @@ module.exports = {
               }
                 var emojilist = [[emote.tracklogo, 'trackgtfitness', race], [emote.cargrid,'gtfcargrid', grid]]
 
-            gtftools.createreactions(emojilist, msg, msgauthorid)
+            gtftools.createreactions(emojilist, msg, userdata)
           }, 3000, 1)
         })
 
@@ -166,14 +189,15 @@ module.exports = {
       return
     } else {
 
-      var list = replaystats.replays(msgauthorid).map(function(replay) {
-        return [replay[1][0] + " `" + replay[2] + "`", " "];
+      var list = Object.keys(replaystats).map(function(id) {
+        return [replaystats[id][0] + " `" + replaystats[id][4] + "`", " "];
       });
-      results = gtftools.list(list, page, "🕛ID:", "", true, "`", 10, msgauthorid);
+      results = gtftools.list(list, page, "🕛ID:", "", true, "`", 10, userdata);
 
-      embed.setDescription(results + "\n" + "**❓ Choose a number that corresponds to the replays above.**");
-      embed.addField(stats.main(msgauthorid), args + stats.currentcarmain(msgauthorid));
-      gtftools.createpages(results, list, page, "🕛ID:", "", true, "`", 10, [query, "replay"], embed, msg, msgauthorid);
+      embed.setDescription(results);
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
+      gtftools.createpages(results, list, page, "🕛ID:", "", true, "`", 10, [query, "replay", reactionson, info], embed, msg, userdata);
     }
+  }
   }
 };

@@ -1,9 +1,7 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf");
-var exp = require("/home/runner/gtfbot/profile/expprofile");
+var gtf = require("../functions/f_gtf");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -14,38 +12,43 @@ module.exports = {
   name: "myhome",
   title: "My GTF Home",
   cooldown: 5,
-  level:0,
-  delete: true,
+  level: 0,
   aliases: ["home"],
+  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
+  availinmaint:false,
+  delete: true,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
   description: ["!home - Displays the main menu of GTF.", "!home 2 - Selects the Miscellaneous setting from the main menu."],
-  execute(msg, query, msgauthorid) {
+  execute(msg, query, userdata) {
+
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
-
-    var user = msg.guild.members.cache.get(msgauthorid).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(msgauthorid).user.displayAvatarURL());
-    var args = ""
+ 
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+    var args = '';
+    var page = 0
+    var results = ''
+    var info = ''
 
     /* Setup */
 
-    var results = "";
-    var main = stats.main(msgauthorid)
-    var main2 = args + stats.currentcarmain(msgauthorid)
+    var main = stats.main(userdata)
+    var main2 = args + stats.currentcarmain(userdata)
     var showcasenumber = 0
-    var count = stats.count(msgauthorid)
+    var count = stats.count(userdata)
 
     embed.setTitle("__My Home__");
     embed.setThumbnail(msg.guild.members.cache.get(gtffile.USERID).user.displayAvatarURL())
     embed.setFooter("Welcome to GT Fitness! React to one of the emotes associated with the list above to select an option.")
 
     if (parseInt(query[0]) == 2) {
-      results = "__**🚘 Daily Workout**__ - !daily" + "\n" + 
-        "__**❔ GT Fitness Facts**__ - !gtf" + "\n\n" +
-         "__**GTS Decal Search**__ - !decal"
+      results = "__**❔ GT Fitness Facts**__ - !gtf" + "\n" + 
+       "__** Daily Workout**__ - !dw4" + "\n" +
   
 
     embed.setDescription(results);
@@ -55,26 +58,27 @@ module.exports = {
       function daily() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
-        require("/home/runner/gtfbot/commands/daily").execute(msg, '', msgauthorid) 
+        require("../commands/daily").execute(msg, '', userdata) 
     }
       function gtf() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
-        require("/home/runner/gtfbot/commands/gtf").execute(msg, '', msgauthorid) 
+        require("../commands/gtf").execute(msg, '', userdata) 
     }
       var emojilist = [['🚘','🚘', daily], ['❔', "❔", gtf]]
       
-      gtftools.createreactions(emojilist, msg, msgauthorid) 
+      gtftools.createreactions(emojilist, msg, userdata) 
       
     })
     } else {
       var aspec = "__**🏁Career Mode**__\n!career" + "\n" +
+      "__**🎉Seasonal Events**__\n!seasonal" + "\n" +
               "__**🅰Arcade Mode**__\n!arcade" + "\n" + 
-          "__**🇩Drift Trial**__\n!drift" + "\n"
+          "__**🇩Drift Trial**__\n!drift" + "\n" +
       "__**🇸Top Speed Run**__\n!ssrx"
       var places = "__**🛒GTF Car Dealerships**__\n!car" + "\n" +
-      "__**🛠GTF Auto - Tuning**__\n!tune" + "\n" + 
-      "__**🎨GTF Auto - Paints**__\n!paint"
+      "__**📦GTF Auto - Tuning Shop**__\n!tune" + "\n" + 
+      "__**🛠Car Tuning**__\n!tuning" + "\n"
       var myhome = "__**🚘Garage**__\n!garage" + "\n" +
               "__**👤Profile**__\n!profile" + "\n" + 
               "__**🎞Replay Theater**__\n!replay" + "\n" +
@@ -82,7 +86,7 @@ module.exports = {
       var other = "__**🇱GTF Experience Levels**__\n!levels" + "\n" + "__**🌀Miscellaneous**__\n!home 2";
       embed.addField("A-Spec", aspec, true)
       embed.addField("Places", places, true)
-      
+  
       embed.addField("My Home", myhome, true)
       
       embed.addField("Others", other, true)
@@ -95,108 +99,100 @@ module.exports = {
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/career").execute(msg, '', msgauthorid)
+        require("../commands/career").execute(msg, '', userdata)
       }
       function arcade() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/arcade").execute(msg, '', msgauthorid)
+        require("../commands/arcade").execute(msg, '', userdata)
       }
       function drift() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/drift").execute(msg, '', msgauthorid)
+        require("../commands/drift").execute(msg, '', userdata)
       }
       function ssrx() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/ssrx").execute(msg, '', msgauthorid)
+        require("../commands/ssrx").execute(msg, '', userdata)
       }
       function gtfdealership() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/car").execute(msg, '', msgauthorid)
+        require("../commands/car").execute(msg, '', userdata)
       }
       function gtftuning() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/tune").execute(msg, '', msgauthorid)
+        require("../commands/tune").execute(msg, '', userdata)
       }
       function gtfpaints() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/paint").execute(msg, '', msgauthorid)
+        require("../commands/paint").execute(msg, '', userdata)
       }
       function garage() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/garage").execute(msg, '', msgauthorid)
+        require("../commands/garage").execute(msg, '', userdata)
       }
       function profile() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/profile").execute(msg, '', msgauthorid)
+        require("../commands/profile").execute(msg, '', userdata)
       }
       function replay() { 
         msg.delete({timeout:0})
         showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/replay").execute(msg, '', msgauthorid)
+        require("../commands/replay").execute(msg, '', userdata)
       }
       function levels() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/levels").execute(msg, '', msgauthorid)
+        require("../commands/levels").execute(msg, '', userdata)
       }
       function settings() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/settings").execute(msg, '', msgauthorid)
+        require("../commands/settings").execute(msg, '', userdata)
       }
       function misc() { 
         msg.delete({timeout:0})
         var showcasenumber = -1
         clearInterval(s)
-        require("/home/runner/gtfbot/commands/myhome").execute(msg, ['2'], msgauthorid) 
+        require("../commands/myhome").execute(msg, ['2'], userdata) 
       }
       var emojilist = [['🏁','🏁', career, "Once"], ['🅰','🅰', arcade], ['🇩','🇩', drift], ['🇸','🇸', ssrx], ['🛒','🛒', gtfdealership], ['🛠','🛠', gtftuning],  ['🎨','🎨', gtfpaints], ['🚘','🚘', garage], ['👤','👤', profile], ["🎞", "🎞", replay], ["⚙", "⚙", settings], ["🇱", "🇱", levels], ["🌀", "🌀", misc]]
     
-      gtftools.createreactions(emojilist, msg, msgauthorid) 
+      //gtftools.createreactions(emojilist, msg, userdata) 
       
       var s = setInterval(function() {
       
       showcasenumber++
-      if (showcasenumber == -1 || stats.count(msgauthorid) != count) {
+      if (showcasenumber == -1 || stats.count(userdata) != count) {
           clearInterval(s)
           msg.delete({timeout:0})
           return
       } 
       if (showcasenumber % 3 == 0 && showcasenumber != 0) {       
           embed.setTitle("__My Home__");
-          embed.addField("A-Spec", "__**🏁Career Mode**__\n!career" + "\n" +
-              "__**🅰Arcade Mode**__\n!arcade" + "\n" + 
-      "__**🇸Top Speed Run**__\n!ssrx", true)
+     embed.addField("A-Spec", aspec, true)
+      embed.addField("Places", places, true)
+  
+      embed.addField("My Home", myhome, true)
       
-      embed.addField("Places", "__**🛒GTF Car Dealerships**__\n!car" + "\n" +
-      "__**🛠GTF Auto - Tuning**__\n!tune" + "\n" + 
-      "__**🎨GTF Auto - Paints**__\n!paint", true)
-      
-      embed.addField("My Home", "__**🚘Garage**__\n!garage" + "\n" +
-              "__**👤Profile**__\n!profile" + "\n" + 
-              "__**🎞Replay Theater**__\n!replay" + "\n" +
-      "__**⚙Settings**__\n!settings", true)
-      
-        embed.addField("Others", "__**🇱GTF Experience Levels**__\n!levels" + "\n" + "__**🌀Miscellaneous**__\n!home 2", true)
+      embed.addField("Others", other, true)
         embed.addField(main, main2);
           embed.image = []
           embed.description = ""
@@ -205,15 +201,11 @@ module.exports = {
           return
       }
          
-        var car = require(gtffile.CARS).randomcars(["Any"], [""], 1)
-        var carname = car[0][0]
-        var image = car[0][2]
-        var make = car[0][3].replace(" ", "-")
-        var numberid = car[0][4]
-        embed.setTitle(carname)
+        var car = require(gtffile.CARS).random({}, 1)[0]
+        embed.setTitle(car["name"] + " " + car["year"])
 
-        embed.setDescription("Purchase this car using **!car " + make + " " + numberid + "**.")
-        embed.setImage(image)
+        embed.setDescription("Find this car using **!car " + car["make"] + " " + "**.")
+        embed.setImage(car["image"])
         embed.fields = []
         msg.edit(embed)
         return
