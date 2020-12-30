@@ -114,7 +114,6 @@ module.exports.addgift = function(name, item, type, author, isgift, userdata) {
     "author":author,
     "isgift":isgift}
 ]
-console.log(gift)
   userdata["gifts"].push(gift)
   userdata["numgiftearned"]++
 }
@@ -188,14 +187,14 @@ module.exports.settotalmileage = function(km, mi, userdata) {
 ///CURRENTCAR
 module.exports.currentcar = function(userdata) {
   if (userdata["garage"].length == 0) {
-    return null;
+    return {};
   }
     return userdata["garage"][userdata["currentcar"]-1]
 }
 
 module.exports.currentcarmain = function(userdata) {
   var currentcar = stats.currentcar(userdata)
-    if (currentcar == null) {
+    if (Object.keys(currentcar).length == 0) {
       return "No car."
     } else {
   return "`🚘ID:" + userdata["currentcar"] + "` " + currentcar["name"] + " **" + currentcar["fpp"] + emote.fpp + "**";
@@ -221,6 +220,7 @@ module.exports.addexp = function(number, userdata) {
   if (number < 0) {
   } else {
     userdata["exp"] += number;
+    console.log( userdata["exp"])
   }
 };
 
@@ -246,8 +246,8 @@ module.exports.view = function(gtfcar,userdata) {
 
 module.exports.view2 = function(gtfcar,userdata) {
   var cardetails = "__**Suspension**__" + "\n" + 
-  "**Camber Angle:**" + gtfcar["suspension"]["tuning"][0] + "in" + "\n" + 
-  "**Toe Angle**" + gtfcar["suspension"]["tuning"][1] + "in" + "\n"
+  "**Camber Angle:** " + gtfcar["suspension"]["tuning"][0] + "in" + "\n" + 
+  "**Toe Angle:** " + gtfcar["suspension"]["tuning"][1] + "in" + "\n"
   return cardetails
 }
 
@@ -436,6 +436,7 @@ var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
 
 module.exports.updatecareerrace = function(raceid, place, userdata) {
   var raceidcomplete = raceid.split("-").slice(0,-1).join("-") + "-";
+
   for (var i = 0; i < userdata["careerraces"].length; i++) {
   if (userdata["careerraces"][i][0] == raceidcomplete) {
       if (userdata["careerraces"][i][1] == "✅") {
@@ -454,12 +455,15 @@ module.exports.updatecareerrace = function(raceid, place, userdata) {
       if (placenumber <= currentnumber) {
         userdata["careerraces"][i][1] = place
       }
+      
+  console.log(userdata["careerraces"][i])
       return
     }
   }
   if (place.includes(">")) {
     place = place.split(" ")[1]
   }
+  console.log([raceid, place])
   userdata["careerraces"].push([raceid, place])
 };
 

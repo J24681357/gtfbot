@@ -291,10 +291,10 @@ module.exports.createfinalreactions = function(
       msg.delete({timeout:1000});
       if (racesettings["title"].includes("Seasonal Event")) {
         var btevent = require("../../commands/seasonal");
-        btevent.execute(msg, [e[1]], userdata);
+        btevent.execute(msg, [e[1]], userdata).catch(console.error);
       }else {
       var btevent = require("../../commands/career");
-      btevent.execute(msg, [e[0], e[1]], userdata);
+      btevent.execute(msg, [e[0], e[1]], userdata).catch(console.error);
       }
     }
 

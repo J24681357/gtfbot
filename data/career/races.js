@@ -1,5 +1,4 @@
 var gtffile = process.env;
-
 var emote = require('/home/runner/gtfbot/index');
 
 /*90-87*/
@@ -232,7 +231,7 @@ module.exports.icleague = function() {
         '4th|1800',
         '5th|1600',
         '6th|1500',
-        '7th|100',
+        '7th|1300',
         '8th|1100',
         '9th|1000',
         '10th|800',
@@ -295,22 +294,98 @@ module.exports.icleague = function() {
       "drivetrains": [],
       "types": ['Production'],
       "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 25000 }]
-    }
+    },
+    "ic3": {
+      "title": 'MR Challenge',
+      "eventid": 'IC-3',
+      "positions": [
+        emote.goldtrophy + ' 1st|3200',
+        emote.silvertrophy + ' 2nd|2600',
+        emote.bronzetrophy + ' 3rd|2200',
+        '4th|1700',
+        '5th|1600',
+        '6th|1500',
+        '7th|1200',
+        '8th|1100',
+        '9th|1000',
+        '10th|800',
+        '11th|700',
+        '12th|600',
+      ],
+      "tracks": [
+        [1, 'Autodromo Nazionale Monza', 3],
+        [2, 'Autodromo De Interlagos', 3],
+        [3, 'Circuit de Valencia', 4]
+      ],
+      "category": ['N400'],
+      "time": 'Day',
+      "weather": 'Clear',
+      "grid": 14,
+      "difficulty": 85,
+      "fpplimit": 520,
+      "upperfpp": 470,
+      "lowerfpp": 350,
+      "makes": [],
+      "models": [],
+      "drivetrains": ["MR"],
+      "types": ['Production'],
+      "prize":  ['RANDOMCAR', { "id": -1, "name": " ", "make": ["Ferrari"], "fullname": ["Ferrari 458 Italia 2009"]}]
+  }
   }
 };
 
 /*83-78*/
 //limit 15.000
 
+/*
+"ic1": {
+      "title": 'International IC League',
+      "eventid": 'IC-1',
+      "positions": [
+        emote.goldtrophy + ' 1st|3000',
+        emote.silvertrophy + ' 2nd|2500',
+        emote.bronzetrophy + ' 3rd|2000',
+        '4th|1800',
+        '5th|1600',
+        '6th|1500',
+        '7th|1300',
+        '8th|1100',
+        '9th|1000',
+        '10th|800',
+        '11th|700',
+        '12th|600',
+      ],
+      "tracks": [
+        [1, 'Special Stage Route 5', 4],
+        [2, 'Daytona Road Course', 3],
+        [3, 'Tokyo Expressway - South Outer Loop', 3],
+        [4, 'Broad Bean Raceway', 10],
+      ],
+      "category": ['N400'],
+      "time": 'Day',
+      "weather": 'Clear',
+      "grid": 14,
+      "difficulty": 84,
+      "fpplimit": 500,
+      "upperfpp": 450,
+      "lowerfpp": 350,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ['Production'],
+      "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 20000 }]
+    }
+*/
+
 module.exports.ibleague = function() {
   return {
-    ib1: {
-      title: 'International IB League',
-      eventid: 'IB-1',
-      positions: [
+     "ib1": {
+      "title": 'International IB League',
+      "eventid": 'IB-1',
+      "positions": [
         emote.goldtrophy + ' 1st|5000',
-        '<a:silvertrophy:549169214200741889> 2nd|4000',
-        '<a:bronzetrophy:549169213676322857> 3rd|3000',
+        emote.silvertrophy + ' 2nd|4000',
+        emote.bronzetrophy + ' 3rd|3000',
         '4th|2700',
         '5th|2400',
         '6th|2100',
@@ -323,30 +398,34 @@ module.exports.ibleague = function() {
         '13th|900',
         '14th|800',
       ],
-      tracks: [
+      "tracks": [
         [1, 'Sardegna - Road Track - A II', 4],
         [2, 'Circuit de la Sarthe', 2],
         [3, 'Indianapolis Road Course', 5],
         [4, 'Côte d’Azur', 6],
       ],
-      category: ['N500'],
-      time: 'Day',
-      weather: 'Clear',
-      grid: 16,
-      difficulty: 80,
-      fpplimit: 500,
-      models: ['License IB ⭐2'],
-      type: ['⭐ Production Cars'],
-      prize: ['License IB ⭐2', 'M None'],
-    },
-    ib2: {
-      title: 'Corvette Championship',
-      eventid: 'IB-2',
-      positions: [
-        emote.goldtrophy + ' 1st|5000',
-        '<a:silvertrophy:549169214200741889> 2nd|4000',
-        '<a:bronzetrophy:549169213676322857> 3rd|3000',
-        '4th|2700',
+      "category": ['N600'],
+      "time": 'Day',
+      "weather": 'Clear',
+      "grid": 16,
+      "difficulty": 80,
+      "fpplimit": 650,
+      "upperfpp": 600,
+      "lowerfpp": 450,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ['Production', 'Aftermarket'],
+      "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 40000 }]
+    }, 
+    "ib2": {
+      "title": 'Corvette Championship',
+      "eventid": 'IB-2',
+      "positions": [
+        emote.goldtrophy + ' 1st|5200',
+        emote.silvertrophy + ' 2nd|4100',
+        emote.bronzetrophy + ' 3rd|3000',
+        '4th|2500',
         '5th|2400',
         '6th|2100',
         '7th|1900',
@@ -358,38 +437,34 @@ module.exports.ibleague = function() {
         '13th|900',
         '14th|800',
       ],
-      tracks: [
+      "tracks": [
         [1, 'Indianapolis Super Speedway', 6],
         [2, 'WeatherTech Raceway Laguna Seca', 5],
         [3, 'Willow Springs (Big Willow)', 5],
         [4, 'Daytona Road Course', 4],
       ],
-      category: ['N500'],
-      time: 'Day',
-      weather: 'Clear',
-      grid: 16,
-      difficulty: 80,
-      fpplimit: 450,
-      models: [
-        'Chevrolet ⭐2.5',
-        'Chevrolet ⭐0.3',
-        'Chevrolet ⭐1',
-        'Chevrolet ⭐2',
-        'Chevrolet ⭐3',
-        'M Corvette',
-      ],
-      type: ['⭐ Production Cars'],
-      prize: ['Chevrolet 🔧2.5', 'M Corvette C7 Gr.3 Road Car'],
-    },
-    ib3: {
-      title: 'Special Stage Route Tour',
-      eventid: 'IB-3',
-      positions: [
-        emote.goldtrophy + ' 1st|5200',
-        '<a:silvertrophy:549169214200741889> 2nd|3900',
-        '<a:bronzetrophy:549169213676322857> 3rd|3000',
-        '4th|2700',
-        '5th|2400',
+      "category": ['N500'],
+      "time": 'Day',
+      "weather": 'Clear',
+      "grid": 16,
+      "difficulty": 80,
+      "fpplimit": 550,
+      "upperfpp": 520,
+      "lowerfpp": 300,
+     "makes": ["Chevrolet"],
+      "models": ["Corvette"],
+      "drivetrains": [],
+      "types": ['Production'],
+      "prize": ['RANDOMCAR', { "id": -1, "name": " ", "make": ["Chevrolet"], "fullname": ["Chevrolet Corvette ZR1 (C7) 2019"] }]
+    },"ib3": {
+      "title": 'Special Stage Route Tour',
+      "eventid": 'IB-3',
+      "positions": [
+        emote.goldtrophy + ' 1st|5500',
+        emote.silvertrophy + ' 2nd|5000',
+        emote.bronzetrophy + ' 3rd|4500',
+        '4th|3000',
+        '5th|2500',
         '6th|2100',
         '7th|1900',
         '8th|1700',
@@ -400,21 +475,30 @@ module.exports.ibleague = function() {
         '13th|900',
         '14th|800',
       ],
-      tracks: [
+      "tracks": [
         [1, 'Special Stage Route 5', 5],
         [2, 'Special Stage Route 5 II', 5],
         [3, 'Special Stage Route 7', 1],
         [4, 'Special Stage Route X', 1],
       ],
-      category: ['N500'],
-      time: 'Night',
-      weather: 'Clear',
-      grid: 16,
-      difficulty: 78,
-      fpplimit: 500,
-      models: ['License IB ⭐2'],
-      type: ['⭐ Production Cars'],
-      prize: ['License B ⭐3.5', 'M None'],
+      "category": ['N600'],
+      "time": 'Night',
+      "weather": 'Clear',
+      "grid": 16,
+      "difficulty": 80,
+      "fpplimit": 630,
+      "upperfpp": 600,
+      "lowerfpp": 450,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ['Production'],
+      "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 45000 }]
+    }
+  }
+}
+  /*
+    
     },
 
     ib4: {
@@ -452,50 +536,61 @@ module.exports.ibleague = function() {
       prize: ['Caterham ⭐1', 'M Supersport R'],
     },
   };
-};
+};*/
 
 /*83-75*/
 
 module.exports.ialeague = function() {
   return {
-    ia1: {
-      title: 'International IA League',
-      eventid: 'IA-1',
-      positions: [
-        emote.goldtrophy + ' 1st|7000',
-        '<a:silvertrophy:549169214200741889> 2nd|6000',
-        '<a:bronzetrophy:549169213676322857> 3rd|5000',
-        '4th|4000',
-        '5th|3700',
-        '6th|3400',
-        '7th|3100',
-        '8th|2800',
-        '9th|2500',
-        '10th|2200',
+     "ia1": {
+      "title": 'International IA League',
+      "eventid": 'IA-1',
+      "positions": [
+        emote.goldtrophy + ' 1st|10000',
+        emote.silvertrophy + ' 2nd|8000',
+        emote.bronzetrophy + ' 3rd|6000',
+        '4th|5000',
+        '5th|4000',
+        '6th|3500',
+        '7th|3000',
+        '8th|2500',
+        '9th|2300',
+        '10th|2100',
         '11th|1900',
-        '12th|1800',
-        '13th|1600',
-        '14th|1500',
-        '15|1200',
-        '16|1000',
+        '12th|1700',
+        '13th|1500',
+        '14th|1400',
+        '15th|1300',
+        '16th|1200'
       ],
-      tracks: [
+      "tracks": [
         [1, 'Circuit de la Sarthe (No Chicanes)', 2],
         [2, 'Nürburgring GP/F', 6],
         [3, 'Cape Ring', 5],
         [4, 'Suzuka Circuit', 5],
         [5, 'Matterhorn Rotenboden', 6],
       ],
-      category: ['N700'],
-      time: '',
-      weather: 'Clear',
-      grid: 20,
-      difficulty: 80,
-      fpplimit: 550,
-      models: ['License IA ⭐2', 'License IB ⭐2.5'],
-      type: ['⭐ Production Cars'],
-      prize: ['License IB ⭐2.5', 'M None'],
-    },
+      "category": ['N800'],
+      "time": '',
+      "weather": 'Clear',
+      "grid": 20,
+      "difficulty": 80,
+      "fpplimit": 850,
+      "upperfpp": 800,
+      "lowerfpp": 600,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ['Production', 'Aftermarket'],
+      "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 100000 }]
+    }
+  }
+}
+/*,
+ 
+
+
+  
     ia2: {
       title: 'La Festa Cavallino',
       eventid: 'IA-2',
@@ -581,12 +676,6 @@ module.exports.ialeague = function() {
     }
   };
 };
-
-/*,
- 
-
-
-
 
  
     ic3: {

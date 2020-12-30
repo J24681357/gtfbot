@@ -18,6 +18,7 @@ module.exports = {
   availitoeveryone:true,
   availinmaint:false,
    requireuserdata:true,
+   requirecar: true,
   usedduringrace: false,
   usedinlobby: true,
   description: [
@@ -49,11 +50,6 @@ module.exports = {
     var command = "garage";
 
     embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + require(gtffile.GTF).garagelimit + ' Cars__');
-
-    if (stats.garagecount(userdata) == 0) {
-      require(gtffile.EMBED).error('❌ No Cars', 'You do not have any cars in your garage.', embed, msg, userdata);
-        return;
-    }
 
     if (!isNaN(query[0])) {
       query.unshift('select');
@@ -101,7 +97,22 @@ module.exports = {
       stats.addcount(userdata);
       embed.setThumbnail(ocar["image"])
       embed.setDescription(results);
-      msg.channel.send(embed);
+         msg.channel.send(embed).then(msg => {
+      function view2() {
+        var results2 = stats.view2(car, userdata);
+        embed.setDescription(results2)
+        msg.edit(embed)
+
+      }
+      function view1() {
+         embed.setDescription(results);
+        msg.edit(embed)
+      }
+
+      var emojilist = [[emote.leftarrow,'leftarrow', view1], [emote.rightarrow, 'rightarrow', view2]]
+
+      gtftools.createreactions(emojilist, msg, userdata)
+    })
       return;
     } else if (query[0] == 'select') {
       selected = true;
@@ -144,8 +155,7 @@ module.exports = {
         if (filter.length != 0) {
           embed.setTitle('❗ **' + filter.length + ' Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')**');
         } else {
-          embed.setTitle('❗ **No Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')**');
-          require(gtffile.EMBED).warning('⚠ Warning', '0 garage cars are eligible for this event.', embed, msg, userdata);
+          require(gtffile.EMBED).error('❌ No Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')', 'No garage cars are eligible for this event.', embed, msg, userdata);
           return
         }
         var list = [];

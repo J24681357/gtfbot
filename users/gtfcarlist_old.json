@@ -482,13 +482,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "74": {
-    "make": "BMW",
-    "name": "BMW M4 Coupe 2014",
-    "image": "https://www.carmagazine.co.uk/Images/upload/32335/images/0004f0e2126c-8e36-43ba-9.jpg",
-    "rating": "⭐2.5",
-    "manufacturercost": 15000
-  },
   "75": {
     "make": "BMW",
     "name": "BMW M4 Gr.4 2014",
@@ -4114,13 +4107,6 @@
     "rating": "⭐1",
     "manufacturercost": 15000
   },
-  "596": {
-    "make": "Nissan",
-    "name": "Nissan 370Z Nismo 2015",
-    "image": "https://www.torquenews.com/sites/default/files/image-1080/2015_370z_nismo_-_1-600_0.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
   "597": {
     "make": "Nissan",
     "name": "Nissan Bluebird 1600 Deluxe 1969",
@@ -4140,13 +4126,6 @@
     "name": "Nissan GT-R Gr.4 2016",
     "image": "https://i.ytimg.com/vi/BmMcFpYeIGw/maxresdefault.jpg",
     "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 15000
-  },
-  "600": {
-    "make": "Nissan",
-    "name": "Nissan GT-R NISMO GT3 N24 (Schulze Motorsport) 2013",
-    "image": "https://cdn-8.motorsport.com/static/img/mgl/1700000/1710000/1719000/1719400/1719428/s8/endurance-24-hours-of-the-n-rburgring-2014-24-schulze-motorsport-nissan-gt-r-nismo-gt3-ka.jpg",
-    "rating": "<:gt3:698962765443891280>",
     "manufacturercost": 15000
   },
   "601": {
@@ -4965,13 +4944,6 @@
     "make": "Toyota",
     "name": "Toyota GR Supra 2020",
     "image": "https://t1-cms-3.images.toyota-europe.com/toyotaone/gben/header_tcm-3060-1542578.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "722": {
-    "make": "Toyota",
-    "name": "Toyota MR2 GT-S 1997",
-    "image": "http://picture1.goo-net.com/7000903807/30171010/J/70009038073017101000200.jpg",
     "rating": "⭐2",
     "manufacturercost": 10000
   },

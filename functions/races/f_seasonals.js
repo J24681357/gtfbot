@@ -1,4 +1,3 @@
-var gtf = require('../../functions/f_gtf');
 var stats = require('../../functions/profile/f_stats');
 var emote = require('../../index');
 var gtftools = require('../../functions/misc/f_tools');
@@ -7,7 +6,7 @@ const Discord = require('discord.js');
 var gtffile = process.env;
 ////////////////////////////////////////////////////
 
-module.exports.changeseasonals = function() {
+module.exports.changeseasonals = function(force) {
 var seasonals = {}
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
@@ -17,12 +16,13 @@ var seasonals = {}
       if (err) throw err;
       var dbo = db.db("GTFitness");
       dbo.collection("SEASONALS").find({ "id": "1234567" }).forEach(row => {
-            if (seasonalcheck(row["races"])) {
-              console.log("Seasonals Changing")
+            if (seasonalcheck(row["races"]) || force) {
+              console.log("Seasonals has been changed.")
          var seasonals = require(gtffile.SEASONAL).randomseasonal(1, 300, 200)
+         var seasonals2 = require(gtffile.SEASONAL).randomseasonal(2, 400, 300)
             var races = {
               "id": "1234567",
-              "races": { seasonals }
+              "races": { seasonals, seasonals2 }
            }
           dbo.collection("SEASONALS").replaceOne({ "id": "1234567" }, races)
         }
@@ -60,19 +60,26 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
   day = day.length > 1 ? day : '0' + day;
   var year = date.getFullYear();
 
-  var eventid = "SEASONAL-1"
   var tracks = []
   if (number == 1) {
+      var eventid = "SEASONAL" + "-" + number
     var grid = gtftools.randomInt(6, 11)
     var startingprize = 2000;
     var tracksnum = 3
+    var limit = 8.0;
+  }
+  if (number == 2) {
+      var eventid = "SEASONAL" + "-" + number
+    var grid = gtftools.randomInt(12, 16)
+    var startingprize = 5000;
+    var tracksnum = 4
     var limit = 10.0;
   }
   for (var x = 0; x < tracksnum; x++) {
-    var track = require(gtffile.TRACKS).RandomTrack();
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
     var km = track.length;
     var distance = gtftools.lapcalc(km, limit)
-    tracks.push([x, track.name, distance[0]])
+    tracks.push([x+1, track.name, distance[0]])
   }
 
   var finalfpp = Math.ceil(gtftools.randomInt(lowerfpp, fpplimit) / 10) * 10
@@ -98,6 +105,14 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
   }
 date = month + day + year
 
+var makes = require(gtffile.CARS).list("makes")
+var rmakes = makes[Math.floor(Math.random*makes.length)]
+console.log(rmakes)
+var rint = gtftools.randomInt(0,10)
+if (rint > 7) {
+
+}
+
   var event = {
     "title": 'Seasonal Event ' + number,
     "eventid": eventid,
@@ -112,7 +127,7 @@ date = month + day + year
     "fpplimit": finalfpp,
     "upperfpp": finalfpp - 30,
     "lowerfpp": finalfpp - 80,
-    "makes": [],
+    "makes": rmakes,
     "models": [],
     "drivetrains": [],
     "types": ['Production'],

@@ -9,18 +9,17 @@
     ]
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "forever --minUptime 10000 index.js"
   },
   "engines": {
     "node": "13.0.0"
   },
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "latest",
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "graceful-fs": "^4.2.4",
     "mongodb": "^3.6.3",
-    "node": "^15.4.0",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {

@@ -25,26 +25,4 @@ module.exports.getpoints = function(num) {
   return require(gtffile.EXP).ExpLevels()[num-1]["exp"]
 }
 
-module.exports.islevelup = function(id) {
-  var exp = stats.exp(id)
-  var level = stats.level(id)
-  var levelup = 0
-  var levelupbool = false
-  var leveldetails = [""]
-  var explevels = require(gtffile.EXP).ExpLevels()
-  
-for (var i = level; i < Object.keys(explevels).length; i++) {
-  if (exp >= explevels[(i + 1).toString()]["exp"]) {
-    levelup++
-    levelupbool = true
-    if (typeof explevels[(i + 1).toString()]["rewards"] == 'undefined') {
-    leveldetails.push(explevels[(i + 1).toString()]["rewards"])
-    }
-  } else {
-    break;
-  }
-}
- stats.levelup(levelup, id)
-return [levelupbool, levelup, leveldetails]
-}
 

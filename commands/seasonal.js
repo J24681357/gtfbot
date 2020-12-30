@@ -151,7 +151,7 @@ module.exports = {
 
         embed.setDescription(results2)
         var date = new Date()
-        var hoursleft = 24 - date.getHours()
+        var hoursleft = 23 - date.getHours()
         embed.setFooter("Seasonal Events Rotation: " + "~" + hoursleft + "hours")
         embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
         gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "seasonal", reactionson, info], embed, msg, userdata)

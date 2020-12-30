@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -171,7 +170,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
         }
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n\n" + info)
+    embed.setDescription(results + "\n" + info)
   
     msg.channel.send(embed).then(msg => {
       
@@ -207,7 +206,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
         }
         return x.replace(/\\r/gi, "\n")
         }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n\n" + info)
+    embed.setDescription(results + "\n" + info)
     msg.edit(embed)
     }
   
@@ -227,7 +226,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
       
-    embed.setDescription(results + "\n\n" + info)
+    embed.setDescription(results + "\n" + info)
     msg.edit(embed)
     }
       
@@ -247,7 +246,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n\n" + info)
+    embed.setDescription(results + "\n" + info)
     msg.edit(embed)
     }
       
@@ -269,7 +268,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n\n" + info)
+    embed.setDescription(results + "\n" + info)
     msg.edit(embed)
     }
     
@@ -341,15 +340,28 @@ module.exports.getFormattedDate = function(date,userdata) {
 }
 
 module.exports.removereactions = function(list, msg) {
-  for (var index = 0; index < list.length; index++) {
-    var emoji = msg.reactions.cache.find(r => r.emoji.name === list[index])
+  var i  = 0
+ filter(i)
+  function filter(i) {
+    var emoji = msg.reactions.cache.find(r => r.emoji.name === list[i])
     if (emoji == null) {
-      continue;
+      increase()
     } else {
       emoji.remove(gtffile.USERID);
+      increase()
     }
   }
-  gtftools.interval(function(){
+
+  function increase() {
+    i++
+    if (i == list.length) {
+      return
+    } else {
+     setTimeout(function() {filter(i)}, 1000)
+    }
+  }
+
+ /* gtftools.interval(function(){
     for (var index = 0; index < list.length; index++) {
     var emoji = msg.reactions.cache.find(r => r.emoji.name === list[index])
     if (emoji == null) {
@@ -358,7 +370,7 @@ module.exports.removereactions = function(list, msg) {
       emoji.remove(gtffile.USERID);
     }
   }
-  }, 1000 * list.length, 1)
+  }, 1000 * list.length, 1)*/
 }
 
 module.exports.milltominandsecs = function(millis) {
@@ -374,10 +386,21 @@ module.exports.numFormat = function(number) {
 module.exports.createreactions = function(emojilist, msg, userdata) {
   var i = 0;
   var id = userdata["id"]
-  var reactid = stats.count(userdata); 
+  var reactid = stats.count(userdata);
+  var executions = 0 
   filter(i)
   
+      function increase() {
+    i++
+    if (i == emojilist.length) {
+      return
+    } else {
+     setTimeout(function() {filter(i)}, 1000)
+    }
+  }
+
   function filter(i) {
+  
     var emote = emojilist[i][0];
     if (emote.includes("<:")) {
       emote = emote.split(":")[2]
@@ -385,13 +408,39 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
     }
     var name = emojilist[i][1];
     var func = emojilist[i][2];
+    if (reactid != stats.count(userdata)) {
+            return
+    }
     msg.react(emote).then(function(){
     var Filter1 = (reaction, user) => reaction.emoji.name === name && id === user.id;
 
-    const filter11 = msg.createReactionCollector(Filter1, { timer: 10 * 1000 , dispose:true});
+    const filter11 = msg.createReactionCollector(Filter1, { timer: 60 * 1000 , dispose:true});
 
       filter11.on("collect", r => {
-        const notbot = r.users.cache
+        
+      next(r)
+
+      });
+      
+      filter11.on("remove", r => {
+      next(r)
+    })
+  function next(r) {
+    executions++
+    console.log(executions)
+    if (executions >= 2) {
+      setTimeout(function() {
+         go()
+        executions--
+         }, 1000 * executions);
+    } else {
+go()
+      if (executions >= 1) {
+        setTimeout(function() {executions = 0}, 5000);
+    }
+    }
+      function go() {
+    const notbot = r.users.cache
           .filter(clientuser => clientuser.id == id)
           .first();
         if (reactid != stats.count(userdata)) {
@@ -414,45 +463,11 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
           }
         }
         return func()
-      });
-      
-      filter11.on("remove", r => {
-        const notbot = r.users.cache
-          .filter(clientuser => clientuser.id == id)
-          .first();
-            if (reactid != stats.count(userdata)) {
-            return
-        }
-        if (typeof emojilist[i][3] !== 'undefined') {
-          if (emojilist[i][3] == "Once") {
-                        if (reactid != stats.count(userdata)) {
-              return
-            }
-            stats.addcount(userdata)
-          }
-          
-        }
-        if (typeof emojilist[i][3] !== 'undefined') {
-          if (!isNaN(emojilist[i][3])) {
-              return func(emojilist[i][3])
-          } else {
-              return func()
-          }
-        }
-        return func()
-      });
-      increase()
-    })
-
   }
 
-  function increase() {
-    i++
-    if (i == emojilist.length) {
-      return
-    } else {
-      filter(i)
     }
+  })
+  
+  increase()
   }
 }
-//////

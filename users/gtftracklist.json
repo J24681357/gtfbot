@@ -1,0 +1,1315 @@
+{
+  "1": {
+    "name": "Alsace - Village",
+    "length": 5.423,
+    "type": "Original",
+    "corners": 17,
+    "options": [
+      "Drift"
+    ]
+  },
+  "2": {
+    "name": "Alsace - Village II",
+    "length": 5.423,
+    "type": "Original",
+    "corners": 17,
+    "options": [
+      "Drift"
+    ]
+  },
+  "3": {
+    "name": "Apricot Hill Raceway",
+    "length": 3.863,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "4": {
+    "name": "Apricot Hill Raceway II",
+    "length": 3.863,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "5": {
+    "name": "Ascari Full Track",
+    "length": 5.425,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "6": {
+    "name": "Autodrome Lago Maggiore - Center",
+    "length": 1.706,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "7": {
+    "name": "Autodrome Lago Maggiore - Center II",
+    "length": 1.706,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "8": {
+    "name": "Autodrome Lago Maggiore - East",
+    "length": 3.643,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "9": {
+    "name": "Autodrome Lago Maggiore - East II",
+    "length": 3.643,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "10": {
+    "name": "Autodrome Lago Maggiore - GP",
+    "length": 5.089,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "11": {
+    "name": "Autodrome Lago Maggiore - GP II",
+    "length": 5.089,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "12": {
+    "name": "Autodrome Lago Maggiore - West",
+    "length": 4.168,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "13": {
+    "name": "Autodrome Lago Maggiore - West II",
+    "length": 4.168,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "14": {
+    "name": "Autodromo De Interlagos",
+    "length": 4.309,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "15": {
+    "name": "Autodromo Nazionale Monza",
+    "length": 5.793,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "16": {
+    "name": "Autodromo Nazionale Monza (No Chicane)",
+    "length": 5.793,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "17": {
+    "name": "Autodromo Nazionale Monza 1980s",
+    "length": 5.802,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "18": {
+    "name": "Autopolis International Racing Course",
+    "length": 4.674,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "19": {
+    "name": "Autopolis International Racing Course Shortcut Course",
+    "length": 3.022,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "20": {
+    "name": "Autumn Ring",
+    "length": 2.95,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "21": {
+    "name": "Autumn Ring II",
+    "length": 2.95,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "22": {
+    "name": "Autumn Ring – Mini",
+    "length": 1.281,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "23": {
+    "name": "Autumn Ring – Mini II",
+    "length": 1.281,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "24": {
+    "name": "Blue Moon Bay Speedway",
+    "length": 3.2,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "25": {
+    "name": "Blue Moon Bay Speedway - Infield A",
+    "length": 3.35,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "26": {
+    "name": "Blue Moon Bay Speedway - Infield A II",
+    "length": 3.35,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "27": {
+    "name": "Blue Moon Bay Speedway - Infield B",
+    "length": 2.68,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "28": {
+    "name": "Blue Moon Bay Speedway - Infield B II",
+    "length": 2.68,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "29": {
+    "name": "Blue Moon Bay Speedway II",
+    "length": 3.2,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "30": {
+    "name": "Brands Hatch GP 1980s",
+    "length": 1.937,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "31": {
+    "name": "Brands Hatch GP Circuit",
+    "length": 3.916,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "32": {
+    "name": "Brands Hatch Indy 1980s",
+    "length": 1.937,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "33": {
+    "name": "Brands Hatch Indy Circuit",
+    "length": 1.944,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "34": {
+    "name": "Broad Bean Raceway",
+    "length": 1.665,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "35": {
+    "name": "Broad Bean Raceway II",
+    "length": 1.665,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "36": {
+    "name": "Cape Ring",
+    "length": 7.07,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "37": {
+    "name": "Cape Ring Inside",
+    "length": 2.475,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "38": {
+    "name": "Cape Ring North",
+    "length": 3.839,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "39": {
+    "name": "Cape Ring Periphery",
+    "length": 4.6,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "40": {
+    "name": "Cape Ring South",
+    "length": 3.231,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "41": {
+    "name": "Circuit de Barcelona-Catalunya Grand Prix Layout",
+    "length": 4.655,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "42": {
+    "name": "Circuit de Sainte-Croix - A",
+    "length": 9.477,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "43": {
+    "name": "Circuit de Sainte-Croix - A II",
+    "length": 9.477,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "44": {
+    "name": "Circuit de Sainte-Croix - B",
+    "length": 7.062,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "45": {
+    "name": "Circuit de Sainte-Croix - B II",
+    "length": 7.062,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "46": {
+    "name": "Circuit de Sainte-Croix - C",
+    "length": 10.825,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "47": {
+    "name": "Circuit de Sainte-Croix - C II",
+    "length": 10.825,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "48": {
+    "name": "Circuit de Spa-Francorchamps",
+    "length": 7.004,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "49": {
+    "name": "Circuit de Valencia",
+    "length": 4.051,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "50": {
+    "name": "Circuit de la Sarthe",
+    "length": 13.629,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "51": {
+    "name": "Circuit de la Sarthe (No Chicanes)",
+    "length": 13.567,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "52": {
+    "name": "Circuit de la Sarthe 2005",
+    "length": 13.65,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "53": {
+    "name": "Circuit de la Sarthe 2005 (No Chicanes)",
+    "length": 13.588,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "54": {
+    "name": "Circuito de Madrid",
+    "length": 3.388,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "55": {
+    "name": "Circuito de Madrid II",
+    "length": 3.388,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "56": {
+    "name": "Circuito de Madrid – Mini",
+    "length": 2.125,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "57": {
+    "name": "Circuito de Madrid – Mini II",
+    "length": 2.125,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "58": {
+    "name": "Circuito de la Sierra",
+    "length": 27,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "59": {
+    "name": "Clubman Stage Route 5",
+    "length": 2.46,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "60": {
+    "name": "Clubman Stage Route 5 II",
+    "length": 2.46,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "61": {
+    "name": "Côte d’Azur",
+    "length": 3.351,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "62": {
+    "name": "Daytona International Speedway",
+    "length": 4.023,
+    "type": "Real",
+    "options": [
+      null
+    ]
+  },
+  "63": {
+    "name": "Daytona Road Course",
+    "length": 5.729,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "64": {
+    "name": "Deep Forest Raceway",
+    "length": 3.601,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "65": {
+    "name": "Deep Forest Raceway II",
+    "length": 3.601,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "66": {
+    "name": "Dragon Trail - Gardens",
+    "length": 4.352,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "67": {
+    "name": "Dragon Trail - Gardens II",
+    "length": 4.352,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "68": {
+    "name": "Dragon Trail - Seaside",
+    "length": 5.209,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "69": {
+    "name": "Dragon Trail - Seaside II",
+    "length": 5.209,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "70": {
+    "name": "Eiger Nordwand Short Track",
+    "length": 2.436,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "71": {
+    "name": "Eiger Nordwand Short Track II",
+    "length": 2.436,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "72": {
+    "name": "Fuji International Speedway F",
+    "length": 4.563,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "73": {
+    "name": "Fuji International Speedway GT",
+    "length": 4.526,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "74": {
+    "name": "Goodwood Motor Circuit",
+    "length": 3.809,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "75": {
+    "name": "Gran Turismo Arena (Layout A)",
+    "length": 0.668,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "76": {
+    "name": "Gran Turismo Arena (Layout A) II",
+    "length": 0.668,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "77": {
+    "name": "Grand Valley East",
+    "length": 2.998,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "78": {
+    "name": "Grand Valley East II",
+    "length": 2.998,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "79": {
+    "name": "Grand Valley Speedway",
+    "length": 4.945,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "80": {
+    "name": "Grand Valley Speedway II",
+    "length": 4.945,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "81": {
+    "name": "High Speed Ring",
+    "length": 4,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "82": {
+    "name": "High Speed Ring II",
+    "length": 4,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "83": {
+    "name": "Indianapolis Road Course",
+    "length": 4.192,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "84": {
+    "name": "Indianapolis Super Speedway",
+    "length": 4.023,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "85": {
+    "name": "Kyoto Driving Park - Miyabi",
+    "length": 1.953,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "86": {
+    "name": "Kyoto Driving Park - Yamagiwa",
+    "length": 4.912,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "87": {
+    "name": "Kyoto Driving Park - Yamagiwa + Miyabi",
+    "length": 6.846,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "88": {
+    "name": "Kyoto Driving Park - Yamagiwa + Miyabi II",
+    "length": 6.846,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "89": {
+    "name": "Kyoto Driving Park - Yamagiwa II",
+    "length": 4.912,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "90": {
+    "name": "London",
+    "length": 1.921,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "91": {
+    "name": "London II",
+    "length": 1.921,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "92": {
+    "name": "Matterhorn Dristelen",
+    "length": 3.214,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "93": {
+    "name": "Matterhorn Riffelsee",
+    "length": 3.301,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "94": {
+    "name": "Matterhorn Rotenboden",
+    "length": 3.577,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "95": {
+    "name": "Matterhorn Short Track",
+    "length": 0.771,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "96": {
+    "name": "Mid-Field Raceway",
+    "length": 3.562,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "97": {
+    "name": "Mid-Field Raceway II",
+    "length": 3.562,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "98": {
+    "name": "Mount Panorama Circuit",
+    "length": 6.213,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "99": {
+    "name": "Northern Isle Speedway",
+    "length": 0.858,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "100": {
+    "name": "Nürburgring 24h",
+    "length": 25.378,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "101": {
+    "name": "Nürburgring GP/D",
+    "length": 3.629,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "102": {
+    "name": "Nürburgring GP/F",
+    "length": 5.148,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "103": {
+    "name": "Nürburgring Nordschleife",
+    "length": 20.832,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "104": {
+    "name": "Nürburgring Type V",
+    "length": 24.433,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "105": {
+    "name": "Red Bull Ring",
+    "length": 4.318,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "106": {
+    "name": "Red Bull Ring Short Track",
+    "length": 2.336,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "107": {
+    "name": "Sardegna - Road Track - A",
+    "length": 5.113,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "108": {
+    "name": "Sardegna - Road Track - A II",
+    "length": 5.113,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "109": {
+    "name": "Sardegna – Road Track - B",
+    "length": 3.893,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "110": {
+    "name": "Sardegna – Road Track - B II",
+    "length": 3.893,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "111": {
+    "name": "Sardegna – Road Track - C",
+    "length": 2.661,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "112": {
+    "name": "Sardegna – Road Track - C II",
+    "length": 2.661,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "113": {
+    "name": "Silverstone Grand Prix Circuit",
+    "length": 3.66,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "114": {
+    "name": "Silverstone International Circuit",
+    "length": 2.978,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "115": {
+    "name": "Silverstone National Circuit",
+    "length": 2.639,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "116": {
+    "name": "Silverstone Stowe Circuit",
+    "length": 1.738,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "117": {
+    "name": "Special Stage Route 5",
+    "length": 3.787,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "118": {
+    "name": "Special Stage Route 5 II",
+    "length": 3.787,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "119": {
+    "name": "Special Stage Route 7",
+    "length": 23.28,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "120": {
+    "name": "Special Stage Route X",
+    "length": 30.283,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "121": {
+    "name": "Suzuka Circuit",
+    "length": 5.807,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "122": {
+    "name": "Suzuka Circuit East",
+    "length": 2.243,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "123": {
+    "name": "Tokyo Expressway - Central Inner Loop",
+    "length": 4.369,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "124": {
+    "name": "Tokyo Expressway - Central Outer Loop",
+    "length": 4.405,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "125": {
+    "name": "Tokyo Expressway - East Inner Loop",
+    "length": 7.192,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "126": {
+    "name": "Tokyo Expressway - East Outer Loop",
+    "length": 7.301,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "127": {
+    "name": "Tokyo Expressway - South Inner Loop",
+    "length": 6.56,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "128": {
+    "name": "Tokyo Expressway - South Outer Loop",
+    "length": 5.201,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "129": {
+    "name": "Tokyo R246",
+    "length": 5.117,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "130": {
+    "name": "Tokyo R246 II",
+    "length": 5.117,
+    "type": "City",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "131": {
+    "name": "Top Gear Test Track",
+    "length": 2.82,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "132": {
+    "name": "Trial Mountain Circuit 2020",
+    "length": 5.44,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "133": {
+    "name": "Trial Mountain Circuit 2020 II",
+    "length": 5.44,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "134": {
+    "name": "Trial Mountain Circuit 2010",
+    "length": 3.983,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "135": {
+    "name": "Trial Mountain Circuit 2010 II",
+    "length": 3.983,
+    "type": "Original",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "136": {
+    "name": "Tsukuba Circuit",
+    "length": 2.045,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "137": {
+    "name": "Twin Ring Motegi East",
+    "length": 3.422,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "138": {
+    "name": "Twin Ring Motegi Road Course",
+    "length": 4.801,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "139": {
+    "name": "Twin Ring Motegi Super Speedway",
+    "length": 2.413,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "N/A"
+    ]
+  },
+  "140": {
+    "name": "Twin Ring Motegi West",
+    "length": 1.49,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "141": {
+    "name": "WeatherTech Raceway Laguna Seca",
+    "length": 3.602,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "142": {
+    "name": "Willow Springs (Big Willow)",
+    "length": 3.951,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "143": {
+    "name": "Willow Springs (Horse Thief Mile)",
+    "length": 1.624,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "144": {
+    "name": "Willow Springs (Horse Thief Mile) II",
+    "length": 1.624,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "145": {
+    "name": "Willow Springs (Streets of Willow)",
+    "length": 2.675,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  },
+  "146": {
+    "name": "Willow Springs (Streets of Willow) II",
+    "length": 2.675,
+    "type": "Real",
+    "corners": 0,
+    "options": [
+      "Drift"
+    ]
+  }
+}

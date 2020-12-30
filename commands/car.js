@@ -30,22 +30,19 @@ module.exports = {
     var args = "\n" + "`Args: !car [\"make\"] [(number)]`" + "\n"
     var page = 0
     var results = ""
-    var info = "❓ **Select from the makes listed above in words.**"
-
-    /* Setup */
+    var info = "❓ **Select from the makes listed above **"
     
     var makelist = require(gtffile.CARS).list("makes")
-
     var number = 0;
     var itempurchase = false;
     var reactionson = true
 
-    if (query[0] == undefined) {
+    if (query[0] === undefined) {
       query = []
     }
 
 
-if (query.length == 0) {
+if (query.length === 0) {
   var list = ""
 } else {
     var list = require(gtffile.CARS).find({"make":[query[0]]})

@@ -2,8 +2,9 @@ var stats = require('../functions/profile/f_stats');
 var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
 
-const Discord = require('discord.js');
-var gtffile = process.env;
+const Discord = require("discord.js");
+const client = new Discord.Client();
+var gtffile = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
   roles: [],
   channels: ["testing", "gtf-test-mode"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requireuserdata:true,
   requirecar: true,

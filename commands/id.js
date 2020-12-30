@@ -1,8 +1,6 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -14,7 +12,7 @@ module.exports = {
   title: "GT Fitness: ID Database",
   cooldown: 3,
     level: 0,
-  channels: ["gtf-mode"],
+  channels: ["gtf-mode", "testing"],
 
   delete: true,
   availitoeveryone:true,
@@ -41,37 +39,37 @@ module.exports = {
 
     if (query[0] == "track") {
       var selected = true;
-      var total = require(gtffile.TRACKS).trackslength
+      var total = 140
 
       if (!isNaN(query[1]) || query[1] === undefined || typeof query[1] === 'number') {
         var number = parseInt(query[1]) - 1;
         if (query[1] === undefined) {
-          var track = require(gtffile.TRACKS).RandomTrack()
+          var track = require(gtffile.TRACKS).random({"name":[]}, 1)[0]
         } else {
-          if (number + 1 > require(gtffile.TRACKS).trackslength || number < 0) {
+          if (number + 1 > 140 || number < 0) {
             require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
-            var track = require(gtffile.TRACKS).RandomTrack()
+            var track = require(gtffile.TRACKS).random({"name":[]}, 1)[0]
           } else {
-            var track = require(gtffile.TRACKS).Track(number)
+            var track = require(gtffile.TRACKS).random({"id": [number]}, 1)[0]
           }
         }
-        var index = track.index
-        embed.setTitle("__GT Fitness Track List: " + track.id + "/" + total + " Tracks__");
-        results = "**Track:** " + track.name + " `ID:" + track.id + "`" + "\n" + 
-          "**Length:** " + track.length + " km" + "\n" + 
-          "**Type:** " + track.type + " Circuit";
+
+        embed.setTitle("__GT Fitness Track List: " + track["id"] + "/" + total + " Tracks__");
+        results = "**Track:** " + track["name"] + " `ID:" + track["id"] + "`" + "\n" + 
+          "**Length:** " + track["length"] + " km" + "\n" + 
+          "**Type:** " + track["type"] + " Circuit";
           } else {
             if (query[1].length <= 2) {
             require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
             return;
           } else {
-            var list = require(gtffile.TRACKS).Tracks({name:query[1]})
+            var list = require(gtffile.TRACKS).find({"name":query[1]})
             if (list.length == 0) {
                require(gtffile.EMBED).error("❌ No Tracks", "No tracks has been found from your query.", embed, msg, userdata);
               return;
             }
-            list = list.map(gttrack => "`ID:" + gttrack.id + "` " + gttrack.name).slice(0, 10);
-            embed.setTitle("__Search Results: " + list.length + " Tracks__");
+            list = list.map(gttrack => "`ID:" + gttrack["id"] + "` " + gttrack["name"]).slice(0, 10);
+            embed.setTitle("__Search Results: " + list["length"] + " Tracks__");
             results = list.join("\n");
         }
       }

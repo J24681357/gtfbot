@@ -1,4 +1,3 @@
-var gtf = require("../functions/f_gtf")
 var stats = require("../functions/profile/f_stats")
 var gtftools = require("../functions/misc/f_tools")
 var emote = require("../index")
@@ -9,36 +8,6 @@ const client = new Discord.Client()
 var fs = require("fs")
 
 ////////////////////////////////////////////////////
-
-/*
-TEMPLATE
-weight is in ibs
-power is in hp
-    { "make": "",
-      "name": "",
-      "year": ,
-      "type": "", 
-      "power": ,
-      "weight": ,
-      "tires": ,
-      "carcostmultiplier": ,
-      "aeromultiplier":  ,
-      "condition": ,
-      "special" "",
-      "image": ""
-      }
-
-      [
-    {
-      "make": "Volvo",
-      "name": "Volvo V60 Polestar AWD 2017",
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/17q1/674167/2017-volvo-v60-polestar-test-review-car-and-driver-photo-675489-s-original.jpg",
-      "rating": "⭐2",
-      "manufacturercost": 10000
-    }
-  ]
-
-*/
 
 module.exports.list = function(args) {
   var gtfcars = require(gtffile.LISTS).gtfcarlist
@@ -194,7 +163,11 @@ module.exports.find = function(args) {
     x["id"] = id
     id++
   })
-  return final
+  final.sort(function(a, b) {
+    return a["name"].toString().localeCompare(b["name"])
+}); 
+
+return final
 }
 
 module.exports.random = function(args, num) {

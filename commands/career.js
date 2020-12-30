@@ -91,7 +91,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").icleague()
     }
     if (league == "ibleague" || league == "ib" || league == "IB") {
-      if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
+      if (!require(gtffile.EXP).checklevel(15, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -99,7 +99,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").ibleague()
     }
     if (league == "ialeague" || league == "ia" || league == "IA") {
-      if (!require(gtffile.EXP).checklevel(30, embed, msg, userdata)) {
+      if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -108,7 +108,7 @@ module.exports = {
     }
     if (league == "sleague" || league == "s" || league == "S") {
       return
-      if (!require(gtffile.EXP).checklevel(40, embed, msg, userdata)) {
+      if (!require(gtffile.EXP).checklevel(25, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -122,10 +122,10 @@ module.exports = {
       results = "__**B**__ - !career [b] [(number)]" + "\n" +
        "__**A**__ - !career [a] [(number)] " + emote.exp + "`Lv.5`" + "\n" +
       "__**IC**__ - !career [ic] [(number)] " + emote.exp + "`Lv.10`" + "\n" +
-      " "
-      
+        "__**IB**__ - !career [ib] [(number)] " + emote.exp + "`Lv.15`" + "\n" +
+        "__**IA**__ - !career [ia] [(number)] " + emote.exp + "`Lv.20`" + "\n" +
+      " " 
     }
-    /*+ "\n" + "__**IB**__ - !career [ib] [(number)] " + emote.exp + "`Lv.20`" + "\n" + "__**IA**__ - !career [ia] [(number)] " + emote.exp + "`Lv.30`" + */
     if (!ready) {
       var list = results
         .split("\n")

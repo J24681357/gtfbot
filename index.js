@@ -1,5 +1,3 @@
-var gtf = require('./functions/f_gtf');
-var race = require('./functions/races/f_races');
 var car = require('./data/gtfcarlist');
 var stats = require('./functions/profile/f_stats');
 var gtftools = require('./functions/misc/f_tools');
@@ -23,12 +21,15 @@ const prefix = '!';
 var dw = JSON.parse(fs.readFileSync('./users/dw.json', 'utf8'));
 module.exports.dwcar = dw;
 var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist.json', 'utf8'));
+var gtftracks = JSON.parse(fs.readFileSync('./users/gtftracklist.json', 'utf8'));
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
 module.exports.gtfcarlist = gtfcars
+module.exports.gtftracklist = gtftracks
 module.exports.gtfpartlist = gtfparts
 module.exports.embedcounts = {}
 
 var data = {}
+
 module.exports.alluserdata = function() {
   MongoClient.connect(url, { useUnifiedTopology: true },
     function(err, db) {
@@ -76,7 +77,7 @@ server.all('/', (req, res) => {
   res.send('Your bot is alive!')
 })
 
-server.listen(3000, () => { console.log("Server is Ready!") });
+server.listen(3000, () => { });
 
 // Server Settings
 var executions = 0;
@@ -175,7 +176,6 @@ client.on('ready', () => {
       var number = 0
       dbo.collection("GTFBOT").find({}).forEach(row => {
         if (number > 0) {
-
         } else {
           check(row)
           number++
@@ -209,7 +209,6 @@ client.on('ready', () => {
         .members.cache.get(gtffile.USERID)
         .setNickname('! | GT Fitness');
     }
-    require(gtffile.MAIN).gtfbotconfig['executions'] = 0;
 
     if (dw['daily']['car'] != 'None') {
       dw['daily'] = {
@@ -228,32 +227,32 @@ client.on('ready', () => {
 });
 
 client.on('rateLimit', (info) => {
-  console.log(`Rate limit hit ${info.timeDifference ? info.timeDifference : info.timeout ? info.timeout: 'Unknown timeout '}`)
+  console.log(info)
+  //console.log(`Rate limit hit ${info.timeDifference ? info.timeDifference : info.timeout ? info.timeout: 'Unknown timeout '}`)
 })
 
 client.on('message', msg => {
-
-  var userdata = {}
-  var member = msg.guild.members.cache.get(msg.author.id);
+if (userdata === undefined) {
+  userdata = {"id": msg.author.id}
+}
+  var member = msg.author
   var next = function() {
 
       if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-  if (member.roles.cache.some(role => role.name === 'Muted')) {
-    msg.delete({ timeout: 0 });
-  }
 
   var args = msg.content.slice(prefix.length).split(/ +/);
   var commandName = args.shift().toLowerCase();
 
   var command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
+  if (msg.guild !== null) {
   if (!command) return;
     if (command.delete) {
     msg.delete({ timeout: 0 });
   }
+  }
 
   // Profile
-  console.log(require(gtffile.MAIN).gtfbotconfig['maintenance'])
     if (require(gtffile.MAIN).gtfbotconfig['maintenance']) {
     if (msg.author.id != '237450759233339393' && !command.availinmaint) {
       var embed = new Discord.MessageEmbed();
@@ -265,10 +264,12 @@ client.on('message', msg => {
       return;
     }
     }
-  if (!command.channels.includes(msg.channel.name)) {
+  if (msg.guild !== null) {
+  if (!command.channels.some(name => msg.channel.name.includes(name))) {
     userdata = {"id": msg.author.id}
       require(gtffile.EMBED).error('❌ Incorrect Channel', 'Commands are not allowed in this channel.', embed, msg, userdata);
       return;
+  }
   }
   var check = require('./functions/misc/f_start').intro(userdata, command.name, msg);
   if (check == "COMMAND") {
@@ -286,9 +287,11 @@ client.on('message', msg => {
 
   if (userdata['lastonline'] != currdate) {
     userdata['dailyworkout'] = false;
+    userdata["careerraces"] = userdata["careerraces"].filter(x => !x[0].match(/seasonal/gi))
+    console.log(userdata["careerraces"])
     stats.setmileage(0, 0, userdata);
+     userdata['lastonline'] = currdate
   }
-  userdata['lastonline'] = currdate;
 
 
   //////////////////////////
@@ -333,8 +336,8 @@ client.on('message', msg => {
       roles[0] = '❌ ' + roles[0];
       roles = roles.join('\n❌ ');
       const embed = new Discord.MessageEmbed();
-      var user = msg.guild.members.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
+      var user = client.users.cache.get(msg.author.id).user.username;
+      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
       embed.setColor(0xff0000);
       embed.setDescription(' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles);
       msg.channel.send(embed);
@@ -348,8 +351,8 @@ client.on('message', msg => {
     }
     if (stats.raceinprogressstat(userdata)[0]) {
       var embed = new Discord.MessageEmbed();
-      var user = msg.guild.members.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
+      var user = client.users.cache.get(msg.author.id).user.username;
+      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
 
       require(gtffile.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
       msg.channel.send(embed).then(msg => {
@@ -366,8 +369,8 @@ client.on('message', msg => {
   if (!command.usedinlobby) {
     if (stats.inlobbystat(userdata)[0]) {
       var embed = new Discord.MessageEmbed();
-      var user = msg.guild.members.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
+      var user = client.users.cache.get(msg.author.id).user.username;
+      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
       require(gtffile.EMBED).warning('⚠️ In A Lobby', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
       msg.channel.send(embed);
       return;
@@ -409,13 +412,14 @@ client.on('message', msg => {
   }
 
   if (command.requirecar) {
-    if (require(gtffile.EMBED).checknocars(userdata)) {
+    console.log(stats.garagecount(userdata) == 0)
+    if (stats.garagecount(userdata) == 0) {
       require(gtffile.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
       return;
     }
   }
 
-  if (msg.guild.members.cache.get(stats.userid(userdata)).user.username == 'everyone' || msg.guild.members.cache.get(stats.userid(userdata)).user.username == 'here') {
+  if (client.users.cache.get(userdata["id"]).username == 'everyone' || client.users.cache.get(userdata["id"]).username == 'here') {
     require(gtffile.EMBED).error('❌ Username Not Allowed', 'Your username is not allowed from this bot. Please choose another username.', embed, msg);
     return;
   }
@@ -464,11 +468,12 @@ client.on('message', msg => {
 
   } catch (error) {
     var embed = new Discord.MessageEmbed();
+    console.log(userdata)
     require(gtffile.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
     console.error(error);
   }
  }
-
+var userdata;
   MongoClient.connect(url, { useUnifiedTopology: true },
     function(err, db) {
       if (err) throw err;
@@ -482,13 +487,33 @@ client.on('message', msg => {
       }).then(() => {  
           stats.save(userdata)
           db.close();
+            executions++
+            console.log(executions)
+    if (executions >= 4) {
+      console.log('COMMAND DELAYING');
+      setTimeout(function() {
+         next()}, 750 * executions);
+        executions--
+    } else {
          next()
+      if (executions == 1) {
+        setTimeout(function() {executions = 0}, 5000);
+      }
+    }
       })
     })
-
-
  
 });
+
+client.api.applications(process.env.USERID).commands.post({
+  data: {
+    name: 'gtfitness',
+    description: 'GT Fitness bot has been created by J24681357.'
+}
+})
+
+client.ws.on('INTERACTION_CREATE', async interaction => {
+})
 
 client.login(process.env.SECRET).then(function() {
  var keys = [];
@@ -518,7 +543,7 @@ client.login(process.env.SECRET).then(function() {
     var index1 = 0
   setTimeout(function() {
     
- require(gtffile.SEASONAL).changeseasonals()
+ require(gtffile.SEASONAL).changeseasonals(false)
     gtftools.interval(
       function() {
         stats.resumerace(keys[index1], client);
@@ -538,19 +563,7 @@ client.login(process.env.SECRET).then(function() {
 
 var executecommand = function(command, args, msg, userdata) {
   try {
-  require(gtffile.MAIN).gtfbotconfig['executions']++;
-    if (require(gtffile.MAIN).gtfbotconfig['executions'] >= 3) {
-      console.log('WAITING');
-      setTimeout(function() {
-        command.execute(msg, args, userdata), 1000 * require(gtffile.MAIN).gtfbotconfig['executions'];
-        require(gtffile.MAIN).gtfbotconfig['executions']--;
-      });
-    } else {
-      command.execute(msg, args, userdata);
-      if (require(gtffile.MAIN).gtfbotconfig['executions'] == 1) {
-        setTimeout(() => (require(gtffile.MAIN).gtfbotconfig['executions'] = 0), 5000);
-      }
-    }
+        command.execute(msg, args, userdata)
 
   } catch (error) {
     var embed = new Discord.MessageEmbed();

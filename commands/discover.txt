@@ -87,7 +87,7 @@ module.exports = {
           resp.on('end', () => {
             setTimeout(function() {
               if (data.includes("The query found over 5000 results.")) {
-                console.log(data)
+                
                 msg.delete({})
                 require(gtffile.EMBED).error(
                   '❌ Error',
@@ -127,7 +127,6 @@ module.exports = {
                     link,
                   ];
                 });
-              console.log(liveries);
               if (liveries.length == 0) {
                 msg.delete({})
                 require(gtffile.EMBED).error(

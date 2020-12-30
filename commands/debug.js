@@ -74,9 +74,9 @@ module.exports = {
         var extra = require("../functions/misc/f_extras");
         return;
       }
-      if (query[0] == "updateseasonal") {
+      if (query[0] == "changeseasonals") {
         var success = true;
-        require(gtffile.SEASONAL).changeseasonals()
+        require(gtffile.SEASONAL).changeseasonals(true)
       }
 
       if (query[0] == "arcaderacelength") {
@@ -295,7 +295,7 @@ module.exports = {
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
-        var track = require(gtffile.TRACKS).Track(tracks[1]);
+        var track = require(gtffile.TRACKS).track({"name":tracks[1]})[0]
         var racesettings = require(gtffile.RACE).setcareerrace(
           event,
           track,

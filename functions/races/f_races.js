@@ -10,8 +10,8 @@ var gtffile = process.env;
 module.exports.setrace = function(racemode, extra) {
   if (racemode == 'beginner') {
     var title = 'Arcade Mode - Beginner';
-    var track = require(gtffile.TRACKS).RandomTrack();
-    var km = track.length;
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
+    var km = track["length"];
     var limit = 10.0;
     var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
     var grid = ['8', '9', '10', '11', '12'];
@@ -21,8 +21,8 @@ module.exports.setrace = function(racemode, extra) {
     var clean = 5;
   } else if (racemode == 'amateur') {
     var title = 'Arcade Mode - Amateur';
-    var track = require(gtffile.TRACKS).RandomTrack();
-    var km = track.length;
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
+    var km = track["length"];
     var limit = 15.0;
     var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
     var grid = ['10', '11', '12', '13', '14', '15', '16'];
@@ -32,8 +32,8 @@ module.exports.setrace = function(racemode, extra) {
     var clean = 4;
   } else if (racemode == 'professional') {
     var title = 'Arcade Mode - Professional';
-    var track = require(gtffile.TRACKS).RandomTrack();
-    var km = track.length;
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
+    var km = track["length"];
     var limit = 30.0;
     var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
     var grid = ['12', '13', '14', '15', '16', '17', '18', '19', '20'];
@@ -43,8 +43,8 @@ module.exports.setrace = function(racemode, extra) {
     var clean = 3;
   } else if (racemode == 'driftbeginner') {
     var title = 'Drift Trial - Beginner';
-    var track = require(gtffile.TRACKS).RandomTrack({ drift: 'Drift' });
-    var km = track.length;
+    var track = require(gtffile.TRACKS).random({options:["Drift"]}, 1)[0]
+    var km = track["length"];
     var limit = 1;
     var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
     var grid = ['1'];
@@ -53,7 +53,7 @@ module.exports.setrace = function(racemode, extra) {
     var chance = 50;
     var clean = 0;
   } else if (racemode == 'endurance') {
-    var track = require(gtffile.TRACKS).RandomTrack();
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
     var km = 0;
     var limit = ['1 Hour', '2 Hours', '3 Hours', '4 Hours', '8 Hours', '12 Hours', '24 Hours'];
     limit = limit[Math.floor(Math.random() * limit.length)];
@@ -72,8 +72,8 @@ module.exports.setrace = function(racemode, extra) {
     var title = 'Arcade Mode - ' + limit + ' of ' + track[0][0];
   } else if (racemode == 'R' || racemode == 'Online') {
     var title = 'ONLINE LOBBY';
-    var track = require(gtffile.TRACKS).RandomTrack();
-    var km = track.length;
+    var track = require(gtffile.TRACKS).random({}, 1)[0]
+    var km = track["length"];
     var limit = 0;
     var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
     var grid = [['ONLINE']];
@@ -108,7 +108,8 @@ module.exports.setrace = function(racemode, extra) {
     time: env.timeemote + ' ' + env.time,
     weather: env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%',
     positions: place,
-    track: track.name,
+    track: track["name"],
+    drivetrains: [],
     cleanbonus: clean,
     difficulty: chance,
     laps: distance[0],
@@ -190,9 +191,9 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
         "upperfpp": racesettings['misc']["car"]["fpp"] + 50,
         "lowerfpp": racesettings['misc']["car"]["fpp"] - 50,
         "condition": "CUSTOM",
-        "gtscarclass": []
+        "gtscarclass": [],
+    "drivetrains": []
     }
-
     var finalgrid = require(gtffile.RACE).creategrid(args, racesettings['misc']["car"], racesettings['grid']);
     }
   } else {
@@ -205,6 +206,7 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
         "lowerfpp": racesettings["fpplimit"] - 50,
         "condition": "GTS",
         "gtscarclass": racesettings["category"],
+        "drivetrains": []
     }
 
     racesettings['misc'] = { car: '' };
@@ -295,7 +297,7 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
 };
 
 module.exports.creategrid = function(args, car, amount) {
-
+console.log(args)
   var makes = args["makes"]
   var models = args["models"]
   var types = args["types"]
@@ -403,7 +405,8 @@ module.exports.start = function(racesettings, racedetails, user, userdata) {
   stats.addtotalmileage(racesettings['km'], racesettings['mi'], userdata);
   stats.addexp(exp, userdata);
 
-  if (racesettings['mode'] == 'CAREER') {
+  if (racesettings['mode'] == 'CAREER' ) {
+    console.log(racesettings['raceid'])
     stats.updatecareerrace(racesettings['raceid'], position, userdata);
   }
 
@@ -441,6 +444,7 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
   embed.setTitle('__' + event['title'] + ' (' + tracks.length + ' Races)' + '__');
   for (var j = 0; j < tracks.length; j++) {
     var raceid = event['eventid'] + '-' + (j + 1).toString();
+    console.log(raceid)
     results = results + numberlist[j] + ' ' + tracks[j][1] + ' - ' + tracks[j][2] + ' Laps ' + stats.checkcareerrace(raceid, userdata) + '\n';
   }
   var prizemoney = event['positions'].slice(0, 3).map(function(x) {
@@ -477,9 +481,9 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
 
     function func(index) {
       var trackname = tracks[index][1];
-      var track = require(gtffile.TRACKS).Track(trackname);
+      var track = require(gtffile.TRACKS).find({"name":[trackname]})[0]
       var racesettings = require(gtffile.RACE).setcareerrace(event, track, currentcar, index);
-      racesettings['misc']['loading'] = '__**Race ' + (index + 1) + ' - ' + track.name + '**__\n' + prizemoney.join(' ') + '\n\n' + '🚘' + '**' + currentcar['name'] + '**';
+      racesettings['misc']['loading'] = '__**Race ' + (index + 1) + ' - ' + track["name"] + '**__\n' + prizemoney.join(' ') + '\n\n' + '🚘' + '**' + currentcar['name'] + '**';
       callback(racesettings);
     }
     for (var index = 0; index < tracks.length; index++) {
@@ -490,7 +494,6 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
 };
 
 module.exports.setcareerrace = function(event, track, currentcar, index) {
-  console.log(event["types"])
   var racesettings = {
     "title": event['title'] + ' - ' + 'Race ' + (index + 1),
     "grid": event['grid'],
@@ -498,12 +501,12 @@ module.exports.setcareerrace = function(event, track, currentcar, index) {
     "time": event['time'],
     "weather": event['weather'],
     "positions": event['positions'],
-    "track": track.name,
+    "track": track["name"],
     "cleanbonus": 3,
     "difficulty": event['difficulty'],
     "laps": event['tracks'][index][2],
-    "km": Math.round(1000 * track.length * event['tracks'][index][2]) / 1000,
-    "mi": Math.round(100 * ((track.length * event['tracks'][index][2]) / 1.609)) / 100,
+    "km": Math.round(1000 * track["length"] * event['tracks'][index][2]) / 1000,
+    "mi": Math.round(100 * ((track["length"] * event['tracks'][index][2]) / 1.609)) / 100,
 
     "mode": 'CAREER',
     "raceid": event['eventid'] + '-' + event['tracks'][index][0],
@@ -519,6 +522,6 @@ module.exports.setcareerrace = function(event, track, currentcar, index) {
     "prize": event['prize'],
     "misc": { "car": currentcar },
   };
-
+console.log(racesettings)
   return racesettings;
 };

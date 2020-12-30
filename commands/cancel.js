@@ -14,7 +14,7 @@ module.exports = {
    roles: [],
    channels: ["testing", "gtf-test-mode"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
    requireuserdata:true,
   requirecar: false,
@@ -58,6 +58,8 @@ module.exports = {
 
     function exitnow() {
       embed.setColor(0x0151b0);
+      
+      require(gtffile.EMBED).success('✅ Success', 'You have left the session.', 5000, false, embed, msg, userdata);
       msg.channel.messages
         .fetch({
           around: stats.raceinprogressstat(userdata)[1][1],
@@ -69,7 +71,6 @@ module.exports = {
       stats.removeracedetails(userdata);
 
       stats.raceinprogress(false, ['', ''], 'EXIT', userdata);
-      require(gtffile.EMBED).success('✅ Success', 'You have left the session.', 5000, false, embed, msg, userdata);
       return;
     }
   },
