@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "start": "forever index.js"
+    "start": "forever start index.js"
   },
   "engines": {
     "node": "13.0.0"
@@ -21,6 +21,7 @@
     "forever": "^3.0.4",
     "graceful-fs": "^4.2.4",
     "mongodb": "^3.6.3",
+    "pm2": "^4.5.1",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {

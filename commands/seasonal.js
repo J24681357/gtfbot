@@ -6,7 +6,6 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfuser = require("/home/runner/gtfbot/index")
 
 module.exports = {
   name: "seasonal",
@@ -27,8 +26,8 @@ module.exports = {
     /* Setup */
     const embed = new Discord.MessageEmbed()
     embed.setColor(0x0151b0)
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
+    var user = msg.author.username
+    embed.setAuthor(user, msg.author.displayAvatarURL())
     var args = "\n" + '`Args: !seasonal [(number)]`' + "\n"
     var page = 0
     var results = ''
@@ -36,7 +35,7 @@ module.exports = {
 
     /* Setup */
   var races;
-
+console.log(query)
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
@@ -111,9 +110,8 @@ module.exports = {
       }
       embed.setTitle("🏁" + " __Seasonal Events__")
 
-      var number = query[1]
+      var number = query[0]
       if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
-        console.log(number)
         if (number !== undefined) {
           require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
           }

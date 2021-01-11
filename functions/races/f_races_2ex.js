@@ -172,8 +172,7 @@ module.exports.driftsection = function(
   args,
   checkpoint,
   userdata,
-   last
-) {
+   last) {
   var difficulty = 60 // low numbers - more difficult
   var score = gtftools.randomInt(0, 100)
   var maxpoints = Math.ceil( ((racesettings["km"]) * 2000) / 1000) * 1000
@@ -182,7 +181,6 @@ module.exports.driftsection = function(
   var bronze = Math.ceil( ((racesettings["km"]* 0.80) * 2000) / 100) * 100
 
   var points = gtftools.randomInt(Math.round(maxpoints/8), Math.round(maxpoints/4))
-  console.log([points, gold, silver, bronze])
   if (last && racesettings["sectors"] >= 1) {
     racesettings["sectors"]--
     return [points, gold, silver, bronze]
@@ -197,7 +195,6 @@ module.exports.driftsection = function(
   } else {
     racesettings["sectors"]--
   }
-  console.log(points)
   return [points, gold, silver, bronze];
 };
 

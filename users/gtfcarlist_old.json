@@ -2927,20 +2927,6 @@
     "rating": "⭐2",
     "manufacturercost": 20000
   },
-  "443": {
-    "make": "Lexus",
-    "name": "Lexus LFA 2010",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/lexus-lf-a-1_0.jpg?itok=ft5czLwa",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
-  "444": {
-    "make": "Lexus",
-    "name": "Lexus LFA Nürburgring Package 2012",
-    "image": "https://www.netcarshow.com/Lexus-LFA_Nurburgring_Package-2012-1024-09.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
   "445": {
     "make": "Lexus",
     "name": "Lexus LS 460 F-Sport 2013",
@@ -3839,7 +3825,7 @@
   "584": {
     "make": "Mitsubishi",
     "name": "Mitsubishi Lancer Evolution IX MR 2006",
-    "image": "http://www.dragtimes.com/images/15552-2006-Mitsubishi-Lancer-EVO.jpg",
+    "image": "",
     "rating": "⭐2",
     "manufacturercost": 10000
   },

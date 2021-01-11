@@ -105,6 +105,8 @@ module.exports.readysetgo = function(
       var showcar = arcade1[0];
       racelength = arcade1[1];
     }else if (racesettings["mode"] == "DRIFT") {
+      racesettings["sectors"] = racesettings["originalsectors"]
+      racesettings["points"] = 0
       let drift1 = race2ex.driftracelength(
         user,
         racedetails,

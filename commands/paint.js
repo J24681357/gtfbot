@@ -47,8 +47,7 @@ module.exports = {
       results ="__**Gloss Paints**__ - !paint [gloss|g]" + "\n" +
       "__**Metallic Paints**__ - !paint [metallic|m]" + "\n" +
       "__**Pearl Paints**__ - !paint [pearl|p]" + "\n" +
-      "__**Matte Paints**__ - !paint [matte|ma]" + "\n" +
-      "__**Special Paints**__ - !paint [special|s]"
+      "__**Matte Paints**__ - !paint [matte|ma]" + "\n"
       var list = results.split("\n").map(function(x) {
         return [x, " "]
       })
@@ -57,7 +56,7 @@ module.exports = {
 
       embed.setDescription(results)
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 7, [query, "paint", true, info], embed, msg, userdata)
+      gtftools.createpages(results2, list, page, "", "", true, "", 6, [query, "paint", true, info], embed, msg, userdata)
       return
     }
 

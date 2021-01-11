@@ -92,6 +92,11 @@ module.exports.intro = function(userdata, command, msg) {
             var users = dbo.collection("USERS")
             users.insertOne(userdata, (err, result) => {
             })
+            dbo.collection("REPLAYS").insertOne({
+      "id": userdata["id"],
+      "replays": {},
+    }, (err, result) => {
+            })
           })
         embed.setTitle('__**Setup Complete**__');
         embed.setColor(0x216c2a);

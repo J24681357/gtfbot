@@ -75,7 +75,7 @@ module.exports = {
       embed.setTitle('__Drift Trial - Car Selection__');
       var gtfcar = stats.currentcar(userdata)
 
-      results2 = '~~🚘' + ' ' + gtfcar['name'] + '~~\n' + emote.gtlogowhite + ' ' + 'GT Sport Loaner Car' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
+      results2 = '🚘' + ' ' + gtfcar['name'] + '\n' + emote.gtlogowhite + ' ' + '~~GT Sport Loaner Car~~' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
 
       embed.setDescription(results2);
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));

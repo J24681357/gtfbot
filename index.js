@@ -228,8 +228,7 @@ client.on('ready', () => {
 });
 
 client.on('rateLimit', (info) => {
-  console.log(info)
-  console.log(client.users.cache.get("237450759233339393").user.username)
+  client.users.cache.get("237450759233339393").send("**RATE LIMIT DETECTED**" + "\n\n" + JSON.stringify(info))
 })
 
 client.on('message', async msg => {
@@ -380,8 +379,8 @@ if (userdata === undefined) {
     }
     if (stats.raceinprogressstat(userdata)[0]) {
       var embed = new Discord.MessageEmbed();
-      var user = client.users.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
+      var user = msg.author.username;
+      embed.setAuthor(user, msg.author.displayAvatarURL());
 
       require(gtf.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
       msg.channel.send(embed).then(msg => {
@@ -448,7 +447,7 @@ if (userdata === undefined) {
     }
   }
 
-  if (client.users.cache.get(userdata["id"]).username == 'everyone' || client.users.cache.get(userdata["id"]).username == 'here') {
+  if (msg.author.username == 'everyone' || msg.author.username == 'here') {
     require(gtf.EMBED).error('❌ Username Not Allowed', 'Your username is not allowed from this bot. Please choose another username.', embed, msg);
     return;
   }

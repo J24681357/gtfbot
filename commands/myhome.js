@@ -77,6 +77,7 @@ module.exports = {
       "__**🇸Top Speed Run**__\n!ssrx"
       var places = "__**🛒GTF Car Dealerships**__\n!car" + "\n" +
       "__**📦GTF Auto - Tuning Shop**__\n!tune" + "\n" + 
+       "__**🎨GTF Auto - Paint Shop**__\n!paint" + "\n" + 
       "__**🛠Car Tuning**__\n!tuning" + "\n"
       var myhome = "__**🚘Garage**__\n!garage" + "\n" +
               "__**👤Profile**__\n!profile" + "\n" + 
@@ -99,6 +100,12 @@ module.exports = {
         showcasenumber = -1
         clearInterval(s)
         require("../commands/career").execute(msg, '', userdata)
+      }
+      function seasonal() {
+        msg.delete({timeout:0})
+        showcasenumber = -1
+        clearInterval(s)
+        require("../commands/seasonal").execute(msg, '', userdata)
       }
       function arcade() { 
         msg.delete({timeout:0})
@@ -172,9 +179,9 @@ module.exports = {
         clearInterval(s)
         require("../commands/myhome").execute(msg, ['2'], userdata) 
       }
-      var emojilist = [['🏁','🏁', career, "Once"], ['🅰','🅰', arcade], ['🇩','🇩', drift], ['🇸','🇸', ssrx], ['🛒','🛒', gtfdealership], ['🛠','🛠', gtftuning],  ['🎨','🎨', gtfpaints], ['🚘','🚘', garage], ['👤','👤', profile], ["🎞", "🎞", replay], ["⚙", "⚙", settings], ["🇱", "🇱", levels], ["🌀", "🌀", misc]]
+      var emojilist = [['🏁','🏁', career, "Once"], ["🎉" ,"🎉", seasonal],  ['🅰','🅰', arcade], ['🇩','🇩', drift], ['🇸','🇸', ssrx], ['🛒','🛒', gtfdealership], ['🛠','🛠', gtftuning],  ['🎨','🎨', gtfpaints], ['🚘','🚘', garage], ['👤','👤', profile], ["🎞", "🎞", replay], ["⚙", "⚙", settings], ["🇱", "🇱", levels], ["🌀", "🌀", misc]]
     
-      //gtftools.createreactions(emojilist, msg, userdata) 
+      gtftools.createreactions(emojilist, msg, userdata) 
       
       var s = setInterval(function() {
       

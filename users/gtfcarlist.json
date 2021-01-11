@@ -1,7 +1,7 @@
 {
   "abarth": [
     {
-"make": "Abarth",
+      "make": "Abarth",
       "name": "Abarth 124 Spider",
       "year": "2016",
       "type": "Production",
@@ -14,11 +14,12 @@
       "condition": 100,
       "special": [],
       "image": "http://www.guide-autosport.com/wp-content/uploads/photo-gallery/Abarth%20124%20Spider/abarth-124-spider-15.jpg"
-    },{
-    "make": "Abarth",
-    "name": "Abarth 1500 Biposto Bertone B.A.T 1",
-    "year": "1952",
-     "type": "Production",
+    },
+    {
+      "make": "Abarth",
+      "name": "Abarth 1500 Biposto Bertone B.A.T 1",
+      "year": "1952",
+      "type": "Production",
       "power": 74,
       "weight": 1918,
       "tires": "Sports: Hard",
@@ -26,9 +27,11 @@
       "carcostm": 10,
       "aerom": 1,
       "condition": 100,
-      "special": ["x10"],
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1952_Abarth_1500_Biposto_BAT_1_-_Flickr_-_edvvc_%281%29.jpg"
-  },
+      "special": [
+        "x10"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1952_Abarth_1500_Biposto_BAT_1_-_Flickr_-_edvvc_%281%29.jpg"
+    },
     {
       "make": "Abarth",
       "name": "Abarth Grande Punto",
@@ -109,10 +112,10 @@
       "image": "https://pbs.twimg.com/media/EI6u9p2WkAA5EJ8.jpg"
     },
     {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo Brera 3.2 JTS V6 Q4",
-    "year": "2006",
- "type": "Production",
+      "make": "Alfa-Romeo",
+      "name": "Alfa Romeo Brera 3.2 JTS V6 Q4",
+      "year": "2006",
+      "type": "Production",
       "power": 256,
       "weight": 3858,
       "tires": "Sports: Hard",
@@ -121,8 +124,8 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Alfa_Romeo_Brera_Ti_2011_%2810750450035%29.jpg"
-  },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Alfa_Romeo_Brera_Ti_2011_%2810750450035%29.jpg"
+    },
     {
       "make": "Alfa-Romeo",
       "name": "Alfa Romeo MiTo 1.4 T Sport",
@@ -282,10 +285,10 @@
   ],
   "BMW": [
     {
-    "make": "BMW",
-    "name": "BMW M3 Sport Evolution (E30)",
-    "year": "1989",
- "type": "Production",
+      "make": "BMW",
+      "name": "BMW M3 Sport Evolution (E30)",
+      "year": "1989",
+      "type": "Production",
       "power": 235,
       "weight": 2646,
       "tires": "Sports: Hard",
@@ -294,8 +297,8 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "http://www.topcarrating.com/bmw/1989-bmw-m3-sport-evolution-e30.jpg"
-  },
+      "image": "http://www.topcarrating.com/bmw/1989-bmw-m3-sport-evolution-e30.jpg"
+    },
     {
       "make": "BMW",
       "name": "BMW M3 Coupe (E92)",
@@ -408,10 +411,10 @@
   ],
   "dodge": [
     {
-    "make": "Dodge",
-    "name": "Dodge Challenger R/T",
-    "year": "1970",
-     "type": "Production",
+      "make": "Dodge",
+      "name": "Dodge Challenger R/T",
+      "year": "1970",
+      "type": "Production",
       "power": 425,
       "weight": 3801,
       "tires": "Sports: Hard",
@@ -420,8 +423,8 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://ccmarketplace.azureedge.net/cc-temp/listing/103/311/9809467-1970-dodge-challenger-r-t-thumb-c.jpg"
-  },
+      "image": "https://ccmarketplace.azureedge.net/cc-temp/listing/103/311/9809467-1970-dodge-challenger-r-t-thumb-c.jpg"
+    },
     {
       "make": "Dodge",
       "name": "Dodge Charger SRT Hellcat",
@@ -451,11 +454,12 @@
       "condition": 100,
       "special": [],
       "image": "http://www.thetruthaboutcars.com/wp-content/uploads/2014/06/IMG_0339.jpg"
-    },{
-    "make": "Dodge",
-    "name": "Dodge Viper GTS",
-    "year": "2013",
-"type": "Production",
+    },
+    {
+      "make": "Dodge",
+      "name": "Dodge Viper GTS",
+      "year": "2013",
+      "type": "Production",
       "power": 640,
       "weight": 3430,
       "tires": "Sports: Hard",
@@ -464,8 +468,8 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b77152c3d0_-_2013-srt-viper-lg.jpg"
-  }
+      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b77152c3d0_-_2013-srt-viper-lg.jpg"
+    }
   ],
   "ferrari": [
     {
@@ -516,11 +520,12 @@
       "image": "http://cdn.hiconsumption.com/wp-content/uploads/2013/03/2013-Ferrari-LaFerrari-1.jpg"
     }
   ],
-  "fiat": [ {
-    "make": "Fiat",
-    "name": "Fiat 500",
-    "year": "2008",
- "type": "Production",
+  "fiat": [
+    {
+      "make": "Fiat",
+      "name": "Fiat 500",
+      "year": "2008",
+      "type": "Production",
       "power": 85,
       "weight": 2050,
       "tires": "Sports: Hard",
@@ -529,8 +534,9 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png"
-  }],
+      "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png"
+    }
+  ],
   "ford": [
     {
       "make": "Ford",
@@ -578,9 +584,9 @@
       "image": "https://i.ytimg.com/vi/zqz6QQl4mAw/maxresdefault.jpg"
     },
     {
-    "make": "Ford",
-    "name": "Ford Mustang Gr.3 Road Car (Gran Turismo)",
-     "year": "2015",
+      "make": "Ford",
+      "name": "Ford Mustang Gr.3 Road Car (Gran Turismo)",
+      "year": "2015",
       "type": "Aftermarket",
       "power": 503,
       "weight": 3307,
@@ -589,9 +595,11 @@
       "carcostm": 6,
       "aerom": 1,
       "condition": 100,
-      "special": ["x2"],
-    "image": "https://www.gtplanet.net/wp-content/uploads/2017/11/Gran-Turismo-Sport-Mustang-Gr3-alxndrustinov-860x484.jpg"
-  },
+      "special": [
+        "x2"
+      ],
+      "image": "https://www.gtplanet.net/wp-content/uploads/2017/11/Gran-Turismo-Sport-Mustang-Gr3-alxndrustinov-860x484.jpg"
+    },
     {
       "make": "Ford",
       "name": "Ford Focus ST",
@@ -673,11 +681,11 @@
     }
   ],
   "hyundai": [
-     {
-    "make": "Hyundai",
-    "name": "Hyundai Genesis Coupe 3.8 Track",
-    "year": "2013",
-    "type": "Production",
+    {
+      "make": "Hyundai",
+      "name": "Hyundai Genesis Coupe 3.8 Track",
+      "year": "2013",
+      "type": "Production",
       "power": 343,
       "weight": 3433,
       "tires": "Sports: Hard",
@@ -686,12 +694,12 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "http://st.motortrend.com/uploads/sites/5/2012/02/2013-Hyundai-Genesis-Coupe-left-side-front-three-quarter-on-track.jpg"
-  },
-   {
-    "make": "Hyundai",
-    "name": "Hyundai Genesis Gr.4 (Gran Turismo)",
-     "year": "2013",
+      "image": "http://st.motortrend.com/uploads/sites/5/2012/02/2013-Hyundai-Genesis-Coupe-left-side-front-three-quarter-on-track.jpg"
+    },
+    {
+      "make": "Hyundai",
+      "name": "Hyundai Genesis Gr.4 (Gran Turismo)",
+      "year": "2013",
       "type": "Race Car: GT4",
       "power": 385,
       "weight": 2976,
@@ -701,8 +709,8 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-    "image": "http://www.igcd.net/images/139/313.jpg"
-  },
+      "image": "http://www.igcd.net/images/139/313.jpg"
+    },
     {
       "make": "Hyundai",
       "name": "Hyundai Veloster Turbo 7DCT",
@@ -738,9 +746,9 @@
   ],
   "jaguar": [
     {
-    "make": "Jaguar",
-    "name": "Jaguar C-X75 Prototype",
-    "year": "2013",
+      "make": "Jaguar",
+      "name": "Jaguar C-X75 Prototype",
+      "year": "2013",
       "type": "Production",
       "power": 890,
       "weight": 3750,
@@ -749,9 +757,12 @@
       "carcostm": 50,
       "aerom": 1,
       "condition": 100,
-      "special": ["Hybrid", "Concept"],
-    "image": "https://car-images.bauersecure.com/upload/30489/images/1040x585/000084f33b70-ac91-417c-9.jpg"
-  },
+      "special": [
+        "Hybrid",
+        "Concept"
+      ],
+      "image": "https://car-images.bauersecure.com/upload/30489/images/1040x585/000084f33b70-ac91-417c-9.jpg"
+    },
     {
       "make": "Jaguar",
       "name": "Jaguar F-Type R Coupe",
@@ -783,8 +794,8 @@
       "image": "http://www.thesupercars.org/wp-content/uploads/2011/03/2011-Jaguar-XKR-S-Front-Angle-480.jpg"
     },
     {
-    "make": "Jaguar",
-    "name": "Jaguar XJ220",
+      "make": "Jaguar",
+      "name": "Jaguar XJ220",
       "year": "1992",
       "type": "Production",
       "power": 542,
@@ -795,11 +806,12 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://www.ultimatecarpage.com/images/car/223/Jaguar-XJ220-3461.jpg"
-  }
+      "image": "https://www.ultimatecarpage.com/images/car/223/Jaguar-XJ220-3461.jpg"
+    }
   ],
-  "KTM": [{
-   "make": "KTM",
+  "KTM": [
+    {
+      "make": "KTM",
       "name": "KTM X-Bow R",
       "year": "2012",
       "type": "Production",
@@ -812,7 +824,8 @@
       "condition": 100,
       "special": [],
       "image": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/motor/2017/06/19/104410/KTM-X-BOW.jpg"
-    }],
+    }
+  ],
   "lamborghini": [
     {
       "make": "Lamborghini",
@@ -912,6 +925,36 @@
     },
     {
       "make": "Lexus",
+      "name": "Lexus LFA",
+      "year": "2010",
+      "type": "Production",
+      "power": 553,
+      "weight": 3263,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 15,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/lexus-lf-a-1_0.jpg?itok=ft5czLwa"
+    },
+    {
+      "make": "Lexus",
+      "name": "Lexus LFA Nürburgring Package",
+      "year": "2012",
+      "type": "Production",
+      "power": 563,
+      "weight": 3327,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 17,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.automobilemag.com/uploads/sites/11/2020/04/2012-Lexus-LFA-Nurburgring-Package-lead-image.jpg?fit=around%7C875:492"
+    },
+    {
+      "make": "Lexus",
       "name": "Lexus RC F Track Edition",
       "year": "2020",
       "type": "Production",
@@ -974,6 +1017,21 @@
     }
   ],
   "mazda": [
+    {
+      "make": "Mazda",
+      "name": "Mazda Atenza Sedan XD L Package",
+      "year": "2015",
+      "type": "Production",
+      "power": 173,
+      "weight": 3527,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://image-cdn.beforward.jp/large/202012/2190488/BH658664_f290f9.jpg"
+    },
     {
       "make": "Mazda",
       "name": "Mazda MX-5 (NA)",
@@ -1099,11 +1157,12 @@
       "image": "https://www.torquenews.com/sites/default/files/image-1084/%5Btitle-raw%5D/100390328_2013-mini-john-cooper-works-gp_0.jpeg"
     }
   ],
-  "mitsubishi": [ {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Eclipse GT",
-    "year" : "2006",
-     "type": "Production",
+  "mitsubishi": [
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi Eclipse GT",
+      "year": "2006",
+      "type": "Production",
       "power": 263,
       "weight": 3472,
       "tires": "Sports: Hard",
@@ -1112,12 +1171,13 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2006/2006-mitsubishi-eclipse-frontside_mieclgt061.jpg"
-  },{
-    "make": "Mitsubishi",
-    "name": "Mitsubishi i-MiEV",
-    "year": "2012",
-    "type": "Production",
+      "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2006/2006-mitsubishi-eclipse-frontside_mieclgt061.jpg"
+    },
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi i-MiEV",
+      "year": "2012",
+      "type": "Production",
       "power": 66,
       "weight": 2579,
       "tires": "Sports: Hard",
@@ -1125,13 +1185,31 @@
       "carcostm": 0.5,
       "aerom": 1,
       "condition": 100,
-      "special": ["Electric"],
-    "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2014-mitsubishi-imiev-16-1559940388.jpg?crop=0.891xw:0.998xh;0,0.00481xh&resize=640:*"
-  },{
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Lancer Evolution X Final Edition",
-    "year": "2015",
-     "type": "Production",
+      "special": [
+        "Electric"
+      ],
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2014-mitsubishi-imiev-16-1559940388.jpg?crop=0.891xw:0.998xh;0,0.00481xh&resize=640:*"
+    },
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi Lancer Evolution IX MR",
+      "year": "2006",
+      "type": "Production",
+      "power": 286,
+      "weight": 3285,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.dragtimes.com/images/15552-2006-Mitsubishi-Lancer-EVO.jpg"
+    },
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi Lancer Evolution X Final Edition",
+      "year": "2015",
+      "type": "Production",
       "power": 310,
       "weight": 3373,
       "tires": "Sports: Hard",
@@ -1140,8 +1218,9 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "http://st.motortrend.com/uploads/sites/5/2015/10/2015-mitsubishi-lancer-evolution-final-edition-us-front-three-quarter-03.jpg"
-  }],
+      "image": "http://st.motortrend.com/uploads/sites/5/2015/10/2015-mitsubishi-lancer-evolution-final-edition-us-front-three-quarter-03.jpg"
+    }
+  ],
   "mercedes-benz": [
     {
       "make": "Mercedes-Benz",
@@ -1349,8 +1428,9 @@
       "image": "https://lh3.googleusercontent.com/proxy/28b6Vl0zrdbJEzlHRISgCa-IEvPHpMFoRVNdfazv31nEHKe6pmjADJaYb_XWEe31_6YeFm6GmebydeL6ZOIHqpsLcAEClqRjpCQLIsr0iBQa7ibsAtRyYRkllxwK1q0qU3d8SouKP7GouxpdPGiEuLTo7-mZSkjCVdgO3yK2gyQYyM0FdJ3hi2nr_dJwMiRvBBb0NsG9Ze4oYdJdRXIK0RTY3FD0K18"
     }
   ],
-  "porsche":[{
-"make": "Porsche",
+  "porsche": [
+    {
+      "make": "Porsche",
       "name": "Porsche 911 Turbo (930)",
       "year": "1981",
       "type": "Production",
@@ -1363,8 +1443,9 @@
       "condition": 100,
       "special": [],
       "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE911Turbo-930--2987_5.jpg"
-    },{
-"make": "Porsche",
+    },
+    {
+      "make": "Porsche",
       "name": "Porsche 911 GT3 (996)",
       "year": "2001",
       "type": "Production",
@@ -1377,8 +1458,9 @@
       "condition": 100,
       "special": [],
       "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE-911-GT3--996--2927_27.jpg"
-    },{
-"make": "Porsche",
+    },
+    {
+      "make": "Porsche",
       "name": "Porsche 911 GT2 RS (991)",
       "year": "2018",
       "type": "Production",
@@ -1392,7 +1474,7 @@
       "special": [],
       "image": "https://pictures.topspeed.com/IMG/crop/201706/2018-porsche-911-gt2-rs-71_800x0w.jpg"
     }
-],
+  ],
   "renault": [
     {
       "make": "Renault",
@@ -1489,9 +1571,10 @@
   ],
   "subaru": [
     {
-    "make": "Subaru",
-    "name": "Subaru Impreza 22B STi Version Coupe 1998",
- "type": "Production",
+      "make": "Subaru",
+      "name": "Subaru Impreza 22B STi Version Coupe",
+      "year": "1998",
+      "type": "Production",
       "power": 290,
       "weight": 2800,
       "tires": "Sports: Hard",
@@ -1500,8 +1583,8 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-    "image": "https://www.autotribute.com/wp-content/uploads/2013/12/1998-Subaru-Impreza-22b-STi-Coupe.jpg"
-  },
+      "image": "https://www.autotribute.com/wp-content/uploads/2013/12/1998-Subaru-Impreza-22b-STi-Coupe.jpg"
+    },
     {
       "make": "Subaru",
       "name": "Subaru Impreza WRX STI",
@@ -1531,6 +1614,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.carscoops.com/wp-content/uploads/2014/08/Subaru-WRX-STI-JDM-spec-0.jpg"
+    },
+    {
+      "make": "Subaru",
+      "name": "Subaru WRX STI S209",
+      "year": "2020",
+      "type": "Production",
+      "power": 341,
+      "weight": 3485,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://imagesvc.timeincapp.com/v3/foundry/image/?q=70&w=1440&url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2019%2F01%2Ff8a9911_cover-1-e1547491895241.jpg%3Fquality%3D85"
     }
   ],
   "tesla": [

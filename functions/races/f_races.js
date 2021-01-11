@@ -117,6 +117,7 @@ module.exports.setrace = function(racemode, extra) {
   };
 
   if (racemode == 'driftbeginner') {
+    racesettings['originalsectors'] = 5;
     racesettings['sectors'] = 5;
     racesettings['current'] = 0;
     racesettings['points'] = 0;
@@ -281,13 +282,7 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
           embed.setDescription(results);
           msg.edit(embed);
         }
-        function help() {
-          results = gtftools.emojilist([emote.flag + ' Start Race', emote.tracklogo + ' Race Details', emote.cargrid + ' Starting Grid']);
-
-          embed.setDescription(results + '\n\n' + '❓ **To quit from a session in progress, use __!cancel__.**');
-          msg.edit(embed);
-        }
-        var emojilist = [[emote.flag, 'flag', flagstartrace, 'Once'], [emote.tracklogo, 'trackgtfitness', trackdetails], [emote.cargrid, 'gtfcargrid', cargrid], ['❓', '❓', help]];
+        var emojilist = [[emote.flag, 'flag', flagstartrace, 'Once'], [emote.tracklogo, 'trackgtfitness', trackdetails], [emote.cargrid, 'gtfcargrid', cargrid]];
 
         gtftools.createreactions(emojilist, msg, userdata);
       });

@@ -57,36 +57,31 @@ module.exports.savem = function(title, results, racedetails, grid, userdata) {
       if (err) throw err;
       var dbo = db.db("GTFitness");
 
-      dbo.collection("REPLAYS").find({}).forEach(row => {
-        if (typeof row["id"] === userdata["id"]) {
-          console.log(replaydata)
-          found = true
-        }
-        console.log("Replay Saved.")
-      })
-      if (found) {
+      dbo.collection("REPLAYS").find({"id": userdata["id"]}).forEach(row => {
+        console.log("found")
+        replaydata = row
+        console.log(row)
         add()
         dbo.collection("REPLAYS").replaceOne({ "id": userdata["id"] }, replaydata)
-      } else {
+        found = true
+      })
+/*if (!found) {
         doit()
         add()
         dbo.collection("REPLAYS").insertOne(replaydata)
-      }
+}*/
 
     }
   )
 
   function doit() {
-    replaydata = {
-      "id": userdata["id"],
-      "replays": {},
-    }
+
 
   }
 
   function add() {
-    var size = Object.keys(replaydata["replays"]).length
-    replaydata["replays"][size + 1] = [title, results, racedetails, grid, stats.lastonline(userdata)]
+    var size = Object.keys(replaydata["replays"]).length + 1
+    replaydata["replays"][size] = [title, results, racedetails, grid, stats.lastonline(userdata)]
   }
 
 }
