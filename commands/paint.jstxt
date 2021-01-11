@@ -1,8 +1,6 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -114,7 +112,7 @@ module.exports = {
       "__**Pearl Paints**__ - !paint [pearl|p]" + "\n" +
       "__**Matte Paints**__ - !paint [matte|ma]" + "\n" +
       "__**Special Paints**__ - !paint [special|s]" + "\n\n" +
-      "❓ **Choose a type of paint from the list above.**"
+      
 
 
     embed.setDescription(results);

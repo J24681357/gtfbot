@@ -1,4 +1,3 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf");
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
 var emote = require("/home/runner/gtfbot/index");
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
@@ -98,6 +97,7 @@ module.exports.islevelup = function(id) {
   var explevels = require(gtffile.EXP).ExpLevels()
   
 for (var i = level; i < Object.keys(explevels).length; i++) {
+
   if (exp >= explevels[(i + 1).toString()]["exp"]) {
     levelup++
     levelupbool = true

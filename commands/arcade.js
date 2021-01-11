@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -30,8 +30,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
-    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+    var user = msg.author.username;
+    embed.setAuthor(user, msg.author.displayAvatarURL());
     var args = '\n' + '`Args: !arcade ["mode"]`' + '\n';
     var page = 0
     var results = '';
@@ -63,18 +63,17 @@ module.exports = {
       }
     }
 
-
     if (racemode == 'beginner' || racemode == 'b' || racemode == 'sunday') {
       ready = true;
       levelselect = 'beginner';
     } else if (racemode == 'amateur' || racemode == 'a') {
-      if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(5, embed, msg, userdata)) {
         return;
     }
       ready = true;
       levelselect = 'amateur';
     } else if (racemode == 'professional' || racemode == 'pro') {
-      if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(20, embed, msg, userdata)) {
         return;
       }
       ready = true;
@@ -105,12 +104,12 @@ module.exports = {
       msg.channel.send({ embed: embed}).then(msg => {
         function selectgaragemode() {
           embed.fields = [];
-          return require(gtffile.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
+          return require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
         }
 
         function selectgtsportmode() {
           embed.fields = [];
-          return require(gtffile.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
+          return require(gtf.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
         }
 
         var emojilist = [['🚘', '🚘', selectgaragemode], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];

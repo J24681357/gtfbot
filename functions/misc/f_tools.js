@@ -11,6 +11,13 @@ module.exports.randomInt = function(min, max) {
   return Math.floor(min + Math.random()*(max + 1 - min))
 }
 
+module.exports.betweenInt = function(number, min, max) {
+  if (isNaN(number)) {
+    return false
+  }
+  return (parseInt(number) >= min && parseInt(number) <= max)
+}
+
 module.exports.removeDups = function(names) {
   let unique = {};
   names.forEach(function(i) {
@@ -61,7 +68,7 @@ module.exports.lapcalc = function(km, limit) {
   return [laps, totalkm, totalmi]
 }
 
-module.exports.catcalc = function(category, weather, car) {
+module.exports.catcalc = function(category, weather, fpp) {
   category = category[0]
 
   if (weather.includes("%")){
@@ -73,7 +80,7 @@ module.exports.catcalc = function(category, weather, car) {
   //70 - 195
 
   if (category == "CUSTOM") {
-    var fpp = require(gtffile.PERF).perf(car, "GARAGE")["fpp"]
+    console.log(fpp)
     var percentage = fpp / 1200
     percentage = ((195-70) * percentage) + 70
     return percentage + (weather * 15)
@@ -158,7 +165,12 @@ module.exports.emojilist = function(list) {
   return nlist
 }
 
-module.exports.createpages = function(results, list, page, statfront, statback, numbers, special, count, [query, name, reactionson, info], embed, msg, userdata) {
+module.exports.createpages = function(results, list, page, statfront, statback, numbers, special, count, [query, name, reactionson, info], embed, msg, userdata, dm) {
+  if (dm !== undefined) {
+    msg_channel = msg.author
+  } else {
+    msg_channel = msg.channel
+  }
     var select = 0
     var reset = true
     var index = 0
@@ -171,8 +183,9 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
     embed.setDescription(results + "\n" + info)
+    var msg2 = msg
   
-    msg.channel.send(embed).then(msg => {
+    msg_channel.send(embed).then(msg => {
       
     function selectoption() {
       if (name == "car" && numbers == false) {
@@ -187,7 +200,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       }
       query.push(pick)
         
-      require("../../commands/" + name).execute(msg,query,userdata)
+      require("../../commands/" + name).execute(msg2,query,userdata)
       return stats.save(userdata)
       }
     
@@ -278,8 +291,7 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       gtftools.createreactions(emojilist, msg, userdata)
     }
     })
- 
-}
+  }
 
 module.exports.checkrole = function(role, name, msg, embed) {
   var roles = []
@@ -387,8 +399,10 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
   var i = 0;
   var id = userdata["id"]
   var reactid = stats.count(userdata);
-  var executions = 0 
+  var l = require('discord.js-rate-limiter').RateLimiter;
+  var rateLimiteradd = new l(1, 1500);
   filter(i)
+  
   
       function increase() {
     i++
@@ -417,7 +431,6 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
     const filter11 = msg.createReactionCollector(Filter1, { timer: 60 * 1000 , dispose:true});
 
       filter11.on("collect", r => {
-        
       next(r)
 
       });
@@ -425,21 +438,15 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
       filter11.on("remove", r => {
       next(r)
     })
-  function next(r) {
-    executions++
-    console.log(executions)
-    if (executions >= 2) {
-      setTimeout(function() {
-         go()
-        executions--
-         }, 1000 * executions);
-    } else {
-go()
-      if (executions >= 1) {
-        setTimeout(function() {executions = 0}, 5000);
-    }
-    }
-      function go() {
+ function next(r) {
+ var limited = rateLimiteradd.take(msg.author.id);
+ if (limited) {
+   console.log("Rate Limit")
+   return
+ }
+ go(r)
+}
+      function go(r) {
     const notbot = r.users.cache
           .filter(clientuser => clientuser.id == id)
           .first();
@@ -465,9 +472,8 @@ go()
         return func()
   }
 
-    }
-  })
-  
+    })
+
   increase()
   }
 }

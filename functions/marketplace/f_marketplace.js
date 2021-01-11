@@ -1,4 +1,3 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf")
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats")
 var emote = require("/home/runner/gtfbot/index")
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools")
@@ -32,7 +31,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (require(gtffile.EMBED).checkgarageerror(embed, msg, userdata)) {
       return
     }
-    fpp = "\n**Specs: " + fpp + "**" + emote.fpp + "**" + " | " + item["power"] + "hp" + " | " + item["weight"] + "ibs"  + "**"
+    fpp = "\n**Specs: " + fpp + "**" + emote.fpp + "**" + " | " + item["power"] + "hp" + " | " + item["weight"] + "lbs"  + "**"
   }
   if (type == "ROLE") {
     var name = item[0]
@@ -83,35 +82,40 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
       powerdesc = "\n" + "**Power: " + perf1["power"] + "hp -> " + perf2["power"] + "hp**"
     }
         if (perf1["weight"] != perf2["weight"]) {
-      weightdesc = "\n" + "**Weight: " + perf1["weight"] + "ibs -> " + perf2["weight"] + "ibs**"
+      weightdesc = "\n" + "**Weight: " + perf1["weight"] + "lbs -> " + perf2["weight"] + "lbs**"
     }
 
     fpp = "\n**FPP: " + perf1["fpp"] + emote.fpp + " -> " + perf2["fpp"] + "**" + emote.fpp +  powerdesc + weightdesc
   }
   if (type == "PAINT") {
     if (stats.currentcarmain(userdata) == "No car.") {
-      require(gtffile.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg)
+      require(gtffile.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg, userdata)
       return
     }
     var car = stats.currentcar(userdata)
 
-    var type1 = item[1]
-    var name = item[2]
-    var cost = item[3]
+    var type1 = item["type"]
+    var name = item["type"] + " " + item["name"]
+    var cost = item["cost"]
     var mcost = cost
-    var includefpp = item[4]
-    var id = require(gtffile.PARTS).paintid(name, item[0])
-    item[0] = id
 
-    if (car[type1][0] == id) {
-      require(gtffile.EMBED).error("❌ Same Paint", "You already have this paint on your **" + car["name"] + "**.", embed, msg, userdata)
-      return
+    replacement = "\n**" + car["color"]["current"] + " -> " + name + "**\n"
+
+    type1 = type1.toLowerCase()
+    if (item["name"] == "Stock") {
+      part_tostock = true
+      if (car[type1]["current"] == "Stock") {
+        require(gtffile.EMBED).error("❌ Paint Already Apllied", "This paint is already painted on your **" + car["name"] + "**.", embed, msg, userdata)
+        return
+      }
     }
 
-    if (car[type1][0] != "S") {
-      replacement = "\n**" + require(gtffile.PARTS).getpart(type1, car[type1][0])[0] + " -> " + name + "**\n"
+    if (car["color"]["current"] == "Stock") {
+      var oldpart = { name: "Stock", type: type1, cost: 0 }
+    } else {
+      var oldpart = require(gtffile.PAINTS).find({ name: car["color"]["current"], type: type1 })[0]
     }
-    applytocurrentcar = "\n\n" + "⚠️ This will be painted to your **" + car["name"] + "**."
+    oldpartmessage = "\nRepainted from **" + car["color"]["current"] + "**."
   }
 
   if (stats.credits(userdata) - mcost < 0) {
@@ -120,11 +124,11 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
 
   if (part_tostock) {
-    var results = "Revert **" + car[type1]["current"] + "** to **Stock**? " + applytocurrentcar + replacement + fpp
+    var results = "Revert **" + car["color"]["current"] + "** to **Stock**? " + applytocurrentcar + replacement + fpp
   } else if (part_in_inv) {
     var results = "Reinstall **" + name + "** for no cost? " + applytocurrentcar + replacement + fpp
   } else {
-    var results = "Purchase **" + name + "**?** " + mcost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + emote.credits + applytocurrentcar + replacement + fpp
+    var results = "Purchase **" + name + "**?** " + gtftools.numFormat(mcost) + "**" + emote.credits + applytocurrentcar + replacement + fpp
   }
 
   embed.setDescription(results)
@@ -156,9 +160,13 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
         }
       }
       if (type == "PAINT") {
+         if (part_tostock) {
+          require(gtffile.PERF).paint(item, userdata)
+        } else {
         stats.addcredits(-cost, userdata)
-        require(gtffile.PARTS).install(item, userdata)
+          require(gtffile.PERF).paint(item, userdata)
         installedoncurrentcar = "Painted **" + name + "** on **" + car["name"] + "**."
+        }
       }
 
       if (part_tostock) {

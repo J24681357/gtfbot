@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -8,10 +7,16 @@ const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
 
-module.exports.speedcalc = function(number) {
+module.exports.speedcalc = function(number, gtfcar) {
   // based from careerdifficultycalc
   var rnorm = require("random-normal")
   var topspeed = rnorm({"mean": (number * 1.3), "dev": 15})
+  var value = gtfcar["transmission"]["tuning"]
+  if (value <= 0) {
+    topspeed = topspeed * (1 - (0.04 * Math.abs(value)))
+  } else {
+    topspeed = topspeed * (1 + (0.01 * Math.abs(value)))
+  }
   return [Math.round(topspeed), Math.round(topspeed * 1.609)]
 }
 
@@ -22,7 +27,7 @@ module.exports.perf = function(gtfcar, condition) {
   var weight = gtfcar["weight"]
   var aero = gtfcar["aerom"]
 
-  var drivetrain = ""
+  var drivetrain = gtfcar["drivetrain"]
   var sell = require(gtffile.MARKETPLACE).sellcalc(require(gtffile.MARKETPLACE).costcalc(gtfcar))
 
   if (condition == "DEALERSHIP") {
@@ -61,6 +66,7 @@ module.exports.perf = function(gtfcar, condition) {
     power = car["power"]
     weight = car["weight"]
     aero = car["aerom"]
+    drivetrain = car["drivetrain"]
     sell = require(gtffile.MARKETPLACE).sellcalc(require(gtffile.MARKETPLACE).costcalc(car))
 /// PARTS
     var engine = require(gtffile.PARTS).find({"name":gtfcar["engine"]["current"],"type":"engine"})[0]
@@ -166,4 +172,10 @@ userdata["garage"][stats.currentcarnum(userdata)-1][part["type"].toLowerCase()] 
 
 userdata["garage"][stats.currentcarnum(userdata)-1]["fpp"] = require(gtffile.PERF).perf(userdata["garage"][stats.currentcarnum(userdata)-1], "GARAGE")["fpp"]
   
+}
+
+module.exports.paint = function(paint, userdata) {
+  var installedpart = userdata["garage"][stats.currentcarnum(userdata)-1]["color"]
+ installedpart["current"] = paint["type"] + " " + paint["name"]
+userdata["garage"][stats.currentcarnum(userdata)-1]["color"] = installedpart
 }

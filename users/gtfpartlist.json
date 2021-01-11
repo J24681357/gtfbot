@@ -6,6 +6,7 @@
       "cost": 2500,
       "percent": 10,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 1200,
       "weightlowerlimit": 0
     },
@@ -15,6 +16,7 @@
       "cost": 5000,
       "percent": 15,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 800,
       "weightlowerlimit": 0
     },
@@ -24,6 +26,7 @@
       "cost": 7500,
       "percent": 20,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 600,
       "weightlowerlimit": 0
     },
@@ -33,24 +36,27 @@
       "cost": 10000,
       "percent": 25,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 550,
       "weightlowerlimit": 0
     },
-      {
+    {
       "type": "Engine",
       "name": "Stage 3 A",
       "cost": 15000,
       "percent": 35,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 500,
-       "weightlowerlimit": 0
+      "weightlowerlimit": 0
     },
-      {
+    {
       "type": "Engine",
       "name": "Stage 3 B",
       "cost": 20000,
       "percent": 40,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 450,
       "weightlowerlimit": 0
     },
@@ -60,77 +66,127 @@
       "cost": 50000,
       "percent": 60,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 400,
       "weightlowerlimit": 0
     }
   ],
-  "transmission": [],
-  "suspension": [{
+  "transmission": [
+    {
+      "type": "Transmission",
+      "name": "Fully Customizable (5 Speed)",
+      "cost": 4000,
+      "percent": 0,
+      "eligible": ["Production"],
+      "prohibited": ["Electric"],
+      "min": -5,
+      "max": 5,
+      "fpplimit": 9999,
+      "weightlowerlimit": 0
+    },
+      {
+      "type": "Transmission",
+      "name": "Fully Customizable (6 Speed)",
+      "cost": 8000,
+      "percent": 0,
+      "eligible": ["Production"],
+      "prohibited": ["Electric"],
+      "min": -5,
+      "max": 5,
+      "fpplimit": 9999,
+      "weightlowerlimit": 0
+    },
+    {
+      "type": "Transmission",
+      "name": "Fully Customizable (7 Speed)",
+      "cost": 15000,
+      "percent": 0,
+      "eligible": ["Production"],
+      "prohibited": ["Electric"],
+      "min": -5,
+      "max": 5,
+      "fpplimit": 9999,
+      "weightlowerlimit": 0
+    }
+  ],
+  "suspension": [
+    {
       "type": "Suspension",
       "name": "Stage 1",
       "cost": 5000,
       "percent": 110,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "min": -1,
       "max": 1,
       "fpplimit": 1000,
       "weightlowerlimit": 0
-  },
-  {
+    },
+    {
       "type": "Suspension",
       "name": "Stage 2",
       "cost": 7500,
       "percent": 120,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "min": -3,
       "max": 3,
       "fpplimit": 700,
-       "weightlowerlimit": 0
-  },
+      "weightlowerlimit": 0
+    },
     {
       "type": "Suspension",
       "name": "Stage 3",
       "cost": 10000,
       "percent": 125,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "min": -5,
       "max": 5,
       "fpplimit": 600,
       "weightlowerlimit": 0
-  }],
-  "weight-reduction": [{
+    }
+  ],
+  "weight-reduction": [
+    {
       "type": "Weight Reduction",
       "name": "Stage 1",
       "cost": 5000,
       "percent": 10,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 1000,
       "weightlowerlimit": 2000
-  },
-  {
+    },
+    {
       "type": "Weight Reduction",
       "name": "Stage 2",
       "cost": 10000,
       "percent": 15,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 1000,
       "weightlowerlimit": 3000
-  },
-  {
+    },
+    {
       "type": "Weight Reduction",
       "name": "Stage 3",
       "cost": 20000,
       "percent": 30,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 500,
       "weightlowerlimit": 4000
-  }],
-  "turbo": [{
+    }
+  ],
+  "turbo": [
+    {
       "type": "Turbo",
       "name": "Stage 1",
       "cost": 6000,
       "percent": 20,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 800,
       "weightlowerlimit": 0
     },
@@ -140,6 +196,7 @@
       "cost": 20000,
       "percent": 50,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 600,
       "weightlowerlimit": 0
     },
@@ -147,8 +204,9 @@
       "type": "Turbo",
       "name": "Stage 3",
       "cost": 31000,
-      "percent": 80,
+      "percent": 70,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 400,
       "weightlowerlimit": 0
     },
@@ -156,122 +214,153 @@
       "type": "Turbo",
       "name": "Stage 4",
       "cost": 45000,
-      "percent": 105,
+      "percent": 95,
       "eligible": ["Production"],
+      "prohibited": ["Electric"],
       "fpplimit": 300,
-       "weightlowerlimit": 0
-    }],
-  "tires": [    {
+      "weightlowerlimit": 0
+    }
+  ],
+  "tires": [
+    {
       "type": "Tires",
       "name": "Comfort: Hard",
       "cost": 1000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Comfort: Medium",
       "cost": 1500,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Comfort: Soft",
       "cost": 2000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Sports: Hard",
       "cost": 5000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Sports: Medium",
       "cost": 6000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Sports: Soft",
       "cost": 7000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Hard",
       "cost": 10000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Medium",
       "cost": 15000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Soft",
       "cost": 20000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Super Soft",
       "cost": 25000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Intermediate",
       "cost": 12000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Racing: Heavy Wet",
       "cost": 12000,
       "percent": 0,
       "eligible": ["Production", "Race Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Rally: Dirt",
       "cost": 8000,
       "percent": 0,
       "eligible": ["Production", "Rally Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    },    {
+      "weightlowerlimit": 0
+    },
+    {
       "type": "Tires",
       "name": "Rally: Snow",
       "cost": 8000,
       "percent": 0,
       "eligible": ["Production", "Rally Car"],
+      "prohibited": ["Electric"],
       "fpplimit": 9999,
-       "weightlowerlimit": 0
-    }]
+      "weightlowerlimit": 0
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "gtfitness",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "main": "index.js",
   "restart": {
     "include": [
@@ -9,13 +9,14 @@
     ]
   },
   "scripts": {
-    "start": "forever --minUptime 10000 index.js"
+    "start": "forever index.js"
   },
   "engines": {
     "node": "13.0.0"
   },
   "dependencies": {
     "discord.js": "latest",
+    "discord.js-rate-limiter": "^1.0.4",
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "graceful-fs": "^4.2.4",

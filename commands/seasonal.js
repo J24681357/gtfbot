@@ -1,8 +1,6 @@
-var gtf = require("/home/runner/gtfbot/functions/f_gtf")
 var stats = require("/home/runner/gtfbot/functions/profile/f_stats")
 var emote = require("/home/runner/gtfbot/index")
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools")
-var gtfperf = require("/home/runner/gtfbot/functions/marketplace/f_perf")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
@@ -24,7 +22,7 @@ module.exports = {
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,
-  description: ["!sesonal - Displays the list of seasonal events to select from.\n`Lv.XX` represents that the driver level that is required.", 'Each event has car regulations that your current car must meet before entry.', '!career ["league"] [(number)] - Enters an event, given from the [(number)] associated with the list from a ["league"].\nUse the reactions to select races contained in each event (1️⃣,2️⃣,3️⃣, etc).'],
+  description: ["!seasonal - Displays the list of seasonal events to select from.\n`Lv.XX` represents that the driver level that is required.", 'Each event has car regulations that your current car must meet before entry.', '!career ["league"] [(number)] - Enters an event, given from the [(number)] associated with the list from a ["league"].\nUse the reactions to select races contained in each event (1️⃣,2️⃣,3️⃣, etc).'],
   execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed()
@@ -39,7 +37,6 @@ module.exports = {
     /* Setup */
   var races;
 
-  
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
@@ -114,11 +111,17 @@ module.exports = {
       }
       embed.setTitle("🏁" + " __Seasonal Events__")
 
-      var number = parseInt(query[0])
-      if (number <= 0 || isNaN(number) || number > races.length) {
-        if (!isNaN(number)) {
+      var number = query[1]
+      if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
+        console.log(number)
+        if (number !== undefined) {
           require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
-        }
+          }
+      }
+      if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
+      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
+      } else {
         var results2 = ""
         var ids = Object.keys(races)
         for (var t = 0; t < ids.length; t++) {
@@ -167,8 +170,6 @@ module.exports = {
 
         require(gtffile.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
       }
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
-    } 
   }
+  } 
 }

@@ -6,7 +6,6 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 var gtffile = process.env
 ////////////////////////////////////////////////////
-var gtfuser = require("/home/runner/gtfbot/index")
 
 module.exports = {
   name: "career",
@@ -139,11 +138,16 @@ module.exports = {
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
       gtftools.createpages(results2, list, page, "", "", true, "", 5, [query, "career", reactionson, info], embed, msg, userdata)
     } else {
-      var number = parseInt(query[1])
-      if (number <= 0 || isNaN(number) || number > races.length) {
-        if (!isNaN(number)) {
+      var number = query[1]
+      if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
+        if (number !== undefined) {
           require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
-        }
+          }
+      }
+      if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
+      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
+      } else {
         var results2 = ""
         var ids = Object.keys(races)
         for (var t = 0; t < ids.length; t++) {
@@ -162,7 +166,7 @@ module.exports = {
             stats.gift(emote.goldmedal + " Congrats! All GOLD in " + raceevent["title"].split(" - ")[0] + " " + emote.goldmedal, raceevent["prize"], embed, msg, userdata)
           }
 
-          results2 = results2 + raceevent["title"] + " - " + raceevent["tracks"].length + " Races " + stats.eventstatus(league + "-" + (t + 1), userdata) + "\r" + "**FPP Limit: " + raceevent["fpplimit"] + emote.fpp + "**\r" + "**Regulations:** " + rmakes.join(", ").replace("Any", "") + line + rmodels.join(", ") + "\r" + "**Types:** " + raceevent["types"].join(", ") + "\n\n"
+          results2 = results2 + "__" + raceevent["title"] + " - " + raceevent["tracks"].length + " Races__ " + stats.eventstatus(league + "-" + (t + 1), userdata) + "\r" + "**FPP Limit: " + raceevent["fpplimit"] + emote.fpp + "**\r" + "**Regulations:** " + rmakes.join(", ").replace("Any", "") + line + rmodels.join(", ") + "\r" + "**Types:** " + raceevent["types"].join(", ") + "\n\n"
         }
         embed.setTitle("🏁 __Career Mode - " + league + " (" + ids.length + " Events)" + "__")
         var list = results2
@@ -181,7 +185,8 @@ module.exports = {
         return
       }
 
-      function asyncrace(event) {
+
+        function asyncrace(event) {
         if (event == "Invalid") {
           return
         }
@@ -190,8 +195,6 @@ module.exports = {
 
         require(gtffile.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
       }
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
-    }
-  },
+  }
+}
 }

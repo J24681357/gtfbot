@@ -13,7 +13,7 @@ module.exports = {
   level: 5,
   channels: ["gtf-mode", "testing"],
 
-  delete: true,
+  delete: false,
   availitoeveryone:true,
   availinmaint:false,
    requireuserdata:true,
@@ -73,17 +73,23 @@ module.exports = {
       msg.channel.send(embed);
     } else {
       embed.setTitle('__Drift Trial - Car Selection__');
+      var gtfcar = stats.currentcar(userdata)
 
-      results2 = '~~🚘' + ' ' + stats.currentcar(userdata)['name'] + '~~\n' + emote.gtlogowhite + ' ' + 'GT Sport Loaner Car' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
+      results2 = '~~🚘' + ' ' + gtfcar['name'] + '~~\n' + emote.gtlogowhite + ' ' + 'GT Sport Loaner Car' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
 
       embed.setDescription(results2);
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed).then(msg => {
         function selectgaragemode() {
-          require(gtffile.EMBED).error('❌ Unavailable', 'This option is unavailable.', embed, msg, userdata);
-          return;
           embed.fields = [];
-          //return readyforarcaderace('GARAGE');
+
+          var ocar = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
+
+          if (ocar["drivetrain"] == "FF") {
+            require(gtffile.EMBED).error('❌ FF Cars Prohibited', 'Front Wheel Drive cars are not allowed in a Drift Trial.', embed, msg, userdata);
+            return
+          }
+          require(gtffile.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
         }
 
         function selectgtsportmode() {

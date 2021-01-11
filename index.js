@@ -4,16 +4,18 @@ var gtftools = require('./functions/misc/f_tools');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 var extra = require("./functions/misc/f_extras");
 var emote = require('./index');
+  var l = require('discord.js-rate-limiter').RateLimiter;
+  var rateLimiter = new l(1, 1400);
 
 var fs = require('fs');
 var gracefulFs = require('graceful-fs');
 gracefulFs.gracefulify(fs);
 
-
+var data = {}
 let MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
@@ -23,12 +25,13 @@ module.exports.dwcar = dw;
 var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist.json', 'utf8'));
 var gtftracks = JSON.parse(fs.readFileSync('./users/gtftracklist.json', 'utf8'));
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
+var gtfpaints = JSON.parse(fs.readFileSync('./users/gtfpaints.json', 'utf8'));
 module.exports.gtfcarlist = gtfcars
 module.exports.gtftracklist = gtftracks
 module.exports.gtfpartlist = gtfparts
+module.exports.gtfpaintlist = gtfpaints
 module.exports.embedcounts = {}
 
-var data = {}
 
 module.exports.alluserdata = function() {
   MongoClient.connect(url, { useUnifiedTopology: true },
@@ -45,7 +48,7 @@ module.exports.alluserdata = function() {
       db.close())
     })
 }
-require(gtffile.MAIN).alluserdata()
+require(gtf.MAIN).alluserdata()
 
 
 
@@ -97,8 +100,6 @@ const cooldowns = new Discord.Collection();
 client.on('ready', () => {
 
   var gtfbot = {}
-
-
 
   module.exports.update = client.emojis.cache.get('419605168510992394').toString();
   module.exports.flag = client.emojis.cache.get('646244286635180033').toString();
@@ -186,27 +187,27 @@ client.on('ready', () => {
   function check(row) {
     module.exports.gtfbotconfig = row
     module.exports.gt6progressbarblack
-    if (require(gtffile.MAIN).gtfbotconfig['maintenance'] == "YES") {
+    if (require(gtf.MAIN).gtfbotconfig['maintenance'] == "YES") {
       client.user.setActivity('Commands are not available at the moment.', {
         type: 'PLAYING',
       });
       client.guilds.cache
         .get('239493425131552778')
-        .members.cache.get(gtffile.USERID)
+        .members.cache.get(gtf.USERID)
         .setNickname('🛠 Maintenance');
-    } else if (require(gtffile.MAIN).gtfbotconfig['maintenance'] == "PARTIAL") {
+    } else if (require(gtf.MAIN).gtfbotconfig['maintenance'] == "PARTIAL") {
       client.user.setActivity('Many commands are unavailable. | Working commands: ' + listinmaint.map(x => "!" + x).join(" "), {
         type: 'PLAYING',
       });
       client.guilds.cache
         .get('239493425131552778')
-        .members.cache.get(gtffile.USERID)
+        .members.cache.get(gtf.USERID)
         .setNickname('🛠 GTF Fitness');
     } else {
       client.user.setActivity('The World of GT Fitness', { type: 'PLAYING' });
       client.guilds.cache
         .get('239493425131552778')
-        .members.cache.get(gtffile.USERID)
+        .members.cache.get(gtf.USERID)
         .setNickname('! | GT Fitness');
     }
 
@@ -228,10 +229,10 @@ client.on('ready', () => {
 
 client.on('rateLimit', (info) => {
   console.log(info)
-  //console.log(`Rate limit hit ${info.timeDifference ? info.timeDifference : info.timeout ? info.timeout: 'Unknown timeout '}`)
+  console.log(client.users.cache.get("237450759233339393").user.username)
 })
 
-client.on('message', msg => {
+client.on('message', async msg => {
 if (userdata === undefined) {
   userdata = {"id": msg.author.id}
 }
@@ -253,7 +254,7 @@ if (userdata === undefined) {
   }
 
   // Profile
-    if (require(gtffile.MAIN).gtfbotconfig['maintenance']) {
+    if (require(gtf.MAIN).gtfbotconfig['maintenance']) {
     if (msg.author.id != '237450759233339393' && !command.availinmaint) {
       var embed = new Discord.MessageEmbed();
       var user = msg.author.username;
@@ -265,15 +266,43 @@ if (userdata === undefined) {
     }
     }
   if (msg.guild !== null) {
+    if (command.channels.length >= 1) {
   if (!command.channels.some(name => msg.channel.name.includes(name))) {
     userdata = {"id": msg.author.id}
-      require(gtffile.EMBED).error('❌ Incorrect Channel', 'Commands are not allowed in this channel.', embed, msg, userdata);
+      require(gtf.EMBED).error('❌ Incorrect Channel', 'Commands are not allowed in this channel.', embed, msg, userdata);
       return;
   }
+    }
   }
   var check = require('./functions/misc/f_start').intro(userdata, command.name, msg);
   if (check == "COMMAND") {
     userdata = {"id": msg.author.id}
+    
+  if (!cooldowns.has(command.name)) {
+    cooldowns.set(command.name, new Discord.Collection());
+  }
+
+  const now = Date.now();
+  const timestamps = cooldowns.get(command.name);
+  const cooldownAmount = (command.cooldown || 3) * 1000;
+
+  if (timestamps.has(msg.author.id)) {
+    const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
+
+    if (now < expirationTime) {
+      const timeLeft = (expirationTime - now) / 1000;
+
+      const embed = new Discord.MessageEmbed();
+      var user = msg.author.username;
+      embed.setAuthor(user, msg.author.displayAvatarURL());
+      embed.setColor(0x800080);
+      embed.setDescription('⏲ You have a cooldown of ' + timeLeft.toFixed(1) + ' seconds for `!' + command.name + '`.' + ' Please wait.');
+      msg.channel.send(embed)
+      return;
+    }
+  }
+  timestamps.set(msg.author.id, now);
+  setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
     return executecommand(command, args, msg, userdata)
   }
   if (check != "SUCCESS") {
@@ -315,8 +344,8 @@ if (userdata === undefined) {
   // Updates
 
   if (command.name != 'update') {
-    if (userdata['version'] === undefined || userdata['version'] < require(gtffile.MAIN).gtfbotconfig['version']) {
-      require(gtffile.EMBED).error('❌ Version Incompatible', 'Your save data needs to be updated in order to use current features. Use **!update** to update your save to the latest version.', embed, msg, userdata);
+    if (userdata['version'] === undefined || userdata['version'] < require(gtf.MAIN).gtfbotconfig['version']) {
+      require(gtf.EMBED).error('❌ Version Incompatible', 'Your save data needs to be updated in order to use current features. Use **!update** to update your save to the latest version.', embed, msg, userdata);
       return;
     }
   }
@@ -336,8 +365,8 @@ if (userdata === undefined) {
       roles[0] = '❌ ' + roles[0];
       roles = roles.join('\n❌ ');
       const embed = new Discord.MessageEmbed();
-      var user = client.users.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
+      var user = msg.guild.members.cache.get(msg.author.id).user.username;
+      embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
       embed.setColor(0xff0000);
       embed.setDescription(' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles);
       msg.channel.send(embed);
@@ -354,7 +383,7 @@ if (userdata === undefined) {
       var user = client.users.cache.get(msg.author.id).user.username;
       embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
 
-      require(gtffile.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
+      require(gtf.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
       msg.channel.send(embed).then(msg => {
         function exit() {
           return require('./commands/cancel').execute(msg, ['✨✨✨'], userdata);
@@ -369,9 +398,9 @@ if (userdata === undefined) {
   if (!command.usedinlobby) {
     if (stats.inlobbystat(userdata)[0]) {
       var embed = new Discord.MessageEmbed();
-      var user = client.users.cache.get(msg.author.id).user.username;
-      embed.setAuthor(user, client.users.cache.get(msg.author.id).user.displayAvatarURL);
-      require(gtffile.EMBED).warning('⚠️ In A Lobby', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
+      var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+      embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+      require(gtf.EMBED).warning('⚠️ Lobby In Session', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
       msg.channel.send(embed);
       return;
     }
@@ -407,20 +436,20 @@ if (userdata === undefined) {
   timestamps.set(msg.author.id, now);
   setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
-  if (!require(gtffile.EXP).checklevel(command.level, embed, msg, userdata)) {
+  if (!require(gtf.EXP).checklevel(command.level, embed, msg, userdata)) {
     return;
   }
 
   if (command.requirecar) {
     console.log(stats.garagecount(userdata) == 0)
     if (stats.garagecount(userdata) == 0) {
-      require(gtffile.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
+      require(gtf.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
       return;
     }
   }
 
   if (client.users.cache.get(userdata["id"]).username == 'everyone' || client.users.cache.get(userdata["id"]).username == 'here') {
-    require(gtffile.EMBED).error('❌ Username Not Allowed', 'Your username is not allowed from this bot. Please choose another username.', embed, msg);
+    require(gtf.EMBED).error('❌ Username Not Allowed', 'Your username is not allowed from this bot. Please choose another username.', embed, msg);
     return;
   }
   try {
@@ -454,13 +483,13 @@ if (userdata === undefined) {
         if (err) console.log('error', err);
       });
     }
-    fs.writeFile('./users/botconfig.json', JSON.stringify(require(gtffile.MAIN).gtfbotconfig), function(err, result) {
+    fs.writeFile('./users/botconfig.json', JSON.stringify(require(gtf.MAIN).gtfbotconfig), function(err, result) {
       if (err) console.log('error', err);
     });
     */
 
 
-    /*  fs.writeFile('./users/races.json', JSON.stringify(require(gtffile.MAIN).allraces), function(err, result) {
+    /*  fs.writeFile('./users/races.json', JSON.stringify(require(gtf.MAIN).allraces), function(err, result) {
         if (err) {
           console.log('error', err);
       });
@@ -469,13 +498,13 @@ if (userdata === undefined) {
   } catch (error) {
     var embed = new Discord.MessageEmbed();
     console.log(userdata)
-    require(gtffile.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
+    require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
     console.error(error);
   }
  }
 var userdata;
   MongoClient.connect(url, { useUnifiedTopology: true },
-    function(err, db) {
+   function(err, db) {
       if (err) throw err;
       var dbo = db.db("GTFitness");
       dbo.collection("USERS").find({"id":msg.author.id}).forEach(row => {
@@ -484,24 +513,28 @@ var userdata;
         } else {
           userdata = row
         }
-      }).then(() => {  
+      }).then(async () => {  
           stats.save(userdata)
           db.close();
-            executions++
-            console.log(executions)
-    if (executions >= 4) {
-      console.log('COMMAND DELAYING');
-      setTimeout(function() {
-         next()}, 750 * executions);
-        executions--
-    } else {
-         next()
-      if (executions == 1) {
-        setTimeout(function() {executions = 0}, 5000);
-      }
-    }
-      })
+        var limited = rateLimiter.take(msg.author.id);
+        if (limited) {
+          console.log("Rate Limit Delay")
+          setTimeout(async function(){
+            var limited = rateLimiter.take(msg.author.id);
+            if (limited) {
+              console.log("Message not sent")
+              return
+            } else {
+        await next()
+            }
+          }, 1000)
+            return;
+        }
+        await next()
+        return;
+         
     })
+      })
  
 });
 
@@ -543,7 +576,7 @@ client.login(process.env.SECRET).then(function() {
     var index1 = 0
   setTimeout(function() {
     
- require(gtffile.SEASONAL).changeseasonals(false)
+ require(gtf.SEASONAL).changeseasonals(false)
     gtftools.interval(
       function() {
         stats.resumerace(keys[index1], client);
@@ -567,7 +600,7 @@ var executecommand = function(command, args, msg, userdata) {
 
   } catch (error) {
     var embed = new Discord.MessageEmbed();
-    require(gtffile.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
+    require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
     console.error(error);
   }
   }

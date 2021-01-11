@@ -79,9 +79,8 @@ module.exports = {
     msg.channel.send(embed).then(msg => {
       function careerprofile() {
         embed.setTitle("__Career Progress__");
-        var list1 = [["__Beginner__", require("../data/career/races").beginner()], ["__Amateur__", require("../data/career/races").amateur()], ["__IC League__", require("../data/career/races").icleague()]]
+        var list1 = [["__Beginner__", require("../data/career/races").beginner()], ["__Amateur__", require("../data/career/races").amateur()], ["__IC League__", require("../data/career/races").icleague()], ["__IB League__", require("../data/career/races").ibleague()], ["__IA League__", require("../data/career/races").ialeague()]]
         results2 = ""
-        //  , ,  ["__IB League__", require("../data/career/races").ibleague()], ["__IA League__", require("../data/career/races").ialeague()]
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n"
           var certainraces = list1[level][1]

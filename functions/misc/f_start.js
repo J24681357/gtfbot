@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -7,9 +6,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
-
-var gtfuser = require("../../index");
-
 
 module.exports.intro = function(userdata, command, msg) {
   if ((command === 'jay' || command === 'dw' || command === 'dw4' || command === 'gtf' || command == 'srating')) {
@@ -28,13 +24,12 @@ module.exports.intro = function(userdata, command, msg) {
   }
 
   function doit() {
-
-    //version: gtfuser.gtfbotconfig['version'],
     var embed = new Discord.MessageEmbed()
     var author = msg.author
     var userid = msg.author.id
     var user = msg.author.username
     var avatar = msg.author.displayAvatarURL()
+    
     embed.setColor(0x800080);
     embed.setAuthor(user, avatar);
 
@@ -55,7 +50,7 @@ module.exports.intro = function(userdata, command, msg) {
       inlobby: [false, ''],
       dailyworkout: false,
 
-      credits: 15000,
+      credits: 20000,
       exp: 0,
       level: 1,
       mileage: [0, 0],
@@ -154,7 +149,9 @@ collector2.on('collect', m => {
 collector.on('end', collected => {
   if (!correct) {
    author.send("⚠ Time is up! You may start this tutorial over by typing **!home**.")
-  }
+  }   
+  collector.stop()
+       collector2.stop()
 });
       })
 

@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -22,8 +21,9 @@ module.exports.ssrxracelength = function(
   checkpoint,
   userdata
 ) {
-  var numx = gtftools.catcalc(racesettings["category"], "0%", racesettings["misc"]["car"]);
-  var carspeed = require(gtffile.PERF).speedcalc(numx)
+   var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+  var numx = gtftools.catcalc(racesettings["category"], "0%", fpp);
+  var carspeed = require(gtffile.PERF).speedcalc(numx, racesettings["misc"]["car"])
   var showcar =
     "\n🚘 " +
     racesettings["misc"]["car"]["name"] +
@@ -88,7 +88,7 @@ module.exports.careerracelength = function(
     racesettings["misc"]["car"]["fpp"] +
     emote.fpp +
     "**";
-  var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
+  var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], racesettings["upperfpp"]);
 
   var racelength = (racesettings["km"] / speed) * 3600 * 1000;
   return [showcar, racelength];
@@ -117,7 +117,8 @@ module.exports.arcaderacelength = function(
       racesettings["misc"]["car"]["fpp"] +
       emote.fpp +
       "**";
-    var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], racesettings["misc"]["car"]);
+          var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+    var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fpp);
   } else {
     var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
   }
@@ -149,9 +150,13 @@ module.exports.driftracelength = function(
       racesettings["misc"]["car"]["fpp"] +
       emote.fpp +
       "**";
-  }
+      
+    var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+    var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fpp);
+  } else {
   var speed = gtftools.catcalc(["N300"], racesettings["weather"], "");
-  var racelength = (racesettings["km"] / speed) * 3600 * 1000;
+  }
+  var racelength = Math.round( ((racesettings["km"] / speed) * 3600 * 1000 ) / 2)
   return [showcar, racelength];
 };
 
@@ -176,10 +181,8 @@ module.exports.driftsection = function(
   var silver = Math.ceil( ((racesettings["km"]* 0.90) * 2000) / 100) * 100
   var bronze = Math.ceil( ((racesettings["km"]* 0.80) * 2000) / 100) * 100
 
-
   var points = gtftools.randomInt(Math.round(maxpoints/8), Math.round(maxpoints/4))
   console.log([points, gold, silver, bronze])
-  console.log(racesettings["sectors"])
   if (last && racesettings["sectors"] >= 1) {
     racesettings["sectors"]--
     return [points, gold, silver, bronze]
@@ -273,8 +276,14 @@ module.exports.createfinalreactions = function(
       msg.edit(embed);
       gtftools.removereactions(["🎥"], msg);
     }
+    function restart() {
+      embed.setColor(0x0151b0);
+      require('../../functions/races/f_races_2').readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], userdata);
+      setTimeout(function() {gtftools.removereactions(["🔁","🎥"], msg)}, 5000)
+  
+    }
 
-    var emojilist = [["🎥", "🎥", func]];
+    var emojilist = [["🔁","🔁", restart, "Once"], ["🎥", "🎥", func]];
     function goback() {
       userdata["raceinprogress"] = [false, ["", ""], "", userdata["id"]];
       var e = racesettings["raceid"].split("-");

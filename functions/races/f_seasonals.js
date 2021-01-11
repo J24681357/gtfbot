@@ -18,8 +18,8 @@ var seasonals = {}
       dbo.collection("SEASONALS").find({ "id": "1234567" }).forEach(row => {
             if (seasonalcheck(row["races"]) || force) {
               console.log("Seasonals has been changed.")
-         var seasonals = require(gtffile.SEASONAL).randomseasonal(1, 300, 200)
-         var seasonals2 = require(gtffile.SEASONAL).randomseasonal(2, 400, 300)
+         var seasonals = require(gtffile.SEASONAL).randomseasonal(1, 400, 200)
+         var seasonals2 = require(gtffile.SEASONAL).randomseasonal(2, 600, 400)
             var races = {
               "id": "1234567",
               "races": { seasonals, seasonals2 }
@@ -67,13 +67,15 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
     var startingprize = 2000;
     var tracksnum = 3
     var limit = 8.0;
+    //var makes = ["Abarth", "Acura", "Alfa-Romeo", "Alpine", "Audi", "Nissan", "Toyota"]
   }
   if (number == 2) {
       var eventid = "SEASONAL" + "-" + number
     var grid = gtftools.randomInt(12, 16)
     var startingprize = 5000;
     var tracksnum = 4
-    var limit = 10.0;
+    var limit = 13.0;
+    //var makes = ["BMW", "Bentley", "Chevrolet", "Nissan", "Toyota", "Lamborghini"]
   }
   for (var x = 0; x < tracksnum; x++) {
     var track = require(gtffile.TRACKS).random({}, 1)[0]
@@ -105,12 +107,12 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
   }
 date = month + day + year
 
-var makes = require(gtffile.CARS).list("makes")
-var rmakes = makes[Math.floor(Math.random*makes.length)]
-console.log(rmakes)
-var rint = gtftools.randomInt(0,10)
-if (rint > 7) {
-
+var rmakes = []
+var rtimeint = gtftools.randomInt(0,1)
+if (rtimeint == 0) {
+  time = 'Day'
+} else {
+  time = 'Night'
 }
 
   var event = {
@@ -120,7 +122,7 @@ if (rint > 7) {
     "positions": positions,
     "tracks": tracks,
     "category": ['N200'],
-    "time": 'Day',
+    "time": time,
     "weather": 'Clear',
     "grid": grid,
     "difficulty": 90,

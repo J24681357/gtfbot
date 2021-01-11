@@ -1,5 +1,3 @@
-var gtf = require("../../functions/f_gtf");
-var race = require("../../functions/races/f_races");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -9,7 +7,6 @@ const client = new Discord.Client();
 var gtffile = process.env
 ////////////////////////////////////////////////////
 module.exports.time = function(results, number, query, embed, msg, userdata) {
-  
     var list = []
     var page = 0
     var date = new Date()

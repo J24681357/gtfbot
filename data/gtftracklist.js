@@ -5,109 +5,114 @@ var emote = require("../index")
 var gtffile = process.env
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var fs = require("fs")
 ////////////////////////////////////////////////////
 
 module.exports.list = function(args) {
-  var gtftracks = require(gtffile.LISTS).gtftracklist
-  var results = ""
+  var gtftracks = require(gtffile.LISTS).gtftracklist;
+  var results = "";
   if (args.length == 0) {
-    return results
+    return results;
+  }
+   if (args == "all") {
+    return gtftracks
   }
   if (args == "ids") {
     results = Object.keys(gtftracks).map(function(x) {
       return x
         .split("-")
         .map(name => name.charAt(0).toUpperCase() + name.slice(1))
-        .join()
-    })
+        .join();
+    });
+    return results;
+  }
+  if (args == "names") {
+    results = Object.keys(gtftracks).map(function(x) {
+      return gtftracks[x]["name"]
+    });
     return results
   }
-}
+};
 
 module.exports.find = function(args) {
   if (args === undefined) {
-    return ""
+    return "";
   }
-  var total = Object.keys(args).length
-  var gtftracks = require(gtffile.LISTS).gtftracklist
-  var final = []
-  var ids = Object.keys(gtftracks)
+  var total = Object.keys(args).length;
+  var gtftracks = require(gtffile.LISTS).gtftracklist;
+  var final = [];
+  var ids = Object.keys(gtftracks);
 
   for (var key = 0; key < ids.length; key++) {
+    var track = gtftracks[ids[key]];
 
-    var track = gtftracks[ids[key]]
+    var count = 0;
 
-      var count = 0
-
-       if (args["id"] !== undefined) {
-        if (args["id"].length == 0) {
-          count++
-        } else {
-          var numbers = args["id"]
-          for (var inumber = 0; inumber < numbers.length; inumbers++) {
-            if (parseInt(ids[key]) == parseInt(numbers[inumbers])) {
-              count++
-              break
-            }
+    if (args["id"] !== undefined) {
+      if (args["id"].length == 0) {
+        count++;
+      } else {
+        var numbers = args["id"];
+        for (var inumber = 0; inumber < numbers.length; inumbers++) {
+          if (parseInt(ids[key]) == parseInt(numbers[inumbers])) {
+            count++;
+            break;
           }
         }
-      }
-
-      if (args["name"] !== undefined) {
-        if (args["name"].length == 0) {
-          count++
-        } else {
-          var names = args["name"]
-          for (var iname = 0; iname < names.length; iname++) {
-            
-            if (track["name"] == names[iname]) {
-              count++
-              break
-            }
-          }
-        }
-      }
-
-      if (args["options"] !== undefined) {
-        if (args["options"].length == 0) {
-          count++
-        } else {
-          var options = args["options"]
-          for (var ioption = 0; ioption < options.length; ioption++) {
-            if (track["options"].includes(options[ioption])) {
-              count++
-              break
-            }
-          }
-        }
-      }
-
-
-      if (count == total) {
-        final.unshift(track)
       }
     }
-  if (final.length == 0) {
-    return ""
-  }
-  var id = 1
-  final.map(function(x) {
-    x["id"] = id
-    id++
-  })
-  final.sort(function(a, b) {
-    return a["name"].toString().localeCompare(b["name"])
-}); 
 
-return final
-}
+    if (args["name"] !== undefined) {
+      if (args["name"].length == 0) {
+        count++;
+      } else {
+        var names = args["name"];
+        for (var iname = 0; iname < names.length; iname++) {
+          if (track["name"] == names[iname]) {
+            count++;
+            break;
+          }
+        }
+      }
+    }
+
+    if (args["options"] !== undefined) {
+      if (args["options"].length == 0) {
+        count++;
+      } else {
+        var options = args["options"];
+        for (var ioption = 0; ioption < options.length; ioption++) {
+          if (track["options"].includes(options[ioption])) {
+            count++;
+            break;
+          }
+        }
+      }
+    }
+
+    if (count == total) {
+      final.unshift(track);
+    }
+  }
+  if (final.length == 0) {
+    return "";
+  }
+  var id = 1;
+  final.map(function(x) {
+    x["id"] = id;
+    id++;
+  });
+  final.sort(function(a, b) {
+    return a["name"].toString().localeCompare(b["name"]);
+  });
+
+  return final;
+};
 
 module.exports.random = function(args, num) {
-  var rlist = []
-  var list = require(gtffile.TRACKS).find(args)
+  var rlist = [];
+  var list = require(gtffile.TRACKS).find(args);
   for (var i = 0; i < num; i++) {
-    rlist.push(list[Math.floor(Math.random() * list.length)])
+    rlist.push(list[Math.floor(Math.random() * list.length)]);
   }
-  return rlist
-}
+  return rlist;
+};

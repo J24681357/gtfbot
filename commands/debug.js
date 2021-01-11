@@ -14,7 +14,7 @@ module.exports = {
   level: 0,
   channels: ["gtf-mode","testing"],
 
-  delete: false,
+  delete: true,
   availitoeveryone:true,
   availinmaint: false,
   requireuserdata: false,

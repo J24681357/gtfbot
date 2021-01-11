@@ -1,4 +1,3 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
@@ -73,7 +72,7 @@ module.exports = {
       "__Replay Theater: " +
         Object.keys(replaystats).length +
         " / " +
-        gtf.replaylimit +
+        require(gtffile.GTF).replaylimit +
         " Replays__"
     );
     
@@ -158,7 +157,7 @@ module.exports = {
           return;
         }
         var replaydetails = replaystats[number.toString()]
-        var loading = gtf.loadingscreen("**" + replaydetails[0] + "**", '')
+        var loading = require(gtffile.GTF).loadingscreen("**" + replaydetails[0] + "**", '')
         embed.setDescription(loading)
         msg.channel.send(embed).then(msg => {
           gtftools.interval(function() {

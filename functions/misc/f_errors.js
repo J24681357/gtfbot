@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -30,21 +29,27 @@ module.exports.error = function(name, desc, embed, msg, userdata) {
   return msg.channel.send(embed)
 }
 
-module.exports.success = function(name, desc, time, special, embed, msg, userdata) {
+module.exports.success = function(name, desc, time, special, embed, msg, userdata, dm) {
   var embed = new Discord.MessageEmbed();
-
-  var user = msg.guild.members.cache.get(userdata["id"]).user.username
-  embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
   embed.setColor(0x216C2A)
   embed.setDescription("__**" + name + "**__" + "\n" + desc)
   if (special == true) {
     
   stats.save(userdata)
+
+if (dm === undefined || dm === "") {
   return msg.channel.send(embed).then(msg=>{
     if (time > 0) {
     msg.delete({timeout:time})
   }
   })
+} else {
+  msg.author.send(embed).then(msg=>{
+    if (time > 0) {
+    msg.delete({timeout:time})
+  }
+  })
+}
   } else {
     
   stats.save(userdata)
@@ -57,7 +62,7 @@ module.exports.success = function(name, desc, time, special, embed, msg, userdat
 }
 
 module.exports.checkgarageerror = function(embed, msg, userdata) {
-    if (stats.garagecount(userdata) >= gtf.garagelimit) {
+    if (stats.garagecount(userdata) >= require(gtffile.GTF).garagelimit) {
       require(gtffile.EMBED).error("❌ Garage Full", "You have reached your garage limit of 50 or above.\nSell one of your cars using **!garage sell** in order to add cars to your garage.", embed, msg, userdata)
       return true
     } else {

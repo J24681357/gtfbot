@@ -1,8 +1,6 @@
-var gtf = require("../functions/f_gtf");
 var stats = require("../functions/profile/f_stats");
 var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
-var gtfperf = require("../functions/marketplace/f_perf");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -15,8 +13,9 @@ module.exports = {
   cooldown: 5,
   level:0,
      channels: ["gtf-mode", "testing", "gtf-test-mode"],
+
   availinmaint:false,
-  delete: true,
+  delete: false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
@@ -76,18 +75,7 @@ module.exports = {
         return
       }
     }
-    
-    /*if (query[0] == "compact" || query[0] == "mobile") {
-      checked = true
-      var number = parseInt(query[1])
 
-      results = require("../functions/profile/f_settings").compact(results, number, embed, msg, userdata)
-
-      if (results == "PAGES") {
-        return
-      }
-    }*/
-    
     if (query[2] !== undefined && !checked) {
       require(gtffile.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata)
     }

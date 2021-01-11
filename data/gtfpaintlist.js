@@ -134,13 +134,13 @@ var fuel = ["Fuel", 1000]
 //////////////////
 
 module.exports.list = function(args) {
-  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var paint = require(gtffile.LISTS).gtfpaintslist
   var results = ""
   if (args.length == 0) {
     return results
   }
   if (args == "type") {
-    results = Object.keys(gtfparts).map(function(x) {
+    results = Object.keys(paint).map(function(x) {
       return x.split("-").map(name => name.charAt(0).toUpperCase() + name.slice(1)).join()
     })
     return results
@@ -151,15 +151,15 @@ module.exports.find = function(args) {
   if (args === undefined) {
     return ""
   }
-  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var paint = require(gtffile.LISTS).gtfpaintlist
   var final = []
   var total = Object.keys(args).length
 
-  var types = Object.keys(gtfparts)
+  var types = Object.keys(paint)
 
   for (var key = 0; key < types.length; key++) {
 
-    var typekey = gtfparts[types[key]]
+    var typekey = paint[types[key]]
     for (var i = 0; i < typekey.length; i++) {
       var count = 0
       if (args["type"] !== undefined) {
@@ -191,64 +191,15 @@ module.exports.find = function(args) {
   return final.sort((x,y) => x["cost"] - y["cost"])
 }
 
-///////////////////////////////////
 
-module.exports.tuninglist = function(part, gtfcar, embed, msg, userdata) {
-  if (part["type"] == "Transmission") {
-    var names = [["__**Top Speed**__", " ", function(x){return x}]]
-  }
-  if (part["type"] == "Suspension") {
-    var names = [["__**Camber Angle**__", "in", function(x){return x}], ["__**Toe Angle**__", "in", function(x){return x}]]
-  }
-  var tunevalues = gtfcar[part["type"].toLowerCase()]["tuning"]
 
- var list = []
-
-  for (var i = 0; i < names.length; i++) {
-    if (tunevalues[i] < part["min"]) {
-      tunevalues[i] = part["min"]
-    }
-    if (tunevalues[i] > part["max"]) {
-      tunevalues[i] = part["max"]
-    }
-   var bar = []
-      for (var j = part["min"]; j < part["max"] + 1; j++) {
-        if (j == tunevalues[i]) {  
-          bar.push(stats.setting("PROGRESSBAR",userdata)[0])
-        } else {
-          bar.push(stats.setting("PROGRESSBAR",userdata)[1])
-        }
-    }
-    list.push([names[i][0] + " " + names[i][2](tunevalues[i]) + names[i][1] + "\r" + bar.join("") + "\r", " "])
-  }
-
-  return list
-
-}
-
-module.exports.checkpartsavail = function(part, gtfcar) {
-  var ocar = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
-var perf = require(gtffile.PERF).perf(ocar, "DEALERSHIP")
-
-  var bfpplimit = perf["fpp"] < part["fpplimit"]
-  var bweightlimit = perf["oweight"] > part["weightlowerlimit"]
-  var btype = part["eligible"].includes(ocar["type"])
-  var prohibitcheck = ocar["special"].includes(part["prohibited"][0])
- if (btype && bfpplimit && bweightlimit && !prohibitcheck) { 
-   if (gtfcar[part["type"].toLowerCase()]["list"].includes(part["name"])) {
-      if (gtfcar[part["type"].toLowerCase()]["current"] == part["name"]) {
+module.exports.checkpaintsavail = function(paint, gtfcar) {
+if (gtfcar["color"]["current"] == paint["type"] + " " + paint["name"]) {
         return "✅"
-      } else {
-        return "📦"
-      }
    } else {
-     return require(gtffile.PERF).partpreview(part, gtfcar, "GARAGE")["fpp"].toString()
+     return " "
    }
- } else {
-   return "❌"
  }
-
-}
 
 
 

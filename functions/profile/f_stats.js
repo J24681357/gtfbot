@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -220,7 +219,6 @@ module.exports.addexp = function(number, userdata) {
   if (number < 0) {
   } else {
     userdata["exp"] += number;
-    console.log( userdata["exp"])
   }
 };
 
@@ -232,7 +230,7 @@ module.exports.view = function(gtfcar,userdata) {
   "**Type:** " + ocar["type"] + "\n" +
   "**" + ocar["drivetrain"] + " | " + perf["fpp"] + emote.fpp + " | " + 
   perf["power"] + "hp" + " | " + perf["weight"] + "lbs**" + "\n\n" +
-  "**Paint:** " + "N/A" + "\n" +
+  "**Paint:** " + gtfcar["color"]["current"] + "\n" +
   "**Engine:** " + gtfcar["engine"]["current"] + "\n" +
   "**Transmission:** " + gtfcar["transmission"]["current"] + "\n" +
   "**Suspension:** " + gtfcar["suspension"]["current"] + "\n" +
@@ -245,7 +243,9 @@ module.exports.view = function(gtfcar,userdata) {
 }
 
 module.exports.view2 = function(gtfcar,userdata) {
-  var cardetails = "__**Suspension**__" + "\n" + 
+  var cardetails = "__**Transmission**__" + "\n" + 
+  "**Top Speed:** " + gtfcar["transmission"]["tuning"][0] + " " + "\n" + 
+  "__**Suspension**__" + "\n" + 
   "**Camber Angle:** " + gtfcar["suspension"]["tuning"][0] + "in" + "\n" + 
   "**Toe Angle:** " + gtfcar["suspension"]["tuning"][1] + "in" + "\n"
   return cardetails
@@ -294,8 +294,6 @@ module.exports.addcar = function(car, arg, userdata) {
 
   var condition = 100
   
-  //RH Tires + Eng Stage 2 A + FC Transmission + weight reduction 1 + FC Suspension
-  
 var fpp = require(gtffile.PERF).perf(car, "DEALERSHIP")["fpp"]
 var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
   userdata["numcarpurchase"]++
@@ -306,8 +304,7 @@ var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
         "make": car["make"],
         "year": car["year"],
         "fpp": fpp,
-        "color": {current:"Stock",
-               sell: 0},
+        "color": {current:"Default"},
         "engine": engine,
         "transmission": trans,
         "suspension": susp,
@@ -319,109 +316,9 @@ var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
         "oil": 100,
         "damage": 100,
         "rims": 0,
-        "condition": condition
+        "condition": condition,
+        "mileage": 0
 }
- /*
-  if (rating.includes("🔧")) {
-    newcar["tires"] = {current:"6",
-               owned:["6"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.tires()[6-1][1]),
-               tuning:0}
-    newcar["sell"] =  newcar["sell"] + newcar["tires"]["sell"]
-  } else if (rating.includes("<:gt4:")) {
-    engine = {current:"3",
-               owned:["3"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.engine()[3-1][1]),
-               tuning:0}
-    trans = {current:"5",
-               owned:["5"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[5-1][1]),
-               tuning:0}
-    susp = {current:"3",
-               owned:["3"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[3-1][1]),
-               tuning:0}
-    tires = {current:"7",
-               owned:["7"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.tires()[7-1][1]),
-               tuning:0}
-    weight = {current:"1",
-               owned:["1"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.weightreduction()[1-1][1]),
-               tuning:0}
-    newcar["engine"] = engine
-    newcar["transmission"] = trans
-    newcar["suspension"] = susp
-    newcar["tires"] = tires
-    newcar["weightreduction"] = weight
-    newcar["sell"] = newcar["sell"] + newcar["engine"]["sell"] + newcar["transmission"]["sell"] + newcar["suspension"]["sell"] + newcar["tires"]["sell"] + newcar["weightreduction"]["sell"]
-  } else if (rating.includes("<:gt3:")) {
-    
-        engine = {current:"5",
-               owned:["5"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.engine()[5-1][1]),
-               tuning:0}
-    trans = {current:"5",
-               owned:["5"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[5-1][1]),
-               tuning:0}
-    susp = {current:"3",
-               owned:["3"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[3-1][1]),
-               tuning:0}
-    tires = {current:"7",
-               owned:["7"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.tires()[7-1][1]),
-               tuning:0}
-    weight = {current:"3",
-               owned:["3"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.weightreduction()[3-1][1]),
-               tuning:0}
-    
-    newcar["engine"] = engine
-    newcar["transmission"] = trans
-    newcar["suspension"] = susp
-    newcar["tires"] = tires
-    newcar["weightreduction"] = weight
-    
-    newcar["sell"] = newcar["sell"] + newcar["engine"]["sell"] + newcar["transmission"]["sell"] + newcar["suspension"]["sell"] + newcar["tires"]["sell"] + newcar["weightreduction"]["sell"]
-  } else if (rating.includes("<:gt1:")) {
-    
-           engine = {current:"6",
-               owned:["6"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.engine()[6-1][1]),
-               tuning:0}
-    trans = {current:"5",
-               owned:["5"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.transmission()[5-1][1]),
-               tuning:0}
-    susp = {current:"3",
-               owned:["3"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.suspension()[3-1][1]),
-               tuning:0}
-    tires = {current:"7",
-               owned:["7"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.tires()[7-1][1]),
-               tuning:0}
-    weight = {current:"5",
-               owned:["5"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.weightreduction()[5-1][1]),
-               tuning:0}
-    
-    newcar["engine"] = engine
-    newcar["transmission"] = trans
-    newcar["suspension"] = susp
-    newcar["tires"] = tires
-    newcar["weightreduction"] = weight
-    newcar["sell"] =     newcar["sell"] = newcar["sell"] + newcar["engine"]["sell"] + newcar["transmission"]["sell"] + newcar["suspension"]["sell"] + newcar["tires"]["sell"] + newcar["weightreduction"]["sell"]
-  } else {
-    newcar["tires"] = {current:"4",
-               owned:["4"], 
-               sell: require(gtffile.MARKETPLACE).sellcalc(parts.tires()[4-1][1]),
-               tuning:0}
-    newcar["sell"] = newcar["sell"] + newcar["tires"]["sell"] 
-  }
-  */
   newcar["fpp"] = require(gtffile.PERF).perf(newcar, "GARAGE")["fpp"]
   
   if (arg == "ITEM") {
@@ -456,14 +353,12 @@ module.exports.updatecareerrace = function(raceid, place, userdata) {
         userdata["careerraces"][i][1] = place
       }
       
-  console.log(userdata["careerraces"][i])
       return
     }
   }
   if (place.includes(">")) {
     place = place.split(" ")[1]
   }
-  console.log([raceid, place])
   userdata["careerraces"].push([raceid, place])
 };
 
@@ -510,7 +405,6 @@ module.exports.isracescomplete = function(eventid, total, pnumber, userdata) {
 
 module.exports.gift = function(title, gift, embed, msg, userdata) {
   var type = gift[0]
-  console.log(type)
   if (type == "CREDITS") {
     stats.addcredits(parseInt(gift[1]["credits"]), userdata)
     userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift[1]["id"])

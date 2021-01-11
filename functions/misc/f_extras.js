@@ -1,4 +1,3 @@
-var gtf = require("../../functions/f_gtf");
 var stats = require("../../functions/profile/f_stats");
 var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
@@ -9,7 +8,6 @@ var gtffile = process.env
 var emote = require("../../index");
 var gtfuser = require("../../index");
 var fs = require("fs");
-
 
 module.exports.message = function(client, title, text, color, image, channelid, reactions, number) {
   var server = client.guilds.cache.get('239493425131552778');

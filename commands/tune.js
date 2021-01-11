@@ -8,28 +8,28 @@ var gtffile = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
-  name: "tune",
-  title: "📦 GTF Auto - Tuning Shop",
-  cooldown: 3,
-  level: 0,
-    channels: ["gtf-mode", "testing", "gtf-test-mode"],
-    
-  delete: true,
-  availinmaint: false,
-  requirecar: true,
-  usedduringrace: false,
-  usedinlobby: false,
-  description: ["!tune - Displays the list of types of performance parts in GTF Auto.", '!tune ["type"] - Displays a list of ["type"] in GTF Auto.', '!tune ["type"] [(number)] - Purchases a performance part from the [(number)] associated from the list of ["type"] parts.\nThis applies to your current car.\nThe current ["type"] part on your current car will be sold and replaced, but you must purchase the part with its full price first.', '!tune ["type"] [stock] - Revert the ["type"] installed to your car to Stock.'],
-  execute(msg, query, userdata) {
+  "name": "tune",
+  "title": "📦 GTF Auto - Tuning Shop",
+  "cooldown": 3,
+  "level": 0,
+  "channels": ["gtf-mode", "testing", "gtf-test-mode"],
+
+  "delete": true,
+  "availinmaint": false,
+  "requirecar": true,
+  "usedduringrace": false,
+  "usedinlobby": false,
+  "description": ["!tune - Displays the list of types of performance parts in GTF Auto.", "!tune [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!tune [\"type\"] [(number)] - Purchases a performance part from the [(number)] associated from the list of [\"type\"] parts.\nThis applies to your current car.\nThe current [\"type\"] part on your current car will be sold and replaced, but you must purchase the part with its full price first.", "!tune [\"type\"] [stock] - Revert the [\"type\"] installed to your car to Stock."],
+  "execute"(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed()
     embed.setColor(0x0151b0)
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
-    var args = "\n" + '`Args: !tune ["type"] [(number)]`' + "\n"
+    var args = "\n" + "`Args: !tune [\"type\"] [(number)]`" + "\n"
     var page = 0
-    var results = ''
+    var results = ""
     var info = "❓ **Select a part type corresponding with the name (or number) of the part type above.**"
 
     /* Setup */
@@ -44,11 +44,9 @@ module.exports = {
 
     if (query.length == 0) {
       results = "__**Engine**__ - !tune [engine|eng|e] ['stock'|(number)]" + "\n" + "__**Suspension**__ - !tune [suspension|susp|su] ['stock'|(number)]" + "\n" + "__**Tires**__ - !tune [tires|tire|tr] ['stock'|(number)]" + "\n" + "__**Weight Reduction**__ - !tune [weight-reduction|weight|we] ['stock'|(number)]" + "\n" + "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]"
-      var list = results
-        .split("\n")
-        .map(function(x) {
-          return [x, " "]
-        })
+      var list = results.split("\n").map(function(x) {
+        return [x, " "]
+      })
       var page = 0
       results2 = gtftools.list(list, page, "", "", true, "", 7, [query, "tune"], embed, msg, userdata)
 
@@ -64,11 +62,11 @@ module.exports = {
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-    /*if (query[0] == "transmission" || query[0] == "trans" || query[0] == "tr" || parseInt(query[0]) == 2) {
-      selectedtype = true
-      var select = require(gtffile.PARTS).transmission()
+    if (query[0] == "transmission" || query[0] == "trans" || query[0] == "tr" || parseInt(query[0]) == 2) {
+       var selectedtype = true
       var type = "transmission"
-    }*/
+      var select = require(gtffile.PARTS).find({ "type": type })
+    }
 
     if (query[0] == "suspension" || query[0] == "susp" || query[0] == "sus" || query[0] == "su" || parseInt(query[0]) == 2) {
       selectedtype = true
@@ -94,7 +92,6 @@ module.exports = {
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-
     if (selectedtype) {
       var name = select[0]["type"]
       var number = query[1]
@@ -115,10 +112,10 @@ module.exports = {
 
     if (itempurchase) {
       if (number == "S") {
-        var part = { "name": "Stock", "type": select[0]["type"], "cost": 0  }
+        var part = { "name": "Stock", "type": select[0]["type"], "cost": 0 }
       } else {
-      var part = select[number - 1]
-      var cond = require(gtffile.PARTS).checkpartsavail(part, car) 
+        var part = select[number - 1]
+        var cond = require(gtffile.PARTS).checkpartsavail(part, car)
         if (cond.includes("❌")) {
           require(gtffile.EMBED).error("❌ Part Unavailable", "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
           return
@@ -148,5 +145,6 @@ module.exports = {
     info = "❓ **Select an upgrade corresponding with the numbers above or the reactions.**"
     gtftools.createpages(results, select3, page, "", "", true, "", 10, [query, "tune", reactionson, info], embed, msg, userdata)
     return
-  },
+  }
 }
+

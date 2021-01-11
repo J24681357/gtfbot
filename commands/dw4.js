@@ -13,7 +13,7 @@ module.exports = {
   level: 3,
   channels: ["gtf-mode", "testing", "gtf-test-mode"],
 
-  delete: true,
+  delete: false,
   requirecar: false,
   availinmaint:false,
    requireuserdata:true,

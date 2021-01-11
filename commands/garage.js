@@ -14,7 +14,7 @@ module.exports = {
   aliases: ['g'],
   channels: ["gtf-mode", "testing", "gtf-test-mode"],
 
-  delete: true,
+  delete: false,
   availitoeveryone:true,
   availinmaint:false,
    requireuserdata:true,

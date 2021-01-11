@@ -1,4 +1,3 @@
-var gtf = require('../../functions/f_gtf');
 var stats = require('../../functions/profile/f_stats');
 var emote = require('../../index');
 var gtftools = require('../../functions/misc/f_tools');
@@ -235,9 +234,9 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
   var racedetails = '__Race Details__' + '\n' + '**Track:** ' + track + '\n' + '**Time/Weather:** ' + time + ' | ' + weather + '\n' + '**Lap(s):** ' + laps + '\n' + '**Total Distance:** ' + distancekm + ' km' + ' | ' + distancemi + ' mi' + '\n' + '**Grid:** ' + grid + ' cars';
 
   if (mode == 'CAREER') {
-    loading = gtf.loadingscreen(loading, '');
+    loading = require(gtffile.GTF).loadingscreen(loading, '');
   } else {
-    var loading = gtf.loadingscreen('**' + racesettings['track'] + '**', carname);
+    var loading = require(gtffile.GTF).loadingscreen('**' + racesettings['track'] + '**', carname);
   }
   embed.setDescription(loading);
 
@@ -415,6 +414,13 @@ module.exports.start = function(racesettings, racedetails, user, userdata) {
 ///////////////CAREER/////////////////
 
 module.exports.careerevent = function(races, number, embed, msg, callback, userdata) {
+  
+  if (races === undefined) {
+    return
+  }
+  if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
+    return
+  }
   var event = races[Object.keys(races)[number - 1]];
   if (stats.currentcarmain(userdata) == 'No car.') {
     require(gtffile.EMBED).error('❌ Error', 'You do not have a current car.', embed, msg, userdata);
@@ -422,7 +428,7 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
   }
 
   var currentcar = stats.currentcar(userdata);
-  var regulations = gtf.checkregulations(currentcar, event);
+  var regulations = require(gtffile.GTF).checkregulations(currentcar, event);
 
   if (!regulations[0]) {
     require(gtffile.EMBED)

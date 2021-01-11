@@ -1,11 +1,4 @@
 {
-  "2": {
-    "make": "Abarth",
-    "name": "Abarth 1500 Biposto Bertone B.A.T 1 1952",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1952_Abarth_1500_Biposto_BAT_1_-_Flickr_-_edvvc_%281%29.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "4": {
     "make": "Abarth",
     "name": "Abarth Punto Evo 2011",
@@ -80,13 +73,6 @@
     "make": "Alfa-Romeo",
     "name": "Alfa Romeo Brera 3.2 JTS V6 Q4 2006",
     "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Alfa_Romeo_Brera_Ti_2011_%2810750450035%29.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "17": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo MiTo 1.4 T Sport 2009",
-    "image": "https://img4.annuncicdn.it/c0/ff/c0ff6ca828bce930d2ba616db994e9aa_orig.jpg",
     "rating": "⭐1",
     "manufacturercost": 15000
   },
@@ -279,13 +265,8 @@
     "rating": "<:gt1:700234313345663026>",
     "manufacturercost": 20000
   },
-  "45": {
-    "make": "Audi",
-    "name": "Audi R18 TDI (Audi Sport Team Joest) 2011",
-    "image": "https://s34.wheelsage.org/format/picture/picture-preview-large/audi/r18_tdi/autowp.ru_audi_r18_tdi_28.jpg",
-    "rating": "<:gt1:700234313345663026>",
-    "manufacturercost": 20000
-  },
+
+
   "46": {
     "make": "Audi",
     "name": "Audi R8 4.2 FSI R tronic 2007",
@@ -452,13 +433,6 @@
     "name": "BMW M3 1991",
     "image": "https://media.ed.edmunds-media.com/bmw/m3/1991/oem/1991_bmw_m3_coupe_base_fq_oem_1_500.jpg",
     "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "70": {
-    "make": "BMW",
-    "name": "BMW M3 Coupe 2007",
-    "image": "https://vms.atcdn.co.uk/media/804f52f27a7e483dacee97fc1cea407f?width=900",
-    "rating": "⭐2.5",
     "manufacturercost": 15000
   },
   "71": {
@@ -1252,13 +1226,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
-  "185": {
-    "make": "Dodge",
-    "name": "Dodge Challenger R/T 1970",
-    "image": "https://ccmarketplace.azureedge.net/cc-temp/listing/103/311/9809467-1970-dodge-challenger-r-t-thumb-c.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "186": {
     "make": "Dodge",
     "name": "Dodge Challenger SRT Demon 2018",
@@ -1299,13 +1266,6 @@
     "name": "Dodge Charger R/T General Lee 1969",
     "image": "https://i.ytimg.com/vi/MwaQi3QghmQ/maxresdefault.jpg",
     "rating": "🔧1",
-    "manufacturercost": 15000
-  },
-  "192": {
-    "make": "Dodge",
-    "name": "Dodge Charger SRT Hellcat 2015",
-    "image": "http://lovedodge.com/wp-content/uploads/2017/06/2015-dodge-charger-srt-hellcat-the-most-powerful-sedan-in-the-world-ignition-ep-122-within-zip-97620-adel-or.jpg",
-    "rating": "⭐3",
     "manufacturercost": 15000
   },
   "193": {
@@ -1417,13 +1377,6 @@
     "make": "Dodge",
     "name": "Dodge Viper Competition Coupe 2003",
     "image": "https://www.ultimatecarpage.com/images/mediums/7197.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
-  "209": {
-    "make": "Dodge",
-    "name": "Dodge Viper GTS 2013",
-    "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b77152c3d0_-_2013-srt-viper-lg.jpg",
     "rating": "⭐3",
     "manufacturercost": 15000
   },
@@ -1833,20 +1786,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "268": {
-    "make": "Ford",
-    "name": "Ford Focus ST 2015",
-    "image": "https://media.discordapp.net/attachments/306637248219185154/447594082366259231/FordFocusST2.png?width=650&height=425",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "269": {
-    "make": "Ford",
-    "name": "Ford GT 2006",
-    "image": "http://3dprint.com/wp-content/uploads/2015/08/gt.png",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
   "270": {
     "make": "Ford",
     "name": "Ford GT 2016",
@@ -1868,25 +1807,11 @@
     "rating": "⭐0.3",
     "manufacturercost": 15000
   },
-  "273": {
-    "make": "Ford",
-    "name": "Ford Mustang GT Premium Fastback 2015",
-    "image": "http://www.nada.com/b2b/Portals/0/SunBlogNuke/Temp/9899a1f1-a904-458e-90b0-bd6ffbbd3772/2015%20Ford%20Mustang%20GT.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
   "274": {
     "make": "Ford",
     "name": "Ford Mustang GT V6 2011",
     "image": "http://www.thedetroitbureau.com/wp-content/uploads/2010/03/2011-Mustang.jpg",
     "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "275": {
-    "make": "Ford",
-    "name": "Ford Mustang Gr.3 Road Car",
-    "image": "https://www.gtplanet.net/wp-content/uploads/2017/11/Gran-Turismo-Sport-Mustang-Gr3-alxndrustinov-860x484.jpg",
-    "rating": "🔧2.5",
     "manufacturercost": 15000
   },
   "276": {
@@ -2274,13 +2199,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "331": {
-    "make": "Honda",
-    "name": "Honda Civic Type R (FK2) 2015",
-    "image": "https://i.imgur.com/JU15l5l.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 10000
-  },
   "332": {
     "make": "Honda",
     "name": "Honda Civic Type R 2007",
@@ -2337,13 +2255,6 @@
     "rating": "⭐3.5",
     "manufacturercost": 10000
   },
-  "340": {
-    "make": "Honda",
-    "name": "Honda NSX Gr.4 2017",
-    "image": "https://www.kudosprime.com/gts/images/users/car_125_1_59ed1d3b269ce.jpg",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 10000
-  },
   "341": {
     "make": "Honda",
     "name": "Honda NSX-R GT 2005",
@@ -2391,20 +2302,6 @@
     "name": "Hyundai Genesis Coupe 2008",
     "image": "https://s1.cdn.autoevolution.com/images/gallery/HYUNDAI-Genesis-Coupe-4095_99.jpg",
     "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "348": {
-    "make": "Hyundai",
-    "name": "Hyundai Genesis Coupe 3.8 Track 2013",
-    "image": "http://st.motortrend.com/uploads/sites/5/2012/02/2013-Hyundai-Genesis-Coupe-left-side-front-three-quarter-on-track.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "349": {
-    "make": "Hyundai",
-    "name": "Hyundai Genesis Gr.4 2013",
-    "image": "http://www.igcd.net/images/139/313.jpg",
-    "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 10000
   },
   "350": {
@@ -2603,13 +2500,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "378": {
-    "make": "Jaguar",
-    "name": "Jaguar C-X75 2013",
-    "image": "https://car-images.bauersecure.com/upload/30489/images/1040x585/000084f33b70-ac91-417c-9.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
   "379": {
     "make": "Jaguar",
     "name": "Jaguar D-Type 1956",
@@ -2629,13 +2519,6 @@
     "name": "Jaguar F-Type Gr.4 2014",
     "image": "http://www.igcd.net/images/133/850.jpg",
     "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 20000
-  },
-  "382": {
-    "make": "Jaguar",
-    "name": "Jaguar F-Type R Coupe 2014",
-    "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/Jaguar-F-type-Coupe-d.jpg",
-    "rating": "⭐2",
     "manufacturercost": 20000
   },
   "383": {
@@ -2925,13 +2808,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 30000
   },
-  "425": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Veneno 2014",
-    "image": "http://naludamagazine.com/wp-content/uploads/2013/05/Lamborghini-Veneno-internet.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 30000
-  },
   "426": {
     "make": "Lancia",
     "name": "Lancia 037 Stradale 1982",
@@ -3093,13 +2969,6 @@
     "rating": "⭐2",
     "manufacturercost": 20000
   },
-  "449": {
-    "make": "Lexus",
-    "name": "Lexus RC F Track Edition 2020",
-    "image": "https://cdn.motor1.com/images/mgl/vM896/s3/2020-lexus-rc-f-track-edition.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
   "450": {
     "make": "Lexus",
     "name": "Lexus RC350 2015",
@@ -3191,13 +3060,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
-  "463": {
-    "make": "Lotus",
-    "name": "Lotus Elise 111R 2004",
-    "image": "http://media.fastestlaps.com/ptamnt8oc9z0/640x350m",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "464": {
     "make": "Lotus",
     "name": "Lotus Elise 111S 2003",
@@ -3233,13 +3095,6 @@
     "rating": "⭐1",
     "manufacturercost": 15000
   },
-  "469": {
-    "make": "Lotus",
-    "name": "Lotus Evora S 2011",
-    "image": "http://latimesblogs.latimes.com/.a/6a00d8341c630a53ef01538f30746e970b-800wi",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
   "470": {
     "make": "Lotus",
     "name": "Lotus Exige Cup 430 (Type 49) 2018",
@@ -3258,13 +3113,6 @@
     "make": "Lotus",
     "name": "Lotus Exige S 2007",
     "image": "https://cdn.bringatrailer.com/wp-content/uploads/2016/04/Screen-Shot-2017-03-13-at-3.03.58-PM-940x714.png",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
-  "473": {
-    "make": "Lotus",
-    "name": "Lotus Exige S 2013",
-    "image": "http://image.superstreetonline.com/f/39027170+w+h+q80+re0+cr1/epcp-1210-01%2B2013-lotus-exige-s%2Bcover.jpg",
     "rating": "⭐2",
     "manufacturercost": 15000
   },
@@ -3349,13 +3197,6 @@
     "make": "Maserati",
     "name": "Maserati GranTurismo MC Stradale 2014",
     "image": "https://images.luxify.com/resize?height=560&nocrop=true&url=https%3A%2F%2Fcdn.luxify.com%2Fimages%2F20160919-213300-luxify-2208-97211.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
-  "486": {
-    "make": "Maserati",
-    "name": "Maserati GranTurismo S 2008",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/07q4/267366/2008-maserati-granturismo-photo-8746-s-original.jpg",
     "rating": "⭐2",
     "manufacturercost": 20000
   },
@@ -3666,13 +3507,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
-  "533": {
-    "make": "Mercedes-Benz",
-    "name": "Mercedes-Benz GT S AMG GT3 (AMG-Team HTP-Motorsport) 2016",
-    "image": "http://www.dailysportscar.com/wp-content/uploads/2016/05/29-HTP-Motorsports-Mercedes-N24-2016-Qualifying.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 20000
-  },
   "534": {
     "make": "Mercedes-Benz",
     "name": "Mercedes-Benz SL 500 2003",
@@ -3862,13 +3696,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "561": {
-    "make": "Mini",
-    "name": "Mini Cooper S Final Edition 2000",
-    "image": "https://s-media-cache-ak0.pinimg.com/originals/50/fc/69/50fc690baca147b04dc3f33245490ac5.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
   "562": {
     "make": "Mini",
     "name": "Mini John Cooper Works 2009",
@@ -3939,13 +3766,6 @@
     "rating": "⭐2",
     "manufacturercost": 10000
   },
-  "572": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Eclipse GT 2006",
-    "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2006/2006-mitsubishi-eclipse-frontside_mieclgt061.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "573": {
     "make": "Mitsubishi",
     "name": "Mitsubishi Eclipse GT Coupe 2003",
@@ -3972,13 +3792,6 @@
     "name": "Mitsubishi Galant VR-4 1987",
     "image": "http://www.autozine.org/Archive/Mitsubishi/classic/Galant_VR4_mk1.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "577": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Lancer Evolution Final Edition 2015",
-    "image": "http://st.motortrend.com/uploads/sites/5/2015/10/2015-mitsubishi-lancer-evolution-final-edition-us-front-three-quarter-03.jpg",
-    "rating": "⭐2",
     "manufacturercost": 10000
   },
   "578": {
@@ -4084,20 +3897,6 @@
     "name": "Mitsubishi Starion GSR-VR 1988",
     "image": "http://www.j-spec.com.au/f14466/1988-Mitsubishi-Starion-GSR-VR_1.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "593": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi eK Wagon 2002",
-    "image": "http://car-pricenet.com/img/attachments/79/185779_large.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
-  "594": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi eK Wagon 2016",
-    "image": "https://i.ytimg.com/vi/cXvobCvNGbU/maxresdefault.jpg",
-    "rating": "⭐0.4",
     "manufacturercost": 10000
   },
   "595": {
@@ -4471,13 +4270,6 @@
     "rating": "⭐0.4",
     "manufacturercost": 10000
   },
-  "651": {
-    "make": "Renault",
-    "name": "Renault Twingo II Gordini R.S. 2012",
-    "image": "https://auta5p.eu/vystavy/zeneva_2012/zeneva_242.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "652": {
     "make": "Renault",
     "name": "Renault Twingo RS 133 Cup 2009",
@@ -4637,13 +4429,6 @@
     "name": "Subaru Impreza 2.5i Premium Sedan 2010",
     "image": "https://s3-prod.autoweek.com/s3fs-public/styles/1152x647/public/100519853.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "676": {
-    "make": "Subaru",
-    "name": "Subaru Impreza Coupe 22B STi Version 1998",
-    "image": "https://www.autotribute.com/wp-content/uploads/2013/12/1998-Subaru-Impreza-22b-STi-Coupe.jpg",
-    "rating": "⭐2",
     "manufacturercost": 10000
   },
   "677": {
