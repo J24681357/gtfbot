@@ -10,11 +10,11 @@ var fs = require("fs");
 module.exports = {
   name: "debug",
   title: "DEBUG",
-  cooldown: 0.1,
+  cooldown: 3,
   level: 0,
-  channels: ["gtf-mode","testing"],
+  channels: ["gtf-demo","testing"],
 
-  delete: true,
+  delete: false,
   availitoeveryone:true,
   availinmaint: false,
   requireuserdata: false,
@@ -29,18 +29,18 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    var user = msg.author.username;
     embed.setAuthor(
       user,
-      msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()
+      msg.author.displayAvatarURL()
     );
     var args = "\n" + "`SPECIAL PURPOSES`" + "\n";
     var page = 0
     var results = ""
-    var info = ''
+    var info = ' '
     /* Setup */
 
-    var extra = "";
+    var extra = " ";
     var deletee = false;
 
     let MongoClient = require("mongodb").MongoClient;
@@ -49,13 +49,6 @@ module.exports = {
     MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
       if (err) throw err;
       g();
-      /*.then(function(){
-    var dbo = db.db("GTFitness");
-  dbo.collection("GTFBOT").find({}).forEach(row => {
-    delete require(gtffile.MAIN).gtfbotconfig["_id"]
-      dbo.collection("GTFBOT").replaceOne({}, require(gtffile.MAIN).gtfbotconfig)
-      })
-  })*/
     });
     function g() {
       if (userdata["id"] != "237450759233339393") {
@@ -154,7 +147,7 @@ module.exports = {
       if (query[0] == "giftcredits") {
         success = true;
         stats.addgift(
-          "**" + query[1] + "**" + emote.credits,
+          query[1] + emote.credits,
           query[1],
           "CREDITS",
           "USERNAME",
@@ -164,36 +157,23 @@ module.exports = {
       }
       if (query[0] == "giftrandomcar") {
         success = true;
-        var prizes =require(gtffile.CARS).randomcars(
-          ["Any"],
-          [""],
-          parseInt(query[1])
-        );
-        for (var i = 0; i < prizes.length; i++) {
-          var item = prizes[i];
-          var name = item[0];
-          var costtoperf = item[1][1];
-          var make = item[3];
-
+        var car = require(gtffile.CARS).random({}, 1)[0]
           stats.addgift(
-            name,
-            stats.addcar(name, make, costtoperf, undefined, userdata),
-            "CAR",
-            "USERNAME",
-            true,
-            userdata
-          );
-        }
+          car["name"],
+          car,
+          "CAR",
+          "USERNAME",
+          true,
+          userdata
+        );
         results =
           "`" +
           query[0] +
           "` success to " +
-          msg.guild.members.cache.get(userdata).user.username +
+          msg.author.username +
           "." +
           "\n" +
-          "Added " +
-          query[1] +
-          " random cars to garage.";
+          "Added new car to gifts.";
       }
       if (query[0] == "cleargifts") {
         success = true;
@@ -201,11 +181,11 @@ module.exports = {
       }
       if (query[0] == "dailyworkoutoff") {
         success = true;
-        stats.dailyworkout(false, userdata);
+        userdata["dailyworkout"] = false
       }
       if (query[0] == "dailyworkouton") {
         success = true;
-        stats.dailyworkout(true, userdata);
+        userdata["dailyworkout"] = true
       }
       if (query[0] == "forcecancel") {
         success = true;
@@ -329,8 +309,10 @@ module.exports = {
         //embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
         if (deletee) {
           stats.save(userdata, "DELETE")
-        }
+        } else {
+      stats.save(userdata)
         return msg.channel.send(embed);
+        }
       } else {
         msg.channel.send("Invalid");
       }

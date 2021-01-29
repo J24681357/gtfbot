@@ -113,8 +113,11 @@ module.exports.addgift = function(name, item, type, author, isgift, userdata) {
     "author":author,
     "isgift":isgift}
 ]
+
   userdata["gifts"].push(gift)
   userdata["numgiftearned"]++
+  
+    stats.save(userdata)
 }
 
 module.exports.addcount = function(userdata) {
@@ -226,10 +229,11 @@ module.exports.view = function(gtfcar,userdata) {
   var ocar  = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
   var garage = stats.garage(userdata)
   var perf = require(gtffile.PERF).perf(gtfcar, "GARAGE")
+  
   var cardetails = "**Car:** " + gtfcar["name"] + " `🚘ID:" + gtftools.index(garage, gtfcar) + "`\n" +
   "**Type:** " + ocar["type"] + "\n" +
-  "**" + ocar["drivetrain"] + " | " + perf["fpp"] + emote.fpp + " | " + 
-  perf["power"] + "hp" + " | " + perf["weight"] + "lbs**" + "\n\n" +
+  "**" + ocar["drivetrain"] + " | " + gtftools.numFormat(perf["fpp"]) + emote.fpp + " | " + 
+  gtftools.numFormat(perf["power"]) + "hp" + " | " + gtftools.numFormat(perf["weight"]) + "lbs**" + "\n\n" +
   "**Paint:** " + gtfcar["color"]["current"] + "\n" +
   "**Engine:** " + gtfcar["engine"]["current"] + "\n" +
   "**Transmission:** " + gtfcar["transmission"]["current"] + "\n" +
@@ -406,17 +410,25 @@ module.exports.isracescomplete = function(eventid, total, pnumber, userdata) {
 module.exports.gift = function(title, gift, embed, msg, userdata) {
   var type = gift[0]
   if (type == "CREDITS") {
-    stats.addcredits(parseInt(gift[1]["credits"]), userdata)
-    userdata["gifts"] = userdata["gifts"].filter(x => x["id"] !== gift[1]["id"])
-    
-    require(gtffile.EMBED).success(title, "**Credits:** **+" + gtftools.numFormat(gift[1]["credits"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
+    stats.addcredits(parseInt(gift[1]["item"]), userdata)
+    userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
+
+    require(gtffile.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["item"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
     stats.save(userdata)
-  } else if (type = "RANDOMCAR") {
-  delete gift[1]["id"]
+  } else if (type == "RANDOMCAR") {
   var prizes = require(gtffile.CARS).random(gift[1], 4)
-  require(gtffile.MARKETPLACE).fourcargifts(title, "**" + title + "**", prizes, embed, msg, userdata)
-  
+  require(gtffile.MARKETPLACE).fourcargifts(title, "**" + title + "**", prizes, embed, msg, userdata) 
+    userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
     stats.save(userdata)
+  } else if (type == "CAR") {
+  var car = gift[1]["item"]
+  stats.addcar(car,undefined, userdata)
+  userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
+    stats.save(userdata)
+    
+  embed.setImage(car["image"])
+  
+  require(gtffile.EMBED).success(title, "**" + car["name"] + " Acquired.**" , 0, true, embed, msg, userdata);
   }
 }
 
@@ -560,10 +572,10 @@ module.exports.main = function(userdata) {
   userdata["lastonline"] = currdate;
   
     return gifts + gtftools.numFormat(userdata["credits"]) + emote.credits +
-    "  " +
+    "  " + stats.mileage("USER", false, userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + dwdistance + emote.mileage + "  " +
     userdata["exp"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
     emote.exp + " " + "Lv." + userdata['level']
-    //stats.mileage("USER", false, userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + dwdistance + emote.mileage +
+    
 };
 
 

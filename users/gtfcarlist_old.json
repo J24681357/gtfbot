@@ -209,20 +209,6 @@
     "rating": "⭐3.5",
     "manufacturercost": 20000
   },
-  "37": {
-    "make": "Aston-Martin",
-    "name": "Aston Martin V8 Vantage S 2015",
-    "image": "https://media.ed.edmunds-media.com/aston-martin/v12-vantage-s/2015/oem/2015_aston-martin_v12-vantage-s_coupe_base_fq_oem_2_1280.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
-  "38": {
-    "make": "Aston-Martin",
-    "name": "Aston Martin Vantage Gr.4 2015",
-    "image": "https://www.granturismo-club.com/images/GT-sport/Voitures/Big/14.jpg",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 20000
-  },
   "39": {
     "make": "Aston-Martin",
     "name": "Aston Martin Vulcan 2016",
@@ -274,20 +260,6 @@
     "rating": "⭐2",
     "manufacturercost": 20000
   },
-  "47": {
-    "make": "Audi",
-    "name": "Audi R8 5.2 FSI quattro 2009",
-    "image": "https://cdn.motor1.com/images/mgl/ymp6b/s3/2009-160134-audi-r8-v10-5-2-fsi-quattro-2009-naias1.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
-  "48": {
-    "make": "Audi",
-    "name": "Audi R8 GT Spyder 2012",
-    "image": "https://parkers-images.bauersecure.com/pagefiles/192354/cut-out/600x400/audi_r8_gts.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
   "49": {
     "make": "Audi",
     "name": "Audi R8 LMS 2009",
@@ -322,20 +294,6 @@
     "image": "http://st.motortrend.com/uploads/sites/10/2015/09/2014-audi-TT-coupe-three-quarters-view-2.jpg",
     "rating": "⭐1",
     "manufacturercost": 20000
-  },
-  "54": {
-    "make": "Audi",
-    "name": "Audi quattro 1982",
-    "image": "https://enthusiastnetwork.s3.amazonaws.com/uploads/sites/5/2006/08/c12_0509_audiquattro09_z.jpg?impolicy=modalgallery",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "55": {
-    "make": "BMW",
-    "name": "BMW 1M Coupe 2011",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q2/395918/2011-bmw-1-series-m-coupe-test-review-car-and-driver-photo-396361-s-original.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
   },
   "56": {
     "make": "BMW",
@@ -736,20 +694,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "115": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Cobalt SS Supercharged 2005",
-    "image": "https://media.ed.edmunds-media.com/chevrolet/cobalt/2005/oem/2005_chevrolet_cobalt_coupe_ss-supercharged_fq_oem_2_500.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
-  "116": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Corvette C1 1958",
-    "image": "https://www.corvsport.com/wp-content/uploads/2017/01/chevrolet-corvette-c1-1958-vray.jpg",
-    "rating": "⭐0.3",
-    "manufacturercost": 15000
-  },
   "117": {
     "make": "Chevrolet",
     "name": "Chevrolet Corvette C2 Stingray Z06 1963",
@@ -783,13 +727,6 @@
     "name": "Chevrolet Corvette C5 Z06 2001",
     "image": "http://media.fastestlaps.com/mm1npls5f5u3",
     "rating": "⭐2.5",
-    "manufacturercost": 15000
-  },
-  "122": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Corvette C6 Z06 2006",
-    "image": "https://i.pinimg.com/originals/81/90/94/8190945b183baaff0ba68635f0f3666a.jpg",
-    "rating": "⭐3",
     "manufacturercost": 15000
   },
   "123": {
@@ -1086,20 +1023,6 @@
     "rating": "⭐0.4",
     "manufacturercost": 10000
   },
-  "165": {
-    "make": "Daihatsu",
-    "name": "Daihatsu Copen 2002",
-    "image": "https://www.carzone.ie/reviews/images/338_daihatsu_copen2003_04.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
-  "166": {
-    "make": "Daihatsu",
-    "name": "Daihatsu Copen 2014",
-    "image": "http://www.j-spec.com.au/f17848/2014-Daihatsu-Copen-Robe_01.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
   "167": {
     "make": "Daihatsu",
     "name": "Daihatsu Cuore 1.0 Plus 2004",
@@ -1127,14 +1050,7 @@
     "image": "http://a2goos.com/data_images/galleryes/daihatsu-midget/daihatsu-midget-07.jpg",
     "rating": "⭐0.4",
     "manufacturercost": 10000
-  },
-  "171": {
-    "make": "Daihatsu",
-    "name": "Daihatsu Mira TX 1999",
-    "image": "https://www.productioncars.com/send_file.php/daihatsu_mira_tx_green_2d_1998.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
+  }
   "172": {
     "make": "Daihatsu",
     "name": "Daihatsu Opti Aerodown Beex 1998",
@@ -1408,13 +1324,6 @@
     "rating": "⭐3",
     "manufacturercost": 15000
   },
-  "214": {
-    "make": "Dodge",
-    "name": "Dodge Viper SRT-10 ACR 2008",
-    "image": "http://st.motortrend.com/uploads/sites/5/2007/11/112_0711_18z-2008_dodge_viper_SRT10_ACR-front_view.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
   "215": {
     "make": "Dodge",
     "name": "Dodge Viper SRT-10 ACR-X 2010",
@@ -1562,13 +1471,6 @@
     "rating": "⭐2",
     "manufacturercost": 30000
   },
-  "236": {
-    "make": "Ferrari",
-    "name": "Ferrari LaFerrari 2013",
-    "image": "http://cdn.hiconsumption.com/wp-content/uploads/2013/03/2013-Ferrari-LaFerrari-1.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 30000
-  },
   "237": {
     "make": "Ferrari",
     "name": "Ferrari SP38 Deborah 2018",
@@ -1643,13 +1545,6 @@
     "make": "Fiat",
     "name": "Fiat Bravo T-Jet 1.4 Turbo 2014",
     "image": "http://s2.glbimg.com/_h9CieeM0SkWb3VglyURXXtmwCY=/620x400/e.glbimg.com/og/ed/f/original/2015/02/03/img_8811.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "248": {
-    "make": "Fiat",
-    "name": "Fiat Coupé Turbo 20V 1996",
-    "image": "https://ph-classic-prod-images.s3.amazonaws.com/nimg/36306/PHHero_FiatCoupeTurbo_06.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -2157,13 +2052,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "325": {
-    "make": "Honda",
-    "name": "Honda Civic Si 1986",
-    "image": "https://icdn-1.motor1.com/images/mgl/Oq4gR/s4/honda-civic-si-japanese-spec.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "326": {
     "make": "Honda",
     "name": "Honda Civic Si 1994",
@@ -2210,13 +2098,6 @@
     "make": "Honda",
     "name": "Honda Insight 1999",
     "image": "https://s1.cdn.autoevolution.com/images/gallery/HONDAInsight-892_1.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "334": {
-    "make": "Honda",
-    "name": "Honda Insight LS 2009",
-    "image": "http://japanopenmarket.com/wp-content/uploads/2016/04/Insight-Grade-LS.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -3053,20 +2934,6 @@
     "rating": "⭐1",
     "manufacturercost": 15000
   },
-  "465": {
-    "make": "Lotus",
-    "name": "Lotus Elise 1996",
-    "image": "http://www.classicandperformancecar.com/uploads/cms_article/5001_5100/lotus-elise-mk1-mk2-buying-guide-and-review-1996-present-5045_13011_640X470.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "466": {
-    "make": "Lotus",
-    "name": "Lotus Elise 2005",
-    "image": "https://s13252.pcdn.co/wp-content/uploads/2017/06/Screen-Shot-2017-06-13-at-12.37.06-PM-940x663.png",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "467": {
     "make": "Lotus",
     "name": "Lotus Elise Sport 190 1998",
@@ -3536,11 +3403,6 @@
     "manufacturercost": 20000
   },
   "540": {
-    "make": "Mercedes-Benz",
-    "name": "Mercedes-Benz SLS AMG Gr.4",
-    "image": "https://i.ytimg.com/vi/ohucLw3Qpao/maxresdefault.jpg",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 20000
   },
   "541": {
     "make": "Mercedes-Benz",
@@ -3766,13 +3628,6 @@
     "rating": "⭐2",
     "manufacturercost": 10000
   },
-  "575": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi FTO GP Version R 1999",
-    "image": "https://i.pinimg.com/originals/ea/8f/94/ea8f949d77122f2928f1e135bc0088d9.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "576": {
     "make": "Mitsubishi",
     "name": "Mitsubishi Galant VR-4 1987",
@@ -3785,20 +3640,6 @@
     "name": "Mitsubishi Lancer Evolution Final Edition Gr.B Road Car",
     "image": "https://vignette.wikia.nocookie.net/gran-turismo/images/d/d5/Mitsubishi_Lancer_Evolution_Final_Edition_Gr.B_Road_Car.jpg/revision/latest?cb=20171207135517",
     "rating": "🔧3",
-    "manufacturercost": 10000
-  },
-  "579": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Lancer Evolution IV GSR 1996",
-    "image": "http://www.geocities.ws/go2idmisc/EVO_IV-1.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "580": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Lancer Evolution IV RS 1996",
-    "image": "http://images.canadianlisted.com/nlarge/1996-mitsubishi-lancer-evolution-iv-gsr-8890_8945051.jpg",
-    "rating": "⭐2",
     "manufacturercost": 10000
   },
   "581": {
@@ -4242,13 +4083,6 @@
     "rating": "⭐2",
     "manufacturercost": 10000
   },
-  "649": {
-    "make": "Renault",
-    "name": "Renault Sport R.S.01 GT3 2016",
-    "image": "https://images.carscoops.com/2015/10/Renault-Sport-RS-01-0.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 10000
-  },
   "650": {
     "make": "Renault",
     "name": "Renault Twingo I 1998",
@@ -4473,13 +4307,6 @@
     "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 10000
   },
-  "687": {
-    "make": "Subaru",
-    "name": "Subaru WRX Gr.B Road Car",
-    "image": "https://www.kudosprime.com/gts/images/users/car_166_1_5a0c92edc175b.jpg",
-    "rating": "🔧3",
-    "manufacturercost": 10000
-  },
   "688": {
     "make": "Subaru",
     "name": "Subaru WRX STI S208 2018",
@@ -4613,13 +4440,6 @@
     "rating": "⭐2",
     "manufacturercost": 10000
   },
-  "707": {
-    "make": "Toyota",
-    "name": "Toyota GT86 2015",
-    "image": "https://www.motoringresearch.com/wp-content/uploads/2014/10/Toyota_GT86.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "708": {
     "make": "Toyota",
     "name": "Toyota Alphard V 2002",
@@ -4708,20 +4528,6 @@
     "make": "Toyota",
     "name": "Toyota Estima Hybrid 2001",
     "image": "http://image.autowini.com/IMG/spec/Toyota_Estima%20Hybrid/Toyota-Estima%20Hybrid-2001.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "721": {
-    "make": "Toyota",
-    "name": "Toyota GR Supra 2020",
-    "image": "https://t1-cms-3.images.toyota-europe.com/toyotaone/gben/header_tcm-3060-1542578.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "723": {
-    "make": "Toyota",
-    "name": "Toyota Prius 2016",
-    "image": "http://st.motortrend.com/uploads/sites/5/2015/11/2016-Toyota-Prius-Four-Touring-side-profile.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },

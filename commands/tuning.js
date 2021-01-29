@@ -12,7 +12,7 @@ module.exports = {
   "title": "🛠 Car Tuning",
   "cooldown": 3,
   "level": 0,
-  "channels": ["testing", "gtf-test-mode"],
+  "channels": ["testing", "gtf-test-mode", "gtf-demo"],
 
   "delete": true,
   "availinmaint": false,
@@ -63,7 +63,7 @@ module.exports = {
     }*/
 
     if (list.length == 0) {
-      require(gtffile.EMBED).error("❌ No Tunnable Parts", "There are no parts to tune for the **" + gtfcar["name"] + "**.", embed, msg, userdata)
+      require(gtffile.EMBED).error("❌ No Tunable Parts", "There are no parts to tune for the **" + gtfcar["name"] + "**.", embed, msg, userdata)
       return
     }
     var part = []

@@ -44,7 +44,7 @@ module.exports = {
        userdata['version'] = gtfuser.gtfbotconfig['version']
     }
 
-    require(gtffile.EMBED).success('✅ Success', 'Update Complete!', 5000, true, embed, msg, userdata);
+    require(gtffile.EMBED).success('✅ Success', 'Update Complete!', 0, true, embed, msg, userdata);
     return;
   },
   

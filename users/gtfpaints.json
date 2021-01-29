@@ -220,5 +220,8 @@
   { "type": "Matte", "name": "Grey", "cost": 10000 },
   { "type": "Matte", "name": "Dark Grey", "cost": 10000 },
   { "type": "Matte", "name": "Black", "cost": 10000 }
+], "special": [
+  { "type": "Special", "name": "Gran Turismo 6 15th Anniversary Blue", "cost": 20000 },
+{ "type": "Special", "name": "5727cc", "cost": 50000 }
 ]
 }

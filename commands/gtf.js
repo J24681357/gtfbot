@@ -10,11 +10,11 @@ var gtffile = process.env
 module.exports = {
   name: "gtf",
   title: "GTF Facts",
-  cooldown: 5,
+  cooldown: 10,
   level: 0,
-  channels: ["gtf-mode", "testing"],
+  channels: ["gtf-mode", "testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:true,
   availitoeveryone:true,
   requirecar: false,
@@ -26,8 +26,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+    var user = msg.author.username
+    embed.setAuthor(user, msg.author.displayAvatarURL());
     var args = ""
     var page = 0
     var results = ''

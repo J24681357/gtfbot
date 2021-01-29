@@ -14,7 +14,7 @@ module.exports = {
   cooldown: 3,
   level:0,
     aliases: ["r", "replays"],
-    channels: ["gtf-mode", "testing", "gtf-test-mode"],
+    channels: ["gtf-mode", "testing", "gtf-demo"],
 
   delete: true,
   availinmaint:false,

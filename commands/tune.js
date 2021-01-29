@@ -43,7 +43,8 @@ module.exports = {
     var reactionson = true
 
     if (query.length == 0) {
-      results = "__**Engine**__ - !tune [engine|eng|e] ['stock'|(number)]" + "\n" + "__**Suspension**__ - !tune [suspension|susp|su] ['stock'|(number)]" + "\n" + "__**Tires**__ - !tune [tires|tire|tr] ['stock'|(number)]" + "\n" + "__**Weight Reduction**__ - !tune [weight-reduction|weight|we] ['stock'|(number)]" + "\n" + "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]"
+      results = "__**Engine**__ - !tune [engine|eng|e] ['stock'|(number)] " +
+       "\n" + "__**Transmission**__ - !tune [transmission|trans|tr] " + "\n" + "__**Suspension**__ - !tune [suspension|susp|su] ['stock'|(number)]" + "\n" + "__**Tires**__ - !tune [tires|tire|tr] ['stock'|(number)]" + "\n" + "__**Weight Reduction**__ - !tune [weight-reduction|weight|we] ['stock'|(number)]" + "\n" + "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]"
       var list = results.split("\n").map(function(x) {
         return [x, " "]
       })
@@ -68,25 +69,25 @@ module.exports = {
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-    if (query[0] == "suspension" || query[0] == "susp" || query[0] == "sus" || query[0] == "su" || parseInt(query[0]) == 2) {
+    if (query[0] == "suspension" || query[0] == "susp" || query[0] == "sus" || query[0] == "su" || parseInt(query[0]) == 3) {
       selectedtype = true
       var type = "suspension"
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-    if (query[0] == "tires" || query[0] == "tire" || query[0] == "ti" || parseInt(query[0]) == 3) {
+    if (query[0] == "tires" || query[0] == "tire" || query[0] == "ti" || parseInt(query[0]) == 4) {
       var selectedtype = true
       var type = "tires"
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-    if (query[0] == "weight-reduction" || query[0] == "weight" || query[0] == "we" || parseInt(query[0]) == 4) {
+    if (query[0] == "weight-reduction" || query[0] == "weight" || query[0] == "we" || parseInt(query[0]) == 5) {
       selectedtype = true
       var type = "weight-reduction"
       var select = require(gtffile.PARTS).find({ "type": type })
     }
 
-    if (query[0] == "turbo" || query[0] == "supercharger" || query[0] == "tu" || parseInt(query[0]) == 5) {
+    if (query[0] == "turbo" || query[0] == "supercharger" || query[0] == "tu" || parseInt(query[0]) == 6) {
       selectedtype = true
       var type = "turbo"
       var select = require(gtffile.PARTS).find({ "type": type })
@@ -138,12 +139,12 @@ module.exports = {
       return ["**" + gtftools.numFormat(x["cost"]) + "**" + emote.credits + " " + x["type"] + " " + x["name"] + " ", cond]
     })
 
-    results = gtftools.list(select3, page, "", "", true, "", 10, userdata)
+    results = gtftools.list(select3, page, "", emote.fpp, true, "", 10, userdata)
 
     embed.setDescription(results)
     embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
     info = "❓ **Select an upgrade corresponding with the numbers above or the reactions.**"
-    gtftools.createpages(results, select3, page, "", "", true, "", 10, [query, "tune", reactionson, info], embed, msg, userdata)
+    gtftools.createpages(results, select3, page, "", emote.fpp, true, "", 10, [query, "tune", reactionson, info], embed, msg, userdata)
     return
   }
 }

@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 3,
   level: 0,
   roles: [],
-  channels: ["testing", "gtf-test-mode"],
+  channels: ["testing", "gtf-demo"],
 
   delete: false,
   availinmaint:false,

@@ -12,9 +12,9 @@ module.exports = {
   title: "🎨 GTF Auto - Paints",
   cooldown: 3,
    level:0,
-    channels: ["gtf-mode", "testing"],
+    channels: ["gtf-mode", "testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requirecar: true,
   usedduringrace: false,
@@ -47,44 +47,42 @@ module.exports = {
       results ="__**Gloss Paints**__ - !paint [gloss|g]" + "\n" +
       "__**Metallic Paints**__ - !paint [metallic|m]" + "\n" +
       "__**Pearl Paints**__ - !paint [pearl|p]" + "\n" +
-      "__**Matte Paints**__ - !paint [matte|ma]" + "\n"
+      "__**Matte Paints**__ - !paint [matte|ma]" + "\n" +
+      "__**Special Paints**__ - !paint [special|spec]" + "\n" + " "
       var list = results.split("\n").map(function(x) {
         return [x, " "]
       })
       var page = 0
-      results2 = gtftools.list(list, page, "", "", true, "", 7, [query, "paint",info], embed, msg, userdata)
+      results2 = gtftools.list(list, page, "", "", true, "", 5, [query, "paint",info], embed, msg, userdata)
 
       embed.setDescription(results)
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 6, [query, "paint", true, info], embed, msg, userdata)
+      gtftools.createpages(results2, list, page, "", "", true, "", 5, [query, "paint", true, info], embed, msg, userdata)
       return
     }
 
+var select
     if (query[0] == "gloss" || query[0] == "g" || query[0] == "Gloss" || parseInt(query[0]) == 1) {
       var selectedtype = true
       var type = "gloss"
-      var select = require(gtffile.PAINTS).find({ "type": type })
     }
     if (query[0] == "metallic" || query[0] == "m" || query[0] == "Metallic" || parseInt(query[0]) == 2) {
        var selectedtype = true
       var type = "metallic"
-      var select = require(gtffile.PAINTS).find({ "type": type })
     }
     if (query[0] == "pearl" || query[0] == "p" || query[0] == "Pearl"  || parseInt(query[0]) == 3) {
       var selectedtype = true
       var type = "pearl"
-      var select = require(gtffile.PAINTS).find({ "type": type })
     }
     if (query[0] == "matte" || query[0] == "ma" || query[0] == "mt" || query[0] == "Matte" || parseInt(query[0]) == 4) {
        var selectedtype = true
       var type = "matte"
-      var select = require(gtffile.PAINTS).find({ "type": type })
     }
-    if (query[0] == "special" || query[0] == "s" || query[0] == "Special" || parseInt(query[0]) == 5) {
+    if (query[0] == "special" || query[0] == "Special" || parseInt(query[0]) == 5) {
        var selectedtype = true
       var type = "special"
-      var select = require(gtffile.PAINTS).find({ "type": type })
     }
+select = require(gtffile.PAINTS).find({ "type": type })
 
     if (selectedtype) {
       var type = select[0]["type"]

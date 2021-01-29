@@ -11,7 +11,7 @@ module.exports = {
   title: "GT Sport Daily Workout (4 Cars)",
   cooldown: 300,
   level: 3,
-  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+  channels: ["gtf-mode", "testing", "gtf-demo"],
 
   delete: false,
   requirecar: false,

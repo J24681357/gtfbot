@@ -11,7 +11,7 @@ module.exports = {
   title: "My Profile",
   cooldown: 3,
    level:0,
-     channels: ["gtf-mode","testing", "gtf-test-mode"],
+     channels: ["gtf-mode","testing", "gtf-demo"],
 
   delete: true,
   availinmaint:false,
@@ -47,7 +47,7 @@ module.exports = {
     if (curr >= 51) {
       curr = 50
     }
-    var exppoints = require(gtffile.EXP).ExpLevels()[curr.toString()]["exp"]
+    var exppoints = require(gtffile.LISTS).gtfexp[curr.toString()]["exp"]
     var currentexppoints = curr - 1
 
     for (var i = 0; i < expbar.length; i++) {

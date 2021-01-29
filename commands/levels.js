@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 5,
     level: 0,
       aliases: ["explevels", "level"],
-  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+  channels: ["gtf-mode", "testing", "gtf-test-mode", "gtf-demo"],
 
   delete: true,
   availitoeveryone:true,
@@ -41,7 +41,7 @@ module.exports = {
     var reactionson = true
 
     embed.setTitle(
-      emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtffile.EXP).ExpLevels()).length + " Levels" + "__"
+      emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtffile.LISTS).gtfexp).length + " Levels" + "__"
     );
 
     if (!isNaN(query[0])) {
@@ -79,7 +79,7 @@ module.exports = {
       msg.channel.send(embed);
       return;
     } else {
-    var explevels = require(gtffile.EXP).ExpLevels()
+    var explevels = require(gtffile.LISTS).gtfexp
     var list = Object.keys(explevels).map(function(level) {
         return ["", explevels[level]["exp"], explevels[level]["rewards"].join("\r")];
     })

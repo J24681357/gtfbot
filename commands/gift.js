@@ -11,9 +11,9 @@ module.exports = {
   name: 'gift',
   cooldown: 3,
   level:0,
-  channels: ["gtf-mode", "testing"],
+  channels: ["gtf-demo", "testing"],
   
-  delete: true,
+  delete: false,
   availinmaint:false,
   description: ["Test"],
   aliases: ['inv', 'inventory', 'gifts'],
@@ -68,7 +68,20 @@ module.exports = {
       selected = true
       var number = query[1]
       var gift = stats.gifts(userdata)[number - 1]
-      stats.gift("✅**" + gift[1]["name"] + "** has been redeemed!", gift, embed, msg, userdata)
+    results = "Redeem?"
+  embed.setDescription(results);
+  embed.addField(stats.main(userdata), stats.currentcarmain(userdata));
+  msg.channel.send(embed).then(msg => {
+    function accept() {
+      stats.gift("✅" + gift[1]["name"] + " has been redeemed!", gift, embed, msg, userdata)
+      return
+    }
+    
+      var emojilist = [[emote.yes,'Yes', accept, "Once"]]
+
+      gtftools.createreactions(emojilist, msg, userdata)
+  })
+  return
     }
 
     if (selected) {

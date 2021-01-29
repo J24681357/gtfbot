@@ -12,7 +12,7 @@ module.exports = {
   title: "GTF Settings",
   cooldown: 5,
   level:0,
-     channels: ["gtf-mode", "testing", "gtf-test-mode"],
+     channels: ["gtf-mode", "testing", "gtf-demo"],
 
   availinmaint:false,
   delete: false,

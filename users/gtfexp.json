@@ -1,0 +1,74 @@
+{
+  "1": { "exp": 0, "rewards": [ "" ] },
+  "2": { "exp": 350, "rewards": [ "" ] },
+  "3": { "exp": 791, "rewards": [ "Daily Workout (4 Cars) - **!dw4**" ] },
+  "4": { "exp": 1325, "rewards": [ "" ] },
+  "5": {
+    "exp": 1954,
+    "rewards": [
+      "Career Mode - Amateur - **!career [a]**",
+      "Arcade Mode - Amateur - **!dw4**",
+      "Drift Trial - Beginner - **!drift [beginner]**"
+    ]
+  },
+  "6": { "exp": 2680, "rewards": [ "" ] },
+  "7": { "exp": 3505, "rewards": [ "" ] },
+  "8": {
+    "exp": 4431,
+    "rewards": [ "Special Stage Route X - Top Speed Run - **!ssrx**" ]
+  },
+  "9": { "exp": 5460, "rewards": [ "" ] },
+  "10": {
+    "exp": 6594,
+    "rewards": [ "Career Mode - IC League - **career [ic]**" ]
+  },
+  "11": { "exp": 7835, "rewards": [ "" ] },
+  "12": { "exp": 9185, "rewards": [ "" ] },
+  "13": { "exp": 10646, "rewards": [ "" ] },
+  "14": { "exp": 12220, "rewards": [ "" ] },
+  "15": { "exp": 13909, "rewards": [ "" ] },
+  "16": { "exp": 15715, "rewards": [ "" ] },
+  "17": { "exp": 17640, "rewards": [ "" ] },
+  "18": { "exp": 19686, "rewards": [ "" ] },
+  "19": { "exp": 21855, "rewards": [ "" ] },
+  "20": {
+    "exp": 24149,
+    "rewards": [
+      "Career Mode - IB League - **career [ib]**",
+      "Arcade Mode - Professional - **!arcade pro**"
+    ]
+  },
+  "21": { "exp": 26570, "rewards": [ "" ] },
+  "22": { "exp": 29120, "rewards": [ "" ] },
+  "23": { "exp": 31801, "rewards": [ "" ] },
+  "24": { "exp": 34615, "rewards": [ "" ] },
+  "25": { "exp": 37564, "rewards": [ "" ] },
+  "26": { "exp": 40650, "rewards": [ "" ] },
+  "27": { "exp": 43875, "rewards": [ "" ] },
+  "28": { "exp": 47241, "rewards": [ "" ] },
+  "29": { "exp": 50750, "rewards": [ "" ] },
+  "30": {
+    "exp": 54404,
+    "rewards": [ "Career Mode - IA League - **career [ia]**" ]
+  },
+  "31": { "exp": 58205, "rewards": [ "" ] },
+  "32": { "exp": 62155, "rewards": [ "" ] },
+  "33": { "exp": 66256, "rewards": [ "" ] },
+  "34": { "exp": 70510, "rewards": [ "" ] },
+  "35": { "exp": 74919, "rewards": [ "" ] },
+  "36": { "exp": 79485, "rewards": [ "" ] },
+  "37": { "exp": 84210, "rewards": [ "" ] },
+  "38": { "exp": 89096, "rewards": [ "" ] },
+  "39": { "exp": 94145, "rewards": [ "" ] },
+  "40": { "exp": 99359, "rewards": [ "" ] },
+  "41": { "exp": 104740, "rewards": [ "" ] },
+  "42": { "exp": 110290, "rewards": [ "" ] },
+  "43": { "exp": 116011, "rewards": [ "" ] },
+  "44": { "exp": 121905, "rewards": [ "" ] },
+  "45": { "exp": 127974, "rewards": [ "" ] },
+  "46": { "exp": 134220, "rewards": [ "" ] },
+  "47": { "exp": 140645, "rewards": [ "" ] },
+  "48": { "exp": 147251, "rewards": [ "" ] },
+  "49": { "exp": 154040, "rewards": [ "" ] },
+  "50": { "exp": 161014, "rewards": [ "" ] }
+}

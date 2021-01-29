@@ -11,7 +11,7 @@ module.exports = {
   title: "GTF Car Dealership",
   cooldown: 3,
   level: 0,
-  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+  channels: ["testing", "gtf-demo"],
 
   delete: false,
   availinmaint:false,

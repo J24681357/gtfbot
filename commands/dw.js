@@ -10,7 +10,7 @@ var dw = require('../index');
 module.exports = {
   name: 'dw',
   title: 'GT Sport Daily Workout',
-  cooldown: 3,
+  cooldown: 5,
     level: 0,
   channels: ["gtf-mode", "testing", "gtf-test-mode"],
 
@@ -27,8 +27,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
-    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
+    var user = msg.author.username;
+    embed.setAuthor(user, msg.author.displayAvatarURL());
     var args = '';
     var page = 0
     var results = ''

@@ -210,7 +210,7 @@ module.exports.readysetgo = function(
           undefined,
           userdata["id"]
         ];
-        msg.delete({timeout:1});
+        msg.delete({timeout:1500});
 
         stats.removeracedetails(userdata)
         startingrace = false;

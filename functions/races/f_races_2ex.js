@@ -180,7 +180,12 @@ module.exports.driftsection = function(
   var silver = Math.ceil( ((racesettings["km"]* 0.90) * 2000) / 100) * 100
   var bronze = Math.ceil( ((racesettings["km"]* 0.80) * 2000) / 100) * 100
 
+var tire = require(gtffile.PARTS).find({"name":racesettings["misc"]["car"]["tires"]["current"],"type":"tires"})[0]["name"]
   var points = gtftools.randomInt(Math.round(maxpoints/8), Math.round(maxpoints/4))
+  if (tire.includes("Racing")) {
+    console.log("ok")
+    points = Math.round(points * 0.20)
+  }
   if (last && racesettings["sectors"] >= 1) {
     racesettings["sectors"]--
     return [points, gold, silver, bronze]

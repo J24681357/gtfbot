@@ -12,7 +12,7 @@ module.exports = {
   "cooldown": 5,
   "level": 0,
   "roles": [],
-  "channels": ["testing", "gtf-test-mode"],
+  "channels": ["testing", "gtf-demo"],
 
   "delete": true,
   "availinmaint": false,
@@ -59,7 +59,7 @@ module.exports = {
     function exitnow() {
       embed.setColor(0x0151b0)
 
-      require(gtf.EMBED).success("✅ Success", "You have left the session.", 5000, false, embed, msg, userdata)
+      require(gtf.EMBED).success("✅ Success", "You have left the session.", 0, false, embed, msg, userdata)
       msg.channel.messages
         .fetch({
           "around": stats.raceinprogressstat(userdata)[1][1],

@@ -142,6 +142,53 @@
       "image": "https://img4.annuncicdn.it/c0/ff/c0ff6ca828bce930d2ba616db994e9aa_orig.jpg"
     }
   ],
+  "aston-martin": [
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin V8 Vantage S",
+      "year": "2015",
+      "type": "Production",
+      "power": 430,
+      "weight": 3549,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/ASTONMARTINV8VantageS-4374_1.jpg"
+    },
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin V8 Vantage Gr.4 (Gran Turismo)",
+      "year": "2015",
+      "type": "Race Car: GT4",
+      "power": 399,
+      "weight": 2976,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.granturismo-club.com/images/GT-sport/Voitures/Big/14.jpg"
+    },
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin V12 Vantage S",
+      "year": "2014",
+      "type": "Production",
+      "power": 565,
+      "weight": 3671,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.motortrend.com/uploads/sites/5/2013/10/2015-Aston-Martin-V12-Vantage-S-front-three-quarters-in-motion-021.jpg"
+    }
+  ],
   "alpine": [
     {
       "make": "Alpine",
@@ -237,6 +284,21 @@
     },
     {
       "make": "Audi",
+      "name": "Audi R8 5.2 FSI quattro",
+      "year": "2009",
+      "type": "Production",
+      "power": 518,
+      "weight": 3571,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 8,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://cdn.motor1.com/images/mgl/ymp6b/s3/2009-160134-audi-r8-v10-5-2-fsi-quattro-2009-naias1.jpg"
+    },
+    {
+      "make": "Audi",
       "name": "Audi R8 GT Spyder",
       "year": "2012",
       "type": "Production",
@@ -286,6 +348,21 @@
   "BMW": [
     {
       "make": "BMW",
+      "name": "BMW 1M Coupe",
+      "year": "2011",
+      "type": "Production",
+      "power": 335,
+      "weight": 3340,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q2/395918/2011-bmw-1-series-m-coupe-test-review-car-and-driver-photo-396361-s-original.jpg"
+    },
+    {
+      "make": "BMW",
       "name": "BMW M3 Sport Evolution (E30)",
       "year": "1989",
       "type": "Production",
@@ -330,6 +407,23 @@
       "image": "https://www.carmagazine.co.uk/Images/upload/32335/images/0004f0e2126c-8e36-43ba-9.jpg"
     }
   ],
+  "bugatti": [
+    {
+      "make": "Bugatti",
+      "name": "Bugatti Vision Gran Turismo",
+      "year": "2015",
+      "type": "Vision Gran Turismo",
+      "power": 1626,
+      "weight": 3086,
+      "tires": "Racing: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 100,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.pinimg.com/originals/da/8c/af/da8cafc04570a83f8e8eb3ea7c2f3f08.jpg"
+    }
+  ],
   "chevrolet": [
     {
       "make": "Chevrolet",
@@ -345,6 +439,36 @@
       "condition": 100,
       "special": [],
       "image": "http://www.blogcdn.com/www.autoblog.com/media/2012/01/01-2012-chevrolet-camaro-zl1-fd.jpg"
+    },
+    {
+      "make": "Chevrolet",
+      "name": "Chevrolet Cobalt SS Supercharged",
+      "year": "2005",
+      "type": "Production",
+      "power": 205,
+      "weight": 2911,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.ed.edmunds-media.com/chevrolet/cobalt/2005/oem/2005_chevrolet_cobalt_coupe_ss-supercharged_fq_oem_2_500.jpg"
+    },
+    {
+      "make": "Chevrolet",
+      "name": "Chevrolet Corvette Convertible (C1)",
+      "year": "1954",
+      "type": "Production",
+      "power": 130,
+      "weight": 2886,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://lh3.googleusercontent.com/proxy/vbSp3rVgbt2z9ZUHBW3i54-pUiVm3AnwagMhFDJodDte340Tj4ZECyshU0MzHror3xeot0mf3A2zpnmcwnmBAZcl13sryh-AizKak2585hiN98Lc79s5xA"
     },
     {
       "make": "Chevrolet",
@@ -395,6 +519,21 @@
   "daihatsu": [
     {
       "make": "Daihatsu",
+      "name": "Daihatsu Copen",
+      "year": "2002",
+      "type": "Production",
+      "power": 62,
+      "weight": 1830,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.carzone.ie/reviews/images/338_daihatsu_copen2003_04.jpg"
+    },
+    {
+      "make": "Daihatsu",
       "name": "Daihatsu Copen Robe",
       "year": "2014",
       "type": "Production",
@@ -407,6 +546,21 @@
       "condition": 100,
       "special": [],
       "image": "http://www.j-spec.com.au/f17848/2014-Daihatsu-Copen-Robe_01.jpg"
+    },
+    {
+      "make": "Daihatsu",
+      "name": "Daihatsu Mira TX CVT (CX) ",
+      "year": "1999",
+      "type": "Production",
+      "power": 58,
+      "weight": 1631,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.productioncars.com/send_file.php/daihatsu_mira_tx_green_2d_1998.jpg"
     }
   ],
   "dodge": [
@@ -457,6 +611,21 @@
     },
     {
       "make": "Dodge",
+      "name": "Dodge Viper SRT-10 ACR",
+      "year": "2008",
+      "type": "Production",
+      "power": 603,
+      "weight": 3422,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 7,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://st.motortrend.com/uploads/sites/5/2007/11/112_0711_18z-2008_dodge_viper_SRT10_ACR-front_view.jpg"
+    },
+    {
+      "make": "Dodge",
       "name": "Dodge Viper GTS",
       "year": "2013",
       "type": "Production",
@@ -504,6 +673,21 @@
     },
     {
       "make": "Ferrari",
+      "name": "Ferrari F12 Berlinetta",
+      "year": "2012",
+      "type": "Production",
+      "power": 730,
+      "weight": 3362,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 20,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.carmagazine.co.uk/Images/upload/28935/images/ferrari6.jpg"
+    },
+    {
+      "make": "Ferrari",
       "name": "Ferrari LaFerrari",
       "year": "2013",
       "type": "Production",
@@ -535,6 +719,21 @@
       "condition": 100,
       "special": [],
       "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png"
+    },
+    {
+      "make": "Fiat",
+      "name": "Fiat Coupé Turbo 20V",
+      "year": "1996",
+      "type": "Production",
+      "power": 217,
+      "weight": 3153,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://ph-classic-prod-images.s3.amazonaws.com/nimg/36306/PHHero_FiatCoupeTurbo_06.jpg"
     }
   ],
   "ford": [
@@ -602,6 +801,21 @@
     },
     {
       "make": "Ford",
+      "name": "Ford Focus RS",
+      "year": "2016",
+      "type": "Production",
+      "power": 350,
+      "weight": 3525,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2016-ford-focus-rs-101-1557785824.jpg?crop=0.817xw:1.00xh;0.115xw,0&resize=640:*"
+    },
+    {
+      "make": "Ford",
       "name": "Ford Focus ST",
       "year": "2015",
       "type": "Production",
@@ -617,6 +831,21 @@
     }
   ],
   "honda": [
+    {
+      "make": "Honda",
+      "name": "Honda Civic Si",
+      "year": "1986",
+      "type": "Production",
+      "power": 91,
+      "weight": 1955,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://icdn-1.motor1.com/images/mgl/Oq4gR/s4/honda-civic-si-japanese-spec.jpg"
+    },
     {
       "make": "Honda",
       "name": "Honda Civic Type R (FK2)",
@@ -972,6 +1201,21 @@
   "lotus": [
     {
       "make": "Lotus",
+      "name": "Lotus Elise",
+      "year": "1996",
+      "type": "Production",
+      "power": 118,
+      "weight": 1664,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.classicandperformancecar.com/uploads/cms_article/5001_5100/lotus-elise-mk1-mk2-buying-guide-and-review-1996-present-5045_13011_640X470.jpg"
+    },
+    {
+      "make": "Lotus",
       "name": "Lotus Elise 111R",
       "year": "2004",
       "type": "Production",
@@ -1175,6 +1419,21 @@
     },
     {
       "make": "Mitsubishi",
+      "name": "Mitsubishi FTO GP Version R",
+      "year": "1999",
+      "type": "Production",
+      "power": 197,
+      "weight": 2535,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.pinimg.com/originals/ea/8f/94/ea8f949d77122f2928f1e135bc0088d9.jpg"
+    },
+    {
+      "make": "Mitsubishi",
       "name": "Mitsubishi i-MiEV",
       "year": "2012",
       "type": "Production",
@@ -1189,6 +1448,21 @@
         "Electric"
       ],
       "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2014-mitsubishi-imiev-16-1559940388.jpg?crop=0.891xw:0.998xh;0,0.00481xh&resize=640:*"
+    },
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi Lancer Evolution IV GSR",
+      "year": "1996",
+      "type": "Production",
+      "power": 273,
+      "weight": 2976,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.geocities.ws/go2idmisc/EVO_IV-1.jpg"
     },
     {
       "make": "Mitsubishi",
@@ -1266,6 +1540,21 @@
       "condition": 100,
       "special": [],
       "image": "http://www.dailysportscar.com/wp-content/uploads/2016/05/29-HTP-Motorsports-Mercedes-N24-2016-Qualifying.jpg"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "name": "Mercedes-Benz SLS AMG Gr.4 (Gran Turismo)",
+      "year": "2010",
+      "type": "Race Car: GT4",
+      "power": 419,
+      "weight": 3120,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.ytimg.com/vi/ohucLw3Qpao/maxresdefault.jpg"
     }
   ],
   "nissan": [
@@ -1523,6 +1812,21 @@
     },
     {
       "make": "Renault",
+      "name": "Renault Sport R.S.01 GT3",
+      "year": "2016",
+      "type": "Race Car: GT3",
+      "power": 542,
+      "weight": 2522,
+      "tires": "Racing: Hard",
+      "drivetrain": "MR",
+      "carcostm": 20,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.carscoops.com/2015/10/Renault-Sport-RS-01-0.jpg"
+    },
+    {
+      "make": "Renault",
       "name": "Renault Clio Cup Race Car",
       "year": "2013",
       "type": "Race Car: Cup",
@@ -1617,6 +1921,23 @@
     },
     {
       "make": "Subaru",
+      "name": "Subaru WRX Gr.B Road Car (Gran Turismo)",
+      "year": "2015",
+      "type": "Aftermarket",
+      "power": 473,
+      "weight": 3142,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x2"
+      ],
+      "image": "https://www.kudosprime.com/gts/images/users/car_166_1_5a0c92edc175b.jpg"
+    },
+    {
+      "make": "Subaru",
       "name": "Subaru WRX STI S209",
       "year": "2020",
       "type": "Production",
@@ -1632,6 +1953,25 @@
     }
   ],
   "tesla": [
+    {
+      "make": "Tesla",
+      "name": "Tesla Cybertrack Prototype (Tri Motor AWD)",
+      "year": "2019",
+      "type": "Production",
+      "power": 800,
+      "weight": 5750,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 10,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "Electric",
+        "Concept",
+        "x15"
+      ],
+      "image": "https://www.tesla.com/xNVh4yUEc3B9/04_Desktop.jpg"
+    },
     {
       "make": "Tesla",
       "name": "Tesla Model S P100D",
@@ -1695,6 +2035,36 @@
       "condition": 100,
       "special": [],
       "image": "http://picture1.goo-net.com/7000903807/30171010/J/70009038073017101000200.jpg"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota Prius Four Touring",
+      "year": "2016",
+      "type": "Production",
+      "power": 121,
+      "weight": 3080,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.automobilemag.com/uploads/sites/11/2015/11/2016-Toyota-Prius-Four-Touring-front-three-quarter-in-motion-02.jpg"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota Supra RZ",
+      "year": "1997",
+      "type": "Production",
+      "power": 325,
+      "weight": 3329,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.diseno-art.com/images_8/Toyota-Supra.jpg"
     }
   ]
 }

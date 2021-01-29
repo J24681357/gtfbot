@@ -14,9 +14,9 @@ module.exports = {
   title: "GTF Help",
   cooldown: 3,
     level: 0,
-    channels: ["gtf-mode","testing", "gtf-test-mode"],
+    channels: ["gtf-mode","testing", "gtf-test-mode", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requirecar: false,
   usedduringrace: true,

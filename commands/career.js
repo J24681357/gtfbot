@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 3,
   level: 0,
   aliases: ["c"],
-  channels: ["testing", "gtf-test-mode"],
+  channels: ["testing", "gtf-demo"],
 
   delete: true,
   availinmaint: false,
@@ -25,8 +25,8 @@ module.exports = {
   execute(msg, query, userdata) {
     const embed = new Discord.MessageEmbed()
     embed.setColor(0x0151b0)
-    var user = msg.guild.members.cache.get(userdata["id"]).user.username
-    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
+    var user = msg.author.username
+    embed.setAuthor(user, msg.author.displayAvatarURL())
     var args = "\n" + '`Args: !career ["league"] [(number)]`' + "\n"
     var page = 0
     var results = ""
@@ -69,7 +69,7 @@ module.exports = {
 
     var racedetails = ""
     if (league == "beginner" || league == "b" || league == "B") {
-      var ready = true
+      ready = true
       league = "B"
       var races = require("/home/runner/gtfbot/data/career/races").beginner()
     }
@@ -77,7 +77,7 @@ module.exports = {
       if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
         return
       }
-      var ready = true
+      ready = true
       league = "A"
       var races = require("/home/runner/gtfbot/data/career/races").amateur()
     }
@@ -85,7 +85,7 @@ module.exports = {
       if (!require(gtffile.EXP).checklevel(10, embed, msg, userdata)) {
         return
       }
-      var ready = true
+      ready = true
       league = "IC"
       var races = require("/home/runner/gtfbot/data/career/races").icleague()
     }

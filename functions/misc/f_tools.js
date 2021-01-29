@@ -369,7 +369,7 @@ module.exports.removereactions = function(list, msg) {
     if (i == list.length) {
       return
     } else {
-     setTimeout(function() {filter(i)}, 1000)
+     setTimeout(function() {filter(i)}, 2000)
     }
   }
 
@@ -437,6 +437,9 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
       
       filter11.on("remove", r => {
       next(r)
+    })
+    filter11.on("end", r => {
+filter11.stop()
     })
  function next(r) {
  var limited = rateLimiteradd.take(msg.author.id);

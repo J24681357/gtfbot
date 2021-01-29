@@ -34,8 +34,8 @@ module.exports.beginner = function() {
       weather: "Clear",
       grid: 8,
       difficulty: 89,
-      fpplimit: 230,
-      upperfpp: 230,
+      fpplimit: 240,
+      upperfpp: 240,
       lowerfpp: 100,
       makes: ["Mazda"],
       models: ["MX-5", "Roadster", "Miata"],
@@ -99,8 +99,8 @@ module.exports.amateur = function() {
       weather: "Clear",
       grid: 10,
       difficulty: 90,
-      fpplimit: 310,
-      upperfpp: 310,
+      fpplimit: 340,
+      upperfpp: 330,
       lowerfpp: 260,
       makes: ["Renault"],
       models: ["Clio"],
@@ -177,7 +177,7 @@ module.exports.icleague = function() {
       title: "MR Challenge",
       eventid: "IC-3",
       positions: [emote.goldtrophy + " 1st|3200", emote.silvertrophy + " 2nd|2600", emote.bronzetrophy + " 3rd|2200", "4th|1700", "5th|1600", "6th|1500", "7th|1200", "8th|1100", "9th|1000", "10th|800", "11th|700", "12th|600"],
-      tracks: [[1, "Autodromo Nazionale Monza", 3], [2, "Autodromo De Interlagos", 3], [3, "Circuit de Valencia", 4]],
+      tracks: [[1, "WeatherTech Raceway Laguna Seca", 4], [2, "Autodromo De Interlagos", 3], [3, "Circuit de Valencia", 4]],
       category: ["N400"],
       time: "Day",
       weather: "Clear",
@@ -197,46 +197,6 @@ module.exports.icleague = function() {
 
 /*83-78*/
 //limit 15.000
-
-/*
-"ic1": {
-      "title": 'International IC League',
-      "eventid": 'IC-1',
-      "positions": [
-        emote.goldtrophy + ' 1st|3000',
-        emote.silvertrophy + ' 2nd|2500',
-        emote.bronzetrophy + ' 3rd|2000',
-        '4th|1800',
-        '5th|1600',
-        '6th|1500',
-        '7th|1300',
-        '8th|1100',
-        '9th|1000',
-        '10th|800',
-        '11th|700',
-        '12th|600',
-      ],
-      "tracks": [
-        [1, 'Special Stage Route 5', 4],
-        [2, 'Daytona Road Course', 3],
-        [3, 'Tokyo Expressway - South Outer Loop', 3],
-        [4, 'Broad Bean Raceway', 10],
-      ],
-      "category": ['N400'],
-      "time": 'Day',
-      "weather": 'Clear',
-      "grid": 14,
-      "difficulty": 84,
-      "fpplimit": 500,
-      "upperfpp": 450,
-      "lowerfpp": 350,
-      "makes": [],
-      "models": [],
-      "drivetrains": [],
-      "types": ['Production'],
-      "prize": ["CREDITS", { "id": -1, "name": " ", "credits": 20000 }]
-    }
-*/
 
 module.exports.ibleague = function() {
   return {
@@ -296,7 +256,26 @@ module.exports.ibleague = function() {
       drivetrains: [],
       types: ["Production"],
       prize: ["CREDITS", { id: -1, name: " ", credits: 45000 }],
-    },
+    }, 
+    ic4: {
+      title: "Tesla Racing Series",
+      eventid: "IC-4",
+      positions: [emote.goldtrophy + " 1st|3500", emote.silvertrophy + " 2nd|3000", emote.bronzetrophy + " 3rd|2500", "4th|2000", "5th|1600", "6th|1500", "7th|1200", "8th|1100", "9th|1000", "10th|800", "11th|700", "12th|600"],
+      tracks: [[1, "WeatherTech Raceway Laguna Seca", 3], [2, "Ascari Full Track", 3], [3, "Tokyo Expressway - South Outer Loop", 3]],
+      category: ["N400"],
+      time: "Day",
+      weather: "Clear",
+      grid: 10,
+      difficulty: 83,
+      fpplimit: 500,
+      upperfpp: 490,
+      lowerfpp: 200,
+      makes: ["Tesla"],
+      models: [],
+      drivetrains: [""],
+      types: ["Production"],
+      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Tesla"], fullname: ["Tesla Cybertrack Prototype (Tri Motor AWD) 2019"] }],
+    }
   };
 };
 /*
@@ -375,7 +354,7 @@ module.exports.ialeague = function() {
       difficulty: 85,
       fpplimit: 700,
       upperfpp: 700,
-      lowerfpp: 600,
+      lowerfpp: 550,
       makes: [],
       models: [],
       drivetrains: [],
@@ -609,62 +588,6 @@ module.exports.ialeague = function() {
       type: ['⭐ Production Cars'],
       prize: ['Honda ⭐2', 'M None'],
     },
-    b4: {
-      title: 'MX-5/Roadster/Miata Cup',
-      eventid: 'B-4',
-      positions: [
-        emote.goldtrophy + ' 1st|1300',
-        '<a:silvertrophy:549169214200741889> 2nd|1000',
-        '<a:bronzetrophy:549169213676322857> 3rd|800',
-        '4th|500',
-        '5th|400',
-        '6th|300',
-        '7th|200',
-        '8th|100',
-      ],
-      tracks: [
-        [1, 'Tsukuba Circuit', 4],
-        [2, 'Red Bull Ring Short Track', 3],
-        [3, 'Silverstone Grand Prix Circuit', 2],
-      ],
-      category: ['N100'],
-      time: 'Day',
-      weather: 'Clear',
-      grid: 8,
-      difficulty: 88,
-      fpplimit: 260,
-      models: ['Mazda ⭐1', 'M MX-5', 'M Roadster', 'M Miata'],
-      type: ['⭐ Production Cars'],
-      prize: ['Mazda ⭐2', 'M Miata 30th Anniversary 2019'],
-    },
-    b5: {
-      title: 'Madrid Tour',
-      eventid: 'B-5',
-      positions: [
-        emote.goldtrophy + ' 1st|1500',
-        '<a:silvertrophy:549169214200741889> 2nd|1300',
-        '<a:bronzetrophy:549169213676322857> 3rd|1100',
-        '4th|800',
-        '5th|400',
-        '6th|300',
-        '7th|200',
-        '8th|100',
-      ],
-      tracks: [
-        [1, 'Circuito de Madrid – Mini', 5],
-        [2, 'Circuito de Madrid – Mini II', 5],
-        [3, 'Circuito de Madrid', 3],
-      ],
-      category: ['N200'],
-      time: 'Day',
-      weather: 'Clear',
-      grid: 8,
-      difficulty: 87,
-      fpplimit: 260,
-      models: ['License B ⭐1'],
-      type: ['⭐ Production Cars'],
-      prize: ['License A ⭐0.3', 'M None'],
-    },
-  };
+   
 
    */

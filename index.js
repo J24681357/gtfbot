@@ -12,8 +12,6 @@ var emote = require('./index');
   var rateLimiter = new l(1, 1400);
 
 var fs = require('fs');
-var gracefulFs = require('graceful-fs');
-gracefulFs.gracefulify(fs);
 
 var data = {}
 let MongoClient = require('mongodb').MongoClient;
@@ -26,10 +24,12 @@ var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist.json', 'utf8'));
 var gtftracks = JSON.parse(fs.readFileSync('./users/gtftracklist.json', 'utf8'));
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
 var gtfpaints = JSON.parse(fs.readFileSync('./users/gtfpaints.json', 'utf8'));
+var gtfexp = JSON.parse(fs.readFileSync('./users/gtfexp.json', 'utf8'));
 module.exports.gtfcarlist = gtfcars
 module.exports.gtftracklist = gtftracks
 module.exports.gtfpartlist = gtfparts
 module.exports.gtfpaintlist = gtfpaints
+module.exports.gtfexp = gtfexp
 module.exports.embedcounts = {}
 
 
@@ -283,7 +283,7 @@ if (userdata === undefined) {
 
   const now = Date.now();
   const timestamps = cooldowns.get(command.name);
-  const cooldownAmount = (command.cooldown || 3) * 1000;
+  const cooldownAmount = (command.cooldown)  * 1000;
 
   if (timestamps.has(msg.author.id)) {
     const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;
@@ -301,7 +301,9 @@ if (userdata === undefined) {
     }
   }
   timestamps.set(msg.author.id, now);
+  console.log(cooldownAmount)
   setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
+
     return executecommand(command, args, msg, userdata)
   }
   if (check != "SUCCESS") {
@@ -413,7 +415,8 @@ if (userdata === undefined) {
 
   const now = Date.now();
   const timestamps = cooldowns.get(command.name);
-  const cooldownAmount = (command.cooldown || 3) * 1000;
+  
+  const cooldownAmount = command.cooldown * 1000;
 
   if (timestamps.has(msg.author.id)) {
     const expirationTime = timestamps.get(msg.author.id) + cooldownAmount;

@@ -12,7 +12,7 @@ module.exports = {
   level: 0,
   cooldown: 3,
   aliases: ['g'],
-  channels: ["gtf-mode", "testing", "gtf-test-mode"],
+  channels: ["testing", "gtf-demo"],
 
   delete: false,
   availitoeveryone:true,

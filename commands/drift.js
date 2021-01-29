@@ -11,7 +11,7 @@ module.exports = {
   title: 'Drift Trial',
   cooldown: 3,
   level: 5,
-  channels: ["gtf-mode", "testing"],
+  channels: ["gtf-mode", "gtf-demo", "testing"],
 
   delete: false,
   availitoeveryone:true,
@@ -45,32 +45,54 @@ module.exports = {
     var racedetails = '';
     var levelselect = '';
     var ready = false;
+    var reactionson = true
 
     if (query.length == 0) {
       racemode = 'Menu';
     } else {
       racemode = query[0];
     }
-    if (racemode == 'beginner' || racemode == 'b') {
-      var ready = true;
+
+    if (parseInt(query[0]) == 1) {
+      racemode = "B"
+    }
+    if (parseInt(query[0]) == 2) {
+      racemode = "Pro"
+    }
+    if (query.includes("-")) {
+      query = query[0].split("-")
+    }
+
+
+    if (racemode == 'beginner' || racemode == 'b' || racemode == 'B') {
+      ready = true;
       if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
         return;
       }
       levelselect = 'driftbeginner';
-    } /*else if (racemode == "professional" || racemode == "pro") {
-      var ready = true;
+    } else if (racemode == "professional" || racemode == "pro" || racemode == "Pro") {
+      ready = true;
       if (!require(gtffile.EXP).checklevel(15, embed, msg, userdata)) {
         return;
       }
       levelselect = "driftprofessional"
-    } */ else {
+    } else {
       embed.setTitle('__Drift Trial__');
-      results = '__**Drift Trial (Beginner)**__ - !drift [beginner] ' + emote.exp + '`Lv.5`' + '\n' + '~~__**Drift Trial (Professional)**__ - !drift [pro] ' + emote.exp + '`Lv.15`~~';
+      results = '__**Drift Trial (Beginner)**__ - !drift [beginner] ' + emote.exp + '`Lv.5`' + '\n' + '__**Drift Trial (Professional)**__ - !drift [pro] ' + emote.exp + '`Lv.15`' + "\n" + " ";
       embed.setDescription(results + '\n\n' + racedetails);
     }
     if (!ready) {
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      msg.channel.send(embed);
+      var list = results
+        .split("\n")
+        .slice(0, -1)
+        .map(function(x) {
+          return [x, " "]
+        })
+      results2 = gtftools.list(list, page, "", "", true, "", 2, [query, "drift"], embed, msg, userdata)
+
+      embed.setDescription(results2)
+      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
+      gtftools.createpages(results2, list, page, "", "", true, "", 2, [query, "drift", reactionson, info], embed, msg, userdata)
     } else {
       embed.setTitle('__Drift Trial - Car Selection__');
       var gtfcar = stats.currentcar(userdata)

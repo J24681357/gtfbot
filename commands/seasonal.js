@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 3,
   level: 0,
   aliases: ["seasonals"],
-  channels: ["testing"],
+  channels: ["testing", "gtf-demo"],
 
   delete: true,
   availinmaint: false,

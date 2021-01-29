@@ -12,9 +12,9 @@ module.exports = {
   title: "GT Fitness: ID Database",
   cooldown: 3,
     level: 0,
-  channels: ["gtf-mode", "testing"],
+  channels: ["gtf-mode", "testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availitoeveryone:true,
   availinmaint:false,
   requirecar: false,

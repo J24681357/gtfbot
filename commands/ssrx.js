@@ -13,7 +13,7 @@ module.exports = {
   title: 'Special Stage Route X - 10000m Top Speed Run',
   cooldown: 3,
    level:8,
-    channels: ["gtf-mode", "testing", "gtf-test-mode"],
+    channels: ["gtf-mode", "testing", "gtf-demo"],
 
   delete: true,
   availinmaint:false,

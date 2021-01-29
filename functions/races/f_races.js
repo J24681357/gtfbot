@@ -51,6 +51,17 @@ module.exports.setrace = function(racemode, extra) {
     var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|500', '4th|200'];
     var chance = 50;
     var clean = 0;
+  } else if (racemode == 'driftprofessional') {
+    var title = 'Drift Trial - Professional';
+    var track = require(gtffile.TRACKS).random({options:["Drift"]}, 1)[0]
+    var km = track["length"];
+    var limit = 1;
+    var env = require(gtffile.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var grid = ['1'];
+    var category = [['N100', 'N200', 'N300', 'N400', 'N500', 'N600', 'N700', 'N800', 'N900', 'N1000']];
+    var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|500', '4th|200'];
+    var chance = 50;
+    var clean = 0;
   } else if (racemode == 'endurance') {
     var track = require(gtffile.TRACKS).random({}, 1)[0]
     var km = 0;
@@ -117,8 +128,14 @@ module.exports.setrace = function(racemode, extra) {
   };
 
   if (racemode == 'driftbeginner') {
-    racesettings['originalsectors'] = 5;
-    racesettings['sectors'] = 5;
+    racesettings['originalsectors'] = 3;
+    racesettings['sectors'] = 3;
+    racesettings['current'] = 0;
+    racesettings['points'] = 0;
+  }
+    if (racemode == 'driftprofessional') {
+    racesettings['originalsectors'] = 6;
+    racesettings['sectors'] = 6;
     racesettings['current'] = 0;
     racesettings['points'] = 0;
   }

@@ -15,7 +15,7 @@ module.exports = {
     level: 0,
   delete: true,
   aliases: ['sr'],
-    channels: ["gtf-mode", "testing"],
+    channels: ["gtf-mode", "testing", "gtf-demo"],
 
   requirecar: false,
   availinmaint:true,
