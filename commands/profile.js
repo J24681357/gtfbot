@@ -3,7 +3,7 @@ var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -11,9 +11,9 @@ module.exports = {
   title: "My Profile",
   cooldown: 3,
    level:0,
-     channels: ["gtf-mode","testing", "gtf-demo"],
+     channels: ["testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requirecar: false,
   usedduringrace: false,
@@ -47,7 +47,7 @@ module.exports = {
     if (curr >= 51) {
       curr = 50
     }
-    var exppoints = require(gtffile.LISTS).gtfexp[curr.toString()]["exp"]
+    var exppoints = require(gtf.LISTS).gtfexp[curr.toString()]["exp"]
     var currentexppoints = curr - 1
 
     for (var i = 0; i < expbar.length; i++) {
@@ -75,6 +75,7 @@ module.exports = {
     "**Garage:** " + stats.garagecount(userdata) + " Cars";
 
     embed.setDescription(results);
+    embed.setThumbnail(msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
     embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
     msg.channel.send(embed).then(msg => {
       function careerprofile() {

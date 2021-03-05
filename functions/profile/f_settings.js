@@ -4,7 +4,7 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 module.exports.time = function(results, number, query, embed, msg, userdata) {
     var list = []
@@ -34,7 +34,7 @@ module.exports.time = function(results, number, query, embed, msg, userdata) {
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
       success = false;
     if (!isNaN(number)) {
-      require(gtffile.EMBED).warning("⚠ Invalid Number", "Invalid time zone.", embed, msg, userdata);
+      require(gtf.EMBED).warning("⚠ Invalid Number", "Invalid time zone.", embed, msg, userdata);
     }
   }
   if (number === undefined) {
@@ -44,7 +44,7 @@ module.exports.time = function(results, number, query, embed, msg, userdata) {
     stats.setsetting("TIME OFFSET", list[number-1][1], userdata)
     stats.setmileage(0, 0, userdata);
     
-    require(gtffile.EMBED).success("✅ Success", "Local time has been set to **" + list[number-1][0] + "**." + "\n⚠ Daily mileage has been reset.", 5000, true, embed, msg, userdata)
+    require(gtf.EMBED).success("✅ Success", "Local time has been set to **" + list[number-1][0] + "**." + "\n⚠ Daily mileage has been reset.", 5000, true, embed, msg, userdata)
     
     return "SUCCESS"
   } else {
@@ -67,7 +67,7 @@ module.exports.units = function(results, number, query, embed, msg, userdata) {
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
     success = false;
     if (!isNaN(number)) {
-      require(gtffile.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata);
+      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata);
     }
   }
   if (number === undefined) {
@@ -75,7 +75,7 @@ module.exports.units = function(results, number, query, embed, msg, userdata) {
   }
   if (success) {
     stats.setsetting("MILEAGE", number-1, userdata)
-    require(gtffile.EMBED).success("✅ Success", "Your units has been set to **" + list[number-1][0] + "**.", 5000, true, embed, msg, userdata)
+    require(gtf.EMBED).success("✅ Success", "Your units has been set to **" + list[number-1][0] + "**.", 5000, true, embed, msg, userdata)
     return "SUCCESS"
 
   } else {
@@ -100,7 +100,7 @@ module.exports.progressbar = function(results, number, query, embed, msg, userda
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
       success = false;
     if (!isNaN(number)) {
-      require(gtffile.EMBED).warning("⚠ Warning", "Invalid arguments", embed, msg, userdata);
+      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments", embed, msg, userdata);
     }
   }
   console.log(number)
@@ -108,7 +108,7 @@ module.exports.progressbar = function(results, number, query, embed, msg, userda
     success = false;
   } else {
     if (list[number-1][0].includes(emote.exp)) {
-    if (!require(gtffile.EXP).checklevel(parseInt(list[number-1][0].split(emote.exp + "`Lv.")[1].split("`")[0]), embed, msg, userdata)) {
+    if (!require(gtf.EXP).checklevel(parseInt(list[number-1][0].split(emote.exp + "`Lv.")[1].split("`")[0]), embed, msg, userdata)) {
       success = false 
       return "INVALID"
       }
@@ -119,7 +119,7 @@ module.exports.progressbar = function(results, number, query, embed, msg, userda
 
     stats.setsetting("PROGRESSBAR", list[number-1][1], userdata)
 
-    require(gtffile.EMBED).success("✅ Success", "Progress Bar Color has been set to **" + list[number-1][1].join(" ") + "**.", 5000, true, embed, msg, userdata)
+    require(gtf.EMBED).success("✅ Success", "Progress Bar Color has been set to **" + list[number-1][1].join(" ") + "**.", 5000, true, embed, msg, userdata)
     return "SUCCESS"
   } else {
 

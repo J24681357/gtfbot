@@ -3,7 +3,7 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports.delete = function(number, replaydata, userdata) {
@@ -58,29 +58,19 @@ module.exports.savem = function(title, results, racedetails, grid, userdata) {
       var dbo = db.db("GTFitness");
 
       dbo.collection("REPLAYS").find({"id": userdata["id"]}).forEach(row => {
-        console.log("found")
         replaydata = row
-        console.log(row)
+        delete replaydata["_id"]
         add()
         dbo.collection("REPLAYS").replaceOne({ "id": userdata["id"] }, replaydata)
         found = true
       })
-/*if (!found) {
-        doit()
-        add()
-        dbo.collection("REPLAYS").insertOne(replaydata)
-}*/
 
     }
   )
 
-  function doit() {
-
-
-  }
 
   function add() {
-    var size = Object.keys(replaydata["replays"]).length + 1
+    var size = replaydata["replays"].length + 1
     replaydata["replays"][size] = [title, results, racedetails, grid, stats.lastonline(userdata)]
   }
 

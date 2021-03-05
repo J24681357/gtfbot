@@ -4,7 +4,7 @@ var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports.checklevel = function(level, embed, msg, id) {
@@ -13,7 +13,7 @@ module.exports.checklevel = function(level, embed, msg, id) {
   if (currentlevel >= level || level == 0) {
     return true
   } else {
-  require(gtffile.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,id)
+  require(gtf.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,id)
     return false
   }
 }
@@ -24,7 +24,7 @@ module.exports.islevelup = function(id) {
   var levelup = 0
   var levelupbool = false
   var leveldetails = [""]
-  var explevels = require(gtffile.LISTS).gtfexp
+  var explevels = require(gtf.LISTS).gtfexp
   
 for (var i = level; i < Object.keys(explevels).length; i++) {
 

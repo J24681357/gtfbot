@@ -3,7 +3,7 @@ var emote = require('../../index');
 var gtftools = require('../../functions/misc/f_tools');
 
 const Discord = require('discord.js');
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.changeseasonals = function(force) {
@@ -18,11 +18,12 @@ var seasonals = {}
       dbo.collection("SEASONALS").find({ "id": "1234567" }).forEach(row => {
             if (seasonalcheck(row["races"]) || force) {
               console.log("Seasonals has been changed.")
-         var seasonals = require(gtffile.SEASONAL).randomseasonal(1, 400, 200)
-         var seasonals2 = require(gtffile.SEASONAL).randomseasonal(2, 600, 400)
+         var seasonals = require(gtf.SEASONAL).randomseasonal(1, 400, 200)
+         var seasonals2 = require(gtf.SEASONAL).randomseasonal(2, 550, 400)
+         var seasonals3 = require(gtf.SEASONAL).randomseasonal(3, 800, 500)
             var races = {
               "id": "1234567",
-              "races": { seasonals, seasonals2 }
+              "races": { seasonals, seasonals2, seasonals3}
            }
           dbo.collection("SEASONALS").replaceOne({ "id": "1234567" }, races)
         }
@@ -77,20 +78,29 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
     var limit = 13.0;
     //var makes = ["BMW", "Bentley", "Chevrolet", "Nissan", "Toyota", "Lamborghini"]
   }
+  if (number == 3) {
+      var eventid = "SEASONAL" + "-" + number
+    var grid = gtftools.randomInt(16, 20)
+    var startingprize = 10000;
+    var tracksnum = 5
+    var limit = 20.0;
+  }
   for (var x = 0; x < tracksnum; x++) {
-    var track = require(gtffile.TRACKS).random({}, 1)[0]
+    var track = require(gtf.TRACKS).random({}, 1)[0]
     var km = track.length;
     var distance = gtftools.lapcalc(km, limit)
     tracks.push([x+1, track.name, distance[0]])
   }
 
   var finalfpp = Math.ceil(gtftools.randomInt(lowerfpp, fpplimit) / 10) * 10
-  var pl = ["st", "nd", "rd", "th"]
+   var pl = ["st", "nd", "rd", "th"]
   var positions = []
 
+  var startingprize = 1000
   var prize = startingprize
   for (var x = 0; x < grid; x++) {
     if (x % 10 == 0 && (x + 1) != 11) {
+      console.log(emote.goldtrophy + " " + (x + 1) + "st|")
       positions.push(emote.goldtrophy + " " + (x + 1) + "st|" + prize)
     }
     else if (x % 10 == 1 && (x + 1) != 12) {
@@ -100,10 +110,9 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
       positions.push(emote.bronzetrophy + " " + (x + 1) + "rd|" + prize)
     }
     else {
-      positions.push((x + 1) + "st|" + startingprize)
+      positions.push((x + 1) + "th|" + startingprize)
     }
-    prize = Math.ceil((prize - (startingprize / (grid - 1))) / 100) * 100
-
+    prize = Math.ceil((startingprize - (prize / grid)) / 100) * 100
   }
 date = month + day + year
 

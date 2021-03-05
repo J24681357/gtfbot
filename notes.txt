@@ -1,0 +1,214 @@
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'daily',
+    description: 'N/A: Daily prizes of credits and cars.',
+    options: [
+        ]
+  }
+})
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'seasonal',
+    description: 'N/A: Participate in daily seasonal events that are randomized.',
+    options: [{
+      "name": "number",
+      "description": "N/A: Pick a number associated with the seasonal event catalog.",
+      "type": 4,
+      "required": false
+      }]
+}
+})
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'replay',
+    description: 'N/A: Manage and load your saved replays.',
+    options: [{
+      "name": "options",
+      "description": "N/A: Select an option in the replay menu.",
+      "type": 3,
+      "required": true,
+      "choices": [
+  {
+            "name": "List Saved Replays",
+            "value": "list"
+      },
+      {
+            "name": "Load Replay",
+            "value": "load"
+        },
+        {
+            "name": "Delete Replay",
+            "value": "delete"
+        },
+        {
+            "name": "Clear All Replays",
+            "value": "clear"
+        }]
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with your replay list.",
+      "type": 4,
+      "required": false
+      }]
+}
+})
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'paint',
+    description: 'N/A: Display paints in GT Auto to paint your current car.',
+    options: [{
+      "name": "type",
+      "description": "N/A: Select the paint type you want to view.",
+      "type": 3,
+      "required": true,
+      "choices": [
+  {
+            "name": "Gloss Paint",
+            "value": "gloss"
+      },
+      {
+            "name": "Metallic Paint",
+            "value": "metallic"
+        },
+        {
+            "name": "Pearlescent Paint",
+            "value": "pearl"
+        },
+        {
+            "name": "Matte Paint",
+            "value": "matte"
+        },
+        {
+            "name": "Special Paint",
+            "value": "special"
+        }]
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the type.",
+      "type": 4,
+      "required": false
+      }]
+}
+})
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'career',
+    description: 'N/A: Participate career races from different league.',
+    options: [{
+      "name": "league",
+      "description": "N/A: Select the league you want to enter.",
+      "type": 3,
+      "required": true,
+      "choices": [
+      {
+            "name": "B League",
+            "value": "b"
+        },
+        {
+            "name": "A League",
+            "value": "a"
+        },
+        {
+            "name": "IC League",
+            "value": "ic"
+        },
+        {
+            "name": "IB League",
+            "value": "ib"
+        },
+        {
+            "name": "IA League",
+            "value": "ia"
+        }]
+      },{
+      "name": "number",
+      "description": "N/A: Pick a number associated with the league's catalog.",
+      "type": 4,
+      "required": false
+      }]
+}
+}) 
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'profile',
+    description: 'N/A: Displays your information, stats, and career progression.',
+    options: [
+        ]
+  }
+})
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'car',
+    description: 'N/A: Displays the list of manufacturers you can choose from.',
+    options: [{
+      "name": "manufacturer",
+      "description": "N/A: Select a manufacturer to view",
+      "type": 3,
+      "required": false
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the manufacturer's catalog.",
+      "type": 4,
+      "required": false
+      },
+      {"name": "More-Info",
+      "description": "N/A: The help guide for this command. If you can't see all the words, select it.",
+      "type": 3,
+      "required": false,
+      "choices": [{"name":"To view all manufacturers, enter the command without any arguments.", "value":" "},{"name":"In this command, type the name of the manufacturer (without spaces) to view its catalog.", "value":" "},{"name":"Looking at each catalog, you can purchase a car from its number associated with its list.", "value":" "},{"name":"You can also use the reactions from the manufacturer's catalog to navigate and purchase cars.", "value":" "}]
+      }
+      ]
+}
+})
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'tune',
+    description: 'N/A: Display tuning parts in GT Auto to tune your current car.',
+    options: [{
+      "name": "type",
+      "description": "N/A: Select the performance type you want to view.",
+      "type": 3,
+      "required": true,
+      "choices": [
+  {
+            "name": "Engine",
+            "value": "engine"
+      },
+      {
+            "name": "Transmission",
+            "value": "transmission"
+        },
+        {
+            "name": "Suspension",
+            "value": "suspension"
+        },
+        {
+            "name": "Tires",
+            "value": "tires"
+        },
+        {
+            "name": "Weight Reduction",
+            "value": "weight"
+        },
+        {
+            "name": "Turbo Kits",
+            "value": "turbo"
+        }]
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the type. Type \"S\" to revert to stock.",
+      "type": 4,
+      "required": false
+      }
+      ]
+}
+}) 
+
+!tune - ", "!tune [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!tune [\"type\"] [(number)] - Purchases a performance part from the [(number)] associated from the list of [\"type\"] parts.\nThis applies to your current car.\nThe current [\"type\"] part on your current car will be sold and replaced, but you must purchase the part with its full price first.", "!tune [\"type\"] [stock] - Revert the [\"type\"] installed to your car to Stock.

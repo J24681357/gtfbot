@@ -4,7 +4,7 @@ var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
   aliases: ["seasonals"],
   channels: ["testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint: false,
   requireuserdata: true,
   requirecar: true,
@@ -72,53 +72,53 @@ console.log(query)
       var ready = true
     }
     if (league == 2) {
-      if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(5, embed, msg, userdata)) {
         return
       }
       var ready = true
     }
     if (league == 3) {
       return
-      if (!require(gtffile.EXP).checklevel(10, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(10, embed, msg, userdata)) {
         return
       }
       var ready = true
     }
     if (league == 4) {
       return
-      if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(20, embed, msg, userdata)) {
         return
       }
       var ready = true
     }
     if (league == 5) {
       return
-      if (!require(gtffile.EXP).checklevel(30, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(30, embed, msg, userdata)) {
         return
       }
       var ready = true
     }
     if (league == 6) {
       return
-      if (!require(gtffile.EXP).checklevel(40, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(40, embed, msg, userdata)) {
         return
       }
       var ready = true
     }
       if (!ready && query.length != 0) {
-        require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
+        require(gtf.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
       }
       embed.setTitle("🏁" + " __Seasonal Events__")
 
       var number = query[0]
       if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
         if (number !== undefined) {
-          require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
+          require(gtf.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
           }
       }
       if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
+      var event = require(gtf.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
       } else {
         var results2 = ""
         var ids = Object.keys(races)
@@ -166,7 +166,7 @@ console.log(query)
 
         var ready = true
 
-        require(gtffile.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
+        require(gtf.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
       }
   }
   } 

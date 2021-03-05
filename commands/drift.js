@@ -3,7 +3,7 @@ var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
   title: 'Drift Trial',
   cooldown: 3,
   level: 5,
-  channels: ["gtf-mode", "gtf-demo", "testing"],
+  channels: ["testing"],
 
   delete: false,
   availitoeveryone:true,
@@ -31,7 +31,7 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-    var args = '\n' + '`Args: !drift ["mode"]`' + '\n';
+    var args = "";
     var page = 0
     var results = '';
     var info = '**❓ Select a drift mode from the list above.**'
@@ -66,13 +66,13 @@ module.exports = {
 
     if (racemode == 'beginner' || racemode == 'b' || racemode == 'B') {
       ready = true;
-      if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(5, embed, msg, userdata)) {
         return;
       }
       levelselect = 'driftbeginner';
     } else if (racemode == "professional" || racemode == "pro" || racemode == "Pro") {
       ready = true;
-      if (!require(gtffile.EXP).checklevel(15, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(15, embed, msg, userdata)) {
         return;
       }
       levelselect = "driftprofessional"
@@ -105,18 +105,18 @@ module.exports = {
         function selectgaragemode() {
           embed.fields = [];
 
-          var ocar = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
+          var ocar = require(gtf.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
 
           if (ocar["drivetrain"] == "FF") {
-            require(gtffile.EMBED).error('❌ FF Cars Prohibited', 'Front Wheel Drive cars are not allowed in a Drift Trial.', embed, msg, userdata);
+            require(gtf.EMBED).error('❌ FF Cars Prohibited', 'Front Wheel Drive cars are not allowed in a Drift Trial.', embed, msg, userdata);
             return
           }
-          require(gtffile.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
+          require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
         }
 
         function selectgtsportmode() {
           embed.fields = [];
-          return require(gtffile.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
+          return require(gtf.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
         }
 
         var emojilist = [['🚘', '🚘', selectgaragemode], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];

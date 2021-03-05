@@ -3,15 +3,15 @@ var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
   name: "dw4",
   title: "GT Sport Daily Workout (4 Cars)",
-  cooldown: 300,
+  cooldown: 60,
   level: 3,
-  channels: ["gtf-mode", "testing", "gtf-demo"],
+  channels: ["testing", "gtf-demo"],
 
   delete: false,
   requirecar: false,
@@ -43,7 +43,7 @@ module.exports = {
     
   var prizes = [];
   for (var index = 0; index < 4; index++) {
-    prizes.unshift(require(gtffile.GTSCARS).RandomGTSCar().name)
+    prizes.unshift(require(gtf.GTSCARS).RandomGTSCar().name)
     }
   var select = [[emote.rightarrow + " ",emote.transparent + " ",emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.rightarrow + " ",emote.transparent + " ",emote.transparent + " "], [emote.transparent + " ",emote.transparent + " ", emote.rightarrow + " ",emote.transparent + " "], [emote.transparent + " ",emote.transparent + " ",emote.transparent + " ", emote.rightarrow + " "]]
     results = "**" + user + "\nGT Sport Daily Workout Car**";

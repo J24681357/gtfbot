@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var replaystats = require("../functions/replays/f_replay");
 
@@ -16,7 +16,7 @@ module.exports = {
     aliases: ["r", "replays"],
     channels: ["gtf-mode", "testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requirecar: false,
   usedduringrace: false,
@@ -49,6 +49,7 @@ module.exports = {
       if (err) throw err;
       var dbo = db.db("GTFitness");
       dbo.collection("REPLAYS").find({"id":userdata["id"]}).forEach(row => {
+        console.log(row)
             replaystats = row["replays"]
       }).then(() => 
       {replay()}
@@ -59,7 +60,7 @@ module.exports = {
   function replay() {
     var reactionson = true
     if (Object.keys(replaystats).length == 0) {
-                require(gtffile.EMBED).error(
+                require(gtf.EMBED).error(
             "❌ No Replays",
             "There are no replays saved.",
             embed,
@@ -72,7 +73,7 @@ module.exports = {
       "__Replay Theater: " +
         Object.keys(replaystats).length +
         " / " +
-        require(gtffile.GTF).replaylimit +
+        require(gtf.GTF).replaylimit +
         " Replays__"
     );
     
@@ -86,6 +87,9 @@ module.exports = {
       query.unshift("select");
       query[1] = parseInt(query[1]);
     }*/
+    if (query[0] == "list") {
+      query = []
+    }
     if (query[0] == "clear") {
       success = true
     
@@ -114,7 +118,7 @@ module.exports = {
           number === undefined ||
           number > replaystats.length
         ) {
-          require(gtffile.EMBED).error(
+          require(gtf.EMBED).error(
             "❌ Invalid ID",
             "This ID does not exist in your replay theater.",
             embed,
@@ -129,7 +133,7 @@ module.exports = {
       msg.channel.send(embed).then(msg => {
         
       function deletereplay() {
-        require(gtffile.REPLAY).delete(number, replaystats, userdata)
+        require(gtf.REPLAY).delete(number, replaystats, userdata)
         embed.setDescription("✅ Deleted "  + "`🕛ID:" + number + "` " + "**" + name + "**.")
         embed.setColor(0x216C2A)
         msg.edit(embed).then(msg => {msg.delete({timeout:5000})})
@@ -148,7 +152,7 @@ module.exports = {
           number === undefined ||
           number > replaystats.length
         ) {
-          require(gtffile.EMBED).error(
+          require(gtf.EMBED).error(
             "❌ Invalid ID",
             "This ID does not exist in your replay theater.",
             embed,
@@ -157,7 +161,7 @@ module.exports = {
           return;
         }
         var replaydetails = replaystats[number.toString()]
-        var loading = require(gtffile.GTF).loadingscreen("**" + replaydetails[0] + "**", '')
+        var loading = require(gtf.GTF).loadingscreen("**" + replaydetails[0] + "**", '')
         embed.setDescription(loading)
         msg.channel.send(embed).then(msg => {
           gtftools.interval(function() {

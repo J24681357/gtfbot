@@ -13,9 +13,9 @@ module.exports = {
   cooldown: 5,
   level: 4,
   description: ['!daily - Earns a random prize between credits and cars.\nYou need to drive 26.2mi/42.1km in a span of 24 hours in order to use this command.\nYou can set your time zone in the settings.'],
-  channels: [""],
+  channels: ["testing"],
   
-  delete: true,
+  delete: false,
   availinmaint:false,
    requireuserdata:true,
   requirecar: true,
@@ -55,21 +55,21 @@ module.exports = {
 
     results = '**You have earned a prize.**';
     
-      prizes.push(["CREDITS", {"id": -1,"name":"You have earned a prize! " + 5000 + emote.credits,
+      prizes.push(["CREDITS", {"id": -1,"name": 5000 + emote.credits + " Prize",
     "item": 5000,
     "author":"DAILY WORKOUT",
     "isgift":false}])
-    prizes.push(["CREDITS", {"id": -1,"name":10000 + emote.credits,
+    prizes.push(["CREDITS", {"id": -1,"name":10000 + emote.credits + " Prize",
     "item": 10000,
     "author":"DAILY WORKOUT",
     "isgift":false}])
-    prizes.push(["CREDITS", {"id": -1,"name":20000 + emote.credits,
+    prizes.push(["CREDITS", {"id": -1,"name":20000 + emote.credits + " Prize",
     "item": 20000,
     "author":"DAILY WORKOUT",
     "isgift":false}])
 
      var car = require(gtf.CARS).random({}, 1)[0]
-      prizes.push(["CAR", {"id": -1,"name":car["name"],
+      prizes.push(["CAR", {"id": -1,"name":car["name"] + car["year"],
     "item": car,
     "author":"DAILY WORKOUT",
     "isgift":false}])

@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -12,9 +12,9 @@ module.exports = {
   "title": "🛠 Car Tuning",
   "cooldown": 3,
   "level": 0,
-  "channels": ["testing", "gtf-test-mode", "gtf-demo"],
+  "channels": ["testing", "gtf-test-mode",],
 
-  "delete": true,
+  "delete": false,
   "availinmaint": false,
   "requirecar": true,
   "usedduringrace": false,
@@ -27,7 +27,7 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
-    var args = "\n" + "`Args: !tuning [\"type\"]`" + "\n"
+    var args = ""
     var page = 0
     var results = ""
     var info = "❓ **For each setting, select an item (or number) corresponding from a setting's list.**"
@@ -43,10 +43,10 @@ module.exports = {
     var reactionson = true
     var list = []
 
-    var engine = require(gtffile.PARTS).find({ "name": gtfcar["engine"]["current"], "type": "engine" })
-    var transmission = require(gtffile.PARTS).find({ "name": gtfcar["transmission"]["current"], "type": "transmission" })
-    var turbo = require(gtffile.PARTS).find({ "name": gtfcar["turbo"]["current"], "type": "turbo" })
-    var suspension = require(gtffile.PARTS).find({ "name": gtfcar["suspension"]["current"], "type": "suspension" })
+    var engine = require(gtf.PARTS).find({ "name": gtfcar["engine"]["current"], "type": "engine" })
+    var transmission = require(gtf.PARTS).find({ "name": gtfcar["transmission"]["current"], "type": "transmission" })
+    var turbo = require(gtf.PARTS).find({ "name": gtfcar["turbo"]["current"], "type": "turbo" })
+    var suspension = require(gtf.PARTS).find({ "name": gtfcar["suspension"]["current"], "type": "suspension" })
 
     /*if (engine.length != 0) {
       list.push("__**Engine**__ - !tuning [engine|eng|e]")
@@ -63,14 +63,14 @@ module.exports = {
     }*/
 
     if (list.length == 0) {
-      require(gtffile.EMBED).error("❌ No Tunable Parts", "There are no parts to tune for the **" + gtfcar["name"] + "**.", embed, msg, userdata)
+      require(gtf.EMBED).error("❌ No Tunable Parts", "There are no parts to tune for the **" + gtfcar["name"] + "**.", embed, msg, userdata)
       return
     }
     var part = []
 
     if (query[0] == "transmission" || query[0] == "trans" || query[0] == "tr") {
       list.map(function(x) {
-        if (x.includes("__**Transmission**__")) {
+        if (x.includes("Transmission")) {
           selectedtype = true
           part = transmission[0]
         }
@@ -79,7 +79,7 @@ module.exports = {
 
     if (query[0] == "suspension" || query[0] == "susp" || query[0] == "su") {
       list.map(function(x) {
-        if (x.includes("__**Suspension**__")) {
+        if (x.includes("Suspension")) {
           selectedtype = true
           part = suspension[0]
         }
@@ -91,15 +91,15 @@ module.exports = {
         return [x, " "]
       })
       var page = 0
-      results = gtftools.list(list, page, "", "", false, "", 7, [query, "tuning"], embed, msg, userdata)
-
-      embed.setDescription(results + "\n\n" + info)
+      results = gtftools.list(list, page, "", "", true, "", 7, [query, "tuning"], embed, msg, userdata)
+console.log(info)
+      embed.setDescription(results + "\n" + info)
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results, list, page, "", "", false, "", 7, [query, "tuning", info], embed, msg, userdata)
+      gtftools.createpages(results, list, page, "", "", true, "", 7, [query, "tuning", info], embed, msg, userdata)
       return
     } else {
       var info = "**❓ Use the left and right arrows to adjust car tuning for each part.\n To apply changes, click the " + emote.yes + " emote.**"
-      var list = require(gtffile.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
+      var list = require(gtf.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
 
       results = gtftools.list(list, page, "", "", false, "", 7, [query, "TUNING", info], embed, msg, userdata)
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
@@ -120,12 +120,12 @@ module.exports = {
         })
         .join("\n")
         .replace(/\"/gi, "")
-      embed.setDescription(results + "\n\n" + info)
+      embed.setDescription(results + "\n" + info)
 
       msg.channel.send(embed).then(msg => {
         function back() {
           gtfcar[part["type"].toLowerCase()]["tuning"][select]--
-          var list = require(gtffile.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
+          var list = require(gtf.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
 
           results = gtftools.list(list, page, "", "", false, "", 7, [query, "TUNING", info], embed, msg, userdata)
           var selectcount = 0
@@ -141,17 +141,17 @@ module.exports = {
             .join("\n")
             .replace(/\"/gi, "")
 
-          embed.setDescription(results + "\n\n" + info)
+          embed.setDescription(results + "\n" + info)
           msg.edit(embed)
         }
         function selectoption() {
           stats.currentcar(userdata)[part["type"].toLowerCase()]["tuning"] = gtfcar[part["type"].toLowerCase()]["tuning"]
-          require(gtffile.EMBED).success("✅ Success", part["type"] + " settings saved for **" + gtfcar["name"] + "**", 5000, true, embed, msg, userdata)
+          require(gtf.EMBED).success("✅ Success", part["type"] + " settings saved for **" + gtfcar["name"] + "**", 5000, true, embed, msg, userdata)
         }
 
         function next() {
           gtfcar[part["type"].toLowerCase()]["tuning"][select]++
-          var list = require(gtffile.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
+          var list = require(gtf.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
 
           results = gtftools.list(list, page, "", "", false, "", 7, [query, "TUNING", info], embed, msg, userdata)
           var selectcount = 0
@@ -167,14 +167,14 @@ module.exports = {
             .join("\n")
             .replace(/\"/gi, "")
 
-          embed.setDescription(results + "\n\n" + info)
+          embed.setDescription(results + "\n" + info)
           msg.edit(embed)
         }
 
         function up() {
           var index = 0
 
-          var list = require(gtffile.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
+          var list = require(gtf.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
           results = gtftools.list(list, page, "", "", false, "", 7, [query, "TUNING", info], embed, msg, userdata)
 
           select--
@@ -192,13 +192,13 @@ module.exports = {
             })
             .join("\n")
             .replace(/\"/gi, "")
-          embed.setDescription(results + "\n\n" + info)
+          embed.setDescription(results + "\n" + info)
           msg.edit(embed)
         }
 
         function down() {
           var index = 0
-          var list = require(gtffile.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
+          var list = require(gtf.PARTS).tuninglist(part, gtfcar, embed, msg, userdata)
           results = gtftools.list(list, page, "", "", false, "", 7, [query, "TUNING", info], embed, msg, userdata)
 
           select++
@@ -218,7 +218,7 @@ module.exports = {
             })
             .join("\n")
             .replace(/\"/gi, "")
-          embed.setDescription(results + "\n\n" + info)
+          embed.setDescription(results + "\n" + info)
           msg.edit(embed)
         }
 

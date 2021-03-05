@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var fs = require("fs");
 client.commands = new Discord.Collection();
@@ -56,7 +56,7 @@ module.exports = {
       );
 
     if (!command) {
-      require(gtffile.EMBED).error("❌ Error", "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed, msg, userdata);
+      require(gtf.EMBED).error("❌ Error", "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed, msg, userdata);
       return;
     }
     var description = command.description.map(function(x) {

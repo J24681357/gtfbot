@@ -4,18 +4,17 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
-var gtfuser = require('../index');
 
 module.exports = {
   name: 'discover',
-  title: 'GTS Livery/Decal Search',
-  cooldown: 10,
+  title: 'GTS Livery Search',
+  cooldown: 0,
   level: 0,
-  channels: ["gtf-mode"],
+  channels: ["testing"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
    requireuserdata:false,
   requirecar: false,
@@ -45,7 +44,7 @@ module.exports = {
 
  
     if (query.length == 0) {
-      require(gtffile.EMBED).error('❌ Invalid Arguments', 'Your query is empty.', embed, msg, userdata);
+      require(gtf.EMBED).error('❌ Invalid Arguments', 'Your query is empty.', embed, msg, userdata);
       return
     }
 
@@ -54,17 +53,25 @@ module.exports = {
     } else {
       var m = query[0];
     }
-
     var dict = {
       "decal":
-       {"url": 'https://gtswiki.gt-beginners.net/decal/?searchword='+ m + '&lang=us&type=0&noid=1'}
+       {"url": 'https://gtswiki.gt-beginners.net/decal/?searchword='+ m + '&lang=us&type=0&noid=1'},
+      "car":
+      {"url": 'https://gts.gt-beginners.net/livery/?cartag=&searchword='+ m + '&type=0&d='},
+      "helmet":
+      {"url": 'https://gts.gt-beginners.net/helmet/?searchword='+ m},
+      "suit": 
+      {"url": 'https://gts.gt-beginners.net/wear/?searchword='+ m}
        }
+      //var psnid = "&noid=1"
+      var psnid = ''
 
-    results = gtf.loadingscreen("**Keyword:** " + query.join(' '));
-    embed.setTitle('__**GTS Decal Search (BETA)**__');
+
+    results = require(gtf.GTF).loadingscreen("**Keyword:** " + query.join(' '));
+    embed.setTitle('__**GTS Livery Search**__');
     embed.setDescription(results);
     if (query === undefined) {
-      require(gtffile.EMBED).error(
+      require(gtf.EMBED).error(
         '❌ Error',
         'Invalid arguments.',
         embed,
@@ -75,7 +82,10 @@ module.exports = {
     }
     msg.channel.send(embed).then(msg => {
       var https = require('https');
-      https.get(dict[type]["url"],
+       /* if (true) {
+          psnid = ""
+       }*/
+      https.get(dict[type]["url"] + psnid,
         resp => {
           let data = '';
           resp.on('data', chunk => {
@@ -87,7 +97,8 @@ module.exports = {
               if (data.includes("The query found over 5000 results.")) {
                 
                 msg.delete({})
-                require(gtffile.EMBED).error(
+                embed.setTitle('__**GTS Livery Search**__');
+                require(gtf.EMBED).error(
                   '❌ Error',
                   'API excceeded the amount of results to process this query.\n',
                   embed,
@@ -109,11 +120,19 @@ module.exports = {
                   var comment = x
                     .split('<td class="comment">')[1]
                     .split('</td>')[0];
+                  if (type == "decal") {
                   var image =
                     'https://gtswiki.gt-beginners.net/' + type +
                     x
                       .split('src=".')[1]
                       .split('" width=')[0];
+                  } else if (type == "car") {
+                    var image = x.split('<amp-img class=\"sumb\" src=\"')[1].split('" width=')[0];
+                  } else if (type == "helmet") {
+                    var image = x.split('width="200px" src=\"')[1].split('\"></a>')[0]
+                  } else if (type == "suit") {
+                    var image = x.split('<img class="sumb" src=\"')[1].split('\"></a>')[0]
+                  }
                   var link = x
                     .split('<a href="')[1]
                     .split('" target=')[0];
@@ -127,9 +146,10 @@ module.exports = {
                 });
               if (liveries.length == 0) {
                 msg.delete({})
-                require(gtffile.EMBED).error(
+
+                require(gtf.EMBED).error(
                   '❌ Error',
-                  'Search returned an error for any of these reasons:' +
+                  'Query returned an error for any of these reasons:' +
                   '\n\n' +
                   'Query is invalid.\n' +
                   'There were no decals found.\n' +
@@ -153,7 +173,7 @@ module.exports = {
                   '**Author:** ' +
                   liveries[page][1] +
                   '\n' +
-                  '**Comment:** ' +
+                  '**Description:** ' +
                   liveries[page][2] +
                   '\n' +
                   '**Link:** ' +
@@ -161,6 +181,7 @@ module.exports = {
                 embed.setDescription(results);
                 if (thumbnail) {
                   embed.image = [];
+                  console.log(liveries[page][3])
                   embed.setThumbnail(liveries[page][3]);
                 } else {
                   embed.thumbnail = [];

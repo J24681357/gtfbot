@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
   title: "🎨 GTF Auto - Paints",
   cooldown: 3,
    level:0,
-    channels: ["gtf-mode", "testing", "gtf-demo"],
+    channels: ["testing", "gtf-demo"],
 
   delete: false,
   availinmaint:false,
@@ -20,14 +20,14 @@ module.exports = {
   usedduringrace: false,
   usedinlobby: false,
     description: ["!paint - Displays the list of types of paints in GTF Auto.", "!paint [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!paint [\"type\"] [(number)] - Purchases a paint from the [(number)] associated from the list of [\"type\"] paints.\nThis applies to your current car."],
-  "execute"(msg, query, userdata) {
+  execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed()
     embed.setColor(0x0151b0)
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
-    var args = "\n" + "`Args: !paint [\"type\"] [(number)]`" + "\n"
+    var args = ""
     var page = 0
     var results = ""
     var info = "❓ **Choose a type of paint from the list above.**"
@@ -38,7 +38,6 @@ module.exports = {
     var car = stats.currentcar(userdata)
     var title = "🎨 GTF Auto - Paints"
     embed.setTitle("__" + title + "__")
-    console.log(query)
 
     var selectedtype = false
     var reactionson = true
@@ -82,7 +81,7 @@ var select
        var selectedtype = true
       var type = "special"
     }
-select = require(gtffile.PAINTS).find({ "type": type })
+select = require(gtf.PAINTS).find({ "type": type })
 
     if (selectedtype) {
       var type = select[0]["type"]
@@ -95,7 +94,7 @@ select = require(gtffile.PAINTS).find({ "type": type })
       if (number != "S") {
         if (number <= 0 || isNaN(number) || number === undefined || number > select.length) {
           if (number !== undefined) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
+            require(gtf.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
           }
           itempurchase = false
         }
@@ -107,22 +106,22 @@ select = require(gtffile.PAINTS).find({ "type": type })
         var paint = { "name": "Stock", "type": select[0]["type"], "cost": 0 }
       } else {
         var paint = select[number - 1]
-        var cond = require(gtffile.PAINTS).checkpaintsavail(paint, car)
+        var cond = require(gtf.PAINTS).checkpaintsavail(paint, car)
         if (cond.includes("❌")) {
-          require(gtffile.EMBED).error("❌ Paint Unavailable", "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).error("❌ Paint Unavailable", "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
           return
         }
         if (cond.includes("✅")) {
-          require(gtffile.EMBED).error("❌ Paint Same Color", "**" + paint["type"] + " " + paint["name"] + "** is already applied for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).error("❌ Paint Same Color", "**" + paint["type"] + " " + paint["name"] + "** is already applied for **" + car["name"] + "**.", embed, msg, userdata)
           return
         }
       }
-      require(gtffile.MARKETPLACE).purchase(msg.member, paint, "PAINT", embed, msg, userdata)
+      require(gtf.MARKETPLACE).purchase(msg.member, paint, "PAINT", embed, msg, userdata)
       return
     }
 
     var select3 = select.map(function(x) {
-      var cond = require(gtffile.PAINTS).checkpaintsavail(x, car)
+      var cond = require(gtf.PAINTS).checkpaintsavail(x, car)
       return ["**" + gtftools.numFormat(x["cost"]) + "**" + emote.credits + " " + x["type"] + " " + x["name"] + " ", cond]
     })
 

@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -12,9 +12,9 @@ module.exports = {
   "title": "📦 GTF Auto - Tuning Shop",
   "cooldown": 3,
   "level": 0,
-  "channels": ["gtf-mode", "testing", "gtf-test-mode"],
+  "channels": ["testing", "gtf-test-mode"],
 
-  "delete": true,
+  "delete": false,
   "availinmaint": false,
   "requirecar": true,
   "usedduringrace": false,
@@ -27,7 +27,7 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL())
-    var args = "\n" + "`Args: !tune [\"type\"] [(number)]`" + "\n"
+    var args = ""
     var page = 0
     var results = ""
     var info = "❓ **Select a part type corresponding with the name (or number) of the part type above.**"
@@ -60,37 +60,37 @@ module.exports = {
     if (query[0] == "engine" || query[0] == "eng" || query[0] == "e" || parseInt(query[0]) == 1) {
       var selectedtype = true
       var type = "engine"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (query[0] == "transmission" || query[0] == "trans" || query[0] == "tr" || parseInt(query[0]) == 2) {
        var selectedtype = true
       var type = "transmission"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (query[0] == "suspension" || query[0] == "susp" || query[0] == "sus" || query[0] == "su" || parseInt(query[0]) == 3) {
       selectedtype = true
       var type = "suspension"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (query[0] == "tires" || query[0] == "tire" || query[0] == "ti" || parseInt(query[0]) == 4) {
       var selectedtype = true
       var type = "tires"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (query[0] == "weight-reduction" || query[0] == "weight" || query[0] == "we" || parseInt(query[0]) == 5) {
       selectedtype = true
       var type = "weight-reduction"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (query[0] == "turbo" || query[0] == "supercharger" || query[0] == "tu" || parseInt(query[0]) == 6) {
       selectedtype = true
       var type = "turbo"
-      var select = require(gtffile.PARTS).find({ "type": type })
+      var select = require(gtf.PARTS).find({ "type": type })
     }
 
     if (selectedtype) {
@@ -104,7 +104,7 @@ module.exports = {
       if (number != "S") {
         if (number <= 0 || isNaN(number) || number === undefined || number > select.length) {
           if (number !== undefined) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
+            require(gtf.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
           }
           itempurchase = false
         }
@@ -116,17 +116,17 @@ module.exports = {
         var part = { "name": "Stock", "type": select[0]["type"], "cost": 0 }
       } else {
         var part = select[number - 1]
-        var cond = require(gtffile.PARTS).checkpartsavail(part, car)
+        var cond = require(gtf.PARTS).checkpartsavail(part, car)
         if (cond.includes("❌")) {
-          require(gtffile.EMBED).error("❌ Part Unavailable", "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).error("❌ Part Unavailable", "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
           return
         }
         if (cond.includes("✅")) {
-          require(gtffile.EMBED).error("❌ Part Already Installed", "**" + part["type"] + " " + part["name"] + "** is already installed for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).error("❌ Part Already Installed", "**" + part["type"] + " " + part["name"] + "** is already installed for **" + car["name"] + "**.", embed, msg, userdata)
           return
         }
       }
-      require(gtffile.MARKETPLACE).purchase(msg.member, part, "PART", embed, msg, userdata)
+      require(gtf.MARKETPLACE).purchase(msg.member, part, "PART", embed, msg, userdata)
       return
     }
 
@@ -135,7 +135,7 @@ module.exports = {
     }*/
     var select3 = select.map(function(x) {
       console.log(x)
-      var cond = require(gtffile.PARTS).checkpartsavail(x, car)
+      var cond = require(gtf.PARTS).checkpartsavail(x, car)
       return ["**" + gtftools.numFormat(x["cost"]) + "**" + emote.credits + " " + x["type"] + " " + x["name"] + " ", cond]
     })
 

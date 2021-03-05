@@ -1,4 +1,4 @@
-var gtffile = process.env;
+var gtf = process.env;
 var emote = require("/home/runner/gtfbot/index");
 
 /*90-87*/
@@ -125,8 +125,30 @@ module.exports.amateur = function() {
       models: [],
       drivetrains: ["FR"],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 10000 }],
+      prize: ["CREDITS", { id: -1, name: " ", credits: 10000 }]
     },
+    a4: {
+      title: 'Honda Festival',
+      eventid: 'A-4',
+      positions: [emote.goldtrophy + " 1st|2200", emote.silvertrophy + " 2nd|1900", emote.bronzetrophy + " 3rd|1600", "4th|1200", "5th|1000", "6th|900", "7th|700", "8th|500", "9th|400", "10th|300"],
+      tracks: [
+        [1, 'Eiger Nordwand Short Track', 4],
+        [2, 'Silverstone National Circuit', 5],
+        [3, 'Alsace - Village II', 2],
+      ],
+      category: ['N200'],
+      time: 'Day',
+      grid: 10,
+      difficulty: 86,
+      fpplimit: 350,
+      upperfpp: 330,
+      lowerfpp: 100,
+      makes: ["Honda"],
+      models: [],
+      drivetrains: [],
+      types: ["Production", "Aftermarket"],
+      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Honda"], fullname: ["Honda NSX Type R 1992"] }]
+    }
   };
 };
 
@@ -259,7 +281,7 @@ module.exports.ibleague = function() {
     }, 
     ic4: {
       title: "Tesla Racing Series",
-      eventid: "IC-4",
+      eventid: "IB-4",
       positions: [emote.goldtrophy + " 1st|3500", emote.silvertrophy + " 2nd|3000", emote.bronzetrophy + " 3rd|2500", "4th|2000", "5th|1600", "6th|1500", "7th|1200", "8th|1100", "9th|1000", "10th|800", "11th|700", "12th|600"],
       tracks: [[1, "WeatherTech Raceway Laguna Seca", 3], [2, "Ascari Full Track", 3], [3, "Tokyo Expressway - South Outer Loop", 3]],
       category: ["N400"],
@@ -321,99 +343,49 @@ module.exports.ibleague = function() {
 
 /*83-75*/
 
+  
+
 module.exports.ialeague = function() {
   return {
-    ia1: {
-      title: "International IA League",
-      eventid: "IA-1",
-      positions: [emote.goldtrophy + " 1st|10000", emote.silvertrophy + " 2nd|8000", emote.bronzetrophy + " 3rd|6000", "4th|5000", "5th|4000", "6th|3500", "7th|3000", "8th|2500", "9th|2300", "10th|2100", "11th|1900", "12th|1700", "13th|1500", "14th|1400", "15th|1300", "16th|1200"],
-      tracks: [[1, "Circuit de la Sarthe (No Chicanes)", 2], [2, "Nürburgring GP/F", 6], [3, "Cape Ring", 5], [4, "Suzuka Circuit", 5], [5, "Matterhorn Rotenboden", 6]],
-      category: ["N800"],
-      time: "",
-      weather: "Clear",
-      grid: 20,
-      difficulty: 80,
-      fpplimit: 850,
-      upperfpp: 800,
-      lowerfpp: 600,
-      makes: [],
-      models: [],
-      drivetrains: [],
-      types: ["Production", "Aftermarket"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 100000 }],
+    "ia1": {
+      "title": "International IA League",
+      "eventid": "IA-1",
+      "positions": [emote.goldtrophy + " 1st|10000", emote.silvertrophy + " 2nd|8000", emote.bronzetrophy + " 3rd|6000", "4th|5000", "5th|4000", "6th|3500", "7th|3000", "8th|2500", "9th|2300", "10th|2100", "11th|1900", "12th|1700", "13th|1500", "14th|1400", "15th|1300", "16th|1200"],
+      "tracks": [[1, "Circuit de la Sarthe (No Chicanes)", 2], [2, "Nürburgring GP/F", 6], [3, "Cape Ring", 5], [4, "Suzuka Circuit", 5], [5, "Matterhorn Rotenboden", 6]],
+      "category": ["N800"],
+      "time": "",
+      "weather": "Clear",
+      "grid": 20,
+      "difficulty": 80,
+      "fpplimit": 850,
+      "upperfpp": 800,
+      "lowerfpp": 600,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ["Production", "Aftermarket"],
+      "prize": ["CREDITS", { id: -1, name: " ", credits: 100000 }],
     },
-    ia2: {
-      title: "GT3 World Championship",
-      eventid: "IA-2",
-      positions: [emote.goldtrophy + " 1st|15000", emote.silvertrophy + " 2nd|12000", emote.bronzetrophy + " 3rd|9000", "4th|7000", "5th|5000", "6th|4000", "7th|3000", "8th|2500", "9th|2300", "10th|2100", "11th|1900", "12th|1700", "13th|1500", "14th|1400", "15th|1300", "16th|1200"],
-      tracks: [[1, "Circuit de Barcelona-Catalunya Grand Prix Layout", 5], [2, "Fuji International Speedway F", 5], [3, "Trial Mountain Circuit 2010 II", 6], [4, "Mount Panorama Circuit", 4], [5, "Nürburgring Nordschleife", 2]],
-      category: ["Gr.3"],
-      time: "",
-      weather: "",
-      grid: 20,
-      difficulty: 85,
-      fpplimit: 700,
-      upperfpp: 700,
-      lowerfpp: 550,
-      makes: [],
-      models: [],
-      drivetrains: [],
-      types: ["Race Car: GT3"],
-      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Peugeot"], fullname: ["Peugeot Vision Gran Turismo Gr.3 2017"] }],
-    },
-  };
-};
-/*,
- 
-
-
-  
-    ia2: {
-      title: 'La Festa Cavallino',
-      eventid: 'IA-2',
-      positions: [
-        emote.goldtrophy + ' 1st|7100',
-        '<a:silvertrophy:549169214200741889> 2nd|6100',
-        '<a:bronzetrophy:549169213676322857> 3rd|5100',
-        '4th|4100',
-        '5th|3700',
-        '6th|3400',
-        '7th|3100',
-        '8th|2800',
-        '9th|2500',
-        '10th|2200',
-        '11th|1900',
-        '12th|1800',
-        '13th|1600',
-        '14th|1500',
-        '15|1200',
-        '16|1000',
-      ],
-      tracks: [
-        [1, 'Autodromo Nazionale Monza', 5],
-        [2, 'Autopolis International Racing Course', 6],
-        [3, 'Dragon Trail - Gardens II', 6],
-        [4, 'Circuito de la Sierra', 1],
-      ],
-      category: ['N800'],
-      time: 'Day',
-      weather: 'Clear',
-      grid: 20,
-      difficulty: 79,
-      fpplimit: 550,
-      models: [
-        'Ferrari ⭐0.5',
-        'Ferrari ⭐1',
-        'Ferrari ⭐1.5',
-        'Ferrari ⭐2',
-        'Ferrari ⭐2.5',
-        'Ferrari ⭐3',
-        'Ferrari ⭐3.5',
-      ],
-      type: ['⭐ Production Cars'],
-      prize: ['Ferrari ⭐3', 'M None'],
-    },
-    ia3: {
+    "ia2": {
+      "title": "La Festa Cavallino",
+      "eventid": "IA-2",
+      "positions": [emote.goldtrophy + " 1st|15000", emote.silvertrophy + " 2nd|12000", emote.bronzetrophy + " 3rd|10000", "4th|9000", "5th|7000", "6th|5000", "7th|3000", "8th|2500", "9th|2300", "10th|2100", "11th|1900", "12th|1700", "13th|1500", "14th|1400", "15th|1300", "16th|1200"],
+      "tracks": [[1, "Circuit de la Sarthe (No Chicanes)", 2], [2, "Nürburgring GP/F", 6], [3, "Autodromo Nazionale Monza", 4], [4, "Circuito di Roma", 6], [5, "Circuit de Sainte-Croix - B", 3]],
+      "category": ["N700"],
+      "time": "Day",
+      "weather": "Clear",
+      "grid": 20,
+      "difficulty": 78,
+      "fpplimit": 760,
+      "upperfpp": 710,
+      "lowerfpp": 400,
+      "makes": ["Ferrari"],
+      "models": [],
+      "drivetrains": [],
+      "types": ["Production", "Aftermarket"],
+      "prize": ["RANDOMCAR", { id: -1, name: " ", make: ["Ferrari"], fullname: ["Ferrari LaFerrari 2013"]}],
+    },  
+    "ia3": {
       title: 'GT3 World Championship',
       eventid: 'IA-3',
       positions: [
@@ -453,7 +425,7 @@ module.exports.ialeague = function() {
     }
   };
 };
-
+/*,
  
     ic3: {
       title: 'Rain Master I',

@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
 

@@ -3,14 +3,14 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var emote = require("../../index");
 var gtfuser = require("../../index");
 var fs = require("fs");
 
 module.exports.message = function(client, title, text, color, image, channelid, reactions, number) {
-  var server = client.guilds.cache.get('239493425131552778');
+  var server = client.guilds.cache.get(gtf.SERVERID);
   var channel = server.channels.cache.get(channelid);
   var embed = new Discord.MessageEmbed();
   var description = text;
@@ -108,7 +108,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
             filter11.on('collect', r => {
               try {
                 for (const user of r.users.cache.values()) {
-                  if (user.id == gtffile.USERID) {
+                  if (user.id == gtf.USERID) {
                     continue;
                   }
                   r.users.remove(user).then(
@@ -153,7 +153,7 @@ module.exports.updatecommandslist = function(client) {
       } else {
       var results = require("../../commands/gtfhelp").execute("", [commandslist[index]], "TEXT")
 
-      require(gtffile.EXTRA).message(client, results[0], results[1], results[2], "", '703096311129571358', [], index + 1);
+      require(gtf.EXTRA).message(client, results[0], results[1], results[2], "", '703096311129571358', [], index + 1);
       index++;
       if (index == size) {
          console.log('Commands List Updated.');

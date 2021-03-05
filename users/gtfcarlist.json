@@ -46,6 +46,21 @@
       "condition": 100,
       "special": [],
       "image": "http://www.autoviva.com/img/photos/817/abarth_grande_punto_abarth_1_4t_jet_155cv_large_13817.jpg"
+    },
+    {
+      "make": "Abarth",
+      "name": "Abarth Punto Evo",
+      "year": "2011",
+      "type": "Production",
+      "power": 161,
+      "weight": 2778,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.ausmotive.com/images2/Fiat-Abarth-Punto-Evo-01.jpg"
     }
   ],
   "acura": [
@@ -895,6 +910,21 @@
     },
     {
       "make": "Honda",
+      "name": "Honda NSX Type R",
+      "year": "1992",
+      "type": "Production",
+      "power": 284,
+      "weight": 2712,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1992_Honda_NSXR-0-1536.jpg"
+    },
+    {
+      "make": "Honda",
       "name": "Honda NSX Gr.4 (Gran Turismo)",
       "year": "2017",
       "type": "Race Car: GT4",
@@ -971,6 +1001,36 @@
       "condition": 100,
       "special": [],
       "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/14q2/584476/2014-infiniti-q50s-37-test-review-car-and-driver-photo-597135-s-original.jpg"
+    },
+    {
+      "make": "Infiniti",
+      "name": "Infiniti G37 Coupe",
+      "year": "2012",
+      "type": "Production",
+      "power": 328,
+      "weight": 3628,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://momentcar.com/images/infiniti-g37-coupe-4.jpg"
+    },
+    {
+      "make": "Infiniti",
+      "name": "Infiniti G20",
+      "year": "1990",
+      "type": "Production",
+      "power": 148,
+      "weight": 2668,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://images.thetruthaboutcars.com/2010/10/96g20.jpg"
     }
   ],
   "jaguar": [
@@ -1024,6 +1084,21 @@
     },
     {
       "make": "Jaguar",
+      "name": "Jaguar XKR-S GT",
+      "year": 2014,
+      "type": "Production",
+      "power": 542,
+      "weight": 3777,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://st.motortrend.com/uploads/sites/5/2014/01/2014-Jaguar-XKR-S-GT-front-three-quarter-in-motion-02.jpg"
+    },
+    {
+      "make": "Jaguar",
       "name": "Jaguar XJ220",
       "year": "1992",
       "type": "Production",
@@ -1055,7 +1130,54 @@
       "image": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/motor/2017/06/19/104410/KTM-X-BOW.jpg"
     }
   ],
+  "Kia": [
+    {
+      "make": "Kia",
+      "name": "Kia Soul GT-Line 1.6 Turbo",
+      "year": "2020",
+      "type": "Production",
+      "power": 201,
+      "weight": 3130,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.motortrend.com/uploads/sites/5/2019/02/2020-Kia-Soul-GT-2.jpg?fit=around%7C875:492"
+    }
+  ],
   "lamborghini": [
+    {
+      "make": "Lamborghini",
+      "name": "Lamborghini Aventador LP700-4",
+      "year": "2011",
+      "type": "Production",
+      "power": 690,
+      "weight": 3472,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD-MR",
+      "carcostm": 20,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.motortrend.com/uploads/sites/5/2011/05/2012-lamborghini-aventador-LP-700-4-promo.jpg?fit=around%7C875:492"
+    },
+    {
+      "make": "Lamborghini",
+      "name": "Lamborghini Aventador LP750 SV",
+      "year": "2015",
+      "type": "Production",
+      "power": 740,
+      "weight": 3362,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD-MR",
+      "carcostm": 20,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.motortrend.com/uploads/sites/5/2016/02/2015-Lamborghini-Aventador-LP750-4-SV-homepage.jpg?fit=around%7C875:492"
+    },
     {
       "make": "Lamborghini",
       "name": "Lamborghini Gallardo",
@@ -1184,6 +1306,21 @@
     },
     {
       "make": "Lexus",
+      "name": "Lexus RC F",
+      "year": "2014",
+      "type": "Production",
+      "power": 469,
+      "weight": 3946,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.askmen.com/1080x540/cars/car_reviews/lexus-rc-f-review-1098814-TwoByOne.jpg"
+    },
+    {
+      "make": "Lexus",
       "name": "Lexus RC F Track Edition",
       "year": "2020",
       "type": "Production",
@@ -1196,6 +1333,21 @@
       "condition": 100,
       "special": [],
       "image": "https://cdn.motor1.com/images/mgl/vM896/s3/2020-lexus-rc-f-track-edition.jpg"
+    },
+    {
+      "make": "Lexus",
+      "name": "Lexus SC430",
+      "year": "2010",
+      "type": "Production",
+      "power": 288,
+      "weight": 3840,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.hgmsites.net/med/2010-lexus-sc-430_100314159_m.jpg"
     }
   ],
   "lotus": [
@@ -1369,6 +1521,23 @@
       "image": "http://2.bp.blogspot.com/-XRKnDThMUq0/TwAlk-Ka4nI/AAAAAAAAB7Q/-AnY6m8mrqw/s1600/maserati+mc12+wallpaper+%25281%2529.JPG"
     }
   ],
+  "mclaren": [
+    {
+      "make": "Mclaren",
+      "name": "McLaren 720S Coupe",
+      "year": 2018,
+      "type": "Production",
+      "power": 710,
+      "weight": 3167,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 25,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.ultimatecarpage.com/images/car/6741/McLaren-720S-Coupe-68897.jpg"
+    }
+  ],
   "mini": [
     {
       "make": "Mini",
@@ -1451,6 +1620,21 @@
     },
     {
       "make": "Mitsubishi",
+      "name": "Mitsubishi Lancer Evolution VI GSR T.M.E. Special Color Package",
+      "year": "1999",
+      "type": "Production",
+      "power": 302,
+      "weight": 2998,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/evo6tm-288.jpg?itok=fw7APKM5"
+    },
+    {
+      "make": "Mitsubishi",
       "name": "Mitsubishi Lancer Evolution IV GSR",
       "year": "1996",
       "type": "Production",
@@ -1513,6 +1697,21 @@
     },
     {
       "make": "Mercedes-Benz",
+      "name": "Mercedes-Benz SLS AMG",
+      "year": "2010",
+      "type": "Production",
+      "power": 570,
+      "weight": 3571,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://dam.which.co.uk/b71070c9-47a8-4f4c-8608-05ec07904492.jpg"
+    },
+    {
+      "make": "Mercedes-Benz",
       "name": "Mercedes-Benz AMG GT S",
       "year": "2015",
       "type": "Production",
@@ -1543,6 +1742,21 @@
     },
     {
       "make": "Mercedes-Benz",
+      "name": "Mercedes-Benz SLS AMG GT3",
+      "year": 2011,
+      "type": "Race Car: GT3",
+      "power": 520,
+      "weight": 2976,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 20,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.thedetroitbureau.com/wp-content/uploads/2010/03/2011-Mercedes-Benz-SLS-AMG-GT3.jpg"
+    },
+    {
+      "make": "Mercedes-Benz",
       "name": "Mercedes-Benz SLS AMG Gr.4 (Gran Turismo)",
       "year": "2010",
       "type": "Race Car: GT4",
@@ -1558,6 +1772,21 @@
     }
   ],
   "nissan": [
+    {
+      "make": "Nissan",
+      "name": "Nissan 180SX Type X 1996",
+      "year": "1994",
+      "type": "Production",
+      "power": 206,
+      "weight": 2690,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s35.wheelsage.org/format/picture/picture-thumb-medium/n/nissan/180sx_type_x_sport_package/nissan_180sx_type_x_sport_package_1.jpg"
+    },
     {
       "make": "Nissan",
       "name": "Nissan 370Z Nismo",
@@ -1669,6 +1898,21 @@
     }
   ],
   "peugeot": [
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 106 1.6 Rallye",
+      "year": "2003",
+      "type": "Production",
+      "power": 102,
+      "weight": 1962,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://ranwhenparkeddotnet.files.wordpress.com/2013/03/peugeot-106-rallye-5.jpg"
+    },
     {
       "make": "Peugeot",
       "name": "Peugeot 207 RC",

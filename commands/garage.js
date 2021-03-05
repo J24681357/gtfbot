@@ -3,7 +3,7 @@ var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -49,11 +49,14 @@ module.exports = {
     var reactionson = true;
     var command = "garage";
 
-    embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + require(gtffile.GTF).garagelimit + ' Cars__');
+    embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + require(gtf.GTF).garagelimit + ' Cars__');
 
     if (!isNaN(query[0])) {
       query.unshift('select');
       query[1] = parseInt(query[1]);
+    }
+    if (query[0] == 'list') {
+      query = []
     }
 
     if (query[0] == 'sell') {
@@ -69,18 +72,18 @@ module.exports = {
       }
 
       if (number <= 0 || (isNaN(number) || isNaN(number2)) || (number === undefined || number2 === undefined) || (number > stats.garagecount(userdata) || number2 > stats.garagecount(userdata)) || number2 < number) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
+        require(gtf.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       }
       if (number <= stats.currentcarnum(userdata) && number2 >= stats.currentcarnum(userdata)) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'You cannot sell your current car.', embed, msg, userdata);
+        require(gtf.EMBED).error('❌ Invalid ID', 'You cannot sell your current car.', embed, msg, userdata);
         return;
       }
       if (number2 == number) {
         var car = stats.garage(userdata)[number - 1];
-        require(gtffile.MARKETPLACE).sell(user, car, 'CAR', embed, msg, userdata);
+        require(gtf.MARKETPLACE).sell(user, car, 'CAR', embed, msg, userdata);
       } else {
-        require(gtffile.MARKETPLACE).sell(user, [number, number2], 'CARS', embed, msg, userdata);
+        require(gtf.MARKETPLACE).sell(user, [number, number2], 'CARS', embed, msg, userdata);
       }
     } else if (query[0] == 'view') {
       var number = query[1];
@@ -88,11 +91,11 @@ module.exports = {
         number = stats.currentcarnum(userdata);
       }
       if (number <= 0 || isNaN(number) || number > stats.garagecount(userdata)) {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
+        require(gtf.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       }
       var car = stats.garage(userdata)[number - 1];
-      var ocar = require(gtffile.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
+      var ocar = require(gtf.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
       results = stats.view(car, userdata);
       stats.addcount(userdata);
       embed.setThumbnail(ocar["image"])
@@ -119,12 +122,13 @@ module.exports = {
       var number = parseInt(query[1]);
       var changecar = stats.setcurrentcar(number, userdata);
       if (changecar == 'Invalid') {
-        require(gtffile.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
+        require(gtf.EMBED).error('❌ Invalid ID', 'This ID does not exist in your garage.', embed, msg, userdata);
         return;
       } else {
         stats.addcount(userdata);
+        
         var car = stats.garage(userdata)[number - 1];
-        require(gtffile.EMBED).success('✅ Success', 'Selected the **' + car['name'] + ' ' + car['fpp'] + emote.fpp + '**' + ' `🚘ID:' + number + '`.', 5000, true, embed, msg, userdata);
+        require(gtf.EMBED).success('✅ Success', 'Selected the **' + car['name'] + ' ' + car['fpp'] + emote.fpp + '**' + ' `🚘ID:' + number + '`.', 5000, true, embed, msg, userdata);
       }
       return;
     } else if (query[0] == 'regulate!🏴') {
@@ -133,7 +137,7 @@ module.exports = {
       var event = query[1];
       viewonly = true;
       var filter = stats.garage(userdata).filter(function(x) {
-        var regulations = require(gtffile.GTF).checkregulations(x, event);
+        var regulations = require(gtf.GTF).checkregulations(x, event);
         return regulations[0];
       });
       query.pop();
@@ -155,7 +159,7 @@ module.exports = {
         if (filter.length != 0) {
           embed.setTitle('❗ **' + filter.length + ' Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')**');
         } else {
-          require(gtffile.EMBED).error('❌ No Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')', 'No garage cars are eligible for this event.', embed, msg, userdata);
+          require(gtf.EMBED).error('❌ No Garage Cars Eligible (' + event['title'] + ' ' + event['eventid'] + ')', 'No garage cars are eligible for this event.', embed, msg, userdata);
           return
         }
         var list = [];

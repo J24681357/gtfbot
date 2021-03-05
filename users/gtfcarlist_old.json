@@ -1,11 +1,4 @@
 {
-  "4": {
-    "make": "Abarth",
-    "name": "Abarth Punto Evo 2011",
-    "image": "http://www.ausmotive.com/images2/Fiat-Abarth-Punto-Evo-01.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "5": {
     "make": "Acura",
     "name": "Acura CL 3.0 1997",
@@ -2227,13 +2220,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "356": {
-    "make": "Infiniti",
-    "name": "Infiniti G20 1990",
-    "image": "http://images.thetruthaboutcars.com/2010/10/96g20.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "357": {
     "make": "Infiniti",
     "name": "Infiniti G20 T 2000",
@@ -2252,13 +2238,6 @@
     "make": "Infiniti",
     "name": "Infiniti G35 Sedan 2006",
     "image": "https://pictures.topspeed.com/IMG/jpg/200605/2006-infiniti-g35-10.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "360": {
-    "make": "Infiniti",
-    "name": "Infiniti G37 Coupe 2012",
-    "image": "http://momentcar.com/images/infiniti-g37-coupe-4.jpg",
     "rating": "⭐2",
     "manufacturercost": 10000
   },
@@ -2443,21 +2422,7 @@
     "image": "https://s1.cdn.autoevolution.com/images/gallery/JAGUARXKR-S-3666_4.jpg",
     "rating": "⭐1.5",
     "manufacturercost": 20000
-  },
-  "389": {
-    "make": "Jaguar",
-    "name": "Jaguar XKR-S 2011",
-    "image": "http://www.thesupercars.org/wp-content/uploads/2011/03/2011-Jaguar-XKR-S-Front-Angle-480.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
-  "390": {
-    "make": "Jaguar",
-    "name": "Jaguar XKR-S GT 2015",
-    "image": "https://st.motortrend.com/uploads/sites/5/2014/01/2014-Jaguar-XKR-S-GT-front-three-quarter-in-motion-02.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
+  }, 
   "391": {
     "make": "Jeep",
     "name": "Jeep Compass 2018",
@@ -2528,33 +2493,12 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "401": {
-    "make": "Kia",
-    "name": "Kia Soul 2020",
-    "image": "https://www.motortrend.com/uploads/sites/5/2019/02/2020-Kia-Soul-GT-2.jpg?fit=around%7C875:492",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "402": {
-    "make": "Kia",
-    "name": "Kia Soul Turbo 2017",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/16q4/671590/2017-kia-soul-turbo-test-review-car-and-driver-photo-672942-s-original.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "403": {
     "make": "Kia",
     "name": "Kia Stinger 2017",
     "image": "https://c.slashgear.com/wp-content/uploads/2017/09/kia-stinger-1-980x620.jpg",
     "rating": "⭐3",
     "manufacturercost": 10000
-  },
-  "404": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Aventador LP700-4 2011",
-    "image": "https://car-images.bauersecure.com/upload/25151/images/0000d2fe50df-05a7-4d84-9.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 30000
   },
   "405": {
     "make": "Lamborghini",
@@ -2696,13 +2640,6 @@
     "rating": "⭐1",
     "manufacturercost": 15000
   },
-  "427": {
-    "make": "Lancia",
-    "name": "Lancia Delta HF Integrale 16V 1989",
-    "image": "http://www.topcarrating.com/lancia/1987-lancia-delta-hf-integrale-16v-831.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
   "428": {
     "make": "Lancia",
     "name": "Lancia Delta HF Integrale Evoluzione 1991",
@@ -2733,7 +2670,7 @@
   },
   "432": {
     "make": "Lexus",
-    "name": " \nLexus CT200h 2011",
+    "name": "Lexus CT200h 2011",
     "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_large/v1/editorial/Lexus-CT200h-2011.jpg",
     "rating": "⭐0.5",
     "manufacturercost": 20000
@@ -2829,13 +2766,7 @@
     "rating": "⭐0.5",
     "manufacturercost": 20000
   },
-  "448": {
-    "make": "Lexus",
-    "name": "Lexus RC F 2014",
-    "image": "https://images.askmen.com/1080x540/cars/car_reviews/lexus-rc-f-review-1098814-TwoByOne.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
+  "448": 
   "450": {
     "make": "Lexus",
     "name": "Lexus RC350 2015",
@@ -2848,13 +2779,6 @@
     "name": "Lexus RX 450h F-Sport 2013",
     "image": "https://pictures.topspeed.com/IMG/jpg/201203/2013-lexus-rx-450h-f-spor.jpg",
     "rating": "⭐0.5",
-    "manufacturercost": 20000
-  },
-  "452": {
-    "make": "Lexus",
-    "name": "Lexus SC430 2010",
-    "image": "https://images.hgmsites.net/med/2010-lexus-sc-430_100314159_m.jpg",
-    "rating": "⭐1",
     "manufacturercost": 20000
   },
   "453": {
@@ -3065,13 +2989,6 @@
     "name": "Maserati Levante GTS 2019",
     "image": "https://s1.cdn.autoevolution.com/images/news/2019-maserati-levante-gts-is-no-trofeo-packs-550-hp-v8-engine-127045_1.jpg",
     "rating": "⭐2",
-    "manufacturercost": 20000
-  },
-  "489": {
-    "make": "Maserati",
-    "name": "Maserati MC12 2004",
-    "image": "http://2.bp.blogspot.com/-XRKnDThMUq0/TwAlk-Ka4nI/AAAAAAAAB7Q/-AnY6m8mrqw/s1600/maserati+mc12+wallpaper+%25281%2529.JPG",
-    "rating": "⭐3.5",
     "manufacturercost": 20000
   },
   "490": {
@@ -3381,28 +3298,12 @@
     "rating": "⭐1",
     "manufacturercost": 20000
   },
-  "537": {
-    "make": "Mercedes-Benz",
-    "name": "Mercedes-Benz SLS AMG 2010",
-    "image": "https://dam.which.co.uk/b71070c9-47a8-4f4c-8608-05ec07904492.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
   "538": {
     "make": "Mercedes-Benz",
     "name": "Mercedes-Benz SLS AMG Black Series 2014",
     "image": "https://i.ytimg.com/vi/98G5gAJwuUM/maxresdefault.jpg",
     "rating": "⭐3",
     "manufacturercost": 20000
-  },
-  "539": {
-    "make": "Mercedes-Benz",
-    "name": "Mercedes-Benz SLS AMG GT3 2011",
-    "image": "http://www.thedetroitbureau.com/wp-content/uploads/2010/03/2011-Mercedes-Benz-SLS-AMG-GT3.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 20000
-  },
-  "540": {
   },
   "541": {
     "make": "Mercedes-Benz",
@@ -3677,13 +3578,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "586": {
-    "make": "Mitsubishi",
-    "name": "Mitsubishi Lancer Evolution VI GSR T.M.E. Special Color Package 1999",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/evo6tm-288.jpg?itok=fw7APKM5",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "587": {
     "make": "Mitsubishi",
     "name": "Mitsubishi Lancer Evolution VIII FQ330 2004",
@@ -3725,13 +3619,6 @@
     "image": "http://www.j-spec.com.au/f14466/1988-Mitsubishi-Starion-GSR-VR_1.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
-  },
-  "595": {
-    "make": "Nissan",
-    "name": "Nissan 240SX (S13) 1994",
-    "image": "http://consumerguide.com/wp-content/uploads/2014/07/92809071990112.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
   },
   "597": {
     "make": "Nissan",
@@ -3795,33 +3682,12 @@
     "image": "https://i.pinimg.com/originals/e5/09/b3/e509b32a1d488d847f5121aa22fb3134.jpg",
     "rating": "⭐2",
     "manufacturercost": 15000
-  },
-  "607": {
-    "make": "Nissan",
-    "name": "Nissan Leaf 2018",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/nissan-leaf.jpg",
-    "rating": "⭐0.3",
-    "manufacturercost": 15000
-  },
+  }
   "608": {
     "make": "Nissan",
     "name": "Nissan Leaf G 2011",
     "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q2/395918/2011-nissan-leaf-sl-long-term-road-test-review-car-and-driver-photo-402468-s-original.jpg",
     "rating": "⭐0.3",
-    "manufacturercost": 15000
-  },
-  "609": {
-    "make": "Nissan",
-    "name": "Nissan Skyline R32 GT-R V-Spec II 1994",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/NISSAN-Skyline-GT-R-V-Spec--R32--4037_3.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
-  "610": {
-    "make": "Nissan",
-    "name": "Nissan Skyline R33 GT-R V-Spec 1997",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/NISSANSkylineGT-RV-Spec-R33--4039_1.jpg",
-    "rating": "⭐2",
     "manufacturercost": 15000
   },
   "611": {
@@ -3893,14 +3759,7 @@
     "image": "https://images.esellerpro.com/2489/461241/images/objects/featured-cars/1.6-gti.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
-  },
-  "621": {
-    "make": "Peugeot",
-    "name": "Peugeot 106 1.6 Rallye 1997",
-    "image": "http://www.zeperfs.com/photos/548-f.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
+  }, 
   "622": {
     "make": "Peugeot",
     "name": "Peugeot 206 2.0 S16",

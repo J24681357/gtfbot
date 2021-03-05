@@ -2,13 +2,13 @@ var stats = require("../functions/profile/f_stats")
 var gtftools = require("../functions/misc/f_tools")
 var emote = require("../index")
 
-var gtffile = process.env
+var gtf = process.env
 const Discord = require("discord.js")
 const client = new Discord.Client()
 ////////////////////////////////////////////////////
 
 module.exports.list = function(args) {
-  var gtftracks = require(gtffile.LISTS).gtftracklist;
+  var gtftracks = require(gtf.LISTS).gtftracklist;
   var results = "";
   if (args.length == 0) {
     return results;
@@ -38,7 +38,7 @@ module.exports.find = function(args) {
     return "";
   }
   var total = Object.keys(args).length;
-  var gtftracks = require(gtffile.LISTS).gtftracklist;
+  var gtftracks = require(gtf.LISTS).gtftracklist;
   var final = [];
   var ids = Object.keys(gtftracks);
 
@@ -110,7 +110,7 @@ module.exports.find = function(args) {
 
 module.exports.random = function(args, num) {
   var rlist = [];
-  var list = require(gtffile.TRACKS).find(args);
+  var list = require(gtf.TRACKS).find(args);
   for (var i = 0; i < num; i++) {
     rlist.push(list[Math.floor(Math.random() * list.length)]);
   }

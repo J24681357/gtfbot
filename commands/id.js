@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -44,13 +44,13 @@ module.exports = {
       if (!isNaN(query[1]) || query[1] === undefined || typeof query[1] === 'number') {
         var number = parseInt(query[1]) - 1;
         if (query[1] === undefined) {
-          var track = require(gtffile.TRACKS).random({"name":[]}, 1)[0]
+          var track = require(gtf.TRACKS).random({"name":[]}, 1)[0]
         } else {
           if (number + 1 > 140 || number < 0) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
-            var track = require(gtffile.TRACKS).random({"name":[]}, 1)[0]
+            require(gtf.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
+            var track = require(gtf.TRACKS).random({"name":[]}, 1)[0]
           } else {
-            var track = require(gtffile.TRACKS).random({"id": [number]}, 1)[0]
+            var track = require(gtf.TRACKS).random({"id": [number]}, 1)[0]
           }
         }
 
@@ -60,12 +60,12 @@ module.exports = {
           "**Type:** " + track["type"] + " Circuit";
           } else {
             if (query[1].length <= 2) {
-            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
+            require(gtf.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
             return;
           } else {
-            var list = require(gtffile.TRACKS).find({"name":query[1]})
+            var list = require(gtf.TRACKS).find({"name":query[1]})
             if (list.length == 0) {
-               require(gtffile.EMBED).error("❌ No Tracks", "No tracks has been found from your query.", embed, msg, userdata);
+               require(gtf.EMBED).error("❌ No Tracks", "No tracks has been found from your query.", embed, msg, userdata);
               return;
             }
             list = list.map(gttrack => "`ID:" + gttrack["id"] + "` " + gttrack["name"]).slice(0, 10);
@@ -76,18 +76,18 @@ module.exports = {
     }
     if (query[0] == "car") {
       var selected = true;
-      var total = require(gtffile.GTSCARS).gtscarslength
+      var total = require(gtf.GTSCARS).gtscarslength
 
       if (!isNaN(query[1]) || query[1] === undefined || typeof query[1] === 'number') {
         var number = parseInt(query[1]) - 1;
         if (query[1] === undefined) {
-          var car = require(gtffile.GTSCARS).RandomGTSCar()
+          var car = require(gtf.GTSCARS).RandomGTSCar()
         } else {
           if (number + 1 > total || number < 0) {
-            require(gtffile.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
-            var car = require(gtffile.GTSCARS).RandomGTSCar()
+            require(gtf.EMBED).warning("⚠ Invalid ID", "A random track has been selected.", embed, msg, userdata);
+            var car = require(gtf.GTSCARS).RandomGTSCar()
           } else {
-            var car = require(gtffile.GTSCARS).GTSCar(number)
+            var car = require(gtf.GTSCARS).GTSCar(number)
           }
         }
         var index = car.index
@@ -97,12 +97,12 @@ module.exports = {
           "**Country: **" + car.country;
           } else {
             if (query[1].length <= 2) {
-            require(gtffile.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
+            require(gtf.EMBED).error("❌ Invalid Characters", "The query is not at least 3 characters.", embed, msg, userdata);
             return;
           } else {
-            list = require(gtffile.GTSCARS).GTSCars({name:query[1]})
+            list = require(gtf.GTSCARS).GTSCars({name:query[1]})
             if (list.length == 0) {
-               require(gtffile.EMBED).error("❌ No Tracks", "No cars has been found from your query.", embed, msg, userdata);
+               require(gtf.EMBED).error("❌ No Tracks", "No cars has been found from your query.", embed, msg, userdata);
               return;
             }
             list = list.map(gtscar => "`ID:" + gtscar.id + "` " + gtscar.name).slice(0, 10);
@@ -116,7 +116,7 @@ module.exports = {
       msg.channel.send(embed);
       return 
     } else {
-      require(gtffile.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata)
+      require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata)
       return
     }
   }

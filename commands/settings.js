@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
   title: "GTF Settings",
   cooldown: 5,
   level:0,
-     channels: ["gtf-mode", "testing", "gtf-demo"],
+     channels: ["testing", "gtf-demo"],
 
   availinmaint:false,
   delete: false,
@@ -77,7 +77,7 @@ module.exports = {
     }
 
     if (query[2] !== undefined && !checked) {
-      require(gtffile.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata)
+      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata)
     }
     
     if (checked) {

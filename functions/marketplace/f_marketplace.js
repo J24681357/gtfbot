@@ -4,7 +4,7 @@ var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.purchase = function(user, item, type, embed, msg, userdata) {
@@ -21,14 +21,14 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   if (type == "CAR") {
     var name = item["name"] + " " + item["year"];
 
-    var fpp = require(gtffile.PERF).perf(item, "DEALERSHIP")["fpp"];
-    var dealershipcost = require(gtffile.MARKETPLACE).costcalc(item, fpp);
+    var fpp = require(gtf.PERF).perf(item, "DEALERSHIP")["fpp"];
+    var dealershipcost = require(gtf.MARKETPLACE).costcalc(item, fpp);
     var mcost = dealershipcost;
     var link = item["image"];
     var make = item["make"];
 
     embed.setImage(link);
-    if (require(gtffile.EMBED).checkgarageerror(embed, msg, userdata)) {
+    if (require(gtf.EMBED).checkgarageerror(embed, msg, userdata)) {
       return;
     }
     fpp = "\n**Specs: " + fpp + "**" + emote.fpp + "**" + " | " + gtftools.numFormat(item["power"]) + "hp" + " | " + gtftools.numFormat(item["weight"]) + "lbs" + "**";
@@ -40,7 +40,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
   if (type == "PART") {
     if (stats.currentcarmain(userdata) == "No car.") {
-      require(gtffile.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg, userdata);
+      require(gtf.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg, userdata);
       return;
     }
     var car = stats.currentcar(userdata);
@@ -56,7 +56,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (item["name"] == "Stock") {
       part_tostock = true;
       if (car[type1]["current"] == "Stock") {
-        require(gtffile.EMBED).error("❌ Part Already Stock", "This part is already stock in your **" + car["name"] + "**.", embed, msg, userdata);
+        require(gtf.EMBED).error("❌ Part Already Stock", "This part is already stock in your **" + car["name"] + "**.", embed, msg, userdata);
         return;
       }
     }
@@ -64,7 +64,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (car[type1]["current"] == "Stock") {
       var oldpart = { name: "Stock", type: type1, cost: 0 };
     } else {
-      var oldpart = require(gtffile.PARTS).find({ name: car[type1]["current"], type: type1 })[0];
+      var oldpart = require(gtf.PARTS).find({ name: car[type1]["current"], type: type1 })[0];
     }
     oldpartmessage = "\nReplaced **" + car[type1]["current"] + "**.";
     if (car[type1]["list"].includes(item["name"])) {
@@ -73,8 +73,8 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
       part_in_inv = true;
     }
 
-    var perf1 = require(gtffile.PERF).partpreview(oldpart, car, "GARAGE");
-    var perf2 = require(gtffile.PERF).partpreview(item, car, "GARAGE");
+    var perf1 = require(gtf.PERF).partpreview(oldpart, car, "GARAGE");
+    var perf2 = require(gtf.PERF).partpreview(item, car, "GARAGE");
 
     var powerdesc = "";
     var weightdesc = "";
@@ -89,7 +89,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
   if (type == "PAINT") {
     if (stats.currentcarmain(userdata) == "No car.") {
-      require(gtffile.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg, userdata);
+      require(gtf.EMBED).error("❌ No Car", "You do not have a current car.", embed, msg, userdata);
       return;
     }
     var car = stats.currentcar(userdata);
@@ -105,7 +105,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (item["name"] == "Stock") {
       part_tostock = true;
       if (car[type1]["current"] == "Stock") {
-        require(gtffile.EMBED).error("❌ Paint Already Applied", "This paint is already painted on your **" + car["name"] + "**.", embed, msg, userdata);
+        require(gtf.EMBED).error("❌ Paint Already Applied", "This paint is already painted on your **" + car["name"] + "**.", embed, msg, userdata);
         return;
       }
     }
@@ -113,13 +113,13 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (car["color"]["current"] == "Stock") {
       var oldpart = { name: "Stock", type: type1, cost: 0 };
     } else {
-      var oldpart = require(gtffile.PAINTS).find({ name: car["color"]["current"], type: type1 })[0];
+      var oldpart = require(gtf.PAINTS).find({ name: car["color"]["current"], type: type1 })[0];
     }
     oldpartmessage = "\nRepainted from **" + car["color"]["current"] + "**.";
   }
 
   if (stats.credits(userdata) - mcost < 0) {
-    require(gtffile.EMBED).error("❌ Insufficient Credits", "You have insufficient credits to purchase the **" + name + "**.\n\n" + "**Credits: " + stats.credits(userdata) + emote.credits + "** -> **" + mcost.toString().replace(/\B(?=(\d{3}) +(?!\d))/g, ",") + "**" + emote.credits, embed, msg, userdata);
+    require(gtf.EMBED).error("❌ Insufficient Credits", "You have insufficient credits to purchase the **" + name + "**.\n\n" + "**Credits: " + stats.credits(userdata) + emote.credits + "** -> **" + mcost.toString().replace(/\B(?=(\d{3}) +(?!\d))/g, ",") + "**" + emote.credits, embed, msg, userdata);
     return;
   }
 
@@ -152,19 +152,19 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
       }
       if (type == "PART") {
         if (part_tostock) {
-          require(gtffile.PERF).partinstall(item, userdata);
+          require(gtf.PERF).partinstall(item, userdata);
         } else {
           stats.addcredits(-cost, userdata);
-          require(gtffile.PERF).partinstall(item, userdata);
+          require(gtf.PERF).partinstall(item, userdata);
           installedoncurrentcar = "Installed **" + name + "** on **" + car["name"] + "**." + " **-" + cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + emote.credits;
         }
       }
       if (type == "PAINT") {
         if (part_tostock) {
-          require(gtffile.PERF).paint(item, userdata);
+          require(gtf.PERF).paint(item, userdata);
         } else {
           stats.addcredits(-cost, userdata);
-          require(gtffile.PERF).paint(item, userdata);
+          require(gtf.PERF).paint(item, userdata);
           installedoncurrentcar = "Painted **" + name + "** on **" + car["name"] + "**.";
         }
       }
@@ -175,7 +175,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
         results = installedoncurrentcar;
       }
 
-      require(gtffile.EMBED).success("✅ Success", results, 0, false, embed, msg, userdata);
+      require(gtf.EMBED).success("✅ Success", results, 0, false, embed, msg, userdata);
 
       if (changecar) {
         function change() {
@@ -200,10 +200,10 @@ module.exports.sell = function(user, item, type, embed, msg, userdata) {
   if (type == "CAR") {
     var id = item["ID"];
     var name = item["name"];
-    var sell = require(gtffile.PERF).perf(item, "GARAGE")["sell"];
+    var sell = require(gtf.PERF).perf(item, "GARAGE")["sell"];
     if (stats.currentcar(userdata) != null) {
       if (stats.currentcar(userdata)[0] == id) {
-        require(gtffile.EMBED).error("❌ Current Car", "You cannot sell a car you are currently in.", embed, msg, userdata);
+        require(gtf.EMBED).error("❌ Current Car", "You cannot sell a car you are currently in.", embed, msg, userdata);
         return;
       }
     }
@@ -230,7 +230,7 @@ module.exports.sell = function(user, item, type, embed, msg, userdata) {
         var money = stats.removecars(first, last, userdata);
         results = "Sold **" + name + "**. " + "**+" + money + "**" + emote.credits;
       }
-      require(gtffile.EMBED).success("✅ Success", results, 5000, false, embed, msg, userdata);
+      require(gtf.EMBED).success("✅ Success", results, 5000, false, embed, msg, userdata);
 
       return;
     }

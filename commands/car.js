@@ -9,7 +9,7 @@ var gtf = process.env
 module.exports = {
   name: "car",
   title: "GTF Car Dealership",
-  cooldown: 3,
+  cooldown: 0,
   level: 0,
   channels: ["testing", "gtf-demo"],
 
@@ -27,7 +27,7 @@ module.exports = {
 
     var user = msg.author.username
     embed.setAuthor(user, msg.author.displayAvatarURL());
-    var args = "\n" + "`Args: !car [\"make\"] [(number)]`" + "\n"
+    var args = ""
     var page = 0
     var results = ""
     var info = "❓ **Select from the makes listed above **"
@@ -37,7 +37,7 @@ module.exports = {
     var itempurchase = false;
     var reactionson = true
 
-    if (query[0] === undefined) {
+    if (query[0] === undefined || query[0] == "list") {
       query = []
     }
 

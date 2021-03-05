@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports.nitrous = function() {
@@ -17,7 +17,7 @@ var fuel = ["Fuel", 1000]
 //////////////////
 
 module.exports.list = function(args) {
-  var paint = require(gtffile.LISTS).gtfpaintslist
+  var paint = require(gtf.LISTS).gtfpaintslist
   var results = ""
   if (args.length == 0) {
     return results
@@ -34,7 +34,7 @@ module.exports.find = function(args) {
   if (args === undefined) {
     return ""
   }
-  var paint = require(gtffile.LISTS).gtfpaintlist
+  var paint = require(gtf.LISTS).gtfpaintlist
   var final = []
   var total = Object.keys(args).length
 

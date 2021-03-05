@@ -3,7 +3,7 @@ var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
@@ -13,7 +13,7 @@ module.exports.giftlimit = 5;
 
 ////////////////////////////
 module.exports.checkregulations = function(gtfcar, regulations) {
-  var car = require(gtffile.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
+  var car = require(gtf.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
 
   var fpplimit = regulations["fpplimit"];
   var fppexist = fpplimit != "";
@@ -143,7 +143,7 @@ module.exports.loadingscreen = function(title, carname) {
 
 0.5 10000 114-144 (110-135)
 1 20000 131-161 (136-150)
-1.5 30000 145-175  (151-170)
+1.5 30000 145-175  (151-170) (4-10)
 2 40000 156-186 (171-190) 15
 3 80000 190-220 (191-215) or 30
 3.5  110000 209-239 (216-240)
@@ -165,7 +165,7 @@ module.exports.loadingscreen = function(title, carname) {
 
 0.5 20000 131-161 (130-160)
 1 40000 156-186 (160-190)
-2 80000 190-220 (190-210) 30
+2 80000 190-220 (190-210) 25-30
 2.3 100000 203-233 (210-230)
 3 120000 215-245 (230-245)
 3.8  150000 232-262 (245-260)

@@ -4,7 +4,7 @@ var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools")
 
 const Discord = require("discord.js")
 const client = new Discord.Client()
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
   aliases: ["c"],
   channels: ["testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint: false,
   requireuserdata: true,
   requirecar: true,
@@ -74,7 +74,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").beginner()
     }
     if (league == "amateur" || league == "a" || league == "A") {
-      if (!require(gtffile.EXP).checklevel(5, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(5, embed, msg, userdata)) {
         return
       }
       ready = true
@@ -82,7 +82,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").amateur()
     }
     if (league == "icleague" || league == "ic" || league == "IC") {
-      if (!require(gtffile.EXP).checklevel(10, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(10, embed, msg, userdata)) {
         return
       }
       ready = true
@@ -90,7 +90,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").icleague()
     }
     if (league == "ibleague" || league == "ib" || league == "IB") {
-      if (!require(gtffile.EXP).checklevel(15, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(15, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -98,7 +98,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").ibleague()
     }
     if (league == "ialeague" || league == "ia" || league == "IA") {
-      if (!require(gtffile.EXP).checklevel(20, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(20, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -107,7 +107,7 @@ module.exports = {
     }
     if (league == "sleague" || league == "s" || league == "S") {
       return
-      if (!require(gtffile.EXP).checklevel(25, embed, msg, userdata)) {
+      if (!require(gtf.EXP).checklevel(25, embed, msg, userdata)) {
         return
       }
       var ready = true
@@ -115,7 +115,7 @@ module.exports = {
       var races = require("/home/runner/gtfbot/data/career/races").sleague()
     } else {
       if (!ready && query.length != 0) {
-        require(gtffile.EMBED).warning("⚠ Warning", "This league does not exist.", embed, msg, userdata)
+        require(gtf.EMBED).warning("⚠ Warning", "This league does not exist.", embed, msg, userdata)
       }
       embed.setTitle("🏁" + " __Career Mode__")
       results = "__**B**__ - !career [b] [(number)]" + "\n" +
@@ -141,12 +141,12 @@ module.exports = {
       var number = query[1]
       if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
         if (number !== undefined) {
-          require(gtffile.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
+          require(gtf.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
           }
       }
       if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      var event = require(gtffile.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
+      var event = require(gtf.RACE).careerevent(races, number, embed, msg, asyncrace, userdata)
       } else {
         var results2 = ""
         var ids = Object.keys(races)
@@ -193,7 +193,7 @@ module.exports = {
 
         var ready = true
 
-        require(gtffile.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
+        require(gtf.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata)
       }
   }
 }

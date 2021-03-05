@@ -3,7 +3,7 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 
@@ -359,7 +359,7 @@ module.exports.removereactions = function(list, msg) {
     if (emoji == null) {
       increase()
     } else {
-      emoji.remove(gtffile.USERID);
+      emoji.remove(gtf.USERID);
       increase()
     }
   }
@@ -379,7 +379,7 @@ module.exports.removereactions = function(list, msg) {
     if (emoji == null) {
       continue;
     } else {
-      emoji.remove(gtffile.USERID);
+      emoji.remove(gtf.USERID);
     }
   }
   }, 1000 * list.length, 1)*/
@@ -409,7 +409,7 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
     if (i == emojilist.length) {
       return
     } else {
-     setTimeout(function() {filter(i)}, 1000)
+     setTimeout(function() {filter(i)}, 1500)
     }
   }
 

@@ -4,7 +4,7 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var gtfuser = require("../../index");
 var fs = require("fs")
@@ -14,9 +14,9 @@ module.exports.userid = function(userdata) {
 };
 
 module.exports.count = function(userdata) {
-  var num = require(gtffile.MAIN).embedcounts[userdata["id"]]
+  var num = require(gtf.MAIN).embedcounts[userdata["id"]]
   if (isNaN(num)) {
-    require(gtffile.MAIN).embedcounts[userdata["id"]] = 0
+    require(gtf.MAIN).embedcounts[userdata["id"]] = 0
     return 0
   } else {
     return num
@@ -121,11 +121,11 @@ module.exports.addgift = function(name, item, type, author, isgift, userdata) {
 }
 
 module.exports.addcount = function(userdata) {
-  require(gtffile.MAIN).embedcounts[userdata["id"]]++
+  require(gtf.MAIN).embedcounts[userdata["id"]]++
 };
 
 module.exports.removecount = function(userdata) {
-  require(gtffile.MAIN).embedcounts[userdata["id"]]--
+  require(gtf.MAIN).embedcounts[userdata["id"]]--
 };
 
 module.exports.careerraces = function(userdata) {
@@ -226,9 +226,9 @@ module.exports.addexp = function(number, userdata) {
 };
 
 module.exports.view = function(gtfcar,userdata) {
-  var ocar  = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
+  var ocar  = require(gtf.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
   var garage = stats.garage(userdata)
-  var perf = require(gtffile.PERF).perf(gtfcar, "GARAGE")
+  var perf = require(gtf.PERF).perf(gtfcar, "GARAGE")
   
   var cardetails = "**Car:** " + gtfcar["name"] + " `🚘ID:" + gtftools.index(garage, gtfcar) + "`\n" +
   "**Type:** " + ocar["type"] + "\n" +
@@ -247,11 +247,16 @@ module.exports.view = function(gtfcar,userdata) {
 }
 
 module.exports.view2 = function(gtfcar,userdata) {
+  if (gtfcar["transmission"]["current"] == "Stock") {
+    var trans1 = "Default"
+  } else {
+    var trans1 = gtfcar["transmission"]["tuning"][0]
+  }
   var cardetails = "__**Transmission**__" + "\n" + 
-  "**Top Speed:** " + gtfcar["transmission"]["tuning"][0] + " " + "\n" + 
+  "**Top Speed (Final Gear Ratio):** " + trans1 + " " + "\n" + 
   "__**Suspension**__" + "\n" + 
-  "**Camber Angle:** " + gtfcar["suspension"]["tuning"][0] + "in" + "\n" + 
-  "**Toe Angle:** " + gtfcar["suspension"]["tuning"][1] + "in" + "\n"
+  "**Camber Angle:** " +  gtfcar["transmission"]["tuning"][0].toString().replace("-999", "Default") + "in" + "\n" + 
+  "**Toe Angle:** " + gtfcar["suspension"]["tuning"][1].toString().replace("-999", "Default") + "in" + "\n"
   return cardetails
 }
 
@@ -298,8 +303,8 @@ module.exports.addcar = function(car, arg, userdata) {
 
   var condition = 100
   
-var fpp = require(gtffile.PERF).perf(car, "DEALERSHIP")["fpp"]
-var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
+var fpp = require(gtf.PERF).perf(car, "DEALERSHIP")["fpp"]
+var sell = require(gtf.MARKETPLACE).sellcalc(car, "DEALERSHIP")
   userdata["numcarpurchase"]++
   var id1 = userdata["numcarpurchase"]
   var newcar = {
@@ -323,7 +328,7 @@ var sell = require(gtffile.MARKETPLACE).sellcalc(car, "DEALERSHIP")
         "condition": condition,
         "mileage": 0
 }
-  newcar["fpp"] = require(gtffile.PERF).perf(newcar, "GARAGE")["fpp"]
+  newcar["fpp"] = require(gtf.PERF).perf(newcar, "GARAGE")["fpp"]
   
   if (arg == "ITEM") {
     return newcar
@@ -413,11 +418,11 @@ module.exports.gift = function(title, gift, embed, msg, userdata) {
     stats.addcredits(parseInt(gift[1]["item"]), userdata)
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
 
-    require(gtffile.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["item"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
+    require(gtf.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["item"]) + emote.credits + "**" , 0, false, embed, msg, userdata);
     stats.save(userdata)
   } else if (type == "RANDOMCAR") {
-  var prizes = require(gtffile.CARS).random(gift[1], 4)
-  require(gtffile.MARKETPLACE).fourcargifts(title, "**" + title + "**", prizes, embed, msg, userdata) 
+  var prizes = require(gtf.CARS).random(gift[1], 4)
+  require(gtf.MARKETPLACE).fourcargifts(title, "**" + title + "**", prizes, embed, msg, userdata) 
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
     stats.save(userdata)
   } else if (type == "CAR") {
@@ -427,8 +432,9 @@ module.exports.gift = function(title, gift, embed, msg, userdata) {
     stats.save(userdata)
     
   embed.setImage(car["image"])
+  embed.setThumbnail(car["image"])
   
-  require(gtffile.EMBED).success(title, "**" + car["name"] + " Acquired.**" , 0, true, embed, msg, userdata);
+  require(gtf.EMBED).success(title, "**" + car["name"] + " " + car["year"] +  " acquired.**" , 0, false, embed, msg, userdata);
   }
 }
 
@@ -485,9 +491,9 @@ module.exports.removecars = function(start, end, userdata) {
   var i = 0
   while (i < count) {
     car = stats.garage(userdata)[start - 1]
-    total += require(gtffile.PERF).perf(car, "GARAGE")["sell"]
+    total += require(gtf.PERF).perf(car, "GARAGE")["sell"]
     
-    stats.removecar(car, car["ID"], require(gtffile.PERF).perf(car, "GARAGE")["sell"], userdata)
+    stats.removecar(car, car["ID"], require(gtf.PERF).perf(car, "GARAGE")["sell"], userdata)
     
     i++
   }
@@ -546,7 +552,7 @@ module.exports.main = function(userdata) {
   userdata["count"]++
   userdata["mileage"] = [Math.round(100 * userdata["mileage"][0]) / 100, Math.round(100 * userdata["mileage"][1]) / 100]
   
-  var levelup = require(gtffile.EXP).islevelup(userdata)
+  var levelup = require(gtf.EXP).islevelup(userdata)
   var gifts = ""
   if (levelup[0]) {
     levelup = "`LEVEL UP`"
@@ -635,6 +641,9 @@ module.exports.resumerace = function(userdata, client) {
 
 
 module.exports.save = function(userdata, condition) {
+  if (userdata === undefined) {
+    return
+  }
   if (Object.keys(userdata).length <= 5) {
     return
   }

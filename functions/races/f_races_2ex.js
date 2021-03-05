@@ -3,7 +3,7 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 //SSRX//
@@ -21,15 +21,15 @@ module.exports.ssrxracelength = function(
   checkpoint,
   userdata
 ) {
-   var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+   var fpp = require(gtf.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
   var numx = gtftools.catcalc(racesettings["category"], "0%", fpp);
-  var carspeed = require(gtffile.PERF).speedcalc(numx, racesettings["misc"]["car"])
+  var carspeed = require(gtf.PERF).speedcalc(numx, racesettings["misc"]["car"])
   var showcar =
-    "\n🚘 " +
+    "\n**🚘 " +
     racesettings["misc"]["car"]["name"] +
-    " **" +
+    " " +
     racesettings["misc"]["car"]["fpp"] +
-    emote.fpp +
+    emote.fpp + " | " + racesettings["misc"]["car"]["tires"]["current"].split(" ").map(x => x[0]).join("") + emote.tire +
     "**";
   var racelength = (racesettings["km"] / numx) * 3600 * 1000;
   return [carspeed[0], carspeed[1], showcar, racelength];
@@ -81,12 +81,12 @@ module.exports.careerracelength = function(
   checkpoint,
   userdata
 ) {
-  var showcar =
-    "\n🚘 " +
+    var showcar =
+    "\n**🚘 " +
     racesettings["misc"]["car"]["name"] +
-    " **" +
+    " " +
     racesettings["misc"]["car"]["fpp"] +
-    emote.fpp +
+    emote.fpp + " | " + racesettings["misc"]["car"]["tires"]["current"].split(" ").map(x => x[0]).join("") + emote.tire +
     "**";
   var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], racesettings["upperfpp"]);
 
@@ -110,14 +110,14 @@ module.exports.arcaderacelength = function(
 ) {
   var showcar = "";
   if (racesettings["misc"]["car"].length != 0) {
-    showcar =
-      "\n🚘 " +
-      racesettings["misc"]["car"]["name"] +
-      " **" +
-      racesettings["misc"]["car"]["fpp"] +
-      emote.fpp +
-      "**";
-          var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+   var showcar =
+    "\n**🚘 " +
+    racesettings["misc"]["car"]["name"] +
+    " " +
+    racesettings["misc"]["car"]["fpp"] +
+    emote.fpp + " | " + racesettings["misc"]["car"]["tires"]["current"].split(" ").map(x => x[0]).join("") + emote.tire +
+    "**";
+          var fpp = require(gtf.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
     var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fpp);
   } else {
     var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
@@ -143,15 +143,15 @@ module.exports.driftracelength = function(
 ) {
   var showcar = "";
   if (racesettings["misc"]["car"].length != 0) {
-    showcar =
-      "\n🚘 " +
-      racesettings["misc"]["car"]["name"] +
-      " **" +
-      racesettings["misc"]["car"]["fpp"] +
-      emote.fpp +
-      "**";
+   var showcar =
+    "\n**🚘 " +
+    racesettings["misc"]["car"]["name"] +
+    " " +
+    racesettings["misc"]["car"]["fpp"] +
+    emote.fpp + " | " + racesettings["misc"]["car"]["tires"]["current"].split(" ").map(x => x[0]).join("") + emote.tire +
+    "**";
       
-    var fpp = require(gtffile.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
+    var fpp = require(gtf.PERF).perf(racesettings["misc"]["car"], "GARAGE")["fpp"]
     var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fpp);
   } else {
   var speed = gtftools.catcalc(["N300"], racesettings["weather"], "");
@@ -180,7 +180,7 @@ module.exports.driftsection = function(
   var silver = Math.ceil( ((racesettings["km"]* 0.90) * 2000) / 100) * 100
   var bronze = Math.ceil( ((racesettings["km"]* 0.80) * 2000) / 100) * 100
 
-var tire = require(gtffile.PARTS).find({"name":racesettings["misc"]["car"]["tires"]["current"],"type":"tires"})[0]["name"]
+var tire = require(gtf.PARTS).find({"name":racesettings["misc"]["car"]["tires"]["current"],"type":"tires"})[0]["name"]
   var points = gtftools.randomInt(Math.round(maxpoints/8), Math.round(maxpoints/4))
   if (tire.includes("Racing")) {
     console.log("ok")
@@ -244,6 +244,35 @@ module.exports.driftresults = function(
   
 }
 
+///ONLINE 
+
+module.exports.onlineracelength = function(
+  user,
+  racedetails,
+  racesettings,
+  finalgrid,
+  startingrace,
+  racefinished,
+  embed,
+  msg,
+  args,
+  checkpoint,
+  userdata
+) {
+  var showcar = "";
+  var fppavg = 0
+  racesettings["players"].forEach(function(x) {
+    fppavg = fppavg + x["car"]["fpp"]
+  })
+  fppavg = fppavg / racesettings["players"].length
+  console.log(fppavg)
+
+  var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fppavg);
+
+  var racelength = (racesettings["km"] / speed) * 3600 * 1000;
+  return [showcar, racelength];
+};
+
 ////MISC
 module.exports.createfinalreactions = function(
   user,
@@ -261,8 +290,7 @@ module.exports.createfinalreactions = function(
 ) {
   if (!checkpoint[0]) {
     function func() {
-      console.log("start")
-      require(gtffile.REPLAY).savem( racesettings["title"],results2,racedetails,"__Starting Grid - " +
+      require(gtf.REPLAY).savem( racesettings["title"],results2,racedetails,"__Starting Grid - " +
           racesettings["category"] +
           " | " +
           racesettings["grid"] +
@@ -294,7 +322,7 @@ module.exports.createfinalreactions = function(
           .filter(
             msge =>
               msge.content.includes("**FINISH**") &&
-              msge.author.id == gtffile.USERID
+              msge.author.id == gtf.USERID
           )
           .first();
         m.delete({timeout:1000});
@@ -302,10 +330,10 @@ module.exports.createfinalreactions = function(
       msg.delete({timeout:1000});
       if (racesettings["title"].includes("Seasonal Event")) {
         var btevent = require("../../commands/seasonal");
-        btevent.execute(msg, [e[1]], userdata).catch(console.error);
+        btevent.execute(msg, [e[1]], userdata)
       }else {
       var btevent = require("../../commands/career");
-      btevent.execute(msg, [e[0], e[1]], userdata).catch(console.error);
+      btevent.execute(msg, [e[0], e[1]], userdata)
       }
     }
 

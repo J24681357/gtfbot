@@ -3,7 +3,7 @@ var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 var fs = require("fs");
 
@@ -40,7 +40,7 @@ module.exports = {
     var info = ' '
     /* Setup */
 
-    var extra = " ";
+    var extra = emote.transparent;
     var deletee = false;
 
     let MongoClient = require("mongodb").MongoClient;
@@ -69,13 +69,13 @@ module.exports = {
       }
       if (query[0] == "changeseasonals") {
         var success = true;
-        require(gtffile.SEASONAL).changeseasonals(true)
+        require(gtf.SEASONAL).changeseasonals(true)
       }
 
       if (query[0] == "arcaderacelength") {
         var success = true;
         var racemode = query[1];
-        var racesettings = require(gtffile.RACE).setrace(query[1], "ARCADE");
+        var racesettings = require(gtf.RACE).setrace(query[1], "ARCADE");
         var speed = gtftools.catcalc(
           racesettings["category"],
           racesettings["weather"],
@@ -114,10 +114,10 @@ module.exports = {
       }
       if (query[0] == "maintenance") {
         success = true;
-        if (require(gtffile.MAIN).gtfbotconfig["maintenance"] == "YES") {
-          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "NO";
+        if (require(gtf.MAIN).gtfbotconfig["maintenance"] == "YES") {
+          require(gtf.MAIN).gtfbotconfig["maintenance"] = "NO";
         } else {
-          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "YES";
+          require(gtf.MAIN).gtfbotconfig["maintenance"] = "YES";
         }
         setTimeout(function() {
           require("../commands/restart").execute(msg, [""], userdata);
@@ -125,10 +125,10 @@ module.exports = {
       }
       if (query[0] == "partialmaintenance") {
         success = true;
-        if (require(gtffile.MAIN).gtfbotconfig["maintenance"] == "PARTIAL") {
-          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "NO";
+        if (require(gtf.MAIN).gtfbotconfig["maintenance"] == "PARTIAL") {
+          require(gtf.MAIN).gtfbotconfig["maintenance"] = "NO";
         } else {
-          require(gtffile.MAIN).gtfbotconfig["maintenance"] = "PARTIAL";
+          require(gtf.MAIN).gtfbotconfig["maintenance"] = "PARTIAL";
         }
         setTimeout(function() {
           require("../commands/restart").execute(msg, [""], userdata);
@@ -138,6 +138,12 @@ module.exports = {
       if (query[0] == "addcredits") {
         success = true;
         stats.addcredits(parseInt(query[1]), userdata);
+      }
+      
+      if (query[0] == "removecredits") {
+        success = true;
+        stats.addcredits(-parseInt(query[1]), userdata);
+        results = "Success.";
       }
       if (query[0] == "setcredits") {
         success = true;
@@ -157,7 +163,7 @@ module.exports = {
       }
       if (query[0] == "giftrandomcar") {
         success = true;
-        var car = require(gtffile.CARS).random({}, 1)[0]
+        var car = require(gtf.CARS).random({}, 1)[0]
           stats.addgift(
           car["name"],
           car,
@@ -199,9 +205,14 @@ module.exports = {
         success = true;
         deletee = true;
       }
+      if (query[0] == "cleargarage") {
+        success = true;
+        userdata["garage"] = [];
+        userdata["currentcarnum"] = 0
+      }
       if (query[0] == "addrandomcar") {
         success = true;
-        var prizes = require(gtffile.CARS).randomcars(
+        var prizes = require(gtf.CARS).randomcars(
           ["Any"],
           [""],
           parseInt(query[1])
@@ -225,9 +236,9 @@ module.exports = {
           query[1] +
           " random cars to garage.";
       }
-      if (query[0] == "removecredits") {
+       if (query[0] == "setmileage") {
         success = true;
-        stats.addcredits(-parseInt(query[1]), userdata);
+        userdata["mileage"] = [query[1], query[1]]
         results = "Success.";
       }
       if (query[0] == "addmileage") {
@@ -275,8 +286,8 @@ module.exports = {
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
-        var track = require(gtffile.TRACKS).track({"name":tracks[1]})[0]
-        var racesettings = require(gtffile.RACE).setcareerrace(
+        var track = require(gtf.TRACKS).track({"name":tracks[1]})[0]
+        var racesettings = require(gtf.RACE).setcareerrace(
           event,
           track,
           stats.currentcar(userdata),

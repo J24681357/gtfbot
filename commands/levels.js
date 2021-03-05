@@ -4,18 +4,18 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports = {
-  name: "levels",
-  title: "GTF Experience Levels",
-  cooldown: 5,
-    level: 0,
-      aliases: ["explevels", "level"],
-  channels: ["gtf-mode", "testing", "gtf-test-mode", "gtf-demo"],
+  "name": "levels",
+  "title": "GTF Experience Levels",
+  "cooldown": 0,
+    "level": 0,
+      "aliases": ["explevels", "level"],
+  "channels": ["testing", "gtf-test-mode", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availitoeveryone:true,
   availinmaint:false,
   available:true,
@@ -41,7 +41,7 @@ module.exports = {
     var reactionson = true
 
     embed.setTitle(
-      emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtffile.LISTS).gtfexp).length + " Levels" + "__"
+      emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtf.LISTS).gtfexp).length + " Levels" + "__"
     );
 
     if (!isNaN(query[0])) {
@@ -50,6 +50,9 @@ module.exports = {
     }
 
     if (query.length != 0) {
+      if (query[0] == "list") {
+        query = []
+      }
 
       if (query[0] == "info") {
         var number = query[1];
@@ -57,9 +60,9 @@ module.exports = {
           number <= 0 ||
           isNaN(number) ||
           number === undefined ||
-          number > require(gtffile.EXP).ExpLevels().length
+          number > require(gtf.LISTS).gtfexp.length
         ) {
-          require(gtffile.EMBED).error(
+          require(gtf.EMBED).error(
             "❌ Invalid Number",
             "This level does not exist.",
             embed,
@@ -68,7 +71,7 @@ module.exports = {
           return;
         }
         number = number - 1
-        var levelchosen = require(gtffile.EXP).ExpLevels()[(number+1).toString()]
+        var levelchosen = require(gtf.LISTS).gtfexp[(number+1).toString()]
 
         results = "__Level " + (number+1).toString() + "__" + "\n" +
           "**Experience Required: " + levelchosen["exp"] + emote.exp + "**\n\n" +
@@ -79,7 +82,7 @@ module.exports = {
       msg.channel.send(embed);
       return;
     } else {
-    var explevels = require(gtffile.LISTS).gtfexp
+    var explevels = require(gtf.LISTS).gtfexp
     var list = Object.keys(explevels).map(function(level) {
         return ["", explevels[level]["exp"], explevels[level]["rewards"].join("\r")];
     })

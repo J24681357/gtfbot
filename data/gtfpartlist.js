@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports.nitrous = function() {
@@ -18,7 +18,7 @@ var fuel = ["Fuel", 1000]
 //////////////////
 
 module.exports.list = function(args) {
-  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var gtfparts = require(gtf.LISTS).gtfpartlist
   var results = ""
   if (args.length == 0) {
     return results
@@ -35,7 +35,7 @@ module.exports.find = function(args) {
   if (args === undefined) {
     return ""
   }
-  var gtfparts = require(gtffile.LISTS).gtfpartlist
+  var gtfparts = require(gtf.LISTS).gtfpartlist
   var final = []
   var total = Object.keys(args).length
 
@@ -86,9 +86,13 @@ module.exports.tuninglist = function(part, gtfcar, embed, msg, userdata) {
   }
   var tunevalues = gtfcar[part["type"].toLowerCase()]["tuning"]
 
+
  var list = []
 
   for (var i = 0; i < names.length; i++) {
+      if (tunevalues[i] == -999) {
+        tunevalues[i] = 0
+      }
     if (tunevalues[i] < part["min"]) {
       tunevalues[i] = part["min"]
     }
@@ -111,8 +115,8 @@ module.exports.tuninglist = function(part, gtfcar, embed, msg, userdata) {
 }
 
 module.exports.checkpartsavail = function(part, gtfcar) {
-  var ocar = require(gtffile.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
-var perf = require(gtffile.PERF).perf(ocar, "DEALERSHIP")
+  var ocar = require(gtf.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
+var perf = require(gtf.PERF).perf(ocar, "DEALERSHIP")
 
   var bfpplimit = perf["fpp"] < part["fpplimit"]
   var bweightlimit = perf["oweight"] > part["weightlowerlimit"]
@@ -126,7 +130,7 @@ var perf = require(gtffile.PERF).perf(ocar, "DEALERSHIP")
         return "📦"
       }
    } else {
-     return require(gtffile.PERF).partpreview(part, gtfcar, "GARAGE")["fpp"].toString()
+     return require(gtf.PERF).partpreview(part, gtfcar, "GARAGE")["fpp"].toString()
    }
  } else {
    return "❌"

@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 var gtfuser = require('../index');
 
@@ -13,9 +13,9 @@ module.exports = {
   title: 'Special Stage Route X - 10000m Top Speed Run',
   cooldown: 3,
    level:8,
-    channels: ["gtf-mode", "testing", "gtf-demo"],
+    channels: ["testing", "gtf-demo"],
 
-  delete: true,
+  delete: false,
   availinmaint:false,
   requirecar: true,
   usedduringrace: false,
@@ -45,12 +45,12 @@ module.exports = {
     }
 
     var car = stats.currentcar(userdata);
-     var ocar = require(gtffile.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
+     var ocar = require(gtf.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
     var ready = true;
     if (ocar["type"] == "Production") {
-    require(gtffile.RACE).preparerace(mode, '', carmode, "", args, embed, msg, userdata);
+    require(gtf.RACE).preparerace(mode, '', carmode, "", args, embed, msg, userdata);
     } else {
-       require(gtffile.EMBED).error("❌ Production Cars Only", "Production cars are only allowed for this event.", embed, msg, userdata)
+       require(gtf.EMBED).error("❌ Production Cars Only", "Production cars are only allowed for this event.", embed, msg, userdata)
       return
     }
   },

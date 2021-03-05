@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -13,10 +13,10 @@ module.exports = {
   cooldown: 5,
   level: 0,
   aliases: ["home"],
-  channels: ["gtf-mode", "testing", "gtf-demo"],
+  channels: ["testing", "gtf-demo"],
 
   availinmaint: false,
-  delete: true,
+  delete: false,
   requirecar: false,
   usedduringrace: false,
   usedinlobby: false,
@@ -41,7 +41,7 @@ module.exports = {
     var count = stats.count(userdata);
 
     embed.setTitle("__My Home__");
-    embed.setThumbnail(msg.guild.members.cache.get(gtffile.USERID).user.displayAvatarURL());
+    embed.setThumbnail(msg.guild.members.cache.get(gtf.USERID).user.displayAvatarURL());
     embed.setFooter("Welcome to GT Fitness! React to one of the emotes associated with the list above to select an option.");
 
     if (parseInt(query[0]) == 2) {
@@ -190,7 +190,7 @@ module.exports = {
             return;
           }
 
-          var car = require(gtffile.CARS).random({}, 1)[0];
+          var car = require(gtf.CARS).random({}, 1)[0];
           embed.setTitle(car["name"] + " " + car["year"]);
 
           embed.setDescription("Find this car using **!car " + car["make"] + " " + "**.");

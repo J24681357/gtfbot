@@ -14,7 +14,7 @@ module.exports = {
   "roles": [],
   "channels": ["testing", "gtf-demo"],
 
-  "delete": true,
+  "delete": false,
   "availinmaint": false,
   "requireuserdata": true,
   "requirecar": false,

@@ -4,7 +4,7 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.intro = function(userdata, command, msg) {
@@ -34,7 +34,7 @@ module.exports.intro = function(userdata, command, msg) {
 
     embed.setTitle("⚠ __**" + "Before You Start" + "**__ ⚠");
     embed.setThumbnail(author.displayAvatarURL);
-    embed.setDescription("Welcome to the world of GT Fitness!\nYou may start on your career and find other cool features by using **!home**.\n**!home** will be your main menu if you are ever stuck on what to do.\n\n**❓ But first, you must complete a brief tutorial to understand the basics of this bot.**\n\n⚠ Click the " + emote.yes + " emote to continue to the tutorial in your DMs.\n⚠ Make sure you allow this bot in your DMs if this does not work.");
+    embed.setDescription("Welcome to the world of GT Fitness!\nYou may start on your career and find other cool features by using **!home**.\n**!home** will be your main menu if you are ever stuck on what to do.\n\n⚠ Click the " + emote.yes + " emote to finish the process.");
     msg.channel.send(embed).then(msg => {
       var i = 0;
       function complete() {
@@ -52,6 +52,7 @@ module.exports.intro = function(userdata, command, msg) {
           mileage: [0, 0],
           totalmileage: [0, 0],
           version: 100,
+          commandhistory: [],
 
           garage: [],
           numcarpurchase: 0,
@@ -99,7 +100,7 @@ module.exports.intro = function(userdata, command, msg) {
         embed.setDescription("**✅ Join The Fitness Race!**");
         author.send(embed);
       }
-      var emojilist = [[emote.yes, "Yes", nexttask, i]];
+      var emojilist = [[emote.yes, "Yes", complete]];
       var task1 = "First, you would want to buy a new car!\nYou can use the **!car** command to choose from a list of manufacturers of what you want to buy.\nIf I want find cars from Mazda, you type in **!car Mazda** to get a catalog of Mazda cars.\n\n**❓ Type the correct command (without the prefix !) to list __Audi__ cars from the __!car__ command.**";
       var task2 = "Now you how to see the list of cars from each manufacturer, lets purchase a car.\nTo purchase a car, you would look at the numbers associated with each of the cars in a manufacturer's list.\nIf I would want to purchase the 1st car from the Audi dealership, you would type **!car Audi 1**.\n\n**🔰 Without the prefix (!), type the correct command to purchase the __5th__ car from the __Nissan__ dealership using the __!car__ command.**";
       var task3 = "Great, you know how to purchase cars!\nYou can access to your garage by using **!garage**.\nSince you would have only one car in your garage, you can select a car by using **!garage 1**.\n\n**🔰 Without the prefix (!), type the correct command to select the __10th__ car using the __garage__ command.**";
@@ -107,7 +108,8 @@ module.exports.intro = function(userdata, command, msg) {
       var task5 = "You can also tune your cars in the GTF Auto using the **!tune** command. In the GTF Auto, there are a variety of types of parts to upgrade your car including engine, tires, and more!\nIf I want to list the available engine parts, I would type **!tune engine**.\n\n**🔰 Without the prefix (!), type the correct command to list __tires__ from the __!tune__ command**.";
       var task6 = "Now you would have a catalog of parts for the type you've choosen. Just like the **!car** command, each number is associated with each upgrade part for your car.\n\n**🔰 Without the prefix (!), type the correct command to install Comfort Soft tires on a car using the __!tune__ command.\nHint: Comfort Soft tires is the 3rd item in the tires list.**";
       var task7 = "**Congrats, You have completed the brief tutorial!\n\n❓ **You can also navigate through most commands by their reactions from the bottom of each embed to reduce typing.\nMany other commands are listed in **!home**.\n\n🔰 **Type __ok__ to complete the tutorial.**";
-      var tasks = [[task1, "car Audi"], [task2, "car Nissan 5"], [task3, "garage 10"], [task4, "career ic 4"], [task5, "tune tires"], [task6, "tune tires 3"], [task7, "ok"], [" ", " "]];
+      var tasks = [[" ", " "]]
+      //var tasks = [[task1, "car Audi"], [task2, "car Nissan 5"], [task3, "garage 10"], [task4, "career ic 4"], [task5, "tune tires"], [task6, "tune tires 3"], [task7, "ok"], [" ", " "]];
 
       embed.setTitle("__**Tutorial**__");
       function nexttask(i) {

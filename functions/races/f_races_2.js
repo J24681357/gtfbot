@@ -3,7 +3,7 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtffile = process.env
+var gtf = process.env
 ////////////////////////////////////////////////////
 var race2ex = require("../../functions/races/f_races_2ex");
 
@@ -30,6 +30,7 @@ module.exports.readysetgo = function(
   var resumerace = "";
   var progressbarblackarcolor = stats.setting("PROGRESSBAR", userdata)[0];
   var progressbarblack = stats.setting("PROGRESSBAR",userdata)[1]
+  console.log(racesettings["positions"])
 
   var lights = [
     [
@@ -72,7 +73,7 @@ module.exports.readysetgo = function(
       var speedkmh = ssrx1[1];
       showcar = ssrx1[2];
       racelength = ssrx1[3];
-    }else if (racesettings["mode"] == "CAREER") {
+    } else if (racesettings["mode"] == "CAREER") {
       let career1 = race2ex.careerracelength(
         user,
         racedetails,
@@ -88,7 +89,7 @@ module.exports.readysetgo = function(
       );
       var showcar = career1[0];
       racelength = career1[1];
-    }else if (racesettings["mode"] == "ARCADE") {
+    } else if (racesettings["mode"] == "ARCADE") {
       let arcade1 = race2ex.arcaderacelength(
         user,
         racedetails,
@@ -104,7 +105,23 @@ module.exports.readysetgo = function(
       );
       var showcar = arcade1[0];
       racelength = arcade1[1];
-    }else if (racesettings["mode"] == "DRIFT") {
+    }  else if (racesettings["mode"] == "ONLINE") {
+      let online1 = race2ex.onlineracelength(
+        user,
+        racedetails,
+        racesettings,
+        finalgrid,
+        startingrace,
+        racefinished,
+        embed,
+        msg,
+        args,
+        checkpoint,
+        userdata
+      );
+      var showcar = online1[0];
+      racelength = online1[1];
+    }  else if (racesettings["mode"] == "DRIFT") {
       racesettings["sectors"] = racesettings["originalsectors"]
       racesettings["points"] = 0
       let drift1 = race2ex.driftracelength(
@@ -235,8 +252,10 @@ module.exports.readysetgo = function(
           } else if (racesettings["mode"] == "DRIFT") {
                let drift2 = race2ex.driftresults(user,racedetails,racesettings,finalgrid,startingrace,racefinished,embed,msg,args,checkpoint, userdata, racesettings["points"]);
             var results2 = drift2
+          } else if (racesettings["mode"] == "ONLINE") {
+            results2 = require(gtf.RACE).startonline(racesettings, racedetails, user, userdata);
       } else {
-            results2 = require(gtffile.RACE).start(racesettings, racedetails, user, userdata);
+            results2 = require(gtf.RACE).start(racesettings, racedetails, user, userdata);
         }
 
 

@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 var gtfuser = require('../index');
 
@@ -35,7 +35,7 @@ module.exports = {
 
     /* Setup */
     if (userdata['version'] >= gtfuser.gtfbotconfig['version']) {
-      require(gtffile.EMBED).error('❌ Up to Date', 'Your save is already up to the latest version.', embed, msg, userdata);
+      require(gtf.EMBED).error('❌ Up to Date', 'Your save is already up to the latest version.', embed, msg, userdata);
       return;
     }
     if (userdata['version'] === undefined) {
@@ -44,7 +44,7 @@ module.exports = {
        userdata['version'] = gtfuser.gtfbotconfig['version']
     }
 
-    require(gtffile.EMBED).success('✅ Success', 'Update Complete!', 0, true, embed, msg, userdata);
+    require(gtf.EMBED).success('✅ Success', 'Update Complete!', 0, true, embed, msg, userdata);
     return;
   },
   

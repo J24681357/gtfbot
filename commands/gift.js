@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
     var reactionson = true
 
     if (stats.gifts(userdata).length == 0) {
-      require(gtffile.EMBED).error(
+      require(gtf.EMBED).error(
         '❌ No Gifts',
         'You do not have any gifts available.',
         embed,
@@ -56,7 +56,7 @@ module.exports = {
       '__📦 My Inventory: ' +
         stats.gifts(userdata).length +
         ' / ' +
-        require(gtffile.GTF).giftlimit +
+        require(gtf.GTF).giftlimit +
         ' Items__'
     );
 

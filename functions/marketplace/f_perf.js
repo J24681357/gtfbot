@@ -4,7 +4,7 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtffile = process.env;
+var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.speedcalc = function(number, gtfcar) {
@@ -26,7 +26,7 @@ module.exports.perf = function(gtfcar, condition) {
   var aero = gtfcar["aerom"];
 
   var drivetrain = gtfcar["drivetrain"];
-  var sell = require(gtffile.MARKETPLACE).sellcalc(require(gtffile.MARKETPLACE).costcalc(gtfcar));
+  var sell = require(gtf.MARKETPLACE).sellcalc(require(gtf.MARKETPLACE).costcalc(gtfcar));
 
   if (condition == "DEALERSHIP") {
     var offset = 3000 - weight;
@@ -54,40 +54,40 @@ module.exports.perf = function(gtfcar, condition) {
   }
 
   if (condition == "GARAGE") {
-    var car = require(gtffile.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
+    var car = require(gtf.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
     power = car["power"];
     weight = car["weight"];
     aero = car["aerom"];
     drivetrain = car["drivetrain"];
-    sell = require(gtffile.MARKETPLACE).sellcalc(require(gtffile.MARKETPLACE).costcalc(car));
+    sell = require(gtf.MARKETPLACE).sellcalc(require(gtf.MARKETPLACE).costcalc(car));
     /// PARTS
-    var engine = require(gtffile.PARTS).find({ name: gtfcar["engine"]["current"], type: "engine" })[0];
-    var transmission = require(gtffile.PARTS).find({ name: gtfcar["transmission"]["current"], type: "transmission" })[0];
-    var suspension = require(gtffile.PARTS).find({ name: gtfcar["suspension"]["current"], type: "suspension" })[0];
-    var weightred = require(gtffile.PARTS).find({ name: gtfcar["weight reduction"]["current"], type: "weight-reduction" })[0];
-    var turbo = require(gtffile.PARTS).find({ name: gtfcar["turbo"]["current"], type: "turbo" })[0];
+    var engine = require(gtf.PARTS).find({ name: gtfcar["engine"]["current"], type: "engine" })[0];
+    var transmission = require(gtf.PARTS).find({ name: gtfcar["transmission"]["current"], type: "transmission" })[0];
+    var suspension = require(gtf.PARTS).find({ name: gtfcar["suspension"]["current"], type: "suspension" })[0];
+    var weightred = require(gtf.PARTS).find({ name: gtfcar["weight reduction"]["current"], type: "weight-reduction" })[0];
+    var turbo = require(gtf.PARTS).find({ name: gtfcar["turbo"]["current"], type: "turbo" })[0];
 
     if (engine !== undefined) {
       var enginep = (100 + engine["percent"]) / 100;
       power = power * enginep;
-      sell += require(gtffile.MARKETPLACE).sellcalc(engine["cost"]);
+      sell += require(gtf.MARKETPLACE).sellcalc(engine["cost"]);
     }
     if (suspension !== undefined) {
       var suspp = suspension["percent"] / 100;
       aero = aero * suspp;
-      sell += require(gtffile.MARKETPLACE).sellcalc(suspension["cost"]);
+      sell += require(gtf.MARKETPLACE).sellcalc(suspension["cost"]);
     }
     if (weightred !== undefined) {
       var weightredp = (100 - weightred["percent"]) / 100;
       console.log(weight);
       weight = weight * weightredp;
       console.log(weight);
-      sell += require(gtffile.MARKETPLACE).sellcalc(weightredp["cost"]);
+      sell += require(gtf.MARKETPLACE).sellcalc(weightredp["cost"]);
     }
     if (turbo !== undefined) {
       var turbop = (100 + turbo["percent"]) / 100;
       power = power * turbop;
-      sell += require(gtffile.MARKETPLACE).sellcalc(turbo["cost"]);
+      sell += require(gtf.MARKETPLACE).sellcalc(turbo["cost"]);
     }
     ///////
     3000 - 3001 - 1;
@@ -116,7 +116,7 @@ module.exports.perf = function(gtfcar, condition) {
 };
 
 module.exports.topspeed = function(car) {
-  var sellperf = require(gtffile.PERF).sell(car);
+  var sellperf = require(gtf.PERF).sell(car);
   var lowest = Math.floor(100 + sellperf ** 0.475 - 30);
   var highest = Math.floor(100 + sellperf ** 0.475);
 
@@ -138,7 +138,7 @@ module.exports.partpreview = function(part, car, condition) {
     var car5 = JSON.stringify(car);
     var car2 = JSON.parse(car5);
     car2[part["type"].toLowerCase()]["current"] = part["name"];
-    return require(gtffile.PERF).perf(car2, condition);
+    return require(gtf.PERF).perf(car2, condition);
   }
 };
 
@@ -146,7 +146,7 @@ module.exports.partinstall = function(part, userdata) {
   var installedpart = userdata["garage"][stats.currentcarnum(userdata) - 1][part["type"].toLowerCase()];
   installedpart["current"] = part["name"];
   for (var i = 0; i < installedpart["tuning"].length; i++) {
-    installedpart["tuning"][i] = 0;
+    installedpart["tuning"][i] = -999;
   }
 
   if (!installedpart["list"].includes(part["name"]) && part["name"] != "Stock") {
@@ -155,7 +155,7 @@ module.exports.partinstall = function(part, userdata) {
 
   userdata["garage"][stats.currentcarnum(userdata) - 1][part["type"].toLowerCase()] = installedpart;
 
-  userdata["garage"][stats.currentcarnum(userdata) - 1]["fpp"] = require(gtffile.PERF).perf(userdata["garage"][stats.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
+  userdata["garage"][stats.currentcarnum(userdata) - 1]["fpp"] = require(gtf.PERF).perf(userdata["garage"][stats.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
 };
 
 module.exports.paint = function(paint, userdata) {
