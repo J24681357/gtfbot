@@ -31,10 +31,15 @@ module.exports.find = function(args) {
   if (args === undefined) {
     return "";
   }
+  if (args["sort"] !== undefined) {
+    var sort = args["sort"]
+    delete  args["sort"]
+  }
   var total = Object.keys(args).length;
   var gtfcars = require(gtf.LISTS).gtfcarlist;
   var final = [];
   var makes = Object.keys(gtfcars);
+
 
   for (var key = 0; key < makes.length; key++) {
     var makekey = gtfcars[makes[key]];
@@ -158,12 +163,32 @@ module.exports.find = function(args) {
     return "";
   }
   var id = 1;
+  final.sort(function(a, b) {
+    if (sort !== undefined) {
+      if (sort == "fppasc") {
+        return require(gtf.PERF).perf(a, "DEALERSHIP")["fpp"] - require(gtf.PERF).perf(b, "DEALERSHIP")["fpp"]
+      }
+      else if (sort == "fppdesc") {
+        return require(gtf.PERF).perf(b, "DEALERSHIP")["fpp"] - require(gtf.PERF).perf(a, "DEALERSHIP")["fpp"]
+      }
+      else if (sort == "costasc") {
+        a = require(gtf.MARKETPLACE).costcalc(a, require(gtf.PERF).perf(a, "DEALERSHIP")["fpp"])
+        b = require(gtf.MARKETPLACE).costcalc(b, require(gtf.PERF).perf(b, "DEALERSHIP")["fpp"])
+        return a - b
+      } else if (sort == "costdesc") {
+        a = require(gtf.MARKETPLACE).costcalc(a, require(gtf.PERF).perf(a, "DEALERSHIP")["fpp"])
+        b = require(gtf.MARKETPLACE).costcalc(b, require(gtf.PERF).perf(b, "DEALERSHIP")["fpp"])
+        return b - a
+      } else {
+        return a["name"].toString().localeCompare(b["name"])
+      }
+    } else {
+    return a["name"].toString().localeCompare(b["name"])
+    };
+  });
   final.map(function(x) {
     x["id"] = id;
     id++;
-  });
-  final.sort(function(a, b) {
-    return a["name"].toString().localeCompare(b["name"]);
   });
 
   return final;

@@ -69,7 +69,7 @@ module.exports = {
     "isgift":false}])
 
      var car = require(gtf.CARS).random({}, 1)[0]
-      prizes.push(["CAR", {"id": -1,"name":car["name"] + car["year"],
+      prizes.push(["CAR", {"id": -1,"name":car["name"] + " " + car["year"],
     "item": car,
     "author":"DAILY WORKOUT",
     "isgift":false}])

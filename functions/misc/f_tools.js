@@ -401,16 +401,15 @@ module.exports.createreactions = function(emojilist, msg, userdata) {
   var reactid = stats.count(userdata);
   var l = require('discord.js-rate-limiter').RateLimiter;
   var rateLimiteradd = new l(1, 1500);
-  filter(i)
-  
+  increase(i)
   
       function increase() {
-    i++
     if (i == emojilist.length) {
       return
     } else {
-     setTimeout(function() {filter(i)}, 1500)
+     setTimeout(function() {filter(i-1)}, 1200)
     }
+      i++
   }
 
   function filter(i) {

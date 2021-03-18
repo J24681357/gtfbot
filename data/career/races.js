@@ -147,7 +147,7 @@ module.exports.amateur = function() {
       models: [],
       drivetrains: [],
       types: ["Production", "Aftermarket"],
-      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Honda"], fullname: ["Honda NSX Type R 1992"] }]
+      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Honda"], fullname: ["Honda NSX Type-R 1992"] }]
     }
   };
 };

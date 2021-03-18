@@ -415,26 +415,26 @@ module.exports.isracescomplete = function(eventid, total, pnumber, userdata) {
 module.exports.gift = function(title, gift, embed, msg, userdata) {
   var type = gift[0]
   if (type == "CREDITS") {
-    stats.addcredits(parseInt(gift[1]["item"]), userdata)
+    stats.addcredits(parseInt(gift[1]["credits"]), userdata)
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
 
-    require(gtf.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["item"]) + emote.credits + "**" , 0, false, embed, msg, userdata);
+    require(gtf.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["credits"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
     stats.save(userdata)
   } else if (type == "RANDOMCAR") {
+    userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
+    delete gift[1]["id"]
+
   var prizes = require(gtf.CARS).random(gift[1], 4)
   require(gtf.MARKETPLACE).fourcargifts(title, "**" + title + "**", prizes, embed, msg, userdata) 
-    userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
+
     stats.save(userdata)
   } else if (type == "CAR") {
   var car = gift[1]["item"]
   stats.addcar(car,undefined, userdata)
   userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
-    stats.save(userdata)
-    
-  embed.setImage(car["image"])
-  embed.setThumbnail(car["image"])
+  stats.save(userdata)
   
-  require(gtf.EMBED).success(title, "**" + car["name"] + " " + car["year"] +  " acquired.**" , 0, false, embed, msg, userdata);
+  require(gtf.EMBED).success(title, "**" + car["name"] + " " + car["year"] +  " acquired.**" , 0, true, embed, msg, userdata);
   }
 }
 
@@ -625,7 +625,7 @@ module.exports.resumerace = function(userdata, client) {
           false,
           ["", ""],
           undefined,
-          id
+          ""
         ];
         return
       }

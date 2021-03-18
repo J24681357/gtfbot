@@ -1,45 +1,9 @@
-{
-  "5": {
-    "make": "Acura",
-    "name": "Acura CL 3.0 1997",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/ACURACL-1243_4.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "6": {
-    "make": "Acura",
-    "name": "Acura Integra Type R 2001",
-    "image": "https://s13252.pcdn.co/wp-content/uploads/2015/12/Screen-Shot-2015-12-15-at-12.24.15-PM-940x590.png",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "7": {
-    "make": "Acura",
-    "name": "Acura NSX 1991",
-    "image": "http://www.rarecarsforsaleblog.com/wp-content/uploads/2014/01/lowmileage91nsx2a.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "8": {
-    "make": "Acura",
-    "name": "Acura NSX 2004",
-    "image": "https://cdn1.mecum.com/auctions/sc0517/sc0517-282536/images/sc0517-282536_1@2x.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "9": {
+{  "9": {
     "make": "Acura",
     "name": "Acura TSX 2004",
     "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Acura-TSX.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
-  },
-  "10": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo 156 GTA 2002",
-    "image": "https://i.pinimg.com/originals/19/6b/e1/196be123e918d24f26ecebf9b6797344.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
   },
   "12": {
     "make": "Alfa-Romeo",
@@ -53,20 +17,6 @@
     "name": "Alfa Romeo 4C Gr.4 2014",
     "image": "https://vignette.wikia.nocookie.net/gran-turismo/images/2/23/Alfa_Romeo_4C_Gr.4.jpg/revision/latest?cb=20171011095815",
     "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 15000
-  },
-  "15": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo 8C Competizione 2008",
-    "image": "https://i.ytimg.com/vi/yPjlu97kKfg/maxresdefault.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
-  "16": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo Brera 3.2 JTS V6 Q4 2006",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Alfa_Romeo_Brera_Ti_2011_%2810750450035%29.jpg",
-    "rating": "⭐1",
     "manufacturercost": 15000
   },
   "18": {
@@ -109,13 +59,6 @@
     "name": "Alpine A110 1600S 1972",
     "image": "https://www.sportscarmarket.com/wp-content/uploads/2016/06/1971-alpine-a110-1600s-coupe-pass-front.jpg",
     "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "24": {
-    "make": "Alpine",
-    "name": "Alpine A110 Première Édition 2017",
-    "image": "http://www.hdwallpapers.in/walls/2017_alpine_a110_premiere_edition_4k-HD.jpg",
-    "rating": "⭐2",
     "manufacturercost": 15000
   },
   "25": {
@@ -181,32 +124,11 @@
     "rating": "⭐3",
     "manufacturercost": 20000
   },
-  "34": {
-    "make": "Aston-Martin",
-    "name": "Aston Martin DB11 2016",
-    "image": "http://www.thesupercarblog.com/wp-content/uploads/2016/02/Aston-Martin-DB11-2016-Geneva-Motor-Show-1-1024x576.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
   "35": {
     "make": "Aston-Martin",
     "name": "Aston Martin DBS Superleggara 2019",
     "image": "https://hothardware.com/ContentImages/NewsItem/44907/content/small_aston_martin_dbs_superleggera_5.jpg",
     "rating": "⭐3",
-    "manufacturercost": 20000
-  },
-  "36": {
-    "make": "Aston-Martin",
-    "name": "Aston Martin One-77 2011",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Aston_Martin_One-77_-_Flickr_-_skinnylawyer.jpg/1200px-Aston_Martin_One-77_-_Flickr_-_skinnylawyer.jpg",
-    "rating": "⭐3.5",
-    "manufacturercost": 20000
-  },
-  "39": {
-    "make": "Aston-Martin",
-    "name": "Aston Martin Vulcan 2016",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2015_Aston_Martin_Vulcan_%2820036637176%29.jpg/1200px-2015_Aston_Martin_Vulcan_%2820036637176%29.jpg",
-    "rating": "⭐3.5",
     "manufacturercost": 20000
   },
   "40": {
@@ -414,13 +336,6 @@
     "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 15000
   },
-  "76": {
-    "make": "BMW",
-    "name": "BMW M6 GT3 (Walkenhorst Motorsport) 2016",
-    "image": "https://farm1.static.flickr.com/835/40845249744_95993ef14c.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 15000
-  },
   "77": {
     "make": "BMW",
     "name": "BMW Z8 2001",
@@ -456,13 +371,6 @@
     "rating": "⭐2",
     "manufacturercost": 40000
   },
-  "82": {
-    "make": "Bentley",
-    "name": "Bentley Continental GT3 2018",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/new_bentley_continental_gt3_-_1.jpg?itok=WfNort5n9",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 40000
-  },
   "83": {
     "make": "Bentley",
     "name": "Bentley Continental GT3-R 2015",
@@ -489,20 +397,6 @@
     "name": "Bentley Turbo R 1993",
     "image": "https://dl4aex02brqj5.cloudfront.net/prod/media/184/b7e/983/184b7e983d63cffe48ef0dd9909a64b362e8c520.1200.png",
     "rating": "⭐0.5",
-    "manufacturercost": 40000
-  },
-  "87": {
-    "make": "Bugatti",
-    "name": "Bugatti Chiron 2016",
-    "image": "https://uncrate.com/p/2016/02/bugatti-chiron-1.jpg",
-    "rating": "⭐3.2",
-    "manufacturercost": 40000
-  },
-  "88": {
-    "make": "Bugatti",
-    "name": "Bugatti Chiron Sport 2018",
-    "image": "https://assets.bugatti.com/fileadmin/_processed_/sei/p121/se-image-4f750982624e527a8b1003408e4febcf.jpg",
-    "rating": "⭐3.2",
     "manufacturercost": 40000
   },
   "89": {
@@ -1149,13 +1043,6 @@
     "rating": "⭐3",
     "manufacturercost": 15000
   },
-  "188": {
-    "make": "Dodge",
-    "name": "Dodge Challenger SRT-10 2010",
-    "image": "https://media.discordapp.net/attachments/306637248219185154/477275433813934092/2010DodgeChallengerSRT8BeautyLeft001small.png?width=400&height=274",
-    "rating": "⭐2.5",
-    "manufacturercost": 15000
-  },
   "189": {
     "make": "Dodge",
     "name": "Dodge Charger Daytona HEMI 1969",
@@ -1275,13 +1162,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "207": {
-    "make": "Dodge",
-    "name": "Dodge Viper ACR 2016",
-    "image": "http://st.motortrend.com/uploads/sites/10/2015/09/2016-Dodge-Viper-ACR-front-three-quarter-in-studio-02.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
   "208": {
     "make": "Dodge",
     "name": "Dodge Viper Competition Coupe 2003",
@@ -1313,7 +1193,7 @@
   "213": {
     "make": "Dodge",
     "name": "Dodge Viper SRT-10 2003",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/02q4/267343/dodge-viper-srt-10-photo-6196-s-original.jpg",
+    "image": "",
     "rating": "⭐3",
     "manufacturercost": 15000
   },
@@ -1359,20 +1239,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 30000
   },
-  "221": {
-    "make": "Ferrari",
-    "name": "Ferrari 458 Italia 2009",
-    "image": "http://www.blogcdn.com/www.autoblog.com/media/2009/09/01-ferrari-458-live.jpg",
-    "rating": "⭐2.5",
-    "manufacturercost": 30000
-  },
-  "222": {
-    "make": "Ferrari",
-    "name": "Ferrari 458 Italia Gr.4 2009",
-    "image": "https://www.kudosprime.com/gts/images/users/car_99_1_59ed276ed237c.jpg",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 30000
-  },
   "223": {
     "make": "Ferrari",
     "name": "Ferrari 458 Speciale 2014",
@@ -1387,25 +1253,11 @@
     "rating": "⭐2",
     "manufacturercost": 30000
   },
-  "225": {
-    "make": "Ferrari",
-    "name": "Ferrari 512 BB 1976",
-    "image": "https://pictures.topspeed.com/IMG/jpg/200909/ferrari-512-bb-4.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 30000
-  },
   "226": {
     "make": "Ferrari",
     "name": "Ferrari 512 Testarossa 1991",
     "image": "https://pictures.topspeed.com/IMG/jpg/200910/ferrari-512-tr-4.jpg",
     "rating": "⭐2",
-    "manufacturercost": 30000
-  },
-  "227": {
-    "make": "Ferrari",
-    "name": "Ferrari 599 GTO 2011",
-    "image": "http://st.motortrend.com/uploads/sites/5/2010/05/ferrari-599-gTO-front-three-quarter-view-1.jpg",
-    "rating": "⭐2.5",
     "manufacturercost": 30000
   },
   "228": {
@@ -1485,25 +1337,11 @@
     "rating": "⭐0.1",
     "manufacturercost": 10000
   },
-  "240": {
-    "make": "Fiat",
-    "name": "Fiat 500 2008",
-    "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
   "241": {
     "make": "Fiat",
     "name": "Fiat 500 F 1968",
     "image": "http://www.italianvintagemotors.com/wp-content/uploads/2017/10/FIAT-500F-IVM-001.jpg",
     "rating": "⭐0.1",
-    "manufacturercost": 10000
-  },
-  "242": {
-    "make": "Fiat",
-    "name": "Fiat 500e 2015",
-    "image": "https://cnet1.cbsistatic.com/img/L1UhafgNrmhn-mQFr1brUlUUFoA=/770x433/2015/12/09/9b2be60f-3a8d-465b-bf3d-2f54eab95e92/2016fiat500e-018.jpg",
-    "rating": "⭐0.4",
     "manufacturercost": 10000
   },
   "243": {
@@ -1735,13 +1573,6 @@
     "name": "Ford Mustang Shelby GT500 1967",
     "image": "http://ford-mustang-shelby-gt.com/wp-content/uploads/2016/09/7-950x631.jpg",
     "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "281": {
-    "make": "Ford",
-    "name": "Ford Mustang Shelby GT500 2020",
-    "image": "https://i.ytimg.com/vi/zqz6QQl4mAw/maxresdefault.jpg",
-    "rating": "⭐3",
     "manufacturercost": 15000
   },
   "282": {
@@ -2080,13 +1911,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "332": {
-    "make": "Honda",
-    "name": "Honda Civic Type R 2007",
-    "image": "https://www.carmagazine.co.uk/Images/upload/5596/images/civicrdr_4_560px.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "333": {
     "make": "Honda",
     "name": "Honda Insight 1999",
@@ -2113,13 +1937,6 @@
     "name": "Honda Integra XSI (E-DA6) 1989",
     "image": "http://www.abbotsfordjapanauto.com/images/IM1020_89_integra-004.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "338": {
-    "make": "Honda",
-    "name": "Honda N360 1967",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/HONDAN360-2936_2.jpg",
-    "rating": "⭐0.4",
     "manufacturercost": 10000
   },
   "339": {
@@ -2164,38 +1981,10 @@
     "rating": "⭐3",
     "manufacturercost": 10000
   },
-  "346": {
-    "make": "Honda",
-    "name": "Honda Z Act 1970",
-    "image": "http://st.automobilemag.com/uploads/sites/11/2013/05/1970-1972-Honda-600-front-left-view.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
-  "347": {
-    "make": "Hyundai",
-    "name": "Hyundai Genesis Coupe 2008",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/HYUNDAI-Genesis-Coupe-4095_99.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "350": {
     "make": "Hyundai",
     "name": "Hyundai Tiburon Turbulence 2.0L 1999",
     "image": "http://media.fastestlaps.com/j429juznj1rh",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "351": {
-    "make": "Hyundai",
-    "name": "Hyundai Veloster N 2019",
-    "image": "https://media.discordapp.net/attachments/306637248219185154/448235966822481950/01-2019-hyundai-veloster-n-detroit-1.png?width=400&height=225",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "352": {
-    "make": "Hyundai",
-    "name": "Hyundai Veloster Turbo 2019",
-    "image": "https://cnet4.cbsistatic.com/img/w20XMdbfWBqbK0dQk39a3wgbuMA=/724x407/2018/01/11/f423bcf0-c60b-4cc7-bef0-4b16c390aef7/30946-2019velosterturbo.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -2204,13 +1993,6 @@
     "name": "Infiniti FX35 2006",
     "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/%2706-%2708_Infiniti_FX35.JPG",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "354": {
-    "make": "Infiniti",
-    "name": "Infiniti FX50 Sebastian Vettel Edition 2012",
-    "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q3/409396/infiniti-fx-sebastian-vettel-version-news-car-and-driver-photo-417001-s-original.jpg",
-    "rating": "⭐3",
     "manufacturercost": 10000
   },
   "355": {
@@ -2360,25 +2142,11 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "379": {
-    "make": "Jaguar",
-    "name": "Jaguar D-Type 1956",
-    "image": "https://bangshift.com/assets/galleries/demonstration-day-2014-at-simeone-museum/simeone-museum-demo-day-cobra-gt40-jag-porsche009.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
   "380": {
     "make": "Jaguar",
     "name": "Jaguar E-Type S1 1961",
     "image": "https://i.ytimg.com/vi/PaP3FTrIru0/maxresdefault.jpg",
     "rating": "⭐1",
-    "manufacturercost": 20000
-  },
-  "381": {
-    "make": "Jaguar",
-    "name": "Jaguar F-Type Gr.4 2014",
-    "image": "http://www.igcd.net/images/133/850.jpg",
-    "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 20000
   },
   "383": {
@@ -2409,13 +2177,6 @@
     "rating": "⭐1",
     "manufacturercost": 20000
   },
-  "387": {
-    "make": "Jaguar",
-    "name": "Jaguar XKR GT RSR (Rocketsports Racing) 2011",
-    "image": "https://farm7.static.flickr.com/6152/6193229221_c10ff72621_b.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 20000
-  },
   "388": {
     "make": "Jaguar",
     "name": "Jaguar XKR-S 2009",
@@ -2442,13 +2203,6 @@
     "name": "Jeep Grand Cherokee SRT 2014",
     "image": "http://www.autoguide.com/images/content/2014-SRT-Jeep-Grand-Cherokee-Main.jpg",
     "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "394": {
-    "make": "Jeep",
-    "name": "Jeep Grand Cherokee Trackhawk 2018",
-    "image": "https://c.slashgear.com/wp-content/uploads/2017/08/2018-Jeep-Grand-Cherokee-Trackhawk-front-three-quarter-04-1-980x606.jpg",
-    "rating": "⭐3",
     "manufacturercost": 10000
   },
   "395": {
@@ -2493,13 +2247,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "403": {
-    "make": "Kia",
-    "name": "Kia Stinger 2017",
-    "image": "https://c.slashgear.com/wp-content/uploads/2017/09/kia-stinger-1-980x620.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 10000
-  },
   "405": {
     "make": "Lamborghini",
     "name": "Lamborghini Aventador SVJ 2019",
@@ -2512,20 +2259,6 @@
     "name": "Lamborghini Centenario LP770-4 2017",
     "image": "http://www.sub5zero.com/wp-content/uploads/2016/03/2017_lamborghini_centenario_1.jpg",
     "rating": "⭐3",
-    "manufacturercost": 30000
-  },
-  "407": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Countach LP400 1974",
-    "image": "https://files.goodingco.com/content/vehicles/5880/images/20140710_020359_c30f0f/poster.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 30000
-  },
-  "408": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Countach LP5000 QV 1988",
-    "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/8839731.jpg",
-    "rating": "⭐2",
     "manufacturercost": 30000
   },
   "409": {
@@ -2542,13 +2275,6 @@
     "rating": "⭐2.5",
     "manufacturercost": 30000
   },
-  "411": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Diablo SV 1997",
-    "image": "https://blog.dupontregistry.com/wp-content/uploads/2015/07/diablo-sv-main.jpg",
-    "rating": "⭐2.5",
-    "manufacturercost": 30000
-  },
   "412": {
     "make": "Lamborghini",
     "name": "Lamborghini Espada 1970",
@@ -2556,24 +2282,10 @@
     "rating": "⭐1",
     "manufacturercost": 30000
   },
-  "413": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Gallardo 2004",
-    "image": "https://static.cargurus.com/images/site/2008/04/22/14/39/2004_lamborghini_gallardo-pic-11930-640x480.jpeg",
-    "rating": "⭐2",
-    "manufacturercost": 30000
-  },
   "414": {
     "make": "Lamborghini",
     "name": "Lamborghini Gallardo LP570-4 Spyder Performante 2012",
     "image": "https://st.motortrend.com/uploads/sites/5/2011/05/2011-lamborghini-gallardo-LP570-4-spyder-performante-promo.jpg",
-    "rating": "⭐2.5",
-    "manufacturercost": 30000
-  },
-  "415": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Gallardo LP570-4 Superleggera 2011",
-    "image": "http://st.motortrend.com/uploads/sites/10/2015/09/2011-lamborghini-gallardo-LP-570-4-superleggera-front-three-quarter-static.jpg",
     "rating": "⭐2.5",
     "manufacturercost": 30000
   },
@@ -2696,20 +2408,6 @@
     "rating": "⭐1",
     "manufacturercost": 20000
   },
-  "436": {
-    "make": "Lexus",
-    "name": "Lexus GS 350 F-Sport 2013",
-    "image": "https://lexusenthusiast.com/images/weblog/13-04-15-lexus-gs-f-sport.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 20000
-  },
-  "437": {
-    "make": "Lexus",
-    "name": "Lexus GS 460 2009",
-    "image": "https://www.cstatic-images.com/stock/1170x1170/12/1208912288-1425510092712.",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
   "438": {
     "make": "Lexus",
     "name": "Lexus IS 350 F-Sport 2014",
@@ -2736,13 +2434,6 @@
     "name": "Lexus IS430 Sport 2001",
     "image": "https://www.clublexus.com/forums/attachments/ls-3rd-gen-2001-2006/125012d1212551344-01-ls430-with-18-sport-edition-st3-rims-se1.jpg",
     "rating": "⭐1",
-    "manufacturercost": 20000
-  },
-  "442": {
-    "make": "Lexus",
-    "name": "Lexus LC500 2017",
-    "image": "http://3.bp.blogspot.com/-wIdtHTNoQpE/VpPurcBkeEI/AAAAAAASDcQ/NY6SiLtjLqE/s1600/Lexus-LC500-14.jpg",
-    "rating": "⭐2",
     "manufacturercost": 20000
   },
   "445": {
@@ -3082,20 +2773,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "503": {
-    "make": "Mazda",
-    "name": "Mazda Atenza Sedan XD L Package 2015",
-    "image": "https://media.glv.co.nz/car-i/img/thumb/1200x0900/0887/20171202A0000887/51950991LF001.JPG",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "504": {
-    "make": "Mazda",
-    "name": "Mazda Autozam AZ-1 1991",
-    "image": "http://st.automobilemag.com/uploads/sites/11/2017/10/1992-Autozam-AZ1-02.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
   "505": {
     "make": "Mazda",
     "name": "Mazda Eunos Cosmo 13B 1990",
@@ -3103,13 +2780,7 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "506": {
-    "make": "Mazda",
-    "name": "Mazda Eunos Cosmo 20B 1990",
-    "image": "http://www.carsaddiction.com/files/cars/90__Eunos_Cosmo_20B.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },  "508": {
+  "508": {
     "make": "Mazda",
     "name": "Mazda MX-5 2000",
     "image": "https://s1.cdn.autoevolution.com/images/gallery/MAZDAMX-5-Miata-3549_2.jpg",
@@ -3193,32 +2864,11 @@
     "rating": "⭐3",
     "manufacturercost": 10000
   },
-  "520": {
-    "make": "Mazda",
-    "name": "Mazda RX-8 2003",
-    "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_large/v1/editorial/mazda-rx8-2003-red.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "521": {
     "make": "Mazda",
     "name": "Mazda RX-8 R3 2011",
     "image": "http://www.rx8club.com/attachments/rx-8s-sale-wanted-43/215743d1488292542-2011-mazda-rx-8-r3-20170211_165719.jpg",
     "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "522": {
-    "make": "Mazda",
-    "name": "Mazda RX-VISION GT3 CONCEPT 2020",
-    "image": "https://cdn.slashgear.com/wp-content/uploads/2020/05/Mazda-RX-Vision-GT3-Concept-Gran-Turismo_18-680x383.jpg",
-    "rating": "<:gt3:698962765443891280>",
-    "manufacturercost": 10000
-  },
-  "523": {
-    "make": "Mazda",
-    "name": "Mazda Roadster S (ND) 2015",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Mazda_Roadster_02_-_Tokyo_Auto_Salon_2015.jpg",
-    "rating": "⭐1",
     "manufacturercost": 10000
   },
   "524": {
@@ -3274,13 +2924,6 @@
     "make": "Mercedes-Benz",
     "name": "Mercedes-Benz CL 65 AMG 2005",
     "image": "https://s1.cdn.autoevolution.com/images/news/gallery/2005-mercedes-benz-cl-65-amg-c215-long-term-test-by-edmund-s-photo-gallery_6.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "534": {
-    "make": "Mercedes-Benz",
-    "name": "Mercedes-Benz SL 500 2003",
-    "image": "https://dealeraccelerate-all.s3.amazonaws.com/flemings/images/1/6/0/2/1602/34105_7ff1a83d72_low_res.jpg",
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
@@ -3428,13 +3071,6 @@
     "make": "Mini",
     "name": "Mini Cooper S 2001",
     "image": "https://vignette.wikia.nocookie.net/cooper-world/images/5/5e/2001-mini-cooper-s-5.jpg/revision/latest?cb=20160411214013",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "559": {
-    "make": "Mini",
-    "name": "Mini Cooper S 2014",
-    "image": "https://i.ytimg.com/vi/K_KcfLVHx0w/maxresdefault.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -3634,13 +3270,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "599": {
-    "make": "Nissan",
-    "name": "Nissan GT-R Gr.4 2016",
-    "image": "https://i.ytimg.com/vi/BmMcFpYeIGw/maxresdefault.jpg",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 15000
-  },
   "601": {
     "make": "Nissan",
     "name": "Nissan GT-R Nismo 2014",
@@ -3652,13 +3281,6 @@
     "make": "Nissan",
     "name": "Nissan GT-R Nismo 2017",
     "image": "https://icdn7.digitaltrends.com/image/embargoed-until-52716-7amet-2017-gt-r-nismo-12-640x427-c.jpg?ver=1",
-    "rating": "⭐3",
-    "manufacturercost": 15000
-  },
-  "603": {
-    "make": "Nissan",
-    "name": "Nissan GT-R Premium Edition 2017",
-    "image": "http://www.latimes.com/resizer/L2-j4OqGruqQYggKLJJrsVk0KeI=/1400x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7ZZWP5ZTGFAVXMVGD7DIBTWUPY.jpg",
     "rating": "⭐3",
     "manufacturercost": 15000
   },
@@ -3718,24 +3340,10 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "615": {
-    "make": "Opel",
-    "name": "Opel Corsa OPC Nürburgring Edition 2012",
-    "image": "http://www.carmag.co.za/wp-content/uploads/2013/09/OPCN_1.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "616": {
     "make": "Opel",
     "name": "Opel GT 1972",
     "image": "https://barnfinds.com/wp-content/uploads/2018/04/opel-gt-front-e1523551407957-630x395.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "617": {
-    "make": "Opel",
-    "name": "Opel Speedster 2001",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/OPELSpeedster-458_3.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -3760,13 +3368,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   }, 
-  "622": {
-    "make": "Peugeot",
-    "name": "Peugeot 206 2.0 S16",
-    "image": "http://www.motorstown.com/images/peugeot-206-2.0-s16-02.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "623": {
     "make": "Peugeot",
     "name": "Peugeot 207 RC 2007",
@@ -3802,13 +3403,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "628": {
-    "make": "Peugeot",
-    "name": "Peugeot 508 2018",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/pug-2811.jpg?itok=HMeaBiaB",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "629": {
     "make": "Peugeot",
     "name": "Peugeot RCZ Gr.3 Road Car",
@@ -3830,20 +3424,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "632": {
-    "make": "Pontiac",
-    "name": "Pontiac Firebird Trans Am GTA 1987",
-    "image": "https://dxsdcl7y7vn9x.cloudfront.net/3/432928/15323102/978537538.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "633": {
-    "make": "Pontiac",
-    "name": "Pontiac GTO 6.0 2006",
-    "image": "https://pictures.topspeed.com/IMG/jpg/200512/2006-pontiac-gto-11.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 10000
-  },
   "634": {
     "make": "Pontiac",
     "name": "Pontiac GTO 6.4L V8 1966",
@@ -3855,13 +3435,6 @@
     "make": "Pontiac",
     "name": "Pontiac Solstice 2006",
     "image": "https://static.cargurus.com/images/site/2008/06/13/09/35/2006_pontiac_solstice_roadster-pic-54296-640x480.jpeg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "636": {
-    "make": "Pontiac",
-    "name": "Pontiac Solstice GXP Coupe 2009",
-    "image": "https://o.aolcdn.com/images/dims3/GLOB/legacy_thumbnail/800x450/format/jpg/quality/85/http://www.blogcdn.com/www.autoblog.com/media/2009/06/solsticecoupe_rev1002_opt.jpg",
     "rating": "⭐2",
     "manufacturercost": 10000
   },
@@ -3884,20 +3457,6 @@
     "name": "Renault Clio RS 2.0 16V 2001",
     "image": "https://i.ytimg.com/vi/sRXmfcrYmVk/maxresdefault.jpg",
     "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "640": {
-    "make": "Renault",
-    "name": "Renault Clio RS Cup 3 2011",
-    "image": "http://www.imcdb.org/i449905.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "641": {
-    "make": "Renault",
-    "name": "Renault Clio V6 24V 2000",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/RenaultClioV6.jpg/1200px-RenaultClioV6.jpg",
-    "rating": "⭐2",
     "manufacturercost": 10000
   },
   "642": {
@@ -3963,13 +3522,6 @@
     "rating": "⭐2",
     "manufacturercost": 10000
   },
-  "654": {
-    "make": "SEAT",
-    "name": "Seat Ibiza Cupra 2009",
-    "image": "https://www.carmagazine.co.uk/Images/upload/19931/images/5SeatIbizaCupraCARreview.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "655": {
     "make": "SEAT",
     "name": "Seat Ibiza Cupra R 2004",
@@ -3982,13 +3534,6 @@
     "name": "Seat Ibiza Cupra R 2018",
     "image": "https://www.vau-max.de/thumbs/img/News/43/58/00/p/p_normal/video-verschaerft-und-streng-limitierter-cupra-mit-310-ps-neuauflage-des-seat-leon-cupra-r-5843.jpg",
     "rating": "⭐2",
-    "manufacturercost": 10000
-  },
-  "657": {
-    "make": "SEAT",
-    "name": "Seat Ibiza MK1 1984",
-    "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/ibiza2a.jpeg",
-    "rating": "⭐1",
     "manufacturercost": 10000
   },
   "658": {
@@ -4065,20 +3610,6 @@
     "make": "Scion",
     "name": "Scion tC Spec 2008",
     "image": "http://www.internationalcarcompany.com/imageServer/9vsjpzr8/640/1538671954_whrvpq-1.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "670": {
-    "make": "Scion",
-    "name": "Scion xB 2012",
-    "image": "https://images.autotrader.com/scaler/620/420/cms/content/articles/reviews/new/scion/xb/2012/170150.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "671": {
-    "make": "Scion",
-    "name": "Scion xD 2009",
-    "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2009/2009-scion-xd-frontside_sixd091.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
@@ -4161,7 +3692,7 @@
   },
   "686": {
     "make": "Subaru",
-    "name": "Subaru WRX Gr.4 2014 \"",
+    "name": "Subaru WRX Gr.4 2014",
     "image": "https://vignette.wikia.nocookie.net/gran-turismo/images/1/10/Subaru_WRX_Gr.4.jpg/revision/latest?cb=20181204105107",
     "rating": "<:gt4:698962765095632967>",
     "manufacturercost": 10000
@@ -4241,13 +3772,6 @@
     "name": "Suzuki Swift 2003",
     "image": "https://image-cdn.beforward.jp/files/pictures/201307/135711/BF140927_1.jpg",
     "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
-  "699": {
-    "make": "Suzuki",
-    "name": "Suzuki Swift Sport 2007",
-    "image": "https://parkers-images.bauersecure.com/pagefiles/190687/cut-out/600x400/suzuki_swift_sport.jpg",
-    "rating": "⭐1",
     "manufacturercost": 10000
   },
   "700": {
@@ -4474,13 +3998,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "736": {
-    "make": "Volkswagen",
-    "name": "Volkswagen Scirocco R 2010",
-    "image": "http://www.blogcdn.com/www.autoblog.com/media/2009/12/scirocco_r-nice.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 10000
-  },
   "737": {
     "make": "Volkswagen",
     "name": "Volkswagen Scirocco S 1981",
@@ -4506,13 +4023,6 @@
     "make": "Volkswagen",
     "name": "Volkswagen e-Golf 2017",
     "image": "https://car-images.bauersecure.com/pagefiles/71992/1040x585/vw_egolf_2017_01.jpg",
-    "rating": "⭐0.4",
-    "manufacturercost": 10000
-  },
-  "741": {
-    "make": "Volvo",
-    "name": "Volvo 122 S Amazon 1969",
-    "image": "https://www.carfolio.com/images/dbimages/zgas/models/id/4784/1968_volvo_122_s.jpg",
     "rating": "⭐0.4",
     "manufacturercost": 10000
   },

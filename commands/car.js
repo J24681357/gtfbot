@@ -27,10 +27,14 @@ module.exports = {
 
     var user = msg.author.username
     embed.setAuthor(user, msg.author.displayAvatarURL());
+    var oquery = [...query]
     var args = ""
     var page = 0
     var results = ""
     var info = "❓ **Select from the makes listed above **"
+
+
+    var sort = "costasc"
     
     var makelist = require(gtf.CARS).list("makes")
     var number = 0;
@@ -39,6 +43,14 @@ module.exports = {
 
     if (query[0] === undefined || query[0] == "list") {
       query = []
+    }
+
+    for (var i = 0; i < query.length; i++) {
+      if (query[i] == "sort") {
+        query.splice(query.indexOf("sort"), 1);
+        sort = query[i]
+        query.splice(query.indexOf(sort), 1);
+      }
     }
 
     if (query[0] == "info") {
@@ -59,7 +71,7 @@ return
 if (query.length === 0) {
   var list = ""
 } else {
-    var list = require(gtf.CARS).find({"make":[query[0]]})
+    var list = require(gtf.CARS).find({"make":[query[0]], "sort": sort})
 }
     
     var total = list.length
@@ -79,8 +91,6 @@ if (query.length === 0) {
         var count = require(gtf.CARS).find({"make":[m]}).length
           list.push([m + " `🚘" + count + "`",  " "])
       }
-
-      list = list.sort()
 
       results = gtftools.list(list, page, "", "", false, "", 10, userdata);
 
@@ -121,7 +131,7 @@ if (query.length >= 2) {
     embed.setTitle("__" + make + ": " + (carlist.length) + " Cars" + "__");
     embed.setDescription(results);
     embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-    gtftools.createpages(results, carlist, page, "", emote.fpp, true, "", 10, [query, "car", reactionson, info], embed, msg, userdata)
+    gtftools.createpages(results, carlist, page, "", emote.fpp, true, "", 10, [oquery, "car", reactionson, info], embed, msg, userdata)
 
   }
 

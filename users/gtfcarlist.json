@@ -66,7 +66,22 @@
   "acura": [
     {
       "make": "Acura",
-      "name": "Acura Integra Type R",
+      "name": "Acura CL 3.2 Type-S",
+      "year": "2001",
+      "type": "Production",
+      "power": 260,
+      "weight": 3510,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.ed.edmunds-media.com/acura/cl/2001/oem/2001_acura_cl_coupe_32-type-s_fq_oem_1_500.jpg"
+    },
+    {
+      "make": "Acura",
+      "name": "Acura Integra Type-R",
       "year": "1997",
       "type": "Production",
       "power": 195,
@@ -78,6 +93,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.automobilemag.com/uploads/sites/11/2020/07/2001-Acura-Integra-Type-R-lead-image.jpg?fit=around%7C875:492"
+    },
+    {
+      "make": "Acura",
+      "name": "Acura NSX",
+      "year": "1991",
+      "type": "Production",
+      "power": 270,
+      "weight": 3009,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.rarecarsforsaleblog.com/wp-content/uploads/2014/01/lowmileage91nsx2a.jpg"
     },
     {
       "make": "Acura",
@@ -113,6 +143,21 @@
     },
     {
       "make": "Alfa-Romeo",
+      "name": "Alfa Romeo 8C Competizione",
+      "year": "2008",
+      "type": "Production",
+      "power": 444,
+      "weight": 3494,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.ytimg.com/vi/yPjlu97kKfg/maxresdefault.jpg"
+    },
+    {
+      "make": "Alfa-Romeo",
       "name": "Alfa Romeo 4C Gr.3 (Gran Turismo)",
       "year": "2014",
       "type": "Race Car: GT3",
@@ -125,6 +170,21 @@
       "condition": 100,
       "special": [],
       "image": "https://pbs.twimg.com/media/EI6u9p2WkAA5EJ8.jpg"
+    },
+    {
+      "make": "Alfa-Romeo",
+      "name": "Alfa Romeo 156 GTA 3.2 i V6 24V",
+      "year": "2002",
+      "type": "Production",
+      "power": 250,
+      "weight": 3109,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.pinimg.com/originals/19/6b/e1/196be123e918d24f26ecebf9b6797344.jpg"
     },
     {
       "make": "Alfa-Romeo",
@@ -143,6 +203,21 @@
     },
     {
       "make": "Alfa-Romeo",
+      "name": "Alfa Romeo Giulia Quadrifoglio",
+      "year": "2017",
+      "type": "Production",
+      "power": 506,
+      "weight": 3360,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://cdn.motor1.com/images/mgl/OQPyR/s1/2017-alfa-romeo-giulia-first-drive.jpg"
+    },
+    {
+      "make": "Alfa-Romeo",
       "name": "Alfa Romeo MiTo 1.4 T Sport",
       "year": "2009",
       "type": "Production",
@@ -154,10 +229,55 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://img4.annuncicdn.it/c0/ff/c0ff6ca828bce930d2ba616db994e9aa_orig.jpg"
+      "image": "https://www.driving.co.uk/s3/st-driving-prod/uploads/2014/03/mito-09-2.jpg"
     }
   ],
   "aston-martin": [
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin DB11",
+      "year": "2016",
+      "type": "Production",
+      "power": 599,
+      "weight": 3902,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.thesupercarblog.com/wp-content/uploads/2016/02/Aston-Martin-DB11-2016-Geneva-Motor-Show-1-1024x576.jpg"
+    },
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin One-77",
+      "year": "2011",
+      "type": "Production",
+      "power": 748,
+      "weight": 3594,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 35,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.autoexpress.co.uk/image/private/s--weMhqEwM--/v1562254507/autoexpress/images/car_photo_534283.jpg"
+    },
+    {
+      "make": "Aston-Martin",
+      "name": "Aston Martin Vulcan",
+      "year": "2016",
+      "type": "Production",
+      "power": 820,
+      "weight": 2976,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 40,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://supervettura.azureedge.net/blobs/Cars/59/ac1bf35f-7cc1-4d88-891f-c8e2f57f25aa.jpg?width=1920&height=1080&mode=crop"
+    },
     {
       "make": "Aston-Martin",
       "name": "Aston Martin V8 Vantage S",
@@ -340,7 +460,7 @@
       "aerom": 8,
       "condition": 100,
       "special": [],
-      "image": "https://s31.wheelsage.org/format/picture/picture-preview-large/audi/r18_tdi/autowp.ru_audi_r18_tdi_28.jpg"
+      "image": "https://www.lemans.org/media/cache/api_news_large/assets/fileuploads/57/4f/574f5518293f6.jpeg"
     }
   ],
   "bentley": [
@@ -358,6 +478,21 @@
       "condition": 100,
       "special": [],
       "image": "https://cdn.motor1.com/images/mgl/1Op63/s1/2018-bentley-continental-gt.jpg"
+    },
+    {
+      "make": "Bentley",
+      "name": "Bentley Continental GT3",
+      "year": "2018",
+      "type": "Race Car: GT3",
+      "power": 550,
+      "weight": 2696,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 20,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/new_bentley_continental_gt3_-_1.jpg?itok=WfNort5n9"
     }
   ],
   "BMW": [
@@ -420,6 +555,36 @@
       "condition": 100,
       "special": [],
       "image": "https://www.carmagazine.co.uk/Images/upload/32335/images/0004f0e2126c-8e36-43ba-9.jpg"
+    },
+    {
+      "make": "BMW",
+      "name": "BMW M6 GT3 (Walkenhorst Motorsport)",
+      "year": "2016",
+      "type": "Race Car: GT3",
+      "power": 584,
+      "weight": 2866,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 20,
+      "aerom": 5,
+      "condition": 100,
+      "special": [],
+      "image": "https://farm1.static.flickr.com/835/40845249744_95993ef14c.jpg"
+    },
+    {
+      "make": "BMW",
+      "name": "BMW M8 Competition",
+      "year": "2020",
+      "type": "Production",
+      "power": 617,
+      "weight": 4251,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 7,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2019/10/bmw_m8_coupe_fire_red_033.jpg?itok=R5f-6nSQ"
     }
   ],
   "bugatti": [
@@ -437,6 +602,36 @@
       "condition": 100,
       "special": [],
       "image": "https://i.pinimg.com/originals/da/8c/af/da8cafc04570a83f8e8eb3ea7c2f3f08.jpg"
+    },
+    {
+      "make": "Bugatti",
+      "name": "Bugatti Chiron",
+      "year": "2016",
+      "type": "Production",
+      "power": 1479,
+      "weight": 4400,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 40,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://uncrate.com/p/2016/02/bugatti-chiron-1.jpg"
+    },
+    {
+      "make": "Bugatti",
+      "name": "Bugatti Chiron Sport",
+      "year": "2018",
+      "type": "Production",
+      "power": 1479,
+      "weight": 4360,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 40,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://assets.bugatti.com/fileadmin/_processed_/sei/p121/se-image-4f750982624e527a8b1003408e4febcf.jpg"
     }
   ],
   "chevrolet": [
@@ -477,13 +672,13 @@
       "type": "Production",
       "power": 130,
       "weight": 2886,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FR",
       "carcostm": 0.5,
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://lh3.googleusercontent.com/proxy/vbSp3rVgbt2z9ZUHBW3i54-pUiVm3AnwagMhFDJodDte340Tj4ZECyshU0MzHror3xeot0mf3A2zpnmcwnmBAZcl13sryh-AizKak2585hiN98Lc79s5xA"
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/CHEVROLET-Corvette-C1-Roadster-1832_30.jpeg"
     },
     {
       "make": "Chevrolet",
@@ -539,7 +734,7 @@
       "type": "Production",
       "power": 62,
       "weight": 1830,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
@@ -554,7 +749,7 @@
       "type": "Production",
       "power": 63,
       "weight": 1874,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
@@ -569,7 +764,7 @@
       "type": "Production",
       "power": 58,
       "weight": 1631,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
@@ -593,6 +788,21 @@
       "condition": 100,
       "special": [],
       "image": "https://ccmarketplace.azureedge.net/cc-temp/listing/103/311/9809467-1970-dodge-challenger-r-t-thumb-c.jpg"
+    },
+    {
+      "make": "Dodge",
+      "name": "Dodge Challenger SRT-10",
+      "year": "2010",
+      "type": "Production",
+      "power": 425,
+      "weight": 4132,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.discordapp.net/attachments/306637248219185154/477275433813934092/2010DodgeChallengerSRT8BeautyLeft001small.png"
     },
     {
       "make": "Dodge",
@@ -626,6 +836,21 @@
     },
     {
       "make": "Dodge",
+      "name": "Dodge Viper SRT-10",
+      "year": "2003",
+      "type": "Production",
+      "power": 500,
+      "weight": 3400,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 7,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/02q4/267343/dodge-viper-srt-10-photo-6196-s-original.jpg"
+    },
+    {
+      "make": "Dodge",
       "name": "Dodge Viper SRT-10 ACR",
       "year": "2008",
       "type": "Production",
@@ -634,7 +859,7 @@
       "tires": "Sports: Hard",
       "drivetrain": "FR",
       "carcostm": 7,
-      "aerom": 1,
+      "aerom": 1.5,
       "condition": 100,
       "special": [],
       "image": "http://st.motortrend.com/uploads/sites/5/2007/11/112_0711_18z-2008_dodge_viper_SRT10_ACR-front_view.jpg"
@@ -653,6 +878,21 @@
       "condition": 100,
       "special": [],
       "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b77152c3d0_-_2013-srt-viper-lg.jpg"
+    },
+    {
+      "make": "Dodge",
+      "name": "Dodge Viper ACR",
+      "year": "2016",
+      "type": "Production",
+      "power": 645,
+      "weight": 3354,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 8,
+      "aerom": 1.5,
+      "condition": 100,
+      "special": [],
+      "image": "http://st.motortrend.com/uploads/sites/10/2015/09/2016-Dodge-Viper-ACR-front-three-quarter-in-studio-02.jpg"
     }
   ],
   "ferrari": [
@@ -673,6 +913,38 @@
     },
     {
       "make": "Ferrari",
+      "name": "Ferrari 512 BB",
+      "year": "1976",
+      "type": "Production",
+      "power": 354,
+      "weight": 3086,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x2"
+      ],
+      "image": "https://pictures.topspeed.com/IMG/jpg/200909/ferrari-512-bb-4.jpg"
+    },
+    {
+      "make": "Ferrari",
+      "name": "Ferrari 458 Italia Gr.4 (Gran Turismo)",
+      "year": "2009",
+      "type": "Race Car: GT4",
+      "power": 375,
+      "weight": 2976,
+      "tires": "Racing: Hard",
+      "drivetrain": "MR",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.kudosprime.com/gts/images/users/car_99_1_59ed276ed237c.jpg"
+    },
+    {
+      "make": "Ferrari",
       "name": "Ferrari 488 GTB",
       "year": "2016",
       "type": "Production",
@@ -680,11 +952,26 @@
       "weight": 3241,
       "tires": "Sports: Hard",
       "drivetrain": "MR",
-      "carcostm": 9,
+      "carcostm": 12,
       "aerom": 1,
       "condition": 100,
       "special": [],
       "image": "https://cdn.carbuzz.com/gallery-images/1600/341000/300/341322.jpg"
+    },
+    {
+      "make": "Ferrari",
+      "name": "Ferrari 599 GTO",
+      "year": "2011",
+      "type": "Production",
+      "power": 661,
+      "weight": 3850,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b68c0a4a86_-_2011-ferrari-599-gto-2-lg.jpg?resize=480:*"
     },
     {
       "make": "Ferrari",
@@ -727,13 +1014,30 @@
       "type": "Production",
       "power": 85,
       "weight": 2050,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
       "condition": 100,
       "special": [],
       "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png"
+    },
+    {
+      "make": "Fiat",
+      "name": "Fiat 500e",
+      "year": "2015",
+      "type": "Production",
+      "power": 111,
+      "weight": 2980,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "Electric"
+      ],
+      "image": "https://cnet1.cbsistatic.com/img/L1UhafgNrmhn-mQFr1brUlUUFoA=/770x433/2015/12/09/9b2be60f-3a8d-465b-bf3d-2f54eab95e92/2016fiat500e-018.jpg"
     },
     {
       "make": "Fiat",
@@ -761,11 +1065,41 @@
       "weight": 3199,
       "tires": "Sports: Hard",
       "drivetrain": "MR",
-      "carcostm": 8,
+      "carcostm": 7,
       "aerom": 1,
       "condition": 100,
       "special": [],
       "image": "http://3dprint.com/wp-content/uploads/2015/08/gt.png"
+    },
+    {
+      "make": "Ford",
+      "name": "Ford GT",
+      "year": "2017",
+      "type": "Production",
+      "power": 647,
+      "weight": 3053,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 10,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q2/678295/2017-ford-gt-supercar-first-ride-review-car-and-driver-photo-679402-s-original.jpg?fill=2:1&resize=1200:*"
+    },
+    {
+      "make": "Ford",
+      "name": "Ford Mustang Mach 1 351",
+      "year": "1971",
+      "type": "Production",
+      "power": 274,
+      "weight": 2910,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://cdn.dealeraccelerate.com/cam/34/1895/78567/1920x1440/1971-ford-mustang-mach-1"
     },
     {
       "make": "Ford",
@@ -845,7 +1179,39 @@
       "image": "https://media.discordapp.net/attachments/306637248219185154/447594082366259231/FordFocusST2.png?width=650&height=425"
     }
   ],
+  "HKS": [
+    {
+      "make": "HKS",
+      "name": "HKS CT230R",
+      "year": "2008",
+      "type": "Aftermarket",
+      "power": 572,
+      "weight": 2355,
+      "tires": "Sports: Soft",
+      "drivetrain": "4WD",
+      "carcostm": 8,
+      "aerom": 3,
+      "condition": 100,
+      "special": [],
+      "image": "http://speedhunters-wp-production.s3.amazonaws.com/wp-content/uploads/2009/07/01190000/ct1_0ARE_0.jpg"
+    }
+  ],
   "honda": [
+    {
+      "make": "Honda",
+      "name": "Honda N360",
+      "year": "1967",
+      "type": "Production",
+      "power": 31,
+      "weight": 1047,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/HONDAN360-2936_2.jpg"
+    },
     {
       "make": "Honda",
       "name": "Honda Civic Si",
@@ -853,7 +1219,7 @@
       "type": "Production",
       "power": 91,
       "weight": 1955,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
@@ -863,7 +1229,22 @@
     },
     {
       "make": "Honda",
-      "name": "Honda Civic Type R (FK2)",
+      "name": "Honda Civic Type-R (FD2)",
+      "year": "2008",
+      "type": "Production",
+      "power": 222,
+      "weight": 2800,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://c.encycarpedia.com/ci/11212.jpg"
+    },
+    {
+      "make": "Honda",
+      "name": "Honda Civic Type-R (FK2)",
       "year": "2015",
       "type": "Production",
       "power": 306,
@@ -895,7 +1276,7 @@
     },
     {
       "make": "Honda",
-      "name": "Honda Integra Type R (DC5)",
+      "name": "Honda Integra Type-R (DC5)",
       "year": "2004",
       "type": "Production",
       "power": 216,
@@ -910,7 +1291,7 @@
     },
     {
       "make": "Honda",
-      "name": "Honda NSX Type R",
+      "name": "Honda NSX Type-R",
       "year": "1992",
       "type": "Production",
       "power": 284,
@@ -922,6 +1303,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1992_Honda_NSXR-0-1536.jpg"
+    },
+    {
+      "make": "Honda",
+      "name": "Honda NSX Type-R",
+      "year": "2002",
+      "type": "Production",
+      "power": 290,
+      "weight": 2800,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.ytimg.com/vi/wmbgwafA0Ek/maxresdefault.jpg"
     },
     {
       "make": "Honda",
@@ -937,6 +1333,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.kudosprime.com/gts/images/users/car_125_1_59ed1d3b269ce.jpg"
+    },
+    {
+      "make": "Honda",
+      "name": "Honda Z Act",
+      "year": "1970",
+      "type": "Production",
+      "power": 31,
+      "weight": 1124,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://st.automobilemag.com/uploads/sites/11/2013/05/1970-1972-Honda-600-front-left-view.jpg"
     }
   ],
   "hyundai": [
@@ -989,18 +1400,18 @@
   "infiniti": [
     {
       "make": "Infiniti",
-      "name": "Infiniti Q50S 3.7",
-      "year": "2014",
+      "name": "Infiniti FX50 Vettel Edition",
+      "year": "2013",
       "type": "Production",
-      "power": 328,
-      "weight": 3628,
+      "power": 414,
+      "weight": 4517,
       "tires": "Sports: Hard",
-      "drivetrain": "FR",
-      "carcostm": 2,
+      "drivetrain": "4WD",
+      "carcostm": 5,
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/14q2/584476/2014-infiniti-q50s-37-test-review-car-and-driver-photo-597135-s-original.jpg"
+      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q3/409396/infiniti-fx-sebastian-vettel-version-news-car-and-driver-photo-417001-s-original.jpg"
     },
     {
       "make": "Infiniti",
@@ -1054,6 +1465,23 @@
     },
     {
       "make": "Jaguar",
+      "name": "Jaguar D-Type",
+      "year": "1956",
+      "type": "Race Car: Other",
+      "power": 250,
+      "weight": 2090,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 20,
+      "aerom": 2,
+      "condition": 100,
+      "special": [
+        "x10"
+      ],
+      "image": "https://bangshift.com/assets/galleries/demonstration-day-2014-at-simeone-museum/simeone-museum-demo-day-cobra-gt40-jag-porsche009.jpg"
+    },
+    {
+      "make": "Jaguar",
       "name": "Jaguar F-Type R Coupe",
       "year": "2014",
       "type": "Production",
@@ -1069,6 +1497,21 @@
     },
     {
       "make": "Jaguar",
+      "name": "Jaguar F-Type Gr.4 (Gran Turismo)",
+      "year": "2014",
+      "type": "Race Car: GT4",
+      "power": 399,
+      "weight": 2976,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.igcd.net/images/133/850.jpg"
+    },
+    {
+      "make": "Jaguar",
       "name": "Jaguar XKR-S",
       "year": "2011",
       "type": "Production",
@@ -1080,7 +1523,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.thesupercars.org/wp-content/uploads/2011/03/2011-Jaguar-XKR-S-Front-Angle-480.jpg"
+      "image": "https://pictures.topspeed.com/IMG/crop/201102/jaguar-xkr-s_800x0w.jpg"
     },
     {
       "make": "Jaguar",
@@ -1099,6 +1542,21 @@
     },
     {
       "make": "Jaguar",
+      "name": "Jaguar XKR GT RSR (Rocketsports Racing)",
+      "year": 2011,
+      "type": "Race Car: Other",
+      "power": 521,
+      "weight": 2745,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 15,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://farm7.static.flickr.com/6152/6193229221_c10ff72621_b.jpg"
+    },
+    {
+      "make": "Jaguar",
       "name": "Jaguar XJ220",
       "year": "1992",
       "type": "Production",
@@ -1111,6 +1569,23 @@
       "condition": 100,
       "special": [],
       "image": "https://www.ultimatecarpage.com/images/car/223/Jaguar-XJ220-3461.jpg"
+    }
+  ],
+  "jeep": [
+    {
+      "make": "Jeep",
+      "name": "Jeep Grand Cherokee Trackhawk",
+      "year": "2018",
+      "type": "Production",
+      "power": 707,
+      "weight": 5448,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 8,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.gaw.to/vehicles/photos/08/41/084107_2018_jeep_Grand_Cherokee.jpg?640x400"
     }
   ],
   "KTM": [
@@ -1133,6 +1608,21 @@
   "Kia": [
     {
       "make": "Kia",
+      "name": "Kia Stinger",
+      "year": "2017",
+      "type": "Production",
+      "power": 255,
+      "weight": 3785,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.slashgear.com/wp-content/uploads/2017/09/kia-stinger-1-980x620.jpg"
+    },
+    {
+      "make": "Kia",
       "name": "Kia Soul GT-Line 1.6 Turbo",
       "year": "2020",
       "type": "Production",
@@ -1145,6 +1635,23 @@
       "condition": 100,
       "special": [],
       "image": "https://www.motortrend.com/uploads/sites/5/2019/02/2020-Kia-Soul-GT-2.jpg?fit=around%7C875:492"
+    }
+  ],
+  "koenigsegg": [
+    {
+      "make": "Koenigsegg",
+      "name": "Koenigsegg Agera R",
+      "year": "2011",
+      "type": "Production",
+      "power": 1115,
+      "weight": 3164,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 40,
+      "aerom": 1.5,
+      "condition": 100,
+      "special": [],
+      "image": "https://c.encycarpedia.com/ci/1174.jpg"
     }
   ],
   "lamborghini": [
@@ -1180,6 +1687,57 @@
     },
     {
       "make": "Lamborghini",
+      "name": "Lamborghini Countach LP400",
+      "year": "1974",
+      "type": "Production",
+      "power": 374,
+      "weight": 2348,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 30,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x10"
+      ],
+      "image": "https://www.ultimatecarpage.com/images/car/1289/Lamborghini-Countach-LP400-9503.jpg"
+    },
+    {
+      "make": "Lamborghini",
+      "name": "Lamborghini Countach LP5000 QV",
+      "year": "1988",
+      "type": "Production",
+      "power": 449,
+      "weight": 3285,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 30,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x10"
+      ],
+      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/8839731.jpg"
+    },
+    {
+      "make": "Lamborghini",
+      "name": "Lamborghini Diablo SV",
+      "year": "1997",
+      "type": "Production",
+      "power": 503,
+      "weight": 3373,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 12,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x2"
+      ],
+      "image": "https://blog.dupontregistry.com/wp-content/uploads/2015/07/diablo-sv-main.jpg"
+    },
+    {
+      "make": "Lamborghini",
       "name": "Lamborghini Gallardo",
       "year": "2004",
       "type": "Production",
@@ -1195,6 +1753,21 @@
     },
     {
       "make": "Lamborghini",
+      "name": "Lamborghini Gallardo LP570-4 Superleggera",
+      "year": "2011",
+      "type": "Production",
+      "power": 562,
+      "weight": 3470,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD-MR",
+      "carcostm": 8,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://st.motortrend.com/uploads/sites/10/2015/09/2011-lamborghini-gallardo-LP-570-4-superleggera-front-three-quarter-static.jpg"
+    },
+    {
+      "make": "Lamborghini",
       "name": "Lamborghini Huracán LP610-4",
       "year": "2015",
       "type": "Production",
@@ -1202,7 +1775,7 @@
       "weight": 3135,
       "tires": "Sports: Hard",
       "drivetrain": "4WD-MR",
-      "carcostm": 8,
+      "carcostm": 9,
       "aerom": 1,
       "condition": 100,
       "special": [],
@@ -1261,6 +1834,21 @@
   "lexus": [
     {
       "make": "Lexus",
+      "name": "Lexus GS 350 F-Sport AWD",
+      "year": "2014",
+      "type": "Production",
+      "power": 306,
+      "weight": 3898,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.fastestlaps.com/lexus-gs350-f-sport.jpg?550x250m"
+    },
+    {
+      "make": "Lexus",
       "name": "Lexus IS300",
       "year": "2005",
       "type": "Production",
@@ -1303,6 +1891,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.automobilemag.com/uploads/sites/11/2020/04/2012-Lexus-LFA-Nurburgring-Package-lead-image.jpg?fit=around%7C875:492"
+    },
+    {
+      "make": "Lexus",
+      "name": "Lexus LC500",
+      "year": "2017",
+      "type": "Production",
+      "power": 469,
+      "weight": 4277,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.cstatic-images.com/stock/400x500/1454105511838.png"
     },
     {
       "make": "Lexus",
@@ -1379,7 +1982,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://media.fastestlaps.com/ptamnt8oc9z0/640x350m"
+      "image": "https://media.fastestlaps.com/lotus-elise-111r.jpg"
     },
     {
       "make": "Lotus",
@@ -1430,6 +2033,36 @@
     },
     {
       "make": "Mazda",
+      "name": "Mazda Autozam AZ-1",
+      "year": "1991",
+      "type": "Production",
+      "power": 63,
+      "weight": 1587,
+      "tires": "Comfort: Medium",
+      "drivetrain": "MR",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://st.automobilemag.com/uploads/sites/11/2017/10/1992-Autozam-AZ1-02.jpg"
+    },
+    {
+      "make": "Mazda",
+      "name": "Mazda Eunos Cosmo 20B CCS",
+      "year": "1990",
+      "type": "Production",
+      "power": 141,
+      "weight": 3561,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.fastestlaps.com/mazda-eunos-cosmo-20b-ccs.jpg"
+    },
+    {
+      "make": "Mazda",
       "name": "Mazda MX-5 (NA)",
       "year": "1989",
       "type": "Production",
@@ -1457,6 +2090,38 @@
       "condition": 100,
       "special": [],
       "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Mazda_Roadster_02_-_Tokyo_Auto_Salon_2015.jpg"
+    },
+    {
+      "make": "Mazda",
+      "name": "Mazda RX-8 Type S",
+      "year": "2007",
+      "type": "Production",
+      "power": 246,
+      "weight": 2888,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://newsroom.mazda.com/en/publicity/release/2003/200304/0409.jpg"
+    },
+    {
+      "make": "Mazda",
+      "name": "Mazda RX Vision GT3 Concept",
+      "year": "2020",
+      "type": "Race Car: GT3",
+      "power": 562,
+      "weight": 2756,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 30,
+      "aerom": 5,
+      "condition": 100,
+      "special": [
+        "Concept"
+      ],
+      "image": "https://cdn.slashgear.com/wp-content/uploads/2020/05/Mazda-RX-Vision-GT3-Concept-Gran-Turismo_18-680x383.jpg"
     },
     {
       "make": "Mazda",
@@ -1492,6 +2157,21 @@
   "maserati": [
     {
       "make": "Maserati",
+      "name": "Maserati Ghibli S",
+      "year": "2014",
+      "type": "Production",
+      "power": 404,
+      "weight": 4070,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/07q4/267366/2008-maserati-granturismo-photo-8746-s-original.jpg"
+    },
+    {
+      "make": "Maserati",
       "name": "Maserati GranTurismo S",
       "year": "2008",
       "type": "Production",
@@ -1499,7 +2179,7 @@
       "weight": 3924,
       "tires": "Sports: Hard",
       "drivetrain": "FR",
-      "carcostm": 4,
+      "carcostm": 5,
       "aerom": 1,
       "condition": 100,
       "special": [],
@@ -1524,14 +2204,14 @@
   "mclaren": [
     {
       "make": "Mclaren",
-      "name": "McLaren 720S Coupe",
+      "name": "McLaren 720S Coupe",
       "year": 2018,
       "type": "Production",
       "power": 710,
       "weight": 3167,
       "tires": "Sports: Hard",
       "drivetrain": "MR",
-      "carcostm": 25,
+      "carcostm": 15,
       "aerom": 1,
       "condition": 100,
       "special": [],
@@ -1541,12 +2221,12 @@
   "mini": [
     {
       "make": "Mini",
-      "name": "Mini Cooper S Final Edition IV",
+      "name": "Mini Cooper S IV Final Edition",
       "year": "2000",
       "type": "Production",
       "power": 62,
       "weight": 1534,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "FF",
       "carcostm": 0.5,
       "aerom": 1,
@@ -1568,9 +2248,39 @@
       "condition": 100,
       "special": [],
       "image": "https://www.torquenews.com/sites/default/files/image-1084/%5Btitle-raw%5D/100390328_2013-mini-john-cooper-works-gp_0.jpeg"
+    },
+    {
+      "make": "Mini",
+      "name": "Mini Cooper S",
+      "year": "2014",
+      "type": "Production",
+      "power": 189,
+      "weight": 2855,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://i.ytimg.com/vi/K_KcfLVHx0w/maxresdefault.jpg"
     }
   ],
   "mitsubishi": [
+    {
+      "make": "Mitsubishi",
+      "name": "Mitsubishi Eclipse GSX",
+      "year": "1995",
+      "type": "Production",
+      "power": 210,
+      "weight": 3269,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.fastestlaps.com/mitsubishi-eclipse-gsx.jpg"
+    },
     {
       "make": "Mitsubishi",
       "name": "Mitsubishi Eclipse GT",
@@ -1608,7 +2318,7 @@
       "type": "Production",
       "power": 66,
       "weight": 2579,
-      "tires": "Sports: Hard",
+      "tires": "Comfort: Medium",
       "drivetrain": "MR",
       "carcostm": 0.5,
       "aerom": 1,
@@ -1712,6 +2422,21 @@
     },
     {
       "make": "Mercedes-Benz",
+      "name": "Mercedes-Benz SL500",
+      "year": "2003",
+      "type": "Production",
+      "power": 302,
+      "weight": 4067,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://dealeraccelerate-all.s3.amazonaws.com/flemings/images/1/6/0/2/1602/34105_7ff1a83d72_low_res.jpg"
+    },
+    {
+      "make": "Mercedes-Benz",
       "name": "Mercedes-Benz AMG GT S",
       "year": "2015",
       "type": "Production",
@@ -1743,7 +2468,7 @@
     {
       "make": "Mercedes-Benz",
       "name": "Mercedes-Benz SLS AMG GT3",
-      "year": 2011,
+      "year": "2011",
       "type": "Race Car: GT3",
       "power": 520,
       "weight": 2976,
@@ -1769,6 +2494,44 @@
       "condition": 100,
       "special": [],
       "image": "https://i.ytimg.com/vi/ohucLw3Qpao/maxresdefault.jpg"
+    }
+  ],
+  "mugen": [
+    {
+      "make": "Mugen",
+      "name": "Mugen S2000",
+      "year": "2000",
+      "type": "Aftermarket",
+      "power": 246,
+      "weight": 2734,
+      "tires": "Sports: Soft",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1.5,
+      "condition": 100,
+      "special": [
+        "x2"
+      ],
+      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/01q3/267338/mugen-s2000-road-test-review-car-and-driver-photo-9547-s-original.jpg?fill=2:1&resize=1200:*"
+    }
+  ],
+  "nio": [
+    {
+      "make": "Nio",
+      "name": "Nio EP9",
+      "year": "2019",
+      "type": "Production",
+      "power": 1360,
+      "weight": 3825,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 40,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "Electric"
+      ],
+      "image": "https://www.slashgear.com/wp-content/uploads/2016/11/nio-ep9-1.jpg"
     }
   ],
   "nissan": [
@@ -1866,6 +2629,21 @@
     },
     {
       "make": "Nissan",
+      "name": "Nissan GT-R Gr.4 (Gran Turismo)",
+      "year": "2016",
+      "type": "Race Car: GT4",
+      "power": 429,
+      "weight": 3197,
+      "tires": "Racing: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://static.wikia.nocookie.net/gran-turismo/images/4/49/Nissan_GT-R_Gr.4.jpg/revision/latest?cb=20181204104359"
+    },
+    {
+      "make": "Nissan",
       "name": "Nissan GT-R NISMO GT3 N24 (Schulze Motorsport)",
       "year": "2013",
       "type": "Race Car: GT3",
@@ -1895,6 +2673,21 @@
       "condition": 100,
       "special": [],
       "image": "https://img-ik.cars.co.za/images/2019/4/OpelCorsaGSi/tr:n-news_large/gsi1.jpg"
+    },
+    {
+      "make": "Opel",
+      "name": "Opel Speedster",
+      "year": "2001",
+      "type": "Production",
+      "power": 200,
+      "weight": 2050,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/OPELSpeedster-458_3.jpg"
     }
   ],
   "peugeot": [
@@ -1912,6 +2705,21 @@
       "condition": 100,
       "special": [],
       "image": "https://ranwhenparkeddotnet.files.wordpress.com/2013/03/peugeot-106-rallye-5.jpg"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 206 2.0 S16",
+      "year": "1999",
+      "type": "Production",
+      "power": 135,
+      "weight": 2315,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.motorstown.com/images/peugeot-206-2.0-s16-02.jpg"
     },
     {
       "make": "Peugeot",
@@ -1945,6 +2753,21 @@
     },
     {
       "make": "Peugeot",
+      "name": "Peugeot 508 1.6L PureTech 225",
+      "year": "2018",
+      "type": "Production",
+      "power": 222,
+      "weight": 3131,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/pug-2811.jpg?itok=HMeaBiaB"
+    },
+    {
+      "make": "Peugeot",
       "name": "Peugeot Vision Gran Turismo Gr.3",
       "year": "2017",
       "type": "Race Car: GT3",
@@ -1961,7 +2784,104 @@
       "image": "https://lh3.googleusercontent.com/proxy/28b6Vl0zrdbJEzlHRISgCa-IEvPHpMFoRVNdfazv31nEHKe6pmjADJaYb_XWEe31_6YeFm6GmebydeL6ZOIHqpsLcAEClqRjpCQLIsr0iBQa7ibsAtRyYRkllxwK1q0qU3d8SouKP7GouxpdPGiEuLTo7-mZSkjCVdgO3yK2gyQYyM0FdJ3hi2nr_dJwMiRvBBb0NsG9Ze4oYdJdRXIK0RTY3FD0K18"
     }
   ],
+  "pontiac": [
+    {
+      "make": "Pontiac",
+      "name": "Pontiac GTO 6.0",
+      "year": "2006",
+      "type": "Production",
+      "power": 400,
+      "weight": 3743,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/PONTIACGTO-481_12.jpg"
+    },
+    {
+      "make": "Pontiac",
+      "name": "Pontiac Solstice GXP Coupe",
+      "year": "2009",
+      "type": "Production",
+      "power": 260,
+      "weight": 3054,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://o.aolcdn.com/images/dims3/GLOB/legacy_thumbnail/800x450/format/jpg/quality/85/http://www.blogcdn.com/www.autoblog.com/media/2009/06/solsticecoupe_rev1002_opt.jpg"
+    },
+    {
+      "make": "Pontiac",
+      "name": "Pontiac Firebird Trans Am GTA",
+      "year": "1987",
+      "type": "Production",
+      "power": 211,
+      "weight": 3483,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://dxsdcl7y7vn9x.cloudfront.net/3/432928/15323102/978537538.jpg"
+    }
+  ],
   "porsche": [
+    {
+      "make": "Porsche",
+      "name": "Porsche 914/6",
+      "year": 1970,
+      "type": "Production",
+      "power": 174,
+      "weight": 2034,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x2"
+      ],
+      "image": "https://bringatrailer.com/wp-content/uploads/2018/05/1970_porsche_914-6_152874995721410cb064a6f7f5Screen-Shot-2018-06-11-at-1.44.11-PM.png?fit=940%2C622"
+    },
+    {
+      "make": "Porsche",
+      "name": "Porsche Cayman GT4 (718)",
+      "year": 2019,
+      "type": "Production",
+      "power": 414,
+      "weight": 3276,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 7,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.fastestlaps.com/porsche-cayman-gt4-718.jpg?550x250m"
+    },
+    {
+      "make": "Porsche",
+      "name": "Porsche Taycan Turbo S",
+      "year": 2020,
+      "type": "Production",
+      "power": 752,
+      "weight": 5060,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 15,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "Electric",
+        "x2"
+      ],
+      "image": "https://cdn.motor1.com/images/mgl/BoN14/s1/2020-porsche-taycan.jpg"
+    },
     {
       "make": "Porsche",
       "name": "Porsche 911 Turbo (930)",
@@ -2006,6 +2926,36 @@
       "condition": 100,
       "special": [],
       "image": "https://pictures.topspeed.com/IMG/crop/201706/2018-porsche-911-gt2-rs-71_800x0w.jpg"
+    },
+    {
+      "make": "Porsche",
+      "name": "Porsche 919 Hybrid",
+      "year": "2016",
+      "type": "Race Car: LMP ",
+      "power": 501,
+      "weight": 1929,
+      "tires": "Racing: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 50,
+      "aerom": 8,
+      "condition": 100,
+      "special": [],
+      "image": "https://i2.wp.com/www.porscheroadandrace.com/wp-content/uploads/2016/11/s_2-porsche-919-hybrid-le-mans-24h-2016_3783-gs.jpg?resize=1000%2C622&ssl=1"
+    },
+    {
+      "make": "Porsche",
+      "name": "Porsche Carrera GT",
+      "year": "2003",
+      "type": "Production",
+      "power": 605,
+      "weight": 3258,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 15,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://supercars.net/blog/wp-content/uploads/2016/05/Porsche-Carrera-GT-FA-Speed-1600x1200.jpg"
     }
   ],
   "renault": [
@@ -2067,7 +3017,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://images.carscoops.com/2015/10/Renault-Sport-RS-01-0.jpg"
+      "image": "https://www.snaplap.net/wp-content/uploads/2017/01/RenaultSportRS01GT3-1.jpg"
     },
     {
       "make": "Renault",
@@ -2083,6 +3033,21 @@
       "condition": 100,
       "special": [],
       "image": "https://car-images.bauersecure.com/upload/30599/images/01renaultcliorscupreview.jpg"
+    },
+    {
+      "make": "Renault",
+      "name": "Renault Sport Clio R.S. II",
+      "year": "2011",
+      "type": "Production",
+      "power": 199,
+      "weight": 2734,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.imcdb.org/i449905.jpg"
     }
   ],
   "scion": [
@@ -2115,6 +3080,53 @@
       "condition": 100,
       "special": [],
       "image": "https://pictures.topspeed.com/IMG/crop/201210/2013-scion-fr-s-evasive-m_800x0w.jpg"
+    },
+    {
+      "make": "Scion",
+      "name": "Scion xB",
+      "year": "2012",
+      "type": "Production",
+      "power": 158,
+      "weight": 3084,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.autotrader.com/scaler/620/420/cms/content/articles/reviews/new/scion/xb/2012/170150.jpg"
+    }
+  ],
+  "SEAT": [
+    {
+      "make": "SEAT",
+      "name": "SEAT Ibiza I 1.2i",
+      "year": "1991",
+      "type": "Production",
+      "power": 70,
+      "weight": 1962,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://live.staticflickr.com/5536/10325719183_a1f4428417_b.jpg"
+    },
+    {
+      "make": "SEAT",
+      "name": "SEAT Ibiza Cupra",
+      "year": "2009",
+      "type": "Production",
+      "power": 180,
+      "weight": 2584,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.carmagazine.co.uk/Images/upload/19931/images/5SeatIbizaCupraCARreview.jpg"
     }
   ],
   "subaru": [
@@ -2131,7 +3143,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.autotribute.com/wp-content/uploads/2013/12/1998-Subaru-Impreza-22b-STi-Coupe.jpg"
+      "image": "https://cdn.motor1.com/images/mgl/2Xq6p/s1/low-mileage-1998-subaru-impreza-22b-sti.jpg"
     },
     {
       "make": "Subaru",
@@ -2196,6 +3208,38 @@
       "image": "http://imagesvc.timeincapp.com/v3/foundry/image/?q=70&w=1440&url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2019%2F01%2Ff8a9911_cover-1-e1547491895241.jpg%3Fquality%3D85"
     }
   ],
+  "suzuki": [
+    {
+      "make": "Suzuki",
+      "name": "Suzuki Swift Sport",
+      "year": "2007",
+      "type": "Production",
+      "power": 123,
+      "weight": 2337,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://parkers-images.bauersecure.com/pagefiles/190687/cut-out/600x400/suzuki_swift_sport.jpg"
+    },
+    {
+      "make": "Suzuki",
+      "name": "Suzuki Swift Sport",
+      "year": "2020",
+      "type": "Production",
+      "power": 129,
+      "weight": 2260,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/suzuki-swift-sport-manual-my19-1001x565-%281%29.jpg"
+    }
+  ],
   "tesla": [
     {
       "make": "Tesla",
@@ -2206,13 +3250,13 @@
       "weight": 5750,
       "tires": "Sports: Hard",
       "drivetrain": "4WD",
-      "carcostm": 10,
+      "carcostm": 20,
       "aerom": 1,
       "condition": 100,
       "special": [
         "Electric",
         "Concept",
-        "x15"
+        "x2"
       ],
       "image": "https://www.tesla.com/xNVh4yUEc3B9/04_Desktop.jpg"
     },
@@ -2259,11 +3303,26 @@
       "weight": 3351,
       "tires": "Sports: Hard",
       "drivetrain": "FR",
-      "carcostm": 2,
+      "carcostm": 3,
       "aerom": 1,
       "condition": 100,
       "special": [],
       "image": "https://t1-cms-3.images.toyota-europe.com/toyotaone/gben/header_tcm-3060-1542578.jpg"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota GR Yaris",
+      "year": "2021",
+      "type": "Production",
+      "power": 268,
+      "weight": 2844,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.caradvice.com.au/image/private/q_auto/v1600224708/subp3xmnp6wvmib2tnuo.jpg"
     },
     {
       "make": "Toyota",
@@ -2309,6 +3368,213 @@
       "condition": 100,
       "special": [],
       "image": "http://www.diseno-art.com/images_8/Toyota-Supra.jpg"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota TS050 Hybrid",
+      "year": "2016",
+      "type": "Race Car: LMP",
+      "power": 507,
+      "weight": 1929,
+      "tires": "Racing: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 50,
+      "aerom": 8,
+      "condition": 100,
+      "special": [
+        "Hybrid",
+        "Boost"
+      ],
+      "image": "https://www.ultimatecarpage.com/images/car/6560/Toyota-TS050-Hybrid-125597.jpg"
+    }
+  ],
+  "TVR": [
+    {
+      "make": "TVR",
+      "name": "TVR Griffith",
+      "year": "2018",
+      "type": "Production",
+      "power": 500,
+      "weight": 2755,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/images/big-read/2018/05/b3f869a10da70b8c756a69a7f1c5b6be/dsc09046.jpg?itok=KhNmwGHr"
+    },
+    {
+      "make": "TVR",
+      "name": "TVR Sagaris",
+      "year": "2005",
+      "type": "Production",
+      "power": 406,
+      "weight": 2377,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/TVRSagaris-683_1.jpg"
+    },
+    {
+      "make": "TVR",
+      "name": "TVR Tuscan T400R N-GT",
+      "year": "2003",
+      "type": "Race Car: Other",
+      "power": 390,
+      "weight": 2425,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.ultimatecarpage.com/images/car/2566/TVR-Tuscan-T400R-19314.jpg"
+    },
+    {
+      "make": "TVR",
+      "name": "TVR Tuscan Speed 6",
+      "year": "2000",
+      "type": "Production",
+      "power": 361,
+      "weight": 2425,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.oldtimeraustralia.com/wp-content/uploads/2011/06/IMG_0064_5_1.jpg"
+    }
+  ],
+  "volkswagen": [
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Golf VIII",
+      "year": "2021",
+      "type": "Production",
+      "power": 242,
+      "weight": 3225,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://carwow-uk-wp-2.imgix.net/vw-golf-gti-red-driving-front-1-lead-scaled.jpg?auto=format&cs=tinysrgb&fit=crop&h=800&ixlib=rb-1.1.0&q=60&w=1600"
+    },
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Golf R32 IV",
+      "year": "2004",
+      "type": "Production",
+      "power": 237,
+      "weight": 3256,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.honestjohn.co.uk/imagecache/file/crop/1200x800/media/12725504/volkswagen-golf-mk4-r32-3.jpg"
+    },
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Scirocco R",
+      "year": "2010",
+      "type": "Production",
+      "power": 265,
+      "weight": 3109,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://cartype.com/pics/7211/full/vw_scirocco-r__3_10.jpg"
+    },
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Scirocco GT24 (Volkswagen Motorsport)",
+      "year": "2008",
+      "type": "Race Car: Other",
+      "power": 320,
+      "weight": 2469,
+      "tires": "Racing: Hard",
+      "drivetrain": "FF",
+      "carcostm": 9,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://lh3.googleusercontent.com/proxy/vM-JxYtcucYPLHi5J-pQENIGDGcPW7ZkUuNyYlQj3tdEFUOHFT3O9Jp5a8VazRyw0UdjkZHgHKNm62m3JMf_Rd42M-ltY06HQe_e35ndpCNDBzGd8bDv70yY6Su3MfTtArPSdF4NPJM"
+    },
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Scirocco Gr.4 (Gran Turismo)",
+      "year": "2010",
+      "type": "Race Car: GT4",
+      "power": 359,
+      "weight": 2315,
+      "tires": "Racing: Hard",
+      "drivetrain": "FF",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.gtplanet.net/forum/media/volkswagen-scirocco-gr-4.37595/full"
+    }
+  ],
+  "volvo": [
+    {
+      "make": "Volvo",
+      "name": "Volvo 122 S Amazon",
+      "year": "1969",
+      "type": "Production",
+      "power": 86,
+      "weight": 2403,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FR",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://media.autoweek.nl/m/m1cyjs7bjx8f_800.jpg"
+    },
+    {
+      "make": "Volvo",
+      "name": "Volvo C30 R-Design",
+      "year": "2011",
+      "type": "Production",
+      "power": 227,
+      "weight": 3150,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/10q2/350803/2011-volvo-c30-r-design-photo-352757-s-986x603.jpg?resize=980:*"
+    },
+    {
+      "make": "Volvo",
+      "name": "Volvo Polestar 1",
+      "year": "2020",
+      "type": "Production",
+      "power": 619,
+      "weight": 5170,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 14,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "Hybrid",
+        "x2"
+      ],
+      "image": "https://carsalesbase.com/wp-content/uploads/2020/05/Polestar_1-auto-sales-statistics-Europe.jpg"
     }
   ]
 }

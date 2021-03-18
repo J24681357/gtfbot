@@ -26,6 +26,7 @@ module.exports.perf = function(gtfcar, condition) {
   var aero = gtfcar["aerom"];
 
   var drivetrain = gtfcar["drivetrain"];
+  
   var sell = require(gtf.MARKETPLACE).sellcalc(require(gtf.MARKETPLACE).costcalc(gtfcar));
 
   if (condition == "DEALERSHIP") {

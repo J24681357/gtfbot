@@ -283,10 +283,11 @@ module.exports = {
         if (query[1].split("-")[0] == "IA") {
           var races = require("../data/career/races").ialeague();
         }
+        console.log(races)
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
-        var track = require(gtf.TRACKS).track({"name":tracks[1]})[0]
+        var track = require(gtf.TRACKS).find({"name":tracks[1]})[0]
         var racesettings = require(gtf.RACE).setcareerrace(
           event,
           track,

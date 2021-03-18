@@ -6,8 +6,6 @@ const Discord = require("discord.js");
 var gtf = process.env
 ////////////////////////////////////////////////////
 
-
-
 module.exports.tracksettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
     var tracks = require(gtf.TRACKS).list("names")
           var number = parseInt(query[2])
@@ -16,8 +14,8 @@ module.exports.tracksettings = function(changes, lobbies, [page, query, reaction
              results2 = gtftools.list(list, page, "", "", true, "", 15, [query, "lobby"], embed, msg, userdata)
       
              embed.setDescription(results2)
-            gtftools.createpages(results2, list, page, "", "", true, "", 15, [query, "lobby", reactionson, info], embed, msg, userdata, "DM")
-          return
+            gtftools.createpages(results2, list, page, "", "", true, "", 15, [query, "lobby", reactionson, info], embed, msg, userdata)
+          changes.push("LIST")
           } else {
             var trackname = tracks[number-1]
             var track = require(gtf.TRACKS).find({"name":[trackname]})[0]
@@ -31,11 +29,31 @@ module.exports.tracksettings = function(changes, lobbies, [page, query, reaction
           }
 }
 
+module.exports.namesettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
+          var name = query[2]
+          if (name === undefined) {
+            require(gtf.EMBED).error('❌ Invalid Name', 'The room name must be at least 1 character.', embed, msg, userdata);
+          changes = "ERROR"
+          return
+          }
+          if (name.length > 20) {
+          require(gtf.EMBED).error('❌ Invalid Name', 'The room name must be less than 20 characters.', embed, msg, userdata);
+          changes = "ERROR"
+          return
+          }
+          var roomname = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["channelname"]
+          var newname = "lobby-" + name.replace(/ /g, "-").toLowerCase()
+          msg.guild.channels.cache.find(c => c.name === roomname).setName(newname);
+          lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["channelname"] = newname
+            changes.push("**Room Title:** " + newname)
+}
+
 module.exports.lapsettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
           var number = parseInt(query[2])
           if (!gtftools.betweenInt(number, 1, 10)) {
           require(gtf.EMBED).error('❌ Invalid Laps', 'You can only set laps between 1 and 10 in a lobby.', embed, msg, userdata);
           changes = "ERROR"
+          return
           } else {
             var trackname = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["racesettings"]["track"]
             var track = require(gtf.TRACKS).find({"name":[trackname]})[0]
@@ -85,4 +103,31 @@ var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/G
     db.close()})
       })
 
+}
+
+module.exports.updateusercar = function(car, userdata) {
+  
+  var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+  
+  MongoClient.connect(url, { useUnifiedTopology: true },
+    function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("GTFitness");
+      dbo.collection("LOBBIES").find({}).forEach(row => {
+            lobbies = row
+      }).then(() => 
+      {lobby()}
+      )
+})
+function lobby() {
+var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
+for (var i = 0; i< currentlobby["players"].length; i++) {
+  if (currentlobby["players"][i]["id"] == userdata["id"]) {
+lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["players"][i]["car"] = car
+  }
+}
+require(gtf.LOBBY).save(lobbies)
+
+}
 }

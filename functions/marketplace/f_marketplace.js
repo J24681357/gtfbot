@@ -247,13 +247,14 @@ module.exports.sellcalc = function(cost) {
 
 module.exports.costcalc = function(gtfcar, fpp) {
   var cost = gtfcar["carcostm"] * 10000;
+  
   if (fpp == undefined) {
   } else {
     var offset = fpp - 250;
     if (offset < 0) {
-      cost = (-offset) ** 1.8 + cost;
+      cost = -((-offset) ** 1.8) + cost;
     } else {
-      cost = offset ** 1.8 + cost;
+      cost = ((offset) ** 1.8) + cost;
     }
   }
 
@@ -303,7 +304,6 @@ module.exports.fourcargifts = function(title, results, prizes, embed, msg, userd
 
 module.exports.fourgifts = function(title, results, prizes, embed, msg, userdata) {
   var select = [[emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " "]];
-  
   embed.fields = [];
   embed.setTitle("__" + title + "__");
   embed.setDescription(results);

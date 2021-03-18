@@ -17,11 +17,10 @@
   "dependencies": {
     "discord.js": "latest",
     "discord.js-rate-limiter": "^1.0.4",
+    "probe-image-size": "latest",
     "express": "^4.17.1",
     "forever": "^3.0.4",
-    "graceful-fs": "^4.2.4",
     "mongodb": "^3.6.3",
-    "pm2": "^4.5.1",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {

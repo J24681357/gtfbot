@@ -599,7 +599,6 @@ module.exports.startonline = function(racesettings, racedetails, user, userdata)
     player["score"] = rnorm({ mean: player["car"]["fpp"], dev: 50 });
   })
   finalgridwinners = finalgridwinners.sort((x,y) => y["score"] - x["score"])
-  console.log(finalgridwinners)
 
   var index = 0;
 
@@ -614,10 +613,13 @@ module.exports.startonline = function(racesettings, racedetails, user, userdata)
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
   finalgridwinners.forEach(function(x) {
+    console.log(positions)
     var place = positions.shift()
     position = place.split('|')[0];
-    prize = parseFloat(place.split('|')[1]);
-    winners.push(x['car']["name"] + " " + position + " **" + prize + emote.credits + ' +' + exp + emote.exp + '**')
+    prize = parseFloat(place.split('|')[1])
+    prize = Math.round(parseFloat(prize + (prize * (racesettings["km"]/30))))
+    
+    winners.push(position + " " + "<@"+ x["id"] + ">" + " " + "**+" + prize + emote.credits + ' +' + exp + emote.exp + '**' + "\n" + x['car']["name"])
     
    MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
           if (err) throw err;

@@ -306,14 +306,19 @@ module.exports.createfinalreactions = function(
       msg.edit(embed);
       gtftools.removereactions(["🎥"], msg);
     }
+    var emojilist = []
     function restart() {
       embed.setColor(0x0151b0);
       require('../../functions/races/f_races_2').readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], userdata);
       setTimeout(function() {gtftools.removereactions(["🔁","🎥"], msg)}, 5000)
-  
     }
 
-    var emojilist = [["🔁","🔁", restart, "Once"], ["🎥", "🎥", func]];
+    if (racesettings["mode"] == "ONLINE") {
+    } else {
+      emojilist.push(["🔁","🔁", restart, "Once"])
+    }
+
+    emojilist.push(["🎥", "🎥", func])
     function goback() {
       userdata["raceinprogress"] = [false, ["", ""], "", userdata["id"]];
       var e = racesettings["raceid"].split("-");

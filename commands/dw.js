@@ -141,7 +141,7 @@ module.exports = {
       });
     } else {
 
-      embed.setTitle(emote.gtlogowhite + ' __GTF Daily Workout__');
+      embed.setTitle(emote.gtlogowhite + ' __GTS Daily Workout__');
       var prize = '';
       var car = require(gtf.GTSCARS).RandomGTSCar();
       if (dw.dwcar['daily']['start']) {

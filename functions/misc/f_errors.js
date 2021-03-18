@@ -23,7 +23,7 @@ module.exports.error = function(name, desc, embed, msg, userdata) {
   if (name.includes("Invaluserdata")) {
     gtfhelp = "\n\n**❓ Maybe __!gtfhelp__ can help you.**";
   }
-  embed.setAuthor(msg.author.username);
+  embed.setAuthor(msg.author.username, msg.author.displayAvatarURL());
   embed.setColor(0xff0000);
   embed.addField(name + ' "' + msg.content.split(" ").join(" ") + '"', desc + gtfhelp, true);
   return msg.channel.send(embed);

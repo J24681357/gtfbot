@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
 var gtf = process.env;
-////////////////////////////////////////////////////
+//////////////////////////////////////////////////// "testing", "gtf-demo", "⭐"
 
 module.exports = {
   name: 'garage',
@@ -12,7 +12,7 @@ module.exports = {
   level: 0,
   cooldown: 3,
   aliases: ['g'],
-  channels: ["testing", "gtf-demo"],
+  channels: [],
 
   delete: false,
   availitoeveryone:true,
@@ -126,8 +126,10 @@ module.exports = {
         return;
       } else {
         stats.addcount(userdata);
-        
         var car = stats.garage(userdata)[number - 1];
+        if (stats.inlobbystat(userdata)[0]) {
+          require(gtf.LOBBY).updateusercar(car, userdata)
+        }
         require(gtf.EMBED).success('✅ Success', 'Selected the **' + car['name'] + ' ' + car['fpp'] + emote.fpp + '**' + ' `🚘ID:' + number + '`.', 5000, true, embed, msg, userdata);
       }
       return;

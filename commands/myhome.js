@@ -42,10 +42,10 @@ module.exports = {
 
     embed.setTitle("__My Home__");
     embed.setThumbnail(msg.guild.members.cache.get(gtf.USERID).user.displayAvatarURL());
-    embed.setFooter("Welcome to GT Fitness! React to one of the emotes associated with the list above to select an option.");
+    embed.setFooter("Welcome to GT Fitness! Use the commands above to select an option.");
 
     if (parseInt(query[0]) == 2) {
-      results = "__**❔ GT Fitness Facts**__ - !gtf" + "\n" + "__** Daily Workout**__ - !dw4" + "\n" + embed.setDescription(results);
+      results = "__**❔ GT Fitness Facts**__ - /gtf" + "\n" + "__** Daily Workout**__ - /dw4" + "\n" + embed.setDescription(results);
       embed.addField(main, main2);
 
       msg.channel.send(embed).then(msg => {
@@ -64,10 +64,10 @@ module.exports = {
         gtftools.createreactions(emojilist, msg, userdata);
       });
     } else {
-      var aspec = "__**🏁Career Mode**__\n!career" + "\n" + "__**🎉Seasonal Events**__\n!seasonal" + "\n" + "__**🅰Arcade Mode**__\n!arcade" + "\n" + "__**🇩Drift Trial**__\n!drift" + "\n" + "__**🇸Top Speed Run**__\n!ssrx";
-      var places = "__**🛒GTF Car Dealerships**__\n!car" + "\n" + "__**📦GTF Auto - Tuning Shop**__\n!tune" + "\n" + "__**🎨GTF Auto - Paint Shop**__\n!paint" + "\n" + "__**🛠Car Tuning**__\n!tuning" + "\n";
-      var myhome = "__**🚘Garage**__\n!garage" + "\n" + "__**👤Profile**__\n!profile" + "\n" + "__**🎞Replay Theater**__\n!replay" + "\n" + "__**⚙Settings**__\n!settings";
-      var other = "__**🇱GTF Experience Levels**__\n!levels" + "\n" + "__**🌀Miscellaneous**__\n!home 2";
+      var aspec = "__**🏁Career Mode**__\n/career" + "\n" + "__**🎉Seasonal Events**__\n/seasonal" + "\n" + "__**🅰Arcade Mode**__\n/arcade" + "\n" + "__**🇩Drift Trial**__\n/drift" + "\n" + "__**🇸Top Speed Run**__\n/ssrx";
+      var places = "__**🛒GTF Car Dealerships**__\n/car" + "\n" + "__**📦GTF Auto - Tuning Shop**__\n/tune" + "\n" + "__**🎨GTF Auto - Paint Shop**__\n/paint" + "\n" + "__**🛠Car Tuning**__\n/tuning" + "\n";
+      var myhome = "__**🚘Garage**__\n/garage" + "\n" + "__**👤Profile**__\n/profile" + "\n" + "__**🎞Replay Theater**__\n/replay" + "\n" + "__**⚙Settings**__\n/settings";
+      var other = "__**🇱GTF Experience Levels**__\n/levels" + "\n" + "__**🌀Miscellaneous**__\n/home 2";
       embed.addField("A-Spec", aspec, true);
       embed.addField("Places", places, true);
 

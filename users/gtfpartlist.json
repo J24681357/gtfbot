@@ -151,7 +151,7 @@
     {
       "type": "Weight Reduction",
       "name": "Stage 1",
-      "cost": 5000,
+      "cost": 10000,
       "percent": 10,
       "eligible": ["Production"],
       "prohibited": ["Electric"],
@@ -161,7 +161,7 @@
     {
       "type": "Weight Reduction",
       "name": "Stage 2",
-      "cost": 10000,
+      "cost": 20000,
       "percent": 15,
       "eligible": ["Production"],
       "prohibited": ["Electric"],
@@ -171,7 +171,7 @@
     {
       "type": "Weight Reduction",
       "name": "Stage 3",
-      "cost": 20000,
+      "cost": 40000,
       "percent": 30,
       "eligible": ["Production"],
       "prohibited": ["Electric"],

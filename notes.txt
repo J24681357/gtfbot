@@ -212,3 +212,54 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
 }) 
 
 !tune - ", "!tune [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!tune [\"type\"] [(number)] - Purchases a performance part from the [(number)] associated from the list of [\"type\"] parts.\nThis applies to your current car.\nThe current [\"type\"] part on your current car will be sold and replaced, but you must purchase the part with its full price first.", "!tune [\"type\"] [stock] - Revert the [\"type\"] installed to your car to Stock.
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'dwex',
+    description: 'Send a random car from the GT Fitness car list.',
+    options: [
+      {
+      "name": "options",
+      "description": "N/A: Select an option.",
+      "type": 3,
+      "required": false,
+      "choices": [
+      {
+            "name": "Show statistics",
+            "value": "info"
+        }]}
+        
+        ]
+  }
+})
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'settings',
+    description: 'N/A: Configure settings for the GTF bot.',
+    options: [{
+      "name": "options",
+      "description": "N/A: Select an option to set.",
+      "type": 3,
+      "required": true,
+      "choices": [
+      {
+            "name": "Distance Units",
+            "value": "units"
+        },
+        {
+            "name": "Accent/Progress Bar Color",
+            "value": "progressbar"
+        },
+        {
+            "name": "Time Zone Setting",
+            "value": "time"
+        }]},
+        {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the setting's catalog.",
+      "type": 4,
+      "required": false
+      }]
+  }
+})

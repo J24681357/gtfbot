@@ -67,7 +67,6 @@ function lobby() {
       if (!msg.member.roles.cache.find(r => r.name.includes('lobby-'))) {
         userdata["inlobby"] = stats.inlobby(false, "", userdata)
       }
-      console.log(userdata["inlobby"])
 
     if (query.length == 0) {
       query[0] = "info"
@@ -101,8 +100,9 @@ function lobby() {
             "numberid": numberid,
             "mode": "RACE",
             "host": msg.author.id,
-            "maxplayers": 2,
+            "maxplayers": 8,
             "players": [{"id": userdata["id"], "car": userdata["garage"][stats.currentcarnum(userdata) - 1], "ready": false}],
+            "isready": false,
             "racesettings": require(gtf.RACE).setrace("ONLINE")
           }
         var currentlobby = lobbies["lobbies"][userdata["id"]]
@@ -118,7 +118,7 @@ function lobby() {
                 allow: ['VIEW_CHANNEL'],
               },
             ],
-          })
+          }).then(channel => channel.setParent("820217666483912714"))
           userdata["inlobby"] = stats.inlobby(true, currentlobby["host"], userdata)
           require(gtf.LOBBY).save(lobbies,userdata)
           stats.save(userdata)
@@ -132,11 +132,10 @@ function lobby() {
           var embed = new Discord.MessageEmbed()
           embed.setColor(0x808080)
           var user = msg.author.username
-          let role = msg.guild.roles.cache.find(r => r.name === currentlobby["channelname"]);
+          let role = msg.guild.roles.cache.find(r => r.name === currentlobby["id"]);
           msg.member.roles.add(role).catch(console.error);
 
-          results = "ℹ️ " + user + " has joined the room."+ "\n\n" + 
-          "⚠ In order to the host to make lobby changes, make you allow DM access to this bot in the server settings. You may skip this if this does not apply to you."
+          results = "ℹ️ " + user + " has joined the room."+ "\n\n"
           embed.setDescription(results)
           server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).send(embed)
           return
@@ -145,33 +144,25 @@ function lobby() {
         })
     }
     else if (query[0] == "join") {
-      console.log(userdata)
       if (userdata["inlobby"][0]) {
         require(gtf.EMBED).error("❌ Error", "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed, msg, userdata);
         return
       }
       
       var number = query[1]
-      if (!gtftools.betweenInt(number, 1, Object.keys(lobbies["lobbies"]).length)) {
-        require(gtf.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, userdata);
-        return
-      }
       //server.channels.find(channel => channel.name === stats.inlobby()[1])
       var success = false;
       var currentlobby = null
       var list = Object.keys(lobbies["lobbies"])
       for (var i = 0; i < list.length; i++ ) {
-        if (lobbies["lobbies"][list[i]]["numberid"] == number) {
+        if (lobbies["lobbies"][list[i]]["numberid"] == parseInt(number)) {
           success = true
           currentlobby = lobbies["lobbies"][list[i]]
           break;
         }
       }
       
-      if (stats.currentcar(userdata) == "No car.") {
-         require(gtf.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, userdata);
-        return
-      }
+
 
       if (!success) {
         require(gtf.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, userdata);
@@ -181,32 +172,32 @@ function lobby() {
          require(gtf.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, userdata);
         return
       }
+      if (currentlobby["players"].length + 1 > currentlobby["maxplayers"]) {
+          require(gtf.EMBED).error("❌ Error", "This lobby is full.", embed, msg, userdata);
+          return
+      }
         userdata["inlobby"] = stats.inlobby(true, currentlobby["host"], userdata)
         stats.save(userdata)
 
       gtftools.interval(function() {
-        /*if (currentlobby["players"].length + 1 > 4) {
-          require(gtf.EMBED).error("❌ Error", "This lobby is full.", embed, msg, userdata);
-          return
-        }*/
     
 
       currentlobby["players"].push({"id": userdata["id"], "car": userdata["garage"][stats.currentcarnum(userdata) - 1]})
+      currentlobby["maxplayers"]++
       results = "☑️ You have joined a lobby: " + currentlobby["channelname"] + "."
        require(gtf.LOBBY).save(lobbies,userdata)
-
 
       embed.setColor(0x216C2A)
       embed.setDescription(results);
           embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-          server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).send(embed);
-          }, 3000, 1)
+          msg.channel.send(embed);
+          }, 2000, 1)
      
       gtftools.interval(function() {
         var embed = new Discord.MessageEmbed()
         embed.setColor(0x808080)
          var user = msg.author.username
-          let role = msg.guild.roles.cache.find(r => r.name === currentlobby["channelname"]);
+          let role = msg.guild.roles.cache.find(r => r.name === currentlobby["id"]);
           msg.member.roles.add(role).catch(console.error);
 
           results = "ℹ️ " + user + " has joined the room."
@@ -221,16 +212,21 @@ function lobby() {
       embed.setColor(0xFFFF00)
       var results = "⚠ There are no GTF lobbies online."
       } else {
-      results = []
+      var list = []
 
       for (var key in lobbies["lobbies"]) {
-       results.unshift("`ID:" + lobbies["lobbies"][key]['numberid'] + "🌐` " + msg.guild.members.cache.get(lobbies["lobbies"][key]['host']).user.username + "\'s Lobby `" + lobbies["lobbies"][key]["players"].length + "/" + lobbies["lobbies"][key]['maxplayers'] + "`")
+       list.unshift(["`ID:" + lobbies["lobbies"][key]['numberid'] + "🌐` " + msg.guild.members.cache.get(lobbies["lobbies"][key]['host']).user.username + "\'s Lobby `" + lobbies["lobbies"][key]["players"].length + "/" + lobbies["lobbies"][key]['maxplayers'] + "`", ""])
       }
       }
+
+      results = gtftools.list(list, page, "", "", false, "", 10, userdata);
+
+      
       embed.setTitle("__GTF Lobbies - List__");
       embed.setDescription(results);
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      msg.channel.send(embed);
+      gtftools.createpages(results, list, page, "", "", false, "", 10, [query,"lobby", reactionson, info], embed, msg, userdata);
+      return
     }
     else if (query[0] == "exit" || query[0] == "delete" || query[0] == "quit") {
       var member = msg.member
@@ -239,8 +235,9 @@ function lobby() {
         return
       }
       var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
-      if (msg.channel.name !== "lobby-" + stats.inlobbystat(userdata)[1]) {
-        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in lobbies.", embed, msg, userdata);
+      console.log(currentlobby["channelname"])
+      if (msg.channel.name !== currentlobby["channelname"]) {
+        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
         return
       }
 
@@ -257,14 +254,15 @@ function lobby() {
         
         function exit() {
         lobbies["lobbies"][currentlobby["host"]]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].filter(x => (x["id"] != userdata["id"]))
+        currentlobby["maxplayers"]++
         if (isHost) {
           server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).delete()
-          server.roles.cache.find(s => s.name === currentlobby["channelname"]).delete()
+          server.roles.cache.find(s => s.name === currentlobby["id"]).delete()
           userdata["inlobby"] = stats.inlobby(false, "", userdata)
           delete lobbies["lobbies"][userdata["id"]]
         } else {
         msg.delete({timeout:1000})
-        let role = server.roles.cache.find(s => s.name === currentlobby["channelname"]);
+        let role = server.roles.cache.find(s => s.name === currentlobby["id"]);
         member.roles.remove(role).catch(console.error);
         var embed = new Discord.MessageEmbed()
         embed.setColor(0x808080)
@@ -294,16 +292,19 @@ function lobby() {
            require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
         return
         }
+        if (setting.includes("lap") || setting.includes("laps")) {
+          require(gtf.LOBBY).lapsettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
+        }
+        if (setting.includes("roomname")) {
+          require(gtf.LOBBY).namesettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
+        }
         if (setting.includes("track")) {
           require(gtf.LOBBY).tracksettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
         }
-        if (setting.includes("lap") || setting.includes("laps")) {
-          require(gtf.LOBBY).lapsettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
-
-        }
-      if (changes == 'ERROR') {
+        console.log(changes)
+      if (changes[0] == 'ERROR' || changes[0] == "LIST") {
             return
-          }
+        }
       if (changes.length == 0) {
         require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
         return
@@ -313,7 +314,7 @@ function lobby() {
         embed2.setDescription(results)
         setTimeout(function() {
         require(gtf.LOBBY).save(lobbies,userdata)
-          server.channels.cache.find(channel => channel.name === lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["channelname"]).send(embed2)
+          msg.channel.send(embed2)
         }, 1000)
         return
 
@@ -326,12 +327,12 @@ function lobby() {
         return
       }
 
-      if (msg.channel.name !== "lobby-" + stats.inlobbystat(userdata)[1]) {
+      var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
+      if (msg.channel.name !== currentlobby["channelname"]) {
         require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
         return
       }
-      var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
-      embed.setTitle(msg.guild.members.cache.get(currentlobby['host']).user.username + "\'s Lobby")
+      embed.setTitle(currentlobby["channelname"])
       var racesettings = currentlobby["racesettings"]
       var playerlist = currentlobby["players"].map(x => msg.guild.members.cache.get(x["id"]).user.username).join("\n") 
       results = ""
@@ -345,7 +346,6 @@ function lobby() {
       "**Total Distance:** " + racesettings["km"] + " km" + " | " + racesettings["mi"] + " mi" + "\n";
 
       embed.setDescription(results + "\n\n" + racedetails)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send(embed).then(msg => {
             function func() {
               var results2 = "__Starting Grid__" + "\n"
@@ -373,10 +373,18 @@ function lobby() {
         return
       }
        var currentlobby = lobbies["lobbies"][userdata["id"]]
-      results = "The race is starting!\nYou have 30 seconds to join the race by reacting to the 🏁 emote."
+       
+      if (currentlobby["isready"])  {
+         require(gtf.EMBED).error("❌ Race Starting", "The race is already starting.", embed, msg, userdata);
+        return
+      }
+      
+      currentlobby["isready"] = true
+       require(gtf.LOBBY).save(lobbies,userdata)
+      results = "**The race is starting!**\n\n**❗You have 30 seconds to join the race by reacting to the 🏁 emote.**\n\n⚠ Changing cars while this message is active will not work."
       embed.setDescription(results)
-      server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).send(embed).then(msg => {
 
+      server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).send(embed).then(msg => {
         function start() {
 
         }
@@ -390,7 +398,6 @@ var size = reactions.users.cache.size
 var index = 0
           while (index < size) {
             var id = keys.next().value
-            console.log(id.toString())
           lobbies["lobbies"][currentlobby["host"]]["players"].map(function(x) {
           if (x["id"].toString() == id.toString()) {
             x["ready"] = true
@@ -401,9 +408,20 @@ var index = 0
           }
         setTimeout(function() {
           msg.delete({})
+
           lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].filter(x => x["ready"])
+                if (lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"].length == 0)  {
+         require(gtf.EMBED).error("❌ Race Aborted", "No players were on the track.", embed, msg, userdata);
+      currentlobby["isready"] = false
+       require(gtf.LOBBY).save(lobbies,userdata)
+        return
+      }
+
             require(gtf.RACE).preparerace("ONLINE", "", "ONLINE", lobbies["lobbies"][currentlobby["host"]]["racesettings"], args, embed, msg, userdata);
+            currentlobby["isready"] = false
+             require(gtf.LOBBY).save(lobbies,userdata)
         }, 2000)
+
         }, 30 * 1000)
 
       })

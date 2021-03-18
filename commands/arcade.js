@@ -32,7 +32,7 @@ module.exports = {
 
     var user = msg.author.username;
     embed.setAuthor(user, msg.author.displayAvatarURL());
-    var args = '\n' + '' + '\n';
+    var args = '';
     var page = 0
     var results = '';
     var info = '❓ **Select a race mode from the list above.**'

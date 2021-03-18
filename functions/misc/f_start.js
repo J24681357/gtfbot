@@ -8,7 +8,7 @@ var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.intro = function(userdata, command, msg) {
-  if (command === "jay" || command === "dw" || command === "dw4" || command === "gtf" || command == "srating") {
+  if (command === "jay" || command === "dw" || command === "dw4" || command === "dwex" || command === "gtf" || command == "srating") {
     return "COMMAND";
   }
 

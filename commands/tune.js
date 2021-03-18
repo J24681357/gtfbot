@@ -12,7 +12,7 @@ module.exports = {
   "title": "📦 GTF Auto - Tuning Shop",
   "cooldown": 3,
   "level": 0,
-  "channels": ["testing", "gtf-test-mode"],
+  "channels": ["gtf-demo", "testing", "gtf-test-mode"],
 
   "delete": false,
   "availinmaint": false,

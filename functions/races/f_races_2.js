@@ -258,23 +258,32 @@ module.exports.readysetgo = function(
             results2 = require(gtf.RACE).start(racesettings, racedetails, user, userdata);
         }
 
+        if (racesettings["mode"] == "ONLINE") {
+           embed.setDescription(results2);
+        } else {
 
         embed.setDescription(results2 + "\n\n" + racedetails);
+        }
        
         if (racesettings["misc"]["car"] == "") {
           var field2 = emote.transparent
         } else {
         var field2 = stats.currentcarmain(userdata)
         }
-        embed.addField(stats.main(userdata), field2);
         userdata["raceinprogress"] = [
           false,
           ["", ""],
           undefined,
           userdata["id"]
         ];
-        
-        msg.channel.send("<@" + userdata["id"] + ">" + " **FINISH**", embed).then(msg => {
+        var ping = "<@" + userdata["id"] + ">"
+        if (racesettings["mode"] == "ONLINE") {
+          var role = msg.guild.roles.cache.find(r => r.name === 'lobby-' + userdata["id"]);
+          ping = "<@&" + role["id"] + ">"
+        } else {
+          embed.addField(stats.main(userdata), field2);
+        }
+        msg.channel.send(ping + " **FINISH**", embed).then(msg => {
           race2ex.createfinalreactions(
             user,
             racedetails,

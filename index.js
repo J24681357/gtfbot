@@ -458,6 +458,32 @@ client.on('message', async msg => {
 
 });
 
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'car',
+    description: 'N/A: Displays the list of manufacturers you can choose from.',
+    options: [{
+      "name": "manufacturer",
+      "description": "N/A: Select a manufacturer to view.",
+      "type": 3,
+      "required": false
+      },
+      {"name": "sort",
+      "description": "N/A: Select the sorting order of your selected manufacturer.",
+      "type": 3,
+      "required": false,
+      "choices": [{"name":"By Credits (Ascending) (Default)", "value":"sort costasc"},{"name":"By Credits (Descending)", "value":"sort costdesc"}]
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the manufacturer's catalog.",
+      "type": 4,
+      "required": false
+      },
+      ]
+}
+})
+
   /*var choices2 = [
   {
             "name": "Decal",
@@ -478,37 +504,6 @@ client.on('message', async msg => {
 
 */
 
-
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
-  data: {
-    name: 'settings',
-    description: 'N/A: Configure settings for the GTF bot.',
-    options: [{
-      "name": "options",
-      "description": "N/A: Select an option to set.",
-      "type": 3,
-      "required": true,
-      "choices": [
-      {
-            "name": "Distance Units",
-            "value": "units"
-        },
-        {
-            "name": "Accent/Progress Bar Color",
-            "value": "progressbar"
-        },
-        {
-            "name": "Time Zone Setting",
-            "value": "time"
-        }]},
-        {
-      "name": "number",
-      "description": "N/A: Pick a number associated with the setting's catalog.",
-      "type": 4,
-      "required": false
-      }]
-  }
-})
 
 /*
 client.api.applications(process.env.USERID).commands.post({
@@ -749,7 +744,6 @@ function load_msg(msg) {
     }
 
     if (command.requirecar) {
-      console.log(stats.garagecount(userdata) == 0)
       if (stats.garagecount(userdata) == 0) {
         require(gtf.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
         return;
@@ -817,7 +811,7 @@ client.login(process.env.SECRET).then(function() {
       setTimeout(function() {
 
         require(gtf.SEASONAL).changeseasonals(false)
-        /*gtftools.interval(
+        gtftools.interval(
           function() {
             stats.resumerace(keys[index1], client);
             console.log('Good');
@@ -825,7 +819,7 @@ client.login(process.env.SECRET).then(function() {
           },
           1000,
           keys.length
-        )*/
+        )
 
         db.close()
       }, 5000)
