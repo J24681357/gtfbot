@@ -1150,6 +1150,21 @@
     },
     {
       "make": "Ford",
+      "name": "Ford Escort RS Cosworth",
+      "year": "1992",
+      "type": "Production",
+      "power": 224,
+      "weight": 2811,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 1.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1992_Ford_escortrscosworth4.jpg"
+    },
+    {
+      "make": "Ford",
       "name": "Ford Focus RS",
       "year": "2016",
       "type": "Production",
@@ -2851,6 +2866,21 @@
     },
     {
       "make": "Porsche",
+      "name": "Porsche Cayman S",
+      "year": 2007,
+      "type": "Production",
+      "power": 245,
+      "weight": 3000,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b279804cb1_-_05_cay_s_2007-lg.jpg"
+    },
+    {
+      "make": "Porsche",
       "name": "Porsche Cayman GT4 (718)",
       "year": 2019,
       "type": "Production",
@@ -2891,10 +2921,10 @@
       "weight": 2866,
       "tires": "Sports: Hard",
       "drivetrain": "RR",
-      "carcostm": 3,
+      "carcostm": 6,
       "aerom": 1,
       "condition": 100,
-      "special": [],
+      "special": ["x2"],
       "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE911Turbo-930--2987_5.jpg"
     },
     {

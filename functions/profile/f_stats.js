@@ -151,6 +151,7 @@ module.exports.setsetting = function(setting, value, userdata) {
 
 module.exports.addcredits = function(number, userdata) {
     userdata["credits"] += number;
+   // console.log(h)
   /*var username = client.guilds.cache.get("239493425131552778").members.cache.get(userdata).user.username
   if (number > 0){
   console.warn("Credits: " + username + " +" + number)
@@ -252,11 +253,21 @@ module.exports.view2 = function(gtfcar,userdata) {
   } else {
     var trans1 = gtfcar["transmission"]["tuning"][0]
   }
+
+  if (gtfcar["suspension"]["current"] == "Stock") {
+    var susp1 = "Default"
+    var susp2 = "Default"
+  } else {
+    var susp1 = gtfcar["suspension"]["tuning"][0] + " in"
+    var susp2 = gtfcar["suspension"]["tuning"][1] + " in"
+  }
+
+
   var cardetails = "__**Transmission**__" + "\n" + 
   "**Top Speed (Final Gear Ratio):** " + trans1 + " " + "\n" + 
   "__**Suspension**__" + "\n" + 
-  "**Camber Angle:** " +  gtfcar["transmission"]["tuning"][0].toString().replace("-999", "Default") + "in" + "\n" + 
-  "**Toe Angle:** " + gtfcar["suspension"]["tuning"][1].toString().replace("-999", "Default") + "in" + "\n"
+  "**Camber Angle:** " +  susp1 + "\n" + 
+  "**Toe Angle:** " + susp2  + "\n"
   return cardetails
 }
 
@@ -655,6 +666,8 @@ var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/G
     var dbo = db.db("GTFitness");
     if (condition == "DELETE") {
       dbo.collection("USERS").deleteOne({"id":userdata["id"]})
+      dbo.collection("REPLAYS").deleteOne({"id":userdata["id"]})
+       dbo.collection("CUSTOMCOURSES").deleteOne({"id":userdata["id"]})
     } else {
  dbo.collection("USERS").replaceOne({"id":userdata["id"]}, userdata).then(() => {
    console.log("User data saved.") 

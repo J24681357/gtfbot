@@ -6,6 +6,57 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
         ]
   }
 })
+
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'course',
+    description: 'Creates a procedurally generated race track.',
+    options: [{
+      "name": "name",
+      "description": "Sets a name for your track (no spaces).",
+      "type": 3,
+      "required": false
+      },
+      {"name": "type",
+      "description": "Set a type of track to generate.",
+      "type": 3,
+      "required": false,
+      "choices": [{"name":"Circuit", "value":"circuit"},{"name":"Sprint", "value":"sprint"}]
+      },
+      {
+      "name": "allsegments",
+      "description": "Sets the segment length for all segments of the track (2-20).",
+      "type": 4,
+      "required": false
+      },
+      {
+      "name": "minsegment",
+      "description": "Minimum segment length to generate (2-20).",
+      "type": 4,
+      "required": false
+      },
+      {
+      "name": "maxsegment",
+      "description": "Max segment length to generate (2-20).",
+      "type": 4,
+      "required": false
+      },
+      {
+      "name": "curviness",
+      "description": "Curviness for each turn of the track (0.0-1.0).",
+      "type": 3,
+      "required": false
+      },
+      {
+      "name": "maxangle",
+      "description": "Maximum angle (degrees) for each turn of the track (50-150).",
+      "type": 4,
+      "required": false
+      }
+      ]
+}
+})
+
 client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'seasonal',

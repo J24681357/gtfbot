@@ -1,0 +1,22 @@
+{
+  "sunrise": {
+    "name": "Sunrise",
+    "min": 6,
+    "max": 7
+  },
+  "day": {
+    "name": "Day",
+    "min": 8,
+    "max": 18
+  },
+  "sunset": {
+    "name": "Sunset",
+    "min": 19,
+    "max": 20
+  },
+  "night": {
+    "name": "Night",
+    "min": 21,
+    "max": 5
+  }
+}

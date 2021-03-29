@@ -246,6 +246,11 @@ module.exports = {
         stats.addmileage(query[1], query[1], userdata);
         results = "Success.";
       }
+      if (query[0] == "setexp") {
+        success = true;
+        stats["exp"] = query[1]
+        results = "Success.";
+      }
       if (query[0] == "addexp") {
         success = true;
         stats.addexp(parseInt(query[1]), userdata);

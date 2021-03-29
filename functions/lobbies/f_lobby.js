@@ -9,7 +9,7 @@ var gtf = process.env
 module.exports.tracksettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
     var tracks = require(gtf.TRACKS).list("names")
           var number = parseInt(query[2])
-          if (!gtftools.betweenInt(number, 1, tracks.length)) {
+          if (!gtftools.betweenInt(number, 1, tracks.length) | number == 0) {
             var list = tracks.map(x => [x, " "])
              results2 = gtftools.list(list, page, "", "", true, "", 15, [query, "lobby"], embed, msg, userdata)
       
@@ -33,12 +33,12 @@ module.exports.namesettings = function(changes, lobbies, [page, query, reactions
           var name = query[2]
           if (name === undefined) {
             require(gtf.EMBED).error('❌ Invalid Name', 'The room name must be at least 1 character.', embed, msg, userdata);
-          changes = "ERROR"
+          changes.push("ERROR")
           return
           }
           if (name.length > 20) {
           require(gtf.EMBED).error('❌ Invalid Name', 'The room name must be less than 20 characters.', embed, msg, userdata);
-          changes = "ERROR"
+            changes.push("ERROR")
           return
           }
           var roomname = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["channelname"]
@@ -52,7 +52,7 @@ module.exports.lapsettings = function(changes, lobbies, [page, query, reactionso
           var number = parseInt(query[2])
           if (!gtftools.betweenInt(number, 1, 10)) {
           require(gtf.EMBED).error('❌ Invalid Laps', 'You can only set laps between 1 and 10 in a lobby.', embed, msg, userdata);
-          changes = "ERROR"
+            changes.push("ERROR")
           return
           } else {
             var trackname = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["racesettings"]["track"]

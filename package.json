@@ -15,12 +15,13 @@
     "node": "13.0.0"
   },
   "dependencies": {
+    "canvas": "^2.7.0",
     "discord.js": "latest",
     "discord.js-rate-limiter": "^1.0.4",
-    "probe-image-size": "latest",
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "mongodb": "^3.6.3",
+    "probe-image-size": "latest",
     "random-normal": "^1.0.0"
   },
   "devDependencies": {

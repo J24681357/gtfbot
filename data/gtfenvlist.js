@@ -86,7 +86,7 @@ module.exports.RandomEnv = function(args) {
     wlist = wlist.filter(x => (x[0] == weather))
     var weatherselect = wlist[0]
   } else {
-  var chance = [0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 4]
+  var chance = [0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 4]
   var index = chance[Math.floor(Math.random() * chance.length)]
   var weatherselect = wlist[index]
   }
@@ -103,3 +103,5 @@ module.exports.RandomEnv = function(args) {
   this.surfaceemote = weatherselect[1];
   return this
 }
+
+

@@ -23,13 +23,17 @@ var gtftracks = JSON.parse(fs.readFileSync('./users/gtftracklist.json', 'utf8'))
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
 var gtfpaints = JSON.parse(fs.readFileSync('./users/gtfpaints.json', 'utf8'));
 var gtfexp = JSON.parse(fs.readFileSync('./users/gtfexp.json', 'utf8'));
+var gtfweather = JSON.parse(fs.readFileSync('./users/gtfweather.json', 'utf8'));
+var gtftime = JSON.parse(fs.readFileSync('./users/gtftime.json', 'utf8'));
 module.exports.gtfcarlist = gtfcars
 module.exports.gtftracklist = gtftracks
+module.exports.gtfweather = gtfweather
+module.exports.gtftime = gtftime
 module.exports.gtfpartlist = gtfparts
 module.exports.gtfpaintlist = gtfpaints
 module.exports.gtfexp = gtfexp
 module.exports.embedcounts = {}
-
+console.log(require(gtf.TIME).find({"name": ["Day"], "hours": [10] }))
 
 
 
@@ -291,7 +295,6 @@ client.on('message', async msg => {
         }
       }
       timestamps.set(msg.author.id, now);
-      console.log(cooldownAmount)
       setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
       return executecommand(command, args, msg, userdata)
@@ -372,12 +375,18 @@ client.on('message', async msg => {
     //
     if (!command.usedinlobby) {
       if (stats.inlobbystat(userdata)[0]) {
+
+        if (!msg.guild.roles.cache.find(r => r.name === 'lobby-' + userdata["inlobby"][1])) {
+          userdata["inlobby"] = stats.inlobby(false, "", userdata)
+        } else {
         var embed = new Discord.MessageEmbed();
         var user = msg.guild.members.cache.get(userdata["id"]).user.username;
         embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
         require(gtf.EMBED).warning('⚠️ Lobby In Session', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
         msg.channel.send(embed);
         return;
+        }
+        
       }
     }
 
@@ -417,7 +426,6 @@ client.on('message', async msg => {
     }
 
     if (command.requirecar) {
-      console.log(stats.garagecount(userdata) == 0)
       if (stats.garagecount(userdata) == 0) {
         require(gtf.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
         return;
@@ -458,31 +466,7 @@ client.on('message', async msg => {
 
 });
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
-  data: {
-    name: 'car',
-    description: 'N/A: Displays the list of manufacturers you can choose from.',
-    options: [{
-      "name": "manufacturer",
-      "description": "N/A: Select a manufacturer to view.",
-      "type": 3,
-      "required": false
-      },
-      {"name": "sort",
-      "description": "N/A: Select the sorting order of your selected manufacturer.",
-      "type": 3,
-      "required": false,
-      "choices": [{"name":"By Credits (Ascending) (Default)", "value":"sort costasc"},{"name":"By Credits (Descending)", "value":"sort costdesc"}]
-      },
-      {
-      "name": "number",
-      "description": "N/A: Pick a number associated with the manufacturer's catalog.",
-      "type": 4,
-      "required": false
-      },
-      ]
-}
-})
+
 
   /*var choices2 = [
   {
@@ -503,43 +487,215 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
     Displays your information, stats, and career progression.
 
 */
-
-
-/*
-client.api.applications(process.env.USERID).commands.post({
+//client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands("825481564476538900").delete()
+//client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands("825464762841956423").delete()
+client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
-    name: 'gtf',
-    description: 'Sends a random fact about GT Fitness and/or this Discord server.',
-    options: []
+  "name": "lobby",
+  "description": "Test: Does the same as /lobby info.",
+  "options": [
+      {
+      "name": "list",
+      "description": "Test: Displays the list of lobbies in GTF.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "create",
+      "description": "Test: Create a new lobby.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "start",
+      "description": "Test: Starts a race in your current lobby.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "info",
+      "description": "Test: Get info about the current lobby you are in.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "settings",
+      "description": "Test: Set lobby settings (Lobby host only).",
+      "type": 2,
+      "options": [
+        {
+          "name": "roomname",
+          "description": "Set the room name for the current lobby.",
+          "type": 1,
+          "options": [{
+                            "name": "name",
+                            "description": "1-20 characters & no spaces",
+                            "type": 3, 
+                            "required": true
+                  }]
+        },
+        {
+          "name": "track",
+          "description": "Test: Set the track in the current lobby.",
+          "type": 1,
+          "options": [{
+                            "name": "number",
+                            "description": "The track number to set the lobby | 0 for full list.",
+                            "type": 4, 
+                            "required": true
+                  }]
+        },
+        {
+          "name": "laps",
+          "description": "Test: Set the number of laps in the current lobby.",
+          "type": 1,
+          "options": [{
+                            "name": "number",
+                            "description": "Set the number of laps (1-10).",
+                            "type": 4, 
+                            "required": true
+                  }]
+        }
+      ]
+    },
+     {
+      "name": "exit",
+      "description": "Test: Exit from your current lobby.",
+      "type": 1,
+      "options": []
+    }
+  ]
 }
 })
-*/
 
+/*
+"options": [
+    {
+      "name": "create",
+      "description": "Test: Create a new lobby.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "start",
+      "description": "Test: Starts a race in your current lobby.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "info",
+      "description": "Test: Get info about the current lobby you are in.",
+      "type": 1,
+      "options": []
+    },
+    {
+      "name": "settings",
+      "description": "Test: Set lobby settings (Lobby host only).",
+      "type": 2,
+      "options": [
+        {
+          "name": "roomname",
+          "description": "Set the room name for the current lobby.",
+          "type": 1,
+          "options": [{
+                            "name": "name",
+                            "description": "1-20 characters & no spaces",
+                            "type": 3, 
+                            "required": true
+                  }]
+        },
+        {
+          "name": "laps",
+          "description": "Test: Set the number of laps in the current lobby.",
+          "type": 1,
+          "options": [{
+                            "name": "number",
+                            "description": "Set the number of laps (2-10).",
+                            "type": 4, 
+                            "required": true
+                  }]
+        }
+      ]
+    },
+     {
+      "name": "exit",
+      "description": "Test: Exit from your current lobby.",
+      "type": 1,
+      "options": []
+    }
+  ]
+*/
 client.ws.on('INTERACTION_CREATE', async interaction => {
   interaction.guild = client.guilds.cache.get(interaction.guild_id)
    interaction.channel = client.channels.cache.get(interaction.channel_id)
-   interaction.author = interaction.channel.guild.members.cache.get(interaction.member.user.id).user
+   interaction.member = interaction.guild.members.cache.get(interaction.member.user.id)
+   interaction.author =  interaction.member.user
+   
     const args = interaction.data.options;
+
+     function findVal(object, key) {
+    var value;
+    Object.keys(object).some(function(k) {
+        if (k === key) {
+            value = object[k];
+            return true;
+        }
+        if (object[k] && typeof object[k] === 'object') {
+            value = findVal(object[k], key);
+            return value !== undefined;
+        }
+    });
+    return value;
+}
+function findAllByKey(obj, keyToFind) {
+  return Object.entries(obj)
+    .reduce((acc, [key, value]) => (key === keyToFind)
+      ? acc.concat(value)
+      : (typeof value === 'object')
+      ? acc.concat(findAllByKey(value, keyToFind))
+      : acc
+    , [])
+}
+
+// USAGE
+
   if (args == undefined) {
     interaction.content = interaction.data.name.toLowerCase()
   } else {
+    if (interaction.data.name.toLowerCase() == "course") {
+
+      interaction.content = args.map(x => x["name"] + "=" + x["value"])
+      interaction.content.unshift(interaction.data.name.toLowerCase())
+      interaction.content = interaction.content.join(" ")
+    } else if (interaction.data.name.toLowerCase() == "lobby") {
+      interaction.content = findAllByKey(interaction.data.options, 'name').reverse()
+      if (findAllByKey(interaction.data.options, 'value').length != 0) {
+          interaction.content.pop()
+      interaction.content.push(findAllByKey(interaction.data.options, 'value')[0])
+      }
+      interaction.content.unshift(interaction.data.name.toLowerCase())
+      interaction.content = interaction.content.join(" ")
+    } else {
     interaction.content = args.map(x => x["value"])
     interaction.content.unshift(interaction.data.name.toLowerCase())
     interaction.content = interaction.content.join(" ")
+    }
   }
   const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
+    console.log(interaction.content)
 
   const commandName = interaction.data.name.toLowerCase();
 
     var command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
  
 
-      client.api.interactions(interaction.id, interaction.token).callback.post({
-    data: {
-      type: 5
-    }
-  })
+client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+  type: 4,
+  data: {
+    content: '**✅ Success**'
+  }
+}})
 
 setTimeout(function(){
   try {
@@ -564,8 +720,7 @@ function load_msg(msg) {
   var next = function() {
 
     var args = msg.content.split(/ +/);
-    var commandName = args.shift().toLowerCase();
-    console.log(args)
+    var commandName = args.shift().toLowerCase()
 
     var command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
@@ -621,7 +776,6 @@ function load_msg(msg) {
         }
       }
       timestamps.set(msg.author.id, now);
-      console.log(cooldownAmount)
       setTimeout(() => timestamps.delete(msg.author.id), cooldownAmount);
 
       return executecommand(command, args, msg, userdata)

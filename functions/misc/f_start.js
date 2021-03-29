@@ -8,7 +8,7 @@ var gtf = process.env;
 ////////////////////////////////////////////////////
 
 module.exports.intro = function(userdata, command, msg) {
-  if (command === "jay" || command === "dw" || command === "dw4" || command === "dwex" || command === "gtf" || command == "srating") {
+  if (command === "jay" || command === "dw" || command === "dw4" || command === "dwex" || command === "course" || command === "gtf" || command == "srating") {
     return "COMMAND";
   }
 
@@ -91,6 +91,13 @@ module.exports.intro = function(userdata, command, msg) {
             {
               id: userdata["id"],
               replays: {},
+            },
+            (err, result) => {}
+          );
+          dbo.collection("CUSTOMCOURSES").insertOne(
+            {
+              id: userdata["id"],
+              courses: {},
             },
             (err, result) => {}
           );

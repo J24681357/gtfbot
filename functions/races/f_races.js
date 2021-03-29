@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 var gtf = process.env;
 ////////////////////////////////////////////////////
 
-module.exports.setrace = function(racemode, extra) {
+module.exports.setrace = function(racemode, mode, track) {
   if (racemode == 'beginner') {
     var title = 'Arcade Mode - Beginner';
     var track = require(gtf.TRACKS).random({}, 1)[0]
@@ -94,6 +94,7 @@ module.exports.setrace = function(racemode, extra) {
   } else {
     racesettings = racemode;
     var env = require(gtf.ENV).RandomEnv({ time: racesettings['time'], weather: racesettings['weather'] });
+   var weather = require(gtf.WEATHER).random({})
     racesettings['time'] = env.timeemote + ' ' + env.time;
     racesettings['weather'] = env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%';
     return racesettings;
@@ -105,7 +106,7 @@ module.exports.setrace = function(racemode, extra) {
     distance = [limit, 'N/A', 'N/A'];
   }
   grid = grid[Math.floor(Math.random() * grid.length)];
-  if (extra == 'GARAGE') {
+  if (mode == 'GARAGE') {
     category = ['CUSTOM'];
   } else {
     category = category[Math.floor(Math.random() * category.length)];
@@ -599,6 +600,7 @@ module.exports.startonline = function(racesettings, racedetails, user, userdata)
     player["score"] = rnorm({ mean: player["car"]["fpp"], dev: 50 });
   })
   finalgridwinners = finalgridwinners.sort((x,y) => y["score"] - x["score"])
+  console.log(finalgridwinners)
 
   var index = 0;
 
@@ -613,7 +615,6 @@ module.exports.startonline = function(racesettings, racedetails, user, userdata)
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
   finalgridwinners.forEach(function(x) {
-    console.log(positions)
     var place = positions.shift()
     position = place.split('|')[0];
     prize = parseFloat(place.split('|')[1])

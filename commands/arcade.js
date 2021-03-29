@@ -30,8 +30,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.author.username;
-    embed.setAuthor(user, msg.author.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '';
     var page = 0
     var results = '';
@@ -95,7 +95,7 @@ module.exports = {
       gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "arcade", reactionson, info], embed, msg, userdata)
       
     } else {
-      embed.setTitle('__Arcade Mode - Car Selection__');
+      embed.setTitle('__Arcade Mode - Selection Menu__');
 
       results2 = '🚘' + ' ' + stats.currentcar(userdata)['name'] + '\n' + emote.gtlogowhite + ' ' + 'GT Sport Loaner Car' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
 
@@ -107,14 +107,84 @@ module.exports = {
           return require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
         }
 
+        function selectgaragemodecoursemaker() {
+          embed.fields = [];
+          return selecttrack()
+        }
+
         function selectgtsportmode() {
           embed.fields = [];
           return require(gtf.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
         }
 
-        var emojilist = [['🚘', '🚘', selectgaragemode], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
+        var emojilist = [['🚘', '🚘', selectgaragemode], ['🦝', '🦝', selectgaragemodecoursemaker], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
 
         gtftools.createreactions(emojilist, msg, userdata);
+
+        function selecttrack() {
+
+             var coursestats = []
+
+
+      var MongoClient = require('mongodb').MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+
+  MongoClient.connect(url, { useUnifiedTopology: true },
+    function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("GTFitness");
+      dbo.collection("CUSTOMCOURSES").find({"id":userdata["id"]}).forEach(row => {
+          coursestats = row["courses"]
+      }).then(() => 
+      {selectcourse()}
+      )
+})
+
+function selectcourse() {
+   if (Object.keys(coursestats).length == 0) {
+                require(gtf.EMBED).error(
+            "❌ No Courses",
+            "You have no courses saved.",
+            embed,
+            msg, userdata
+          );
+      return
+      }
+       info = ""
+
+  var emojilist = [];
+  var tracks = Object.keys(coursestats).map(function(id) {
+        return coursestats[id]
+    });
+    return
+
+    function func(index) {
+      var track = tracks[index]
+      
+      return require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', track, args, embed, msg, userdata);
+    }
+    for (var index = 0; index < tracks.length; index++) {
+      emojilist.push([numberlist[index], numberlist[index], func, index]);
+    }
+    gtftools.createreactions(emojilist, msg, userdata);
+
+
+
+
+
+}
+
+
+
+
+
+
+
+          
+        }
+
+
+        
       });
     }
   },

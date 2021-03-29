@@ -49,7 +49,6 @@ module.exports = {
       if (err) throw err;
       var dbo = db.db("GTFitness");
       dbo.collection("REPLAYS").find({"id":userdata["id"]}).forEach(row => {
-        console.log(row)
             replaystats = row["replays"]
       }).then(() => 
       {replay()}

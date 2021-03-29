@@ -193,10 +193,25 @@ module.exports.createpages = function(results, list, page, statfront, statback, 
       } else {
         var pick = select + 1 + (page*count)
       } 
+      if (name == "coursem") {
+        name = "coursem"
+        query = []
+      }
       if (name == "garage_regulate") {
         var pick = parseInt(list[select + (page*count)][0].split(":")[1].split("`")[0])
         name = "garage"
         query = []
+      }
+      if (name == "lobby") {
+        if (query[0] == "settings") {
+          if (query[2] == 0) {
+            query.pop()
+          }
+        } else { 
+        var pick = parseInt(list[select + (page*count)][0].split(":")[1].split("`")[0])
+        name = "lobby"
+        query = ["join"]
+      }
       }
       query.push(pick)
         

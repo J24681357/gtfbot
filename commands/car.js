@@ -25,8 +25,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
-    var user = msg.author.username
-    embed.setAuthor(user, msg.author.displayAvatarURL());
+    var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+    embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var oquery = [...query]
     var args = ""
     var page = 0
