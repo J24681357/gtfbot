@@ -57,9 +57,9 @@ module.exports.random = function(args, num) {
   for (var i = 0; i < num; i++) {
 var rweather = randomizer[Math.floor(Math.random()*randomizer.length)]
 
-  for (var i = 0; i < list.length; i++) {
-    if (list[i]["name"] == rweather) {
-      rweather = list[i]
+  for (var j = 0; j < list.length; j++) {
+    if (list[j]["name"] == rweather) {
+      rweather = list[j]
       break;
     }
   }

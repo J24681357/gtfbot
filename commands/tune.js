@@ -130,9 +130,7 @@ module.exports = {
       return
     }
 
-    /*if (stats.userid() == "237450759233339393") {
-        stats.addgift(select2[number-1][0], item, "PART")
-    }*/
+
     var select3 = select.map(function(x) {
       console.log(x)
       var cond = require(gtf.PARTS).checkpartsavail(x, car)

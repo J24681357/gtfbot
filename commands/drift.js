@@ -16,7 +16,7 @@ module.exports = {
   delete: false,
   availitoeveryone:true,
   availinmaint:false,
-   requireuserdata:true,
+  requireuserdata:true,
   requirecar: true,
   usedduringrace: false,
   usedinlobby: false,

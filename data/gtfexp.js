@@ -7,20 +7,21 @@ const client = new Discord.Client();
 var gtf = process.env
 ////////////////////////////////////////////////////
 
-module.exports.checklevel = function(level, embed, msg, id) {
-  var exp = stats.exp(id)
-  var currentlevel = stats.level(id)
+module.exports.checklevel = function(level, embed, msg, userdata) {
+  console.log(stats)
+  var exp = stats.exp(userdata)
+  var currentlevel = stats.level(userdata)
   if (currentlevel >= level || level == 0) {
     return true
   } else {
-  require(gtf.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,id)
+  require(gtf.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,userdata)
     return false
   }
 }
 
-module.exports.islevelup = function(id) {
-  var exp = stats.exp(id)
-  var level = stats.level(id)
+module.exports.islevelup = function(userdata) {
+  var exp = stats.exp(userdata)
+  var level = stats.level(userdata)
   var levelup = 0
   var levelupbool = false
   var leveldetails = [""]
@@ -38,6 +39,6 @@ for (var i = level; i < Object.keys(explevels).length; i++) {
     break;
   }
 }
- stats.levelup(levelup, id)
+ stats.levelup(levelup, userdata)
 return [levelupbool, levelup, leveldetails]
 }

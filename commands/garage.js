@@ -35,7 +35,8 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-    var args = '\n' + '`Args: !garage [(number)|sell (number)|view (number)|select (number)]`' + '\n';
+    var args = ""
+    //var args = '\n' + '`Args: !garage [(number)|sell (number)|view (number)|select (number)]`' + '\n';
     var page = 0
     var results = ''
     var info = ''

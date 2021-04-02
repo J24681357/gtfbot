@@ -1830,6 +1830,21 @@
     },
     {
       "make": "Lancia",
+      "name": "Lancia Ypsilon 1.3 MultiJet II",
+      "year": "2012",
+      "type": "Production",
+      "power": 95,
+      "weight": 2315,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FF",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://images.autouncle.com/it/car_images/4cca105f-6896-4124-8791-a66a3c3497b8_lancia-ypsilon-1-3-multijet-2012.jpg"
+    },
+    {
+      "make": "Lancia",
       "name": "Lancia Stratos HF Stradale",
       "year": "1974",
       "type": "Production",
@@ -2924,7 +2939,9 @@
       "carcostm": 6,
       "aerom": 1,
       "condition": 100,
-      "special": ["x2"],
+      "special": [
+        "x2"
+      ],
       "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE911Turbo-930--2987_5.jpg"
     },
     {
@@ -3159,6 +3176,21 @@
       "image": "https://www.carmagazine.co.uk/Images/upload/19931/images/5SeatIbizaCupraCARreview.jpg"
     }
   ],
+  "shelby": [{
+      "make": "Shelby",
+      "name": "Shelby Cobra 427",
+      "year": "1966",
+      "type": "Production",
+      "power": 484,
+      "weight": 2355,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 18,
+      "aerom": 1,
+      "condition": 100,
+      "special": ["x3"],
+      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/03/1967_shelby_cobra-pic-3528941083313090031.jpeg"
+    }],
   "subaru": [
     {
       "make": "Subaru",
@@ -3481,6 +3513,21 @@
     }
   ],
   "volkswagen": [
+    {
+      "make": "Volkswagen",
+      "name": "Volkswagen Golf I GTI",
+      "year": "1983",
+      "type": "Production",
+      "power": 110,
+      "weight": 1962,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGENGolfIGTI-1733_2.jpg"
+    },
     {
       "make": "Volkswagen",
       "name": "Volkswagen Golf VIII",

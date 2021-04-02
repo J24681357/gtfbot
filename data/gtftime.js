@@ -25,7 +25,7 @@ module.exports.find = function(args) {
 
       var count = 0
       if (args["name"] !== undefined) {
-        if (args["name"].length == 0) {
+        if (args["name"].length == 0 || args["name"][0] == "R" || args["name"][0] == "Random") {
           count++;
         } else {
           var names = args["name"];
@@ -43,6 +43,7 @@ module.exports.find = function(args) {
         while (j != (tkey["max"] + 1)) {
            var dict = {
             "name": tkey["name"],
+            "emoji": tkey["emoji"],
             "hour": j,
             "seconds": "00"
           }
@@ -80,6 +81,7 @@ module.exports.find = function(args) {
 module.exports.random = function(args, num) {
   var rlist = [];
   var list = require(gtf.TIME).find(args);
+  console.log(list)
   for (var i = 0; i < num; i++) {
     rlist.push(list[Math.floor(Math.random() * list.length)]);
   }

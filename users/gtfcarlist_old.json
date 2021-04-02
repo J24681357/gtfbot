@@ -2156,13 +2156,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
-  "385": {
-    "make": "Jaguar",
-    "name": "Jaguar XJ220 1992",
-    "image": "https://www.ultimatecarpage.com/images/car/223/Jaguar-XJ220-3461.jpg",
-    "rating": "⭐3",
-    "manufacturercost": 20000
-  },
   "386": {
     "make": "Jaguar",
     "name": "Jaguar XK120 SE Roadster 1954",
@@ -2170,13 +2163,6 @@
     "rating": "⭐1",
     "manufacturercost": 20000
   },
-  "388": {
-    "make": "Jaguar",
-    "name": "Jaguar XKR-S 2009",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/JAGUARXKR-S-3666_4.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  }, 
   "391": {
     "make": "Jeep",
     "name": "Jeep Compass 2018",
@@ -2356,13 +2342,6 @@
     "make": "Lancia",
     "name": "Lancia Kappa 2.0 Turbo LS 1995",
     "image": "https://www.automobile-catalog.com/img/pictonorzw/lancia/2-3-203.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 15000
-  },
-  "430": {
-    "make": "Lancia",
-    "name": "Lancia Stratos HF Stradale 1974",
-    "image": "https://pictures.topspeed.com/IMG/crop/201809/lancia-stratos-hf-st-5_800x0w.jpg",
     "rating": "⭐1",
     "manufacturercost": 15000
   },

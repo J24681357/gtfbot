@@ -67,7 +67,7 @@ module.exports = {
         var extra = require("../functions/misc/f_extras");
         return;
       }
-      if (query[0] == "changeseasonals") {
+      if (query[0] == "updateseasonals" || query[0] == "changeseasonals" ) {
         var success = true;
         require(gtf.SEASONAL).changeseasonals(true)
       }
@@ -248,7 +248,7 @@ module.exports = {
       }
       if (query[0] == "setexp") {
         success = true;
-        stats["exp"] = query[1]
+        userdata["exp"] = query[1]
         results = "Success.";
       }
       if (query[0] == "addexp") {
@@ -265,7 +265,7 @@ module.exports = {
 
       if (query[0] == "resetexplevel") {
         success = true;
-
+        userdata["level"] = 0
         results = "Success.";
       }
       if (query[0] == "careergift") {
@@ -288,7 +288,6 @@ module.exports = {
         if (query[1].split("-")[0] == "IA") {
           var races = require("../data/career/races").ialeague();
         }
-        console.log(races)
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
@@ -331,7 +330,8 @@ module.exports = {
         return msg.channel.send(embed);
         }
       } else {
-        msg.channel.send("Invalid");
+        require(gtf.EMBED).error('❌ Invalid', 'Invalid command.', embed, msg, userdata);
+        return
       }
     }
   }

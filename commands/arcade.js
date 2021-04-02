@@ -87,12 +87,23 @@ module.exports = {
       var list = results.split("\n").slice(0,-1).map(function(x){
       return [x, " "]
     })
-    
-    results2 = gtftools.list(list, page, "", "", true, "", 3, [query, "arcade"], embed, msg, userdata)
-      
-      embed.setDescription(results2)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "arcade", reactionson, info], embed, msg, userdata)
+    var pageargs = {
+      "text": "",
+      "list": list,
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": "arcade",
+      "rows": 3,
+      "page": page,
+      "numbers": true,
+      "reactions": reactionson,
+      "dm": false,
+      "footer": info,
+      "other": ""
+    }
+    pageargs["text"] = gtftools.formpage(pageargs)
+    gtftools.formpages(pageargs, embed, msg, userdata)
       
     } else {
       embed.setTitle('__Arcade Mode - Selection Menu__');

@@ -566,7 +566,7 @@ module.exports.main = function(userdata) {
   var levelup = require(gtf.EXP).islevelup(userdata)
   var gifts = ""
   if (levelup[0]) {
-    levelup = "`LEVEL UP`"
+    levelup = "`LEVEL UP`" + "\n" + "**Level "+ userdata['level'] + " Unlocks: "  + levelup[2].join(",") + "**"
   } else {
     levelup = ""
   }
@@ -591,7 +591,7 @@ module.exports.main = function(userdata) {
     return gifts + gtftools.numFormat(userdata["credits"]) + emote.credits +
     "  " + stats.mileage("USER", false, userdata).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + dwdistance + emote.mileage + "  " +
     userdata["exp"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-    emote.exp + " " + "Lv." + userdata['level']
+    emote.exp + " " + "Lv." + userdata['level'] + " " + levelup
     
 };
 

@@ -33,8 +33,6 @@ module.exports.gtfpartlist = gtfparts
 module.exports.gtfpaintlist = gtfpaints
 module.exports.gtfexp = gtfexp
 module.exports.embedcounts = {}
-console.log(require(gtf.TIME).find({"name": ["Day"], "hours": [10] }))
-
 
 
 module.exports.alluserdata = function() {
@@ -683,7 +681,6 @@ function findAllByKey(obj, keyToFind) {
   }
   const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
-    console.log(interaction.content)
 
   const commandName = interaction.data.name.toLowerCase();
 

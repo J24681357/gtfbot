@@ -181,7 +181,6 @@ module.exports = {
                 embed.setDescription(results);
                 if (thumbnail) {
                   embed.image = [];
-                  console.log(liveries[page][3])
                   embed.setThumbnail(liveries[page][3]);
                 } else {
                   embed.thumbnail = [];

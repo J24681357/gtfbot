@@ -12,7 +12,9 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({}, 1)[0]
     var km = track["length"];
     var limit = 10.0;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
+  
     var grid = ['8', '9', '10', '11', '12'];
     var category = [['N100'], ['N200'], ['N300'], ['Gr.4'], ['N100', 'N200'], ['N200', 'N300']];
     var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|600', '4th|500', '5th|400', '6th|300', '7th|200', '8th|100'];
@@ -23,7 +25,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({}, 1)[0]
     var km = track["length"];
     var limit = 15.0;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = ['10', '11', '12', '13', '14', '15', '16'];
     var category = [['N300'], ['N400'], ['N500'], ['N600'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['N300', 'N400'], ['N400', 'N500'], ['N500', 'N600']];
     var place = [emote.gold + ' 1st|2500', emote.silver + ' 2nd|2000', emote.bronze + ' 3rd|1500', '4th|1300', '5th|1100', '6th|900', '7th|700', '8th|500', '9th|400', '10th|300'];
@@ -34,7 +37,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({}, 1)[0]
     var km = track["length"];
     var limit = 30.0;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = ['12', '13', '14', '15', '16', '17', '18', '19', '20'];
     var category = [['N700'], ['N800'], ['N1000'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['Gr.2'], ['Gr.1'], ['N700', 'N800'], ['N800', 'N900', 'N1000']];
     var place = [emote.gold + ' 1st|5000', emote.silver + ' 2nd|4000', emote.bronze + ' 3rd|3000', '4th|2700', '5th|2400', '6th|2100', '7th|1800', '8th|1500', '9th|1300', '10th|1200', '11th|1100', '12th|1000'];
@@ -45,7 +49,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({options:["Drift"]}, 1)[0]
     var km = track["length"];
     var limit = 1;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = ['1'];
     var category = [['N100', 'N200', 'N300', 'N400', 'N500', 'N600', 'N700', 'N800', 'N900', 'N1000']];
     var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|500', '4th|200'];
@@ -56,7 +61,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({options:["Drift"]}, 1)[0]
     var km = track["length"];
     var limit = 1;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = ['1'];
     var category = [['N100', 'N200', 'N300', 'N400', 'N500', 'N600', 'N700', 'N800', 'N900', 'N1000']];
     var place = [emote.gold + ' 1st|1000', emote.silver + ' 2nd|800', emote.bronze + ' 3rd|500', '4th|200'];
@@ -67,7 +73,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var km = 0;
     var limit = ['1 Hour', '2 Hours', '3 Hours', '4 Hours', '8 Hours', '12 Hours', '24 Hours'];
     limit = limit[Math.floor(Math.random() * limit.length)];
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = ['24'];
     var category = [['N100'], ['N200'], ['N300'], ['N400'], ['N500'], ['N600'], ['N700'], ['N800'], ['N900'], ['N1000'], ['Gr.4'], ['Gr.B'], ['Gr.3'], ['Gr.2'], ['Gr.1']];
     var place = [emote.gold + ' 1st|10000', emote.silver + ' 2nd|9000', emote.bronze + ' 3rd|8000', '4th|7500', '5th|7000', '6th|6500', '7th|6000', '8th|5500', '9th|5000', '10th|4700', '11th|4000', '12th|3700', '13th|3400', '14th|3100', '15th|2800', '16th|2500'];
@@ -85,7 +92,8 @@ module.exports.setrace = function(racemode, mode, track) {
     var track = require(gtf.TRACKS).random({}, 1)[0]
     var km = track["length"];
     var limit = 0;
-    var env = require(gtf.ENV).RandomEnv({ time: 'R', weather: 'R' });
+    var time = require(gtf.TIME).random({},1)[0]
+    var weather = require(gtf.WEATHER).random({},1)[0]
     var grid = [['ONLINE']];
     var category = ['ONLINE'];
     var place = ['ONLINE'];
@@ -93,10 +101,11 @@ module.exports.setrace = function(racemode, mode, track) {
     var clean = 1;
   } else {
     racesettings = racemode;
-    var env = require(gtf.ENV).RandomEnv({ time: racesettings['time'], weather: racesettings['weather'] });
-   var weather = require(gtf.WEATHER).random({})
-    racesettings['time'] = env.timeemote + ' ' + env.time;
-    racesettings['weather'] = env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%';
+    var time = require(gtf.TIME).random({"name": racesettings["time"]},1)[0]
+    var weather = require(gtf.WEATHER).random({"name": racesettings["weather"]},1)[0]
+
+    racesettings['time'] = time["emoji"] + ' ' + time["hour"].toString() + ":" + time["seconds"];
+    racesettings['weather'] = weather["emoji"] + ' ' + weather["name"] + ' 💧' + weather["wetsurface"] + '%';
     return racesettings;
   }
 
@@ -112,12 +121,13 @@ module.exports.setrace = function(racemode, mode, track) {
     category = category[Math.floor(Math.random() * category.length)];
   }
 
+  console.log(weather)
   var racesettings = {
     title: title,
     grid: grid,
     category: category,
-    time: env.timeemote + ' ' + env.time,
-    weather: env.surfaceemote + ' ' + env.weather + ' 💧' + env.surface + '%',
+    time: time["emoji"] + ' ' + time["hour"].toString() + ":" + time["seconds"],
+    weather: weather["emoji"] + ' ' + weather["name"] + ' 💧' + weather["wetsurface"] + '%',
     positions: place,
     track: track["name"],
     drivetrains: [],
@@ -186,8 +196,8 @@ module.exports.preparerace = function(mode, levelselect, carmode, event, args, e
       title: 'Special Stage Route X - 10000m Top Speed Run',
       grid: 1,
       category: 'N/A',
-      time: 'R',
-      weather: 'R',
+      time: ['R'],
+      weather: ['R'],
       positions: [emote.goldtrophy + '1st|0'],
       track: 'Special Stage Route X',
       cleanbonus: 0,

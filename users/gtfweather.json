@@ -1,37 +1,37 @@
 {
   "Clear": {
     "name": "Clear",
-    "emote": "🔆",
+    "emoji": "🔆",
     "chance": 0.5,
     "wet": false
   },
   "Partly Cloudy": {
     "name": "Partly Cloudy",
-    "emote": "⛅",
+    "emoji": "⛅",
     "chance": 0.15,
     "wet": false
   },
     "Overcast": {
     "name": "Overcast",
-    "emote": "☁",
+    "emoji": "☁",
     "chance": 0.1,
     "wet": false
   },
     "Rain": {
     "name": "Rain",
-    "emote": "🌧",
+    "emoji": "🌧",
     "chance": 0.1,
     "wet": true
   },
   "Storm": {
     "name": "Storm",
-    "emote": "🌧",
+    "emoji": "🌧",
     "chance": 0.1,
     "wet": true
   },
   "Snow": {
     "name": "Snow",
-    "emote": "⛈",
+    "emoji": "⛈",
     "chance": 0.05,
     "wet": true
   }

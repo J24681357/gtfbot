@@ -113,7 +113,7 @@ module.exports.catcalc = function(category, weather, fpp) {
 }
 
 
-module.exports.list = function(dlist, page, statfront, statback, numbers, special, count, userdata) {
+module.exports.list = function(dlist, page, statfront, statback, numbers, special, count) {
   var list = ""
   var listnumber = ""
   var extra = ""
@@ -156,6 +156,211 @@ module.exports.list = function(dlist, page, statfront, statback, numbers, specia
   return list
 }
 
+module.exports.formpage = function(args) {
+  console.log(args)
+  var list = ""
+  var listnumber = ""
+  var extra = ""
+  if (args["other"].length != 0) {
+        args["start"] = args["other"] + args["start"]
+  }
+  var pagetotal = Math.ceil(args["list"].length / args["rows"]);
+  var x = 0;
+  var page = args["page"]
+  page = page * args["rows"]  
+  while (x < args["rows"] && args["list"][x+page] !== undefined) {
+        if (args["numbers"]) {
+        listnumber = (x + 1 + page)
+        }
+        if (!args["other"]) {
+          listnumber = listnumber + "." 
+        } else {
+          listnumber = listnumber + args["other"]
+        }
+        if (!args["numbers"]) {
+          listnumber = ""
+        }
+        if (args["list"][x+page].length > 2) {
+          extra = args["list"][x+page].slice(2).join(" ")
+        }
+
+        list = list + args["start"] + listnumber  + " " + args["list"][x + page][0] + " **" + args["list"][x + page][1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + args["end"] +  " " + extra + "\n";
+            x++;
+  }
+   if (list == "") {
+     if (args["page"] < 0) {
+       args["page"]++
+       return;
+     }
+     if (args["page"] > pagetotal) {
+       args["page"]--;
+       return
+     }
+   }
+  return list
+}
+
+module.exports.formpages = function(args, embed, msg, userdata) {
+
+  var results = args["text"]
+  var list = args["list"]
+  var rows = args["rows"]
+  var start = args["start"]
+  var end = args["end"]
+  var query = args["query"]
+  var command = args["command"]
+  var numbers = args["numbers"]
+  var reactions = args["reactions"]
+  var dm = args["dm"]
+  var footer = args["footer"]
+  var other = args["other"]
+
+  if (dm) {
+    msg_channel = msg.author
+  } else {
+    msg_channel = msg.channel
+  }
+    var select = 0
+    var reset = true
+    var index = 0
+     stats.addcount(userdata)
+    args["text"] = JSON.stringify(args["text"]).split("\\n").map(function(x) {
+        if (reset) {
+          x = stats.setting("PROGRESSBAR", userdata)[0] + " " + x
+          reset=false
+        }
+        return x.replace(/\\r/gi, "\n")
+    }).join("\n").replace(/\"/gi, "")
+    embed.setDescription(args["text"] + "\n" + footer)
+    var msg2 = msg
+  
+    msg_channel.send(embed).then(msg => {
+      
+    function selectoption() {
+      if (command == "car" && numbers == false) {
+        var pick = list[select + (args["page"]*rows)][0].split(" ")[0]
+      } else {
+        var pick = select + 1 + (args["page"]*rows)
+      } 
+      if (command == "coursem") {
+        command = "coursem"
+        query = []
+      }
+      if (command == "garage_regulate") {
+        var pick = parseInt(list[select + (args["page"]*rows)][0].split(":")[1].split("`")[0])
+        command = "garage"
+        query = []
+      }
+      if (command == "lobby") {
+        if (query[0] == "settings") {
+          if (query[2] == 0) {
+            query.pop()
+          }
+        } else { 
+        var pick = parseInt(list[select + (args["page"]*rows)][0].split(":")[1].split("`")[0])
+        command = "lobby"
+        query = ["join"]
+      }
+      }
+      query.push(pick)
+        
+      require("../../commands/" + command).execute(msg2,query,userdata)
+      return stats.save(userdata)
+      }
+    
+
+    function back() {
+      reset = true
+    if (args["page"] != 0) {
+      args["page"]--
+    }
+    select = 0
+    args["text"] = gtftools.formpage(args, userdata)
+    args["text"] = JSON.stringify(args["text"]).split("\\n").map(function(x) {
+        if (reset) {
+          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
+          reset=false
+        }
+        return x.replace(/\\r/gi, "\n")
+        }).join("\n").replace(/\"/gi, "")
+    embed.setDescription(args["text"] + "\n" + footer)
+    args["text"] = ""
+    msg.edit(embed)
+    }
+  
+    function next() {
+      reset = true
+      if (args["page"] != Math.ceil(list.length / rows) - 1) {
+       args["page"]++
+    }
+    select = 0
+      
+    args["text"] = gtftools.formpage(args, userdata)
+    args["text"] = JSON.stringify(args["text"]).split("\\n").map(function(x) {
+        if (reset) {
+          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
+          reset=false
+        }
+        return x.replace(/\\r/gi, "\n")
+    }).join("\n").replace(/\"/gi, "")
+      
+    embed.setDescription(args["text"] + "\n" + footer)
+    args["text"] = ""
+    msg.edit(embed)
+    }
+      
+    function up() {
+    var index = 0
+
+    console.log(args["text"])
+    args["text"] = gtftools.formpage(args, userdata)
+    console.log(args["text"])
+      
+    select--
+    if (select <= -1) {
+      select = JSON.stringify(args["text"]).split("\\n").length-2
+    }
+    args["text"] = JSON.stringify(args["text"]).split("\\n").map(function(x) {
+      if (select == index) {
+          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
+        }
+      index++
+        return x.replace(/\\r/gi, "\n")
+    }).join("\n").replace(/\"/gi, "")
+    embed.setDescription(args["text"] + "\n" + footer)
+    msg.edit(embed)
+    }
+      
+    function down() {
+    var index = 0
+
+    args["text"] = gtftools.formpage(args, userdata)
+      
+    select++
+      
+    if (select >= JSON.stringify(args["text"]).split("\\n").length-1) {
+      select = 0
+    }
+      
+    args["text"] = JSON.stringify(args["text"]).split("\\n").map(function(x) {
+        if (select == index) {
+          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
+        }
+      index++
+        return x.replace(/\\r/gi, "\n")
+    }).join("\n").replace(/\"/gi, "")
+    embed.setDescription(args["text"] + "\n" + footer)
+    msg.edit(embed)
+    }
+    
+    var emojilist = [[emote.yes, "Yes", selectoption, "Once"], [emote.leftarrow, "leftarrow", back], [emote.rightarrow, "rightarrow", next], [emote.uparrow, "uparrow", up], [emote.downarrow, "downarrow", down]]
+ 
+    if (reactions) {
+      gtftools.createreactions(emojilist, msg, userdata)
+    }
+    })
+  }
+  
 module.exports.emojilist = function(list) {
   var nlist = "";
   for (var index = 0; index < list.length; index++){

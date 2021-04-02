@@ -90,15 +90,28 @@ if (query.length === 0) {
         var m = makelist[makei].replace(/,/g, "-")
         var count = require(gtf.CARS).find({"make":[m]}).length
           list.push([m + " `🚘" + count + "`",  " "])
-      }
-
-      results = gtftools.list(list, page, "", "", false, "", 10, userdata);
-
+      }    
       embed.setTitle("__GTF Car Dealerships: " + (list.length) + " Makes" + "__");
-      embed.setDescription(results);
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results, list, page, "", "", false, "", 10, [query,"car", reactionson, info], embed, msg, userdata);
-      return
+
+
+   var pageargs = {
+      "text": "",
+      "list": list,
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": "car",
+      "rows": 10,
+      "page": page,
+      "numbers": false,
+      "reactions": reactionson,
+      "dm": false,
+      "footer": info,
+      "other": ""
+    }
+    pageargs["text"] = gtftools.formpage(pageargs)
+    gtftools.formpages(pageargs, embed, msg, userdata)
+    return
     }
     var make = list[0]["make"]
     var carlist = []

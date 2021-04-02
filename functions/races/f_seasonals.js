@@ -123,7 +123,11 @@ if (rtimeint == 0) {
 } else {
   time = 'Night'
 }
+var c = require(gtf.CARS).random({ "make": rmakes,"upperfpp": finalfpp, "lowerfpp": finalfpp - 80 }, 1)[0]
 
+var prizec = ["RANDOMCAR", { id: -1, name: " ", make: c["make"], fullname: [c["name"] + " " + c["year"]] }]
+
+console.log(prizec)
   var event = {
     "title": 'Seasonal Event ' + number,
     "eventid": eventid,
@@ -142,7 +146,7 @@ if (rtimeint == 0) {
     "models": [],
     "drivetrains": [],
     "types": ['Production'],
-    "prize": ["CREDITS", { "id": -1, "credits": 5000 }]
+    "prize": prizec
   }
 
   return event
