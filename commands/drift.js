@@ -32,11 +32,23 @@ module.exports = {
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = "";
-    var page = 0
     var results = '';
-    var info = '**❓ Select a drift mode from the list above.**'
-
-    /* Setup */
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer":  '**❓ Select a drift mode from the list above.**',
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     var results2 = '';
     var mode = "DRIFT"
@@ -45,7 +57,6 @@ module.exports = {
     var racedetails = '';
     var levelselect = '';
     var ready = false;
-    var reactionson = true
 
     if (query.length == 0) {
       racemode = 'Menu';
@@ -88,11 +99,9 @@ module.exports = {
         .map(function(x) {
           return [x, " "]
         })
-      results2 = gtftools.list(list, page, "", "", true, "", 2, [query, "drift"], embed, msg, userdata)
-
-      embed.setDescription(results2)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 2, [query, "drift", reactionson, info], embed, msg, userdata)
+       pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     } else {
       embed.setTitle('__Drift Trial - Car Selection__');
       var gtfcar = stats.currentcar(userdata)

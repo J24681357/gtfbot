@@ -37,17 +37,29 @@ module.exports = {
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = ""
     //var args = '\n' + '`Args: !garage [(number)|sell (number)|view (number)|select (number)]`' + '\n';
-    var page = 0
     var results = ''
-    var info = ''
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '🚘ID:', 
+      "end": emote.fpp,
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":  '',
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
     var selected = false;
     var purchase = false;
     var viewonly = false;
     var accept = true;
     var regulate = false;
-    var reactionson = true;
     var command = "garage";
 
     embed.setTitle('__My Garage: ' + stats.garagecount(userdata) + ' / ' + require(gtf.GTF).garagelimit + ' Cars__');
@@ -198,8 +210,9 @@ module.exports = {
         embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       }
       
-      gtftools.createpages(results, list, page, '🚘ID:', emote.fpp, true, '`', 10, [query, command, reactionson, info], embed, msg, userdata);
-      return;
+       pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     }
     /*   var newcar = [id, make, name, sell, rating, ["FPP " + fpp], ["Col 0"], ["E S 0"], ["Tr S 0"], ["Su S 0"], ["We S 0"], ["Tu S 0"], ["Nos S 0"], ["Oil 100"], ["Clean 100"], ["Dam 100"], ["Rim 0"]] */
   },

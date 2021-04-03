@@ -157,7 +157,6 @@ module.exports.list = function(dlist, page, statfront, statback, numbers, specia
 }
 
 module.exports.formpage = function(args) {
-  console.log(args)
   var list = ""
   var listnumber = ""
   var extra = ""
@@ -202,20 +201,9 @@ module.exports.formpage = function(args) {
 
 module.exports.formpages = function(args, embed, msg, userdata) {
 
-  var results = args["text"]
   var list = args["list"]
-  var rows = args["rows"]
-  var start = args["start"]
-  var end = args["end"]
-  var query = args["query"]
-  var command = args["command"]
-  var numbers = args["numbers"]
-  var reactions = args["reactions"]
-  var dm = args["dm"]
-  var footer = args["footer"]
-  var other = args["other"]
 
-  if (dm) {
+  if (args["dm"]) {
     msg_channel = msg.author
   } else {
     msg_channel = msg.channel
@@ -231,40 +219,40 @@ module.exports.formpages = function(args, embed, msg, userdata) {
         }
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(args["text"] + "\n" + footer)
+    embed.setDescription(args["text"] + "\n" + args["footer"])
+    embed.addField(stats.main(userdata), stats.currentcarmain(userdata))
     var msg2 = msg
   
     msg_channel.send(embed).then(msg => {
       
     function selectoption() {
-      if (command == "car" && numbers == false) {
-        var pick = list[select + (args["page"]*rows)][0].split(" ")[0]
+      if (args["command"] == "car" && args["numbers"] == false) {
+        var pick = args["list"][select + (args["page"]*args["rows"])][0].split(" ")[0]
       } else {
-        var pick = select + 1 + (args["page"]*rows)
+        var pick = select + 1 + (args["page"]*args["rows"])
       } 
-      if (command == "coursem") {
-        command = "coursem"
-        query = []
+      if (args["command"] == "coursem") {
+        args["query"] = []
       }
-      if (command == "garage_regulate") {
-        var pick = parseInt(list[select + (args["page"]*rows)][0].split(":")[1].split("`")[0])
-        command = "garage"
-        query = []
+      if (args["command"] == "garage_regulate") {
+        var pick = parseInt(args["list"][select + (args["page"]*args["rows"])][0].split(":")[1].split("`")[0])
+        args["command"] = "garage"
+        args["query"] = []
       }
-      if (command == "lobby") {
-        if (query[0] == "settings") {
-          if (query[2] == 0) {
-            query.pop()
+      if (args["command"] == "lobby") {
+        if (args["query"][0] == "settings") {
+          if (args["query"][2] == 0) {
+            args["query"].pop()
           }
         } else { 
-        var pick = parseInt(list[select + (args["page"]*rows)][0].split(":")[1].split("`")[0])
-        command = "lobby"
-        query = ["join"]
+        var pick = parseInt(args["list"][select + (args["page"]*args["rows"])][0].split(":")[1].split("`")[0])
+        args["command"] = "lobby"
+        args["query"] = ["join"]
       }
       }
-      query.push(pick)
+      args["query"].push(pick)
         
-      require("../../commands/" + command).execute(msg2,query,userdata)
+      require("../../commands/" + args["command"]).execute(msg2,args["query"],userdata)
       return stats.save(userdata)
       }
     
@@ -283,14 +271,14 @@ module.exports.formpages = function(args, embed, msg, userdata) {
         }
         return x.replace(/\\r/gi, "\n")
         }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(args["text"] + "\n" + footer)
+    embed.setDescription(args["text"] + "\n" + args["footer"])
     args["text"] = ""
     msg.edit(embed)
     }
   
     function next() {
       reset = true
-      if (args["page"] != Math.ceil(list.length / rows) - 1) {
+      if (args["page"] != Math.ceil(args["list"].length / args["rows"]) - 1) {
        args["page"]++
     }
     select = 0
@@ -304,7 +292,7 @@ module.exports.formpages = function(args, embed, msg, userdata) {
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
       
-    embed.setDescription(args["text"] + "\n" + footer)
+    embed.setDescription(args["text"] + "\n" + args["footer"])
     args["text"] = ""
     msg.edit(embed)
     }
@@ -327,7 +315,7 @@ module.exports.formpages = function(args, embed, msg, userdata) {
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(args["text"] + "\n" + footer)
+    embed.setDescription(args["text"] + "\n" + args["footer"])
     msg.edit(embed)
     }
       
@@ -349,13 +337,13 @@ module.exports.formpages = function(args, embed, msg, userdata) {
       index++
         return x.replace(/\\r/gi, "\n")
     }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(args["text"] + "\n" + footer)
+    embed.setDescription(args["text"] + "\n" + args["footer"])
     msg.edit(embed)
     }
     
     var emojilist = [[emote.yes, "Yes", selectoption, "Once"], [emote.leftarrow, "leftarrow", back], [emote.rightarrow, "rightarrow", next], [emote.uparrow, "uparrow", up], [emote.downarrow, "downarrow", down]]
  
-    if (reactions) {
+    if (args["reactions"]) {
       gtftools.createreactions(emojilist, msg, userdata)
     }
     })

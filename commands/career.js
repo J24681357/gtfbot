@@ -31,7 +31,22 @@ module.exports = {
     var args = "\n" + '`Args: !career ["league"] [(number)]`' + "\n"
     var page = 0
     var results = ""
-    var info = "**❓ Select an event from the list above using the numbers associated or the reactions.**"
+        var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer":  "**❓ Select an event from the list above using the numbers associated or the reactions.**",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     /* Setup */
     var league = 0
@@ -66,7 +81,6 @@ module.exports = {
     var racesettings
     var finalgrid
     var mode = "CAREER"
-    var reactionson = true
 
     var racedetails = ""
     if (league == "beginner" || league == "b" || league == "B") {
@@ -133,11 +147,9 @@ module.exports = {
         .map(function(x) {
           return [x, " "]
         })
-      results2 = gtftools.list(list, page, "", "", true, "", 5, [query, "career"], embed, msg, userdata)
-
-      embed.setDescription(results2)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 5, [query, "career", reactionson, info], embed, msg, userdata)
+    pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     } else {
       var number = query[1]
       if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
@@ -176,13 +188,9 @@ module.exports = {
           .map(function(x) {
             return [x, " "]
           })
-        var page = 0
-
-        results2 = gtftools.list(list, page, "", "", true, "", 3, [query, "career"], embed, msg, userdata)
-
-        embed.setDescription(results2)
-        embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-        gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "career", reactionson, info], embed, msg, userdata)
+    pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
         return
       }
 

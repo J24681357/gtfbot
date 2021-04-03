@@ -29,17 +29,29 @@ module.exports = {
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var oquery = [...query]
     var args = ""
-    var page = 0
     var results = ""
-    var info = "❓ **Select from the makes listed above **"
-
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer": "❓ **Select from the makes listed above **",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //           
 
     var sort = "costasc"
     
     var makelist = require(gtf.CARS).list("makes")
     var number = 0;
     var itempurchase = false;
-    var reactionson = true
 
     if (query[0] === undefined || query[0] == "list") {
       query = []
@@ -92,24 +104,8 @@ if (query.length === 0) {
           list.push([m + " `🚘" + count + "`",  " "])
       }    
       embed.setTitle("__GTF Car Dealerships: " + (list.length) + " Makes" + "__");
-
-
-   var pageargs = {
-      "text": "",
-      "list": list,
-      "start": "", 
-      "end": "",
-      "query": query,
-      "command": "car",
-      "rows": 10,
-      "page": page,
-      "numbers": false,
-      "reactions": reactionson,
-      "dm": false,
-      "footer": info,
-      "other": ""
-    }
-    pageargs["text"] = gtftools.formpage(pageargs)
+    pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
     gtftools.formpages(pageargs, embed, msg, userdata)
     return
     }
@@ -138,14 +134,11 @@ if (query.length >= 2) {
       return
     }
 }
-    info = "**❓ Select a car from the list above using the numbers associated or the reactions.**"
-    results = gtftools.list(carlist, page, "", emote.fpp, true, "", 10, userdata);
-    
-    embed.setTitle("__" + make + ": " + (carlist.length) + " Cars" + "__");
-    embed.setDescription(results);
-    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-    gtftools.createpages(results, carlist, page, "", emote.fpp, true, "", 10, [oquery, "car", reactionson, info], embed, msg, userdata)
-
+ embed.setTitle("__" + make + ": " + (carlist.length) + " Cars" + "__");
+    pageargs["footer"] = "**❓ Select a car from the list above using the numbers associated or the reactions.**"
+    pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
   }
 
 };

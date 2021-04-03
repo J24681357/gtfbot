@@ -33,11 +33,22 @@ module.exports = {
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '';
-    var page = 0
-    var results = '';
-    var info = '❓ **Select a race mode from the list above.**'
-
-    /* Setup */
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "", 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 3,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer": "❓ **Select a league from the list above. **",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     var results2 = '';
     var mode = 'ARCADE';
@@ -46,7 +57,6 @@ module.exports = {
     var racedetails = '';
     var levelselect = '';
     var ready = false;
-    var reactionson = true
 
     if (query.length == 0) {
       racemode = 'Menu';
@@ -87,21 +97,7 @@ module.exports = {
       var list = results.split("\n").slice(0,-1).map(function(x){
       return [x, " "]
     })
-    var pageargs = {
-      "text": "",
-      "list": list,
-      "start": "", 
-      "end": "",
-      "query": query,
-      "command": "arcade",
-      "rows": 3,
-      "page": page,
-      "numbers": true,
-      "reactions": reactionson,
-      "dm": false,
-      "footer": info,
-      "other": ""
-    }
+    pageargs["list"] = list
     pageargs["text"] = gtftools.formpage(pageargs)
     gtftools.formpages(pageargs, embed, msg, userdata)
       
