@@ -7,9 +7,9 @@ var gtf = process.env
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
-module.exports.garagelimit = 30;
-module.exports.replaylimit = 20;
-module.exports.courselimit = 20;
+module.exports.garagelimit = 50;
+module.exports.replaylimit = 10;
+module.exports.courselimit = 5;
 module.exports.giftlimit = 5;
 
 ////////////////////////////

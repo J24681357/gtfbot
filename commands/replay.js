@@ -35,7 +35,23 @@ module.exports = {
       "\n";
     var page = 0
     var results = ''
-    var info = "**❓ Choose a number that corresponds to the replays above.**"
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '🕛ID:', 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":  "**❓ Choose a number that corresponds to the replays above.**",
+         "special": "",
+      "other": "`"
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     /* Setup */
     var success = false;
@@ -54,10 +70,10 @@ module.exports = {
       {replay()}
       )
 })
+console.log(replaystats)
 
         
   function replay() {
-    var reactionson = true
     if (Object.keys(replaystats).length == 0) {
                 require(gtf.EMBED).error(
             "❌ No Replays",
@@ -99,9 +115,7 @@ module.exports = {
         
       function clearreplay() {
         replaystats.clear(userdata)
-        embed.setDescription("✅ Replay data cleared.")
-        embed.setColor(0x216C2A)
-        msg.edit(embed).then(msg => {msg.delete({timeout:5000})})
+        require(gtf.EMBED).success('✅ Success', 'Replay data cleared.', 5000, true, embed, msg, userdata);
       } 
         
       var emojilist = [[emote.yes, 'Yes', clearreplay]]
@@ -193,11 +207,9 @@ module.exports = {
       var list = Object.keys(replaystats).map(function(id) {
         return [replaystats[id][0] + " `" + replaystats[id][4] + "`", " "];
       });
-      results = gtftools.list(list, page, "🕛ID:", "", true, "`", 10, userdata);
-
-      embed.setDescription(results);
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results, list, page, "🕛ID:", "", true, "`", 10, [query, "replay", reactionson, info], embed, msg, userdata);
+       pageargs["list"] = list
+     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     }
   }
   }

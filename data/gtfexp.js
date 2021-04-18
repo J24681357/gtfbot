@@ -8,7 +8,6 @@ var gtf = process.env
 ////////////////////////////////////////////////////
 
 module.exports.checklevel = function(level, embed, msg, userdata) {
-  console.log(stats)
   var exp = stats.exp(userdata)
   var currentlevel = stats.level(userdata)
   if (currentlevel >= level || level == 0) {

@@ -6,22 +6,21 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
         ]
   }
 })
-
 client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'course',
     description: 'Creates a procedurally generated race track.',
-    options: [{
+    options: [
+      {"name": "type",
+      "description": "Set a type of track to generate.",
+      "type": 3,
+      "required": true,
+      "choices": [{"name":"Circuit", "value":"circuit"},{"name":"Sprint", "value":"sprint"}]
+      },{
       "name": "name",
       "description": "Sets a name for your track (no spaces).",
       "type": 3,
       "required": false
-      },
-      {"name": "type",
-      "description": "Set a type of track to generate.",
-      "type": 3,
-      "required": false,
-      "choices": [{"name":"Circuit", "value":"circuit"},{"name":"Sprint", "value":"sprint"}]
       },
       {
       "name": "allsegments",

@@ -6,11 +6,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var gtf = process.env
 ////////////////////////////////////////////////////
-module.exports.time = function(results, number, query, embed, msg, userdata) {
+module.exports.time = function(results, number, pageargs, embed, msg, userdata) {
     var list = []
     var page = 0
     var date = new Date()
-    var info = "❓ **What time is it? Select with the number corresponding to your current time zone (Military Time).**"
+    pageargs["footer"] = "❓ **What time is it? Select with the number corresponding to your current time zone (Military Time).**"
 
     var minutes = date.getMinutes()
     if (minutes <= 9) {
@@ -24,7 +24,6 @@ module.exports.time = function(results, number, query, embed, msg, userdata) {
       var offset = index
       var usertime = utc + (3600000*offset);
       usertime = new Date(usertime);
-      
   
       list.push([usertime.getHours() + ":" + minutes, index])
     }
@@ -53,15 +52,16 @@ module.exports.time = function(results, number, query, embed, msg, userdata) {
         list = list.map(function(x) {
       return [x[0], " "]
     })
-    results = gtftools.list(list, page, "", "", true, "", 10, userdata)
-    embed.setDescription(results + "\n\n" + info);
-    gtftools.createpages(results, list, page, "", "", true, "", 10, [query, "settings", true, info], embed, msg, userdata)
+        
+    pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata); 
     return "PAGES"
   }
 }
-module.exports.units = function(results, number, query, embed, msg, userdata) {
+module.exports.units = function(results, number, pageargs, embed, msg, userdata) {
   embed.setTitle("__GTF Settings - Mileage Units__")
-  var info = "❓ **Select units corresponding from the list above.**"
+  pageargs["footer"] = "❓ **Select units corresponding from the list above.**"
   var list = [["Kilometers (KM)", " "], ["Mileage (MI)", " "]]
   var success = true;
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
@@ -84,16 +84,16 @@ module.exports.units = function(results, number, query, embed, msg, userdata) {
         list = list.map(function(x) {
       return [x[0], " "]
     })
-    results = gtftools.list(list, page, "", "", true, "", 10, userdata)
-    embed.setDescription(results + "\n\n" + info);
-    gtftools.createpages(results, list, page, "", "", true, "", 10,  [query, "settings", true, info], embed, msg, userdata)
-    return "PAGES"
+    pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata)
+    ;return "PAGES"
   }
 }
 
-module.exports.progressbar = function(results, number, query, embed, msg, userdata) {
+module.exports.progressbar = function(results, number, pageargs, embed, msg, userdata) {
   embed.setTitle("__GTF Settings - Progress Bar__")
-  var info = "❓ **Select a color corresponding from the list above.**"
+  pageargs["footer"] = "❓ **Select a color corresponding from the list above.**"
   var list = [["White", ["⬜", "⬛"]], ["Red", ["🟥", "⬛"] ], ["Orange", ["🟧", "⬛"]], ["Yellow", ["🟨",  "⬛"]], ["Green", ["🟩",  "⬛"]], ["Blue", ["🟦", "⬛"]], ["Purple", ["🟪", "⬛"]], ["Brown", ["🟫",  "⬛"]], ["GT6 " + emote.exp + "`Lv.10`", [emote.gt6progressbar, emote.gt6progressbarblack] ]]
     var success = true;
   
@@ -129,9 +129,9 @@ module.exports.progressbar = function(results, number, query, embed, msg, userda
       return [x[0], " "]
     })
 
-    results = gtftools.list(list, page, "", "", true, "", 10, userdata)
-    embed.setDescription(results + "\n\n" + info);
-    gtftools.createpages(results, list, page, "", "", true, "", 10,  [query, "settings", true, info], embed, msg, userdata)
+       pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
     return "PAGES"
   }
 }

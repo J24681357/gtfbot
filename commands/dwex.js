@@ -34,7 +34,8 @@ module.exports = {
     var args = '';
     var page = 0
     var results = ''
-    var info = ''
+    var info = ''    
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     /* Setup */
     if (query[0] == "info") {
@@ -48,7 +49,8 @@ for (var makei = 0; makei < makelist.length; makei++) {
 
 results = "**Total Manufacturers:** " + makelist.length + "\n" + 
 "**Total Cars:** " + total + "\n" + 
-"**Production:** " + require(gtf.CARS).find({"types":["Production"]}).length + "\n" + 
+"**Production Cars :** " + require(gtf.CARS).find({"types":["Production"]}).length + "\n" + 
+"**Aftermarket Cars:** " + require(gtf.CARS).find({"types":["Aftermarket"]}).length + "\n"
 "**Race Cars:** " + require(gtf.CARS).find({"types":["Race Car"]}).length + "\n"
     embed.setDescription(results);
     msg.channel.send(embed)

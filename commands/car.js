@@ -35,7 +35,7 @@ module.exports = {
       "list": "",
       "start": "", 
       "end": "",
-      "query": query,
+      "query": oquery,
       "command": __filename.split("/").splice(-1)[0].split(".")[0],
       "rows": 10,
       "page": 0,
@@ -43,6 +43,7 @@ module.exports = {
       "reactions": true,
       "dm": false,
       "footer": "❓ **Select from the makes listed above **",
+      "special": "",
       "other": ""
     }
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //           
@@ -105,6 +106,7 @@ if (query.length === 0) {
       }    
       embed.setTitle("__GTF Car Dealerships: " + (list.length) + " Makes" + "__");
     pageargs["list"] = list
+    pageargs["special"] = "Manufacturer"
     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
     gtftools.formpages(pageargs, embed, msg, userdata)
     return
@@ -136,7 +138,8 @@ if (query.length >= 2) {
 }
  embed.setTitle("__" + make + ": " + (carlist.length) + " Cars" + "__");
     pageargs["footer"] = "**❓ Select a car from the list above using the numbers associated or the reactions.**"
-    pageargs["list"] = list
+    pageargs["list"] = carlist
+    pageargs["end"] = emote.fpp
     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
     gtftools.formpages(pageargs, embed, msg, userdata)
   }

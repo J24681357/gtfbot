@@ -30,7 +30,23 @@ module.exports = {
     var args = ""
     var page = 0
     var results = ""
-    var info = "❓ **Select a part type corresponding with the name (or number) of the part type above.**"
+      var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '', 
+      "end": '',
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer": "❓ **Select a part type corresponding with the name (or number) of the part type above.**",
+        "special": "",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     /* Setup */
     var results2 = ""
@@ -40,7 +56,6 @@ module.exports = {
     embed.setTitle("__" + title + "__")
 
     var selectedtype = false
-    var reactionson = true
 
     if (query.length == 0) {
       results = "__**Engine**__ - !tune [engine|eng|e] ['stock'|(number)] " +
@@ -48,12 +63,10 @@ module.exports = {
       var list = results.split("\n").map(function(x) {
         return [x, " "]
       })
-      var page = 0
-      results2 = gtftools.list(list, page, "", "", true, "", 7, [query, "tune"], embed, msg, userdata)
-
-      embed.setDescription(results)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 7, [query, "tune", true, info], embed, msg, userdata)
+      pageargs['rows'] = 7
+      pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
       return
     }
 
@@ -132,17 +145,14 @@ module.exports = {
 
 
     var select3 = select.map(function(x) {
-      console.log(x)
       var cond = require(gtf.PARTS).checkpartsavail(x, car)
       return ["**" + gtftools.numFormat(x["cost"]) + "**" + emote.credits + " " + x["type"] + " " + x["name"] + " ", cond]
     })
-
-    results = gtftools.list(select3, page, "", emote.fpp, true, "", 10, userdata)
-
-    embed.setDescription(results)
-    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-    info = "❓ **Select an upgrade corresponding with the numbers above or the reactions.**"
-    gtftools.createpages(results, select3, page, "", emote.fpp, true, "", 10, [query, "tune", reactionson, info], embed, msg, userdata)
+    pageargs["footer"] = "❓ **Select an upgrade corresponding with the numbers above or the reactions.**"
+    pageargs["end"] = emote.fpp
+    pageargs['list'] = select3;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
     return
   }
 }

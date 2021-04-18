@@ -46,6 +46,7 @@ module.exports = {
       "reactions": true,
       "dm": false,
       "footer": "❓ **Select a league from the list above. **",
+      "special": "",
       "other": ""
     }
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
@@ -104,14 +105,24 @@ module.exports = {
     } else {
       embed.setTitle('__Arcade Mode - Selection Menu__');
 
-      results2 = '🚘' + ' ' + stats.currentcar(userdata)['name'] + '\n' + emote.gtlogowhite + ' ' + 'GT Sport Loaner Car' + '\n\n' + '❓ **Click one of the reactions to select a car.**';
+      results2 = '1️⃣' + ' ' + "Race" + '\n' + emote.gtlogowhite + ' ' + 'Race (GT Sport Loaner Car)' + '\n\n' + '❓ **Click one of the reactions to select an option.**';
 
       embed.setDescription(results2);
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
       msg.channel.send({ embed: embed}).then(msg => {
         function selectgaragemode() {
           embed.fields = [];
-          return require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
+          var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GARAGE',
+            "car": stats.currentcar(userdata),
+            "trackselect": "RANDOM",
+            "track": {},
+            "racesettings": {},
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
         }
 
         function selectgaragemodecoursemaker() {
@@ -121,10 +132,20 @@ module.exports = {
 
         function selectgtsportmode() {
           embed.fields = [];
-          return require(gtf.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
+          var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GTSPORT',
+            "car": {},
+            "trackselect": "RANDOM",
+            "track": {},
+            "racesettings": {},
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
         }
 
-        var emojilist = [['🚘', '🚘', selectgaragemode], ['🦝', '🦝', selectgaragemodecoursemaker], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
+        var emojilist = [['1️⃣', '1️⃣', selectgaragemode], ['🦝', '🦝', selectgaragemodecoursemaker], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
 
         gtftools.createreactions(emojilist, msg, userdata);
 
@@ -163,21 +184,30 @@ function selectcourse() {
   var tracks = Object.keys(coursestats).map(function(id) {
         return coursestats[id]
     });
-    return
+    embed.setDescription(tracks.map(t => t["name"]).join("\n"))
+    msg.channel.send(embed).then(msg => {
+      var numberlist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣"]
 
     function func(index) {
       var track = tracks[index]
-      
-      return require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', track, args, embed, msg, userdata);
+        var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GARAGE',
+            "car": stats.currentcar(userdata),
+            "trackselect": "SELECT",
+            "track": track,
+            "racesettings": {},
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
     }
     for (var index = 0; index < tracks.length; index++) {
       emojilist.push([numberlist[index], numberlist[index], func, index]);
     }
     gtftools.createreactions(emojilist, msg, userdata);
-
-
-
-
+    })
+    
 
 }
 

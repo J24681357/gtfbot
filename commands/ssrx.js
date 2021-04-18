@@ -28,16 +28,16 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-    var args = '\n' + '`Args: !ssrx`' + '\n';
-    var page = 0
+    var args = '';
     var results = ''
     var info = "❓ **For each setting, select an item (or number) corresponding from a setting's list.**"
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
 
     var results2 = '';
     var mode = 'SSRX';
     var carmode = 'GARAGE';
+    var levelselect = 10000
 
     var ready = false;
     if (query.length == 0) {
@@ -48,7 +48,17 @@ module.exports = {
      var ocar = require(gtf.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
     var ready = true;
     if (ocar["type"] == "Production") {
-    require(gtf.RACE).preparerace(mode, '', carmode, "", args, embed, msg, userdata);
+      
+        var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GARAGE',
+            "car": stats.currentcar(userdata),
+            "trackselect": "SELECT",
+            "track": require(gtf.TRACKS).find({"name":["Special Stage Route X"]})[0],
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
     } else {
        require(gtf.EMBED).error("❌ Production Cars Only", "Production cars are only allowed for this event.", embed, msg, userdata)
       return

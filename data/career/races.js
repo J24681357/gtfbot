@@ -22,7 +22,7 @@ module.exports.beginner = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 5000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 5000 }],
     },
     b2: {
       "title": "MX-5/Roadster/Miata Cup",
@@ -60,7 +60,7 @@ module.exports.beginner = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 6000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 6000 }],
     },
   };
 }; // ["RANDOMCAR", {"make": "Any", "upperfpp":300, "lowerfpp": 200}] // length 12.000
@@ -87,7 +87,7 @@ module.exports.amateur = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 10000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 10000 }],
     },
     a2: {
       "title": "Clio Cup",
@@ -125,7 +125,7 @@ module.exports.amateur = function() {
       models: [],
       drivetrains: ["FR"],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 10000 }]
+      prize: ["CREDITS", { id: -1, name: " ", item: 10000 }]
     },
     a4: {
       "title": 'Honda Festival',
@@ -175,7 +175,7 @@ module.exports.icleague = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 20000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 20000 }],
     },
     ic2: {
       "title": "Autodrome Lago Maggiore Tour",
@@ -194,7 +194,7 @@ module.exports.icleague = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 25000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 25000 }],
     },
     ic3: {
       "title": "MR Challenge",
@@ -240,7 +240,7 @@ module.exports.ibleague = function() {
       models: [],
       drivetrains: [],
       types: ["Production", "Aftermarket"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 40000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 40000 }],
     },
     ib2: {
       "title": "Corvette Championship",
@@ -278,7 +278,7 @@ module.exports.ibleague = function() {
       models: [],
       drivetrains: [],
       types: ["Production"],
-      prize: ["CREDITS", { id: -1, name: " ", credits: 45000 }],
+      prize: ["CREDITS", { id: -1, name: " ", item: 45000 }],
     }, 
     ic4: {
       "title": "Tesla Racing Series",
@@ -343,8 +343,7 @@ module.exports.ibleague = function() {
 };*/
 
 /*83-75*/
-
-  
+//limit 20
 
 module.exports.ialeague = function() {
   return {
@@ -365,7 +364,7 @@ module.exports.ialeague = function() {
       "models": [],
       "drivetrains": [],
       "types": ["Production", "Aftermarket"],
-      "prize": ["CREDITS", { id: -1, name: " ", credits: 100000 }],
+      "prize": ["CREDITS", { id: -1, name: " ", item: 100000 }],
     },
     "ia2": {
       "title": "La Festa Cavallino",
@@ -390,9 +389,9 @@ module.exports.ialeague = function() {
       "title": 'GT3 World Championship',
       "eventid": 'IA-3',
       positions: [
-        emote.goldtrophy + ' 1st|7500',
-        '<a:silvertrophy:549169214200741889> 2nd|7000',
-        '<a:bronzetrophy:549169213676322857> 3rd|6500',
+        emote.goldtrophy + ' 1st|20000',
+        emote.silvertrophy + ' 2nd|14000',
+        emote.bronzetrophy + ' 3rd|9000',
         '4th|6000',
         '5th|5500',
         '6th|5000',
@@ -414,18 +413,54 @@ module.exports.ialeague = function() {
         [4, 'Mount Panorama Circuit', 4],
         [5, 'Nürburgring Nordschleife', 2],
       ],
-      category: ['Gr.3'],
-      "time": ['R'],
-      "weather": ['R'],
-      grid: 20,
-      difficulty: 75,
-      fpplimit: 600,
-      models: ['Any <:gt3:698962765443891280>1'],
-      type: ['<:gt3:698962765443891280> GT3 Race Car'],
-      prize: ['Bentley ⭐2', 'M Continental GT3-R 2015'],
+      "category": ["Gr.3"],
+      "time": ["Day"],
+      "weather":["Clear"],
+      "grid": 20,
+      "difficulty": 77,
+      "fpplimit": 600,
+      "upperfpp": 600,
+      "lowerfpp": 400,
+      "makes": [],
+      "models": [],
+      "drivetrains": [],
+      "types": ["Race Car: GT3"],
+      "prize": ["RANDOMCAR", { id: -1, name: " ", make: ["Peugeot"], fullname: ["Peugeot Vision Gran Turismo Gr.3 2017"]}
+      ]
     }
   };
 };
+
+//limit 30.000-50.000
+module.exports.sleague = function() {
+  return {
+    "s1": {
+      "title": "X2019 Competition Series",
+      "eventid": "S-1",
+      "positions": [emote.goldtrophy + " 1st|20000", emote.silvertrophy + " 2nd|15000", emote.bronzetrophy + " 3rd|10000", "4th|9000", "5th|8000", "6th|7000", "7th|6000", "8th|5500", "9th|5000", "10th|4500", "11th|4000", "12th|3700", "13th|3300", "14th|3100", "15th|2900", "16th|2600", "17th|2400", "18th|2100", "19th|1500", "20th|1000"],
+      "tracks": [
+        [1, "Silverstone Grand Prix Circuit", 8], 
+      [2, "Autopolis International Racing Course", 7], 
+      [3, "Fuji International Speedway GT", 6],
+       [4, "Mid-Field Raceway", 10], 
+       [5, "Circuit de la Sarthe", 3]],
+      "category": ["CUSTOM"],
+      "time": ["R"],
+      "weather": ["Clear"],
+      "grid": 30,
+      "difficulty": 75,
+      "fpplimit": 2000,
+      "upperfpp": 2000,
+      "lowerfpp": 1000,
+      "makes": ["Red-Bull"],
+      "models": ["X2019 Competition"],
+      "drivetrains": [],
+      "types": ["Redbull X"],
+      "prize": ["CREDITS", { id: -1, name: " ", item: 200000 }],
+    }
+  }
+};
+
 /*,
  
     ic3: {

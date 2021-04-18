@@ -36,11 +36,26 @@ module.exports = {
     var args = '\n' + '`Args: !gifts [(number)]`' + '\n';
     var page = 0
     var results = ''
-    var info = ''
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '', 
+      "end": '',
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer":  '',
+       "special": "",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     /* Setup */
     var selected = false;
-    var reactionson = true
 
     if (stats.gifts(userdata).length == 0) {
       require(gtf.EMBED).error(
@@ -91,10 +106,8 @@ module.exports = {
         return [item[1]['author'] + "\r" + item[1]['name'] + " " + item[0], ' '];
       });
     }
-    results = gtftools.list(list, page, '', '', true, '', 10, userdata);
-
-    embed.setDescription(results);
-    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
+    pageargs["list"] = list
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
 
     if (selected) {
       embed.addField(
@@ -102,21 +115,7 @@ module.exports = {
         args + stats.currentcarmain(userdata)
       );
     } else {
-      gtftools.createpages(
-        results,
-        list,
-        page,
-        '',
-        '',
-        false,
-        '',
-        10,
-        [query, 'gift', reactionson, info],
-        embed,
-        msg,
-        userdata
-      );
-      return;
+    gtftools.formpages(pageargs, embed, msg, userdata)
     }
   },
 };

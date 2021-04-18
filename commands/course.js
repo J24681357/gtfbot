@@ -34,6 +34,7 @@ module.exports = {
     var page = 0
     var results = ''
     var info = '**❓ The red point would be the starting point.**'
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     /* Setup */
 
@@ -44,7 +45,6 @@ module.exports = {
     var allsegment = 0
     var type = "circuit"
     var name = "Generic Track"
-    console.log(query)
 
     for (var i = 0; i < query.length; i++) {
       if (query[i].includes("name=")) {

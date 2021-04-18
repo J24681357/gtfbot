@@ -404,6 +404,21 @@
     },
     {
       "make": "Audi",
+      "name": "Audi TT RS Coupe",
+      "year": "2010",
+      "type": "Production",
+      "power": 335,
+      "weight": 3360,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/AUDI-TT-RS-Coupe-4073_2.jpg"
+    },
+    {
+      "make": "Audi",
       "name": "Audi TTS Coupe",
       "year": "2016",
       "type": "Production",
@@ -543,6 +558,21 @@
     },
     {
       "make": "BMW",
+      "name": "BMW M4 Gr.4 (Gran Turismo)",
+      "year": "2014",
+      "type": "Race Car: GT4",
+      "power": 394,
+      "weight": 3009,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 10,
+      "aerom": 4,
+      "condition": 100,
+      "special": [],
+      "image": "https://lh3.googleusercontent.com/proxy/UoLWdtvkYv5PfHS525mcBklNrNCPR4g8eVlLGPDMcS5SUjs5bTpnUJka7eTTtlQMlNPvxoiR_-qpajYESTMNRAjqJNCBPE1jhd0VIn88OEM762pHpPIiznBWAEwrvyVvAohK38Sgxlx6cSWYzjc98g"
+    },
+    {
+      "make": "BMW",
       "name": "BMW M4 Coupe (F82)",
       "year": "2014",
       "type": "Production",
@@ -592,7 +622,7 @@
       "make": "Bugatti",
       "name": "Bugatti Vision Gran Turismo",
       "year": "2015",
-      "type": "Vision Gran Turismo",
+      "type": "Concept",
       "power": 1626,
       "weight": 3086,
       "tires": "Racing: Hard",
@@ -600,7 +630,10 @@
       "carcostm": 100,
       "aerom": 5,
       "condition": 100,
-      "special": [],
+      "special": [
+        "Vision Gran Turismo",
+        "Concept"
+      ],
       "image": "https://i.pinimg.com/originals/da/8c/af/da8cafc04570a83f8e8eb3ea7c2f3f08.jpg"
     },
     {
@@ -724,6 +757,21 @@
       "condition": 100,
       "special": [],
       "image": "https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/1049x590/quality/80/https://s.blogcdn.com/slideshows/images/slides/715/144/3/S7151443/slug/l/dsc-6134-1.jpg"
+    },
+    {
+      "make": "Chevrolet",
+      "name": "Chevrolet Super Sport",
+      "year": "2014",
+      "type": "Production",
+      "power": 415,
+      "weight": 3975,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 4,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://st.motortrend.com/uploads/sites/5/2013/02/2014-Chevrolet-SS-Daytona1.jpg"
     }
   ],
   "daihatsu": [
@@ -2043,6 +2091,21 @@
       "condition": 100,
       "special": [],
       "image": "http://image.superstreetonline.com/f/39027170+w+h+q80+re0+cr1/epcp-1210-01%2B2013-lotus-exige-s%2Bcover.jpg"
+    },
+    {
+      "make": "Lotus",
+      "name": "Lotus Exige Cup 430 (Type 49)",
+      "year": "2018",
+      "type": "Production",
+      "power": 430,
+      "weight": 2328,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 6,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://motoring.pxcrush.net/motoring/general/editorial/exige-i-jlq2.jpg?width=640"
     }
   ],
   "mazda": [
@@ -2545,6 +2608,150 @@
       "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/01q3/267338/mugen-s2000-road-test-review-car-and-driver-photo-9547-s-original.jpg?fill=2:1&resize=1200:*"
     }
   ],
+  "opel": [
+    {
+      "make": "Opel",
+      "name": "Opel Corsa GSi",
+      "year": "2018",
+      "type": "Production",
+      "power": 148,
+      "weight": 2676,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://img-ik.cars.co.za/images/2019/4/OpelCorsaGSi/tr:n-news_large/gsi1.jpg"
+    },
+    {
+      "make": "Opel",
+      "name": "Opel Speedster",
+      "year": "2001",
+      "type": "Production",
+      "power": 200,
+      "weight": 2050,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/OPELSpeedster-458_3.jpg"
+    }
+  ],
+  "pagani": [
+    {
+      "make": "Pagani",
+      "name": "Pagani Huayra",
+      "year": "2011",
+      "type": "Production",
+      "power": 720,
+      "weight": 2976,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 40,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.ultimatecarpage.com/images/car/4607/Pagani-Huayra-36304.jpg"
+    }
+  ],
+  "peugeot": [
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 106 1.6 Rallye",
+      "year": "2003",
+      "type": "Production",
+      "power": 102,
+      "weight": 1962,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://ranwhenparkeddotnet.files.wordpress.com/2013/03/peugeot-106-rallye-5.jpg"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 206 2.0 S16",
+      "year": "1999",
+      "type": "Production",
+      "power": 135,
+      "weight": 2315,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "http://www.motorstown.com/images/peugeot-206-2.0-s16-02.jpg"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 207 RC",
+      "year": "2009",
+      "type": "Production",
+      "power": 172,
+      "weight": 2921,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 1,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://s1.cdn.autoevolution.com/images/gallery/PEUGEOT207RC-2639_8.jpg"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 208 GTi",
+      "year": "2014",
+      "type": "Production",
+      "power": 204,
+      "weight": 2646,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/Peugeot-208-GTi-%281%29.jpg"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot 508 1.6L PureTech 225",
+      "year": "2018",
+      "type": "Production",
+      "power": 222,
+      "weight": 3131,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 3,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/pug-2811.jpg?itok=HMeaBiaB"
+    },
+    {
+      "make": "Peugeot",
+      "name": "Peugeot Vision Gran Turismo Gr.3",
+      "year": "2017",
+      "type": "Race Car: GT3",
+      "power": 542,
+      "weight": 2756,
+      "tires": "Racing: Hard",
+      "drivetrain": "FR",
+      "carcostm": 25,
+      "aerom": 5,
+      "condition": 100,
+      "special": [
+        "Vision Gran Turismo",
+        "Concept"
+      ],
+      "image": "https://lh3.googleusercontent.com/proxy/28b6Vl0zrdbJEzlHRISgCa-IEvPHpMFoRVNdfazv31nEHKe6pmjADJaYb_XWEe31_6YeFm6GmebydeL6ZOIHqpsLcAEClqRjpCQLIsr0iBQa7ibsAtRyYRkllxwK1q0qU3d8SouKP7GouxpdPGiEuLTo7-mZSkjCVdgO3yK2gyQYyM0FdJ3hi2nr_dJwMiRvBBb0NsG9Ze4oYdJdRXIK0RTY3FD0K18"
+    }
+  ],
   "nio": [
     {
       "make": "Nio",
@@ -2594,6 +2801,21 @@
       "condition": 100,
       "special": [],
       "image": "https://www.torquenews.com/sites/default/files/image-1080/2015_370z_nismo_-_1-600_0.jpg"
+    },
+    {
+      "make": "Nissan",
+      "name": "Nissan Juke Nismo RS",
+      "year": "2014",
+      "type": "Production",
+      "power": 211,
+      "weight": 3147,
+      "tires": "Sports: Hard",
+      "drivetrain": "4WD",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.cnet.com/a/img/4pgFMD66qhdFFBc8rPx2ON3a5_c=/868x488/2014/10/23/9c0e5396-c1f7-4ee9-b05d-04632b85c1ad/2014-nissan-juke-nismors-pan-000.jpg"
     },
     {
       "make": "Nissan",
@@ -2688,130 +2910,21 @@
       "image": "https://cdn-8.motorsport.com/static/img/mgl/1700000/1710000/1719000/1719400/1719428/s8/endurance-24-hours-of-the-n-rburgring-2014-24-schulze-motorsport-nissan-gt-r-nismo-gt3-ka.jpg"
     }
   ],
-  "opel": [
+  "noble": [
     {
-      "make": "Opel",
-      "name": "Opel Corsa GSi",
-      "year": "2018",
+      "make": "Noble",
+      "name": "Noble M600",
+      "year": "2010",
       "type": "Production",
-      "power": 148,
-      "weight": 2676,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 1,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "https://img-ik.cars.co.za/images/2019/4/OpelCorsaGSi/tr:n-news_large/gsi1.jpg"
-    },
-    {
-      "make": "Opel",
-      "name": "Opel Speedster",
-      "year": "2001",
-      "type": "Production",
-      "power": 200,
-      "weight": 2050,
+      "power": 650,
+      "weight": 2756,
       "tires": "Sports: Hard",
       "drivetrain": "MR",
-      "carcostm": 2,
+      "carcostm": 20,
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/OPELSpeedster-458_3.jpg"
-    }
-  ],
-  "peugeot": [
-    {
-      "make": "Peugeot",
-      "name": "Peugeot 106 1.6 Rallye",
-      "year": "2003",
-      "type": "Production",
-      "power": 102,
-      "weight": 1962,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 1,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "https://ranwhenparkeddotnet.files.wordpress.com/2013/03/peugeot-106-rallye-5.jpg"
-    },
-    {
-      "make": "Peugeot",
-      "name": "Peugeot 206 2.0 S16",
-      "year": "1999",
-      "type": "Production",
-      "power": 135,
-      "weight": 2315,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 1,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "http://www.motorstown.com/images/peugeot-206-2.0-s16-02.jpg"
-    },
-    {
-      "make": "Peugeot",
-      "name": "Peugeot 207 RC",
-      "year": "2009",
-      "type": "Production",
-      "power": 172,
-      "weight": 2921,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 1,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/PEUGEOT207RC-2639_8.jpg"
-    },
-    {
-      "make": "Peugeot",
-      "name": "Peugeot 208 GTi",
-      "year": "2014",
-      "type": "Production",
-      "power": 204,
-      "weight": 2646,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 2,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/Peugeot-208-GTi-%281%29.jpg"
-    },
-    {
-      "make": "Peugeot",
-      "name": "Peugeot 508 1.6L PureTech 225",
-      "year": "2018",
-      "type": "Production",
-      "power": 222,
-      "weight": 3131,
-      "tires": "Sports: Hard",
-      "drivetrain": "FF",
-      "carcostm": 3,
-      "aerom": 1,
-      "condition": 100,
-      "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/pug-2811.jpg?itok=HMeaBiaB"
-    },
-    {
-      "make": "Peugeot",
-      "name": "Peugeot Vision Gran Turismo Gr.3",
-      "year": "2017",
-      "type": "Race Car: GT3",
-      "power": 542,
-      "weight": 2756,
-      "tires": "Racing: Hard",
-      "drivetrain": "FR",
-      "carcostm": 25,
-      "aerom": 5,
-      "condition": 100,
-      "special": [
-        "Vision Gran Turismo"
-      ],
-      "image": "https://lh3.googleusercontent.com/proxy/28b6Vl0zrdbJEzlHRISgCa-IEvPHpMFoRVNdfazv31nEHKe6pmjADJaYb_XWEe31_6YeFm6GmebydeL6ZOIHqpsLcAEClqRjpCQLIsr0iBQa7ibsAtRyYRkllxwK1q0qU3d8SouKP7GouxpdPGiEuLTo7-mZSkjCVdgO3yK2gyQYyM0FdJ3hi2nr_dJwMiRvBBb0NsG9Ze4oYdJdRXIK0RTY3FD0K18"
+      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2016/08/li1109657noble-007.jpg?itok=UeSCJ1my"
     }
   ],
   "pontiac": [
@@ -2865,7 +2978,7 @@
     {
       "make": "Porsche",
       "name": "Porsche 914/6",
-      "year": 1970,
+      "year": "1970",
       "type": "Production",
       "power": 174,
       "weight": 2034,
@@ -2882,7 +2995,7 @@
     {
       "make": "Porsche",
       "name": "Porsche Cayman S",
-      "year": 2007,
+      "year": "2007",
       "type": "Production",
       "power": 245,
       "weight": 3000,
@@ -2897,7 +3010,7 @@
     {
       "make": "Porsche",
       "name": "Porsche Cayman GT4 (718)",
-      "year": 2019,
+      "year": "2019",
       "type": "Production",
       "power": 414,
       "weight": 3276,
@@ -2912,7 +3025,7 @@
     {
       "make": "Porsche",
       "name": "Porsche Taycan Turbo S",
-      "year": 2020,
+      "year": "2020",
       "type": "Production",
       "power": 752,
       "weight": 5060,
@@ -3005,6 +3118,25 @@
       "image": "https://supercars.net/blog/wp-content/uploads/2016/05/Porsche-Carrera-GT-FA-Speed-1600x1200.jpg"
     }
   ],
+  "redbull": [
+    {
+      "make": "Red Bull",
+      "name": "Red Bull X2019 Competition",
+      "year": "2019",
+      "type": "Redbull X",
+      "power": 802,
+      "weight": 1433,
+      "tires": "Racing: Medium",
+      "drivetrain": "MR",
+      "carcostm": 100,
+      "aerom": 20,
+      "condition": 100,
+      "special": [
+        "Concept"
+      ],
+      "image": "https://live.staticflickr.com/65535/48302857387_31d20674c7_b.jpg"
+    }
+  ],
   "renault": [
     {
       "make": "Renault",
@@ -3095,6 +3227,21 @@
       "condition": 100,
       "special": [],
       "image": "http://www.imcdb.org/i449905.jpg"
+    },
+    {
+      "make": "Renault",
+      "name": "Renault Sport Mégane R.S. Trophy",
+      "year": "2011",
+      "type": "Production",
+      "power": 216,
+      "weight": 3058,
+      "tires": "Sports: Hard",
+      "drivetrain": "FF",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://www.conceptcarz.com/images/Renault/2012-Renault-Megane-RS-Trophy-01-800.jpg"
     }
   ],
   "scion": [
@@ -3176,7 +3323,8 @@
       "image": "https://www.carmagazine.co.uk/Images/upload/19931/images/5SeatIbizaCupraCARreview.jpg"
     }
   ],
-  "shelby": [{
+  "shelby": [
+    {
       "make": "Shelby",
       "name": "Shelby Cobra 427",
       "year": "1966",
@@ -3188,9 +3336,12 @@
       "carcostm": 18,
       "aerom": 1,
       "condition": 100,
-      "special": ["x3"],
+      "special": [
+        "x3"
+      ],
       "image": "https://www.supercars.net/blog/wp-content/uploads/2016/03/1967_shelby_cobra-pic-3528941083313090031.jpeg"
-    }],
+    }
+  ],
   "subaru": [
     {
       "make": "Subaru",
@@ -3343,7 +3494,39 @@
   "toyota": [
     {
       "make": "Toyota",
-      "name": "Toyota 86 GT",
+      "name": "Toyota 2000GT",
+      "year": "1967",
+      "type": "Production",
+      "power": 154,
+      "weight": 2469,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [
+        "x5"
+      ],
+      "image": "https://cimg1.ibsrv.net/ibimg/hgm/1920x1080-1/100/767/1967-toyota-2000gt-chassis-no-mf10-10100--photo-credit-darin-schnabel-rm-sothebys_100767253.jpg"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota GR 86",
+      "year": "2022",
+      "type": "Production",
+      "power": 232,
+      "weight": 2800,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-toyota-gr-86-front-three-quarters-1617596343.jpg?crop=1xw:1xh;center,top&resize=980:*"
+    },
+    {
+      "make": "Toyota",
+      "name": "Toyota GT 86",
       "year": "2015",
       "type": "Production",
       "power": 197,

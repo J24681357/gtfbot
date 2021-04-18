@@ -100,7 +100,6 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
   var prize = startingprize
   for (var x = 0; x < grid; x++) {
     if (x % 10 == 0 && (x + 1) != 11) {
-      console.log(emote.goldtrophy + " " + (x + 1) + "st|")
       positions.push(emote.goldtrophy + " " + (x + 1) + "st|" + prize)
     }
     else if (x % 10 == 1 && (x + 1) != 12) {
@@ -112,7 +111,7 @@ module.exports.randomseasonal = function(number, fpplimit, lowerfpp) {
     else {
       positions.push((x + 1) + "th|" + startingprize)
     }
-    prize = Math.ceil((startingprize - (prize / grid)) / 100) * 100
+    prize = Math.ceil((prize - (prize / grid)) / 100) * 100
   }
 date = month + day + year
 
@@ -127,7 +126,6 @@ var c = require(gtf.CARS).random({ "make": rmakes,"upperfpp": finalfpp, "lowerfp
 
 var prizec = ["RANDOMCAR", { id: -1, name: " ", make: c["make"], fullname: [c["name"] + " " + c["year"]] }]
 
-console.log(prizec)
   var event = {
     "title": 'Seasonal Event ' + number,
     "eventid": eventid,

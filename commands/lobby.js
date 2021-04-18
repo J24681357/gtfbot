@@ -28,12 +28,25 @@ module.exports = {
     var user = msg.author.username
     embed.setAuthor(user,msg.author.displayAvatarURL());
     var args = "\n" + "`Args: !lobby [create|list|settings|exit]`" + "\n"
-    var page = 0
     var results = ''
-    var info = ''
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '', 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": false,
+      "reactions": true,
+      "dm": false,
+      "footer":  "",
+         "special": "",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
-      var reactionson = true
     var lobbies
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
@@ -63,7 +76,6 @@ function lobby() {
           break;
         }
       }
-      console.log(currentlobby)
  
 
       if (query[0] != "join") {
@@ -133,7 +145,6 @@ if (!playerfound) {
           channel.overwritePermissions([ { id: everyonerole, deny: ['VIEW_CHANNEL'], }, { id: hostrole, allow: ['VIEW_CHANNEL'], } ]))
 
           userdata["inlobby"] = stats.inlobby(true, currentlobby["host"], userdata)
-          console.log(userdata["inlobby"])
           require(gtf.LOBBY).save(lobbies,userdata)
           stats.save(userdata)
 
@@ -216,7 +227,6 @@ if (!playerfound) {
           results = "ℹ️ " + user + " has joined the room."
           embed.setDescription(results)
           server.channels.cache.find(channel => channel.name === currentlobby["channelname"]).send(embed)
-          console.log(sent)
           return
         }, 5000, 1)
 
@@ -237,9 +247,9 @@ if (!playerfound) {
 
       
       embed.setTitle("__GTF Lobbies - List__");
-      embed.setDescription(results);
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results, list, page, "", "", false, "", 10, [query,"lobby", reactionson, info], embed, msg, userdata);
+      pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
       return
     }
     else if (query[0] == "exit" || query[0] == "delete" || query[0] == "quit") {
@@ -249,7 +259,6 @@ if (!playerfound) {
         return
       }
       var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
-      console.log(currentlobby["channelname"])
       if (msg.channel.name !== currentlobby["channelname"]) {
         require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
         return
@@ -315,15 +324,14 @@ if (!playerfound) {
         }
         
         if (setting.includes("lap") || setting.includes("laps")) {
-          require(gtf.LOBBY).lapsettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
+          require(gtf.LOBBY).lapsettings(changes, lobbies, pageargs, embed, msg, userdata)
         }
         if (setting.includes("roomname")) {
-          require(gtf.LOBBY).namesettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
+          require(gtf.LOBBY).namesettings(changes, lobbies, pageargs, embed, msg, userdata)
         }
         if (setting.includes("track")) {
-          require(gtf.LOBBY).tracksettings(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata])
+          require(gtf.LOBBY).tracksettings(changes, lobbies, pageargs, embed, msg, userdata)
         }
-        console.log(changes)
       if (changes[0] == 'ERROR' || changes[0] == "LIST") {
             return
       }
@@ -344,7 +352,6 @@ if (!playerfound) {
       }
 
     } else if (query[0] == "info") {
-      console.log(stats.inlobbystat(userdata))
       if (!stats.inlobbystat(userdata)[0]) {
         require(gtf.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, userdata);
         return
@@ -445,8 +452,17 @@ var index = 0
        require(gtf.LOBBY).save(lobbies,userdata)
         return
       }
-
-            require(gtf.RACE).preparerace("ONLINE", "", "ONLINE", lobbies["lobbies"][currentlobby["host"]]["racesettings"], args, embed, msg, userdata);
+                var raceprep = {
+            "mode": "ONLINE",
+            "modearg": "",
+            "carselect": 'ONLINE',
+            "car": {},
+            "trackselect": "RANDOM",
+            "track": {},
+            "racesettings": lobbies["lobbies"][currentlobby["host"]]["racesettings"],
+            "other": []
+          }
+          require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
             currentlobby["isready"] = false
              require(gtf.LOBBY).save(lobbies,userdata)
         }, 2000)

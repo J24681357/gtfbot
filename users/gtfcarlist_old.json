@@ -189,20 +189,6 @@
     "rating": "🔧3",
     "manufacturercost": 20000
   },
-  "51": {
-    "make": "Audi",
-    "name": "Audi TT RS Coupé 2010",
-    "image": "https://s1.cdn.autoevolution.com/images/gallery/AUDI-TT-RS-Coupe-4073_2.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
-  "52": {
-    "make": "Audi",
-    "name": "Audi TT RS Roadster 2010",
-    "image": "http://www.hdcarwallpapers.com/walls/2010_audi_tt_rs_roadster_4-wide.jpg",
-    "rating": "⭐1.5",
-    "manufacturercost": 20000
-  },
   "53": {
     "make": "Audi",
     "name": "Audi TTS Coupe 2014",
@@ -319,13 +305,6 @@
     "make": "BMW",
     "name": "BMW M3 Sedan 2014",
     "image": "https://i.ytimg.com/vi/k5uWIOwd_cw/maxresdefault.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 15000
-  },
-  "73": {
-    "make": "BMW",
-    "name": "BMW M3 Sport Evolution 1989",
-    "image": "http://www.topcarrating.com/bmw/1989-bmw-m3-sport-evolution-e30.jpg",
     "rating": "⭐2",
     "manufacturercost": 15000
   },
@@ -719,13 +698,6 @@
     "name": "Chevrolet Styleline Deluxe Sport Coupe 1949",
     "image": "https://s3.amazonaws.com/images.hagerty.com/vehicle/web/MecumAuctionsIndianapolis%202017_T172_Chevrolet_1949_Styleline%20Deluxe_2-Dr.%20Sedan_6GKG56028_Overall.jpg",
     "rating": "⭐0.3",
-    "manufacturercost": 15000
-  },
-  "138": {
-    "make": "Chevrolet",
-    "name": "Chevrolet Super Sport 2014",
-    "image": "http://st.motortrend.com/uploads/sites/5/2013/02/2014-Chevrolet-SS-Daytona1.jpg",
-    "rating": "⭐2",
     "manufacturercost": 15000
   },
   "139": {
@@ -3779,13 +3751,6 @@
     "name": "Tata Nano Twist XT 2018",
     "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/tata-nano-rt-2014-11_0.jpg?itok=z2lJE_59",
     "rating": "⭐0.1",
-    "manufacturercost": 10000
-  },
-  "705": {
-    "make": "Toyota",
-    "name": "Toyota 2000GT 1967",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/TOYOTA_2000GT.jpg/1200px-TOYOTA_2000GT.jpg",
-    "rating": "⭐1",
     "manufacturercost": 10000
   },
   "706": {

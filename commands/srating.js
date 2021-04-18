@@ -30,12 +30,11 @@ module.exports = {
 
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-    var args = '';
-    var page = 0
+    var args = ''
     var results = ''
     var info = ""
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
     var ratings = ["E", "D", "D", "C", "C", "C", "B", "B", "B", "A", "A", "S"]
     var rating = ratings[Math.floor(Math.random() * ratings.length)]
 

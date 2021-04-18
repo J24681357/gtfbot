@@ -34,9 +34,10 @@ module.exports = {
       msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL()
     );
     var args = '';
-
-    /* Setup */
     var results = ' ';
+        //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
+
+
     var success = true;
     var thumbnail = true;
     var page = 0;

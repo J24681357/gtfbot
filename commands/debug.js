@@ -38,7 +38,7 @@ module.exports = {
     var page = 0
     var results = ""
     var info = ' '
-    /* Setup */
+        //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     var extra = emote.transparent;
     var deletee = false;

@@ -160,8 +160,9 @@ module.exports.formpage = function(args) {
   var list = ""
   var listnumber = ""
   var extra = ""
+  var start = args["start"]
   if (args["other"].length != 0) {
-        args["start"] = args["other"] + args["start"]
+        start = args["other"] + start
   }
   var pagetotal = Math.ceil(args["list"].length / args["rows"]);
   var x = 0;
@@ -183,7 +184,7 @@ module.exports.formpage = function(args) {
           extra = args["list"][x+page].slice(2).join(" ")
         }
 
-        list = list + args["start"] + listnumber  + " " + args["list"][x + page][0] + " **" + args["list"][x + page][1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + args["end"] +  " " + extra + "\n";
+        list = list + start + listnumber  + " " + args["list"][x + page][0] + " **" + args["list"][x + page][1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "**" + args["end"] +  " " + extra + "\n";
             x++;
   }
    if (list == "") {
@@ -226,17 +227,19 @@ module.exports.formpages = function(args, embed, msg, userdata) {
     msg_channel.send(embed).then(msg => {
       
     function selectoption() {
-      if (args["command"] == "car" && args["numbers"] == false) {
+      if (args["command"] == "car" && args["special"] == "Manufacturer") {
         var pick = args["list"][select + (args["page"]*args["rows"])][0].split(" ")[0]
       } else {
         var pick = select + 1 + (args["page"]*args["rows"])
       } 
+      if (args["command"] == "tuning") {
+        var pick = args["list"][select + (args["page"]*args["rows"])][0].split("__**")[1].split("**__")[0]
+      }
       if (args["command"] == "coursem") {
         args["query"] = []
       }
-      if (args["command"] == "garage_regulate") {
+      if (args["command"] == "garage" && args["special"] == "Regulation") {
         var pick = parseInt(args["list"][select + (args["page"]*args["rows"])][0].split(":")[1].split("`")[0])
-        args["command"] = "garage"
         args["query"] = []
       }
       if (args["command"] == "lobby") {
@@ -250,7 +253,11 @@ module.exports.formpages = function(args, embed, msg, userdata) {
         args["query"] = ["join"]
       }
       }
+      
+      console.log(args["query"])
       args["query"].push(pick)
+      
+      console.log(args["query"])
         
       require("../../commands/" + args["command"]).execute(msg2,args["query"],userdata)
       return stats.save(userdata)
@@ -357,149 +364,6 @@ module.exports.emojilist = function(list) {
   }
   return nlist
 }
-
-module.exports.createpages = function(results, list, page, statfront, statback, numbers, special, count, [query, name, reactionson, info], embed, msg, userdata, dm) {
-  if (dm !== undefined) {
-    msg_channel = msg.author
-  } else {
-    msg_channel = msg.channel
-  }
-    var select = 0
-    var reset = true
-    var index = 0
-     stats.addcount(userdata)
-    results = JSON.stringify(results).split("\\n").map(function(x) {
-        if (reset) {
-          x = stats.setting("PROGRESSBAR", userdata)[0] + " " + x
-          reset=false
-        }
-        return x.replace(/\\r/gi, "\n")
-    }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n" + info)
-    var msg2 = msg
-  
-    msg_channel.send(embed).then(msg => {
-      
-    function selectoption() {
-      if (name == "car" && numbers == false) {
-        var pick = list[select + (page*count)][0].split(" ")[0]
-      } else {
-        var pick = select + 1 + (page*count)
-      } 
-      if (name == "coursem") {
-        name = "coursem"
-        query = []
-      }
-      if (name == "garage_regulate") {
-        var pick = parseInt(list[select + (page*count)][0].split(":")[1].split("`")[0])
-        name = "garage"
-        query = []
-      }
-      if (name == "lobby") {
-        if (query[0] == "settings") {
-          if (query[2] == 0) {
-            query.pop()
-          }
-        } else { 
-        var pick = parseInt(list[select + (page*count)][0].split(":")[1].split("`")[0])
-        name = "lobby"
-        query = ["join"]
-      }
-      }
-      query.push(pick)
-        
-      require("../../commands/" + name).execute(msg2,query,userdata)
-      return stats.save(userdata)
-      }
-    
-
-    function back() {
-      reset = true
-    if (page != 0) {
-      page--
-    }
-    select = 0
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
-    results = JSON.stringify(results).split("\\n").map(function(x) {
-        if (reset) {
-          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
-          reset=false
-        }
-        return x.replace(/\\r/gi, "\n")
-        }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n" + info)
-    msg.edit(embed)
-    }
-  
-    function next() {
-      reset = true
-      if (page != Math.ceil(list.length / count) - 1) {
-       page++
-    }
-    select = 0
-      
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
-    results = JSON.stringify(results).split("\\n").map(function(x) {
-        if (reset) {
-          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
-          reset=false
-        }
-        return x.replace(/\\r/gi, "\n")
-    }).join("\n").replace(/\"/gi, "")
-      
-    embed.setDescription(results + "\n" + info)
-    msg.edit(embed)
-    }
-      
-    function up() {
-    var index = 0
-
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
-      
-    select--
-    if (select <= -1) {
-      select = JSON.stringify(results).split("\\n").length-2
-    }
-    results = JSON.stringify(results).split("\\n").map(function(x) {
-      if (select == index) {
-          x =  stats.setting("PROGRESSBAR", userdata)[0] + " " + x
-        }
-      index++
-        return x.replace(/\\r/gi, "\n")
-    }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n" + info)
-    msg.edit(embed)
-    }
-      
-    function down() {
-    var index = 0
-
-    results = gtftools.list(list, page, statfront, statback, numbers, special, count, userdata)
-      
-    select++
-      
-    if (select >= JSON.stringify(results).split("\\n").length-1) {
-      select = 0
-    }
-      
-    results = JSON.stringify(results).split("\\n").map(function(x) {
-        if (select == index) {
-          x =  stats.setting("PROGRESSBAR", userdata)[0]  + " " + x
-        }
-      index++
-        return x.replace(/\\r/gi, "\n")
-    }).join("\n").replace(/\"/gi, "")
-    embed.setDescription(results + "\n" + info)
-    msg.edit(embed)
-    }
-    
-    var emojilist = [[emote.yes, "Yes", selectoption, "Once"], [emote.leftarrow, "leftarrow", back], [emote.rightarrow, "rightarrow", next], [emote.uparrow, "uparrow", up], [emote.downarrow, "downarrow", down]]
- 
-    if (reactionson) {
-      gtftools.createreactions(emojilist, msg, userdata)
-    }
-    })
-  }
 
 module.exports.checkrole = function(role, name, msg, embed) {
   var roles = []

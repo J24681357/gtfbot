@@ -33,8 +33,8 @@ module.exports = {
     var page = 0
     var results = ''
     var info = ''
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
 
     if (userdata["id"] != "237450759233339393") {
       return msg.channel.send("No.")

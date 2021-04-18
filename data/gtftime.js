@@ -81,7 +81,6 @@ module.exports.find = function(args) {
 module.exports.random = function(args, num) {
   var rlist = [];
   var list = require(gtf.TIME).find(args);
-  console.log(list)
   for (var i = 0; i < num; i++) {
     rlist.push(list[Math.floor(Math.random() * list.length)]);
   }

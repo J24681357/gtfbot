@@ -33,7 +33,8 @@ module.exports = {
     var args = '';
     var page = 0
     var results = ''
-    var info = ''
+    var info = ''    
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     /* Setup */
     var modeselect = [
@@ -179,7 +180,6 @@ module.exports = {
         var number = dw.dwcar['daily']['mode'];
         embed.setFooter('Daily Workout Challenge Active - ' + mode[number] + ': ' + dw.dwcar['daily']['select'] + ' | Prize: ' + dw.dwcar['daily']['prize'] + ' credits');
       }
-      console.log("F")
       msg.channel.send(embed)
     }
   },

@@ -311,7 +311,6 @@ module.exports.fourgifts = function(title, results, prizes, embed, msg, userdata
   msg.channel.send(embed).then(msg => {
     var index = 0;
     var results1 = function(index) {
-      console.log(prizes)
       return select[index][0] + "||" + prizes[0][1]["name"] +  "||" + "\n" + 
       select[index][1] + "||" + prizes[1][1]["name"] + "||" + "\n" + 
       select[index][2] + "||" + prizes[2][1]["name"] + "||" + "\n" + 

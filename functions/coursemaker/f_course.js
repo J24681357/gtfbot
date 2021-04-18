@@ -277,7 +277,6 @@ module.exports.savecourse = function(course, userdata) {
   function add() {
     var size = Object.keys(coursedata["courses"]).length + 1
     coursedata["courses"][size] = course
-    console.log(coursedata["courses"])
   }
 
 }

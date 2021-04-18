@@ -6,15 +6,13 @@ const Discord = require("discord.js");
 var gtf = process.env
 ////////////////////////////////////////////////////
 
-module.exports.tracksettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
+module.exports.tracksettings = function(changes, lobbies, pageargs, embed, msg, userdata) {
     var tracks = require(gtf.TRACKS).list("names")
-          var number = parseInt(query[2])
+          var number = parseInt(pageargs["query"][2])
           if (!gtftools.betweenInt(number, 1, tracks.length) | number == 0) {
             var list = tracks.map(x => [x, " "])
-             results2 = gtftools.list(list, page, "", "", true, "", 15, [query, "lobby"], embed, msg, userdata)
-      
-             embed.setDescription(results2)
-            gtftools.createpages(results2, list, page, "", "", true, "", 15, [query, "lobby", reactionson, info], embed, msg, userdata)
+            pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
           changes.push("LIST")
           } else {
             var trackname = tracks[number-1]
@@ -29,8 +27,8 @@ module.exports.tracksettings = function(changes, lobbies, [page, query, reaction
           }
 }
 
-module.exports.namesettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
-          var name = query[2]
+module.exports.namesettings = function(changes, lobbies, pageargs, embed, msg, userdata) {
+          var name = pageargs["query"][2]
           if (name === undefined) {
             require(gtf.EMBED).error('❌ Invalid Name', 'The room name must be at least 1 character.', embed, msg, userdata);
           changes.push("ERROR")
@@ -48,8 +46,8 @@ module.exports.namesettings = function(changes, lobbies, [page, query, reactions
             changes.push("**Room Title:** " + newname)
 }
 
-module.exports.lapsettings = function(changes, lobbies, [page, query, reactionson, info, embed, msg, userdata]) {
-          var number = parseInt(query[2])
+module.exports.lapsettings = function(changes, lobbies, pageargs, embed, msg, userdata) {
+          var number = parseInt(pageargs["query"][2])
           if (!gtftools.betweenInt(number, 1, 10)) {
           require(gtf.EMBED).error('❌ Invalid Laps', 'You can only set laps between 1 and 10 in a lobby.', embed, msg, userdata);
             changes.push("ERROR")

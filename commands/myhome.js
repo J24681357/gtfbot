@@ -32,8 +32,8 @@ module.exports = {
     var page = 0;
     var results = "";
     var info = "";
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
 
     var main = stats.main(userdata);
     var main2 = args + stats.currentcarmain(userdata);

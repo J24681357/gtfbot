@@ -38,6 +38,7 @@ module.exports = {
     var page = 0
     var results = ''
     var info = "❓ **[ ] Arguments | [()] Numbers | [\" \"] Strings/Words**"
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     /* Setup */
     var commandName = query[0];

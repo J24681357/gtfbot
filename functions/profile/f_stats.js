@@ -426,10 +426,11 @@ module.exports.isracescomplete = function(eventid, total, pnumber, userdata) {
 module.exports.gift = function(title, gift, embed, msg, userdata) {
   var type = gift[0]
   if (type == "CREDITS") {
-    stats.addcredits(parseInt(gift[1]["credits"]), userdata)
+    console
+    stats.addcredits(parseInt(gift[1]["item"]), userdata)
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
 
-    require(gtf.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["credits"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
+    require(gtf.EMBED).success(title, "**Credits: +" + gtftools.numFormat(gift[1]["item"]) + emote.credits + "**" , 0, true, embed, msg, userdata);
     stats.save(userdata)
   } else if (type == "RANDOMCAR") {
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"])
@@ -566,7 +567,7 @@ module.exports.main = function(userdata) {
   var levelup = require(gtf.EXP).islevelup(userdata)
   var gifts = ""
   if (levelup[0]) {
-    levelup = "`LEVEL UP`" + "\n" + "**Level "+ userdata['level'] + " Unlocks: "  + levelup[2].join(",") + "**"
+    levelup = "`⬆`" + "\n" + "**Level "+ userdata['level'] + " Unlocks: "  + levelup[2].join(",") + "**"
   } else {
     levelup = ""
   }

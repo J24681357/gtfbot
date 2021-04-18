@@ -36,9 +36,23 @@ module.exports = {
       "\n";
     var page = 0;
     var results = " ";
-    var info = '**❓ Select a level from the list above using the levels associated or reactions.**'
-    /* Setup */
-    var reactionson = true
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "Level ", 
+      "end": emote.exp,
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 5,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":  '**❓ Select a level from the list above using the levels associated or reactions.**',
+       "special": "",
+      "other": "__"
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle(
       emote.exp + "__GTF Level Milestones: " + Object.keys(require(gtf.LISTS).gtfexp).length + " Levels" + "__"
@@ -87,11 +101,9 @@ module.exports = {
         return ["", explevels[level]["exp"], explevels[level]["rewards"].join("\r")];
     })
 
-      results = gtftools.list(list, page, "Level ", emote.exp, true, "__", 5, userdata);
-
-      embed.setDescription(results);
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results, list, page, "Level ", emote.exp, true, "__", 5, [query, "levels", reactionson, info], embed, msg, userdata);
+      pageargs["list"] = list
+      pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     }
   }
 };

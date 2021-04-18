@@ -33,12 +33,25 @@ module.exports = {
     var args = '';
     var page = 0
     var results = ''
-    var info = '**❓ The red point would be the starting point.**'
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": "📌ID:", 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":  '**❓ The red point would be the starting point.**',
+         "special": "",
+      "other": "`"
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
     var coursestats = []
-
-
       var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
@@ -56,7 +69,6 @@ module.exports = {
 function startcourse() {
     var reactionson = true
     var success = false
-console.log(query)
 
     if (!isNaN(query[0])) {
       query.unshift('view');
@@ -67,7 +79,6 @@ console.log(query)
       query.unshift("list");
 }
 
-console.log(query)
 
 if (query[0] == "list") {
   success = true
@@ -86,12 +97,10 @@ if (query[0] == "list") {
       var list = Object.keys(coursestats).map(function(id) {
         return [coursestats[id]["name"], " "];
       });
-      results = gtftools.list(list, page, "📌ID:", "", true, "`", 10, userdata);
       
-
-      embed.setDescription(results);
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      gtftools.createpages(results, list, page, "📌ID:", "", true, "`", 10, [query, "coursem", reactionson, info], embed, msg, userdata);
+      pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
       return
 
 }
@@ -107,7 +116,6 @@ if (query[0] == "view") {
           return;
         }
         var course = coursestats[number.toString()]
-        console.log(course)
 
         
     embed.setTitle(emote.tracklogo + "__GTF Course Maker__");

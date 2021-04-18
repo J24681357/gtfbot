@@ -46,6 +46,7 @@ module.exports = {
       "reactions": true,
       "dm": false,
       "footer":  '**❓ Select a drift mode from the list above.**',
+       "special": "",
       "other": ""
     }
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
@@ -120,12 +121,32 @@ module.exports = {
             require(gtf.EMBED).error('❌ FF Cars Prohibited', 'Front Wheel Drive cars are not allowed in a Drift Trial.', embed, msg, userdata);
             return
           }
-          require(gtf.RACE).preparerace(mode, levelselect, 'GARAGE', "", args, embed, msg, userdata);
+          var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GARAGE',
+            "car": stats.currentcar(userdata),
+            "trackselect": "RANDOM",
+            "track": {},
+            "racesettings": {},
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
         }
 
         function selectgtsportmode() {
           embed.fields = [];
-          return require(gtf.RACE).preparerace(mode, levelselect, 'GTSPORT', "", args, embed, msg, userdata);
+           var raceprep = {
+            "mode": mode,
+            "modearg": levelselect,
+            "carselect": 'GTSPORT',
+            "car": stats.currentcar(userdata),
+            "trackselect": "RANDOM",
+            "track": {},
+            "racesettings": {},
+            "other": []
+          }
+          return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
         }
 
         var emojilist = [['🚘', '🚘', selectgaragemode], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];

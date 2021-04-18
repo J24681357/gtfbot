@@ -24,12 +24,12 @@ module.exports.formpages = function(args, embed, msg, userdata) {
     msg_channel.send(embed).then(msg => {
       
     function selectoption() {
-      if (command == "car" && args["numbers"] == false) {
+      if (args["command"] == "car" && args["numbers"] == false) {
         var pick = args["list"][select + (args["page"]*args["rows"])][0].split(" ")[0]
       } else {
         var pick = select + 1 + (args["page"]*args["rows"])
       } 
-      if (command == "coursem") {
+      if (args["command"] == "coursem") {
         args["query"] = []
       }
       if (args["command"] == "garage_regulate") {
@@ -98,9 +98,7 @@ module.exports.formpages = function(args, embed, msg, userdata) {
     function up() {
     var index = 0
 
-    console.log(args["text"])
     args["text"] = gtftools.formpage(args, userdata)
-    console.log(args["text"])
       
     select--
     if (select <= -1) {

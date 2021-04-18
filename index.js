@@ -9,6 +9,7 @@ var gtf = process.env;
 var extra = require("./functions/misc/f_extras");
 var emote = require('./index');
 
+
 var fs = require('fs');
 
 var data = {}
@@ -55,29 +56,10 @@ require(gtf.MAIN).alluserdata()
 client.commands = new Discord.Collection();
 var date = new Date();
 
-
-/*.then(function() {
-if (!c) {
-    gtfbot = {
-      maintenance: "NO",
-      errors: [],
-      executions: 0,
-      version: 4,
-    };
-        dbo.collection("GTFBOT").insertOne(gtfbot)
-        console.log("initalization added")
-      return gtfbot
-  } else {
-    return gtfbot
-  }
-  }) */
-
-
-
 const express = require('express');
 const server = express();
 server.all('/', (req, res) => {
-  res.send('Your bot is alive!')
+  res.send('GT Fitness is now online!')
 })
 
 server.listen(3000, () => { });
@@ -98,6 +80,32 @@ for (const file of commandFiles) {
 
 const cooldowns = new Discord.Collection();
 client.on('ready', () => {
+
+  var fs = require('fs');
+  var request = require('request');
+
+var download = function(uri, filename, callback){
+  request.head(uri, function(err, res, body){
+    console.log('content-type:', res.headers['content-type']);
+    console.log('content-length:', res.headers['content-length'])
+    var file = filename.split("/")
+   file.pop()
+  var shell = require('shelljs');
+shell.mkdir('-p', file.join("/"))
+
+setTimeout(function() {
+  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+}, 2000)
+  })
+
+    
+  }
+var car = require(gtf.CARS).find({"make":["Mazda"]})[1]
+var make = car["make"].replace(/ /gi, "-").toLowerCase()
+var name = car["name"].replace(/ /gi, "-").toLowerCase()
+download(car["image"], './images/cars/'+ make + "/" + name + '.png', function(){
+  console.log('done');
+});
 
   var gtfbot = {}
 
@@ -565,6 +573,8 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   ]
 }
 })
+
+
 
 /*
 "options": [

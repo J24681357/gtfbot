@@ -31,14 +31,11 @@ module.exports = {
     var args = " "
     var page = 0
     var results = " "
-    var info = " "
-
-    /* Setup */
+    var info = " "    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     embed.setTitle('__GTF Daily Workout - Prize__');
 
     var prizes = [];
-    console.log(userdata["dailyworkout"])
 
     if (userdata["dailyworkout"]) {
       require(gtf.EMBED).error('❌ Daily Workout Completed', 'You have already earned your daily workout for the day.', embed, msg, userdata);
@@ -55,15 +52,15 @@ module.exports = {
 
     results = '**You have earned a prize.**';
     
-      prizes.push(["CREDITS", {"id": -1,"name": 5000 + emote.credits + " Prize",
+      prizes.push(["CREDITS", {"id": -1,"name": "5,000" + emote.credits + " Prize",
     "item": 5000,
     "author":"DAILY WORKOUT",
     "isgift":false}])
-    prizes.push(["CREDITS", {"id": -1,"name":10000 + emote.credits + " Prize",
+    prizes.push(["CREDITS", {"id": -1,"name":"10,000" + emote.credits + " Prize",
     "item": 10000,
     "author":"DAILY WORKOUT",
     "isgift":false}])
-    prizes.push(["CREDITS", {"id": -1,"name":20000 + emote.credits + " Prize",
+    prizes.push(["CREDITS", {"id": -1,"name":"20,000" + emote.credits + " Prize",
     "item": 20000,
     "author":"DAILY WORKOUT",
     "isgift":false}])

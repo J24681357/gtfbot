@@ -31,11 +31,28 @@ module.exports = {
     var args = "\n" + '`Args: !seasonal [(number)]`' + "\n"
     var page = 0
     var results = ''
-    var info = "**❓ Select an event from the list above using the numbers associated or the reactions.**"
+    	var pageargs = {
+			text: '',
+			list: '',
+			start: '',
+			end: '',
+			query: query,
+			command: __filename
+				.split('/')
+				.splice(-1)[0]
+				.split('.')[0],
+			rows: 10,
+			page: 0,
+			numbers: false,
+			reactions: true,
+			dm: false,
+			footer: '**❓ Select an event from the list above using the numbers associated or the reactions.**',
+      "special": "",
+			other: '',
+		};
 
     /* Setup */
   var races;
-console.log(query)
   var MongoClient = require('mongodb').MongoClient;
   var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
 
@@ -64,7 +81,6 @@ console.log(query)
     var racesettings
     var finalgrid
     var mode = "CAREER"
-    var reactionson = true
     var racedetails = ""
 
 
@@ -148,14 +164,13 @@ console.log(query)
             return [x, " "]
           })
 
-        results2 = gtftools.list(list, page, "", "", true, "", 3, [query, "seasonal"], embed, msg, userdata)
-
-        embed.setDescription(results2)
         var date = new Date()
         var hoursleft = 23 - date.getHours()
         embed.setFooter("Seasonal Events Rotation: " + "~" + hoursleft + "hours")
-        embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-        gtftools.createpages(results2, list, page, "", "", true, "", 3, [query, "seasonal", reactionson, info], embed, msg, userdata)
+
+        pageargs['list'] = list;
+				pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+				gtftools.formpages(pageargs, embed, msg, userdata);
         return
       }
 

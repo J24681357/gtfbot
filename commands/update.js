@@ -29,9 +29,8 @@ module.exports = {
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '';
-    var page = 0
     var results = ''
-    var info = ""
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
     /* Setup */
     if (userdata['version'] >= gtfuser.gtfbotconfig['version']) {

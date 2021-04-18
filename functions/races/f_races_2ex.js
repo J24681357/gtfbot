@@ -265,7 +265,6 @@ module.exports.onlineracelength = function(
     fppavg = fppavg + x["car"]["fpp"]
   })
   fppavg = fppavg / racesettings["players"].length
-  console.log(fppavg)
 
   var speed = gtftools.catcalc(["CUSTOM"], racesettings["weather"], fppavg);
 

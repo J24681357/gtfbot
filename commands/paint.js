@@ -30,9 +30,25 @@ module.exports = {
     var args = ""
     var page = 0
     var results = ""
-    var info = "❓ **Choose a type of paint from the list above.**"
 
-    /* Setup */
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '', 
+      "end": '',
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 10,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":   "❓ **Choose a type of paint from the list above.**",
+        "special": "",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
+
     var results2 = ""
     var select = ""
     var car = stats.currentcar(userdata)
@@ -40,7 +56,6 @@ module.exports = {
     embed.setTitle("__" + title + "__")
 
     var selectedtype = false
-    var reactionson = true
 
     if (query.length == 0) {
       results ="__**Gloss Paints**__ - !paint [gloss|g]" + "\n" +
@@ -52,15 +67,14 @@ module.exports = {
         return [x, " "]
       })
       var page = 0
-      results2 = gtftools.list(list, page, "", "", true, "", 5, [query, "paint",info], embed, msg, userdata)
-
-      embed.setDescription(results)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results2, list, page, "", "", true, "", 5, [query, "paint", true, info], embed, msg, userdata)
+      
+     pageargs["list"] = list
+     pageargs["rows"] = 5
+     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
       return
     }
 
-var select
     if (query[0] == "gloss" || query[0] == "g" || query[0] == "Gloss" || parseInt(query[0]) == 1) {
       var selectedtype = true
       var type = "gloss"
@@ -124,13 +138,10 @@ select = require(gtf.PAINTS).find({ "type": type })
       var cond = require(gtf.PAINTS).checkpaintsavail(x, car)
       return ["**" + gtftools.numFormat(x["cost"]) + "**" + emote.credits + " " + x["type"] + " " + x["name"] + " ", cond]
     })
-
-    results = gtftools.list(select3, page, "", "", true, "", 10, userdata)
-
-    embed.setDescription(results)
-    embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-    info = "❓ **Select a paint corresponding with the numbers above or the reactions.**"
-    gtftools.createpages(results, select3, page, "", "", true, "", 10, [query, "paint", reactionson, info], embed, msg, userdata)
+     pageargs["footer"] = "❓ **Select a paint corresponding with the numbers above or the reactions.**"
+    pageargs["list"] = select3
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
     return
   }
 }

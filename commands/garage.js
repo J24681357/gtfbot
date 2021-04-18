@@ -51,6 +51,7 @@ module.exports = {
       "reactions": true,
       "dm": false,
       "footer":  '',
+         "special": "",
       "other": ""
     }
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
@@ -194,26 +195,27 @@ module.exports = {
         });
       }
       if (regulate) {
-        results = gtftools.list(list, page, '', emote.fpp, false, '', 10, userdata);
-        command = 'garage_regulate'
-        info = "❓ **Select a car from the list above that is eligible for this event.**"
-       // embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-         gtftools.createpages(results, list, page, '', emote.fpp, false, '', 10, [query, command, reactionson, info], embed, msg, userdata);
+        
+        pageargs["start"] = ''
+        pageargs["end"] = emote.fpp
+        pageargs["numbers"] = false
+        pageargs["special"] = "Regulation"
+        pageargs["info"] = "❓ **Select a car from the list above that is eligible for this event.**"
+        pageargs["list"] = list
+        
+    pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
+    gtftools.formpages(pageargs, embed, msg, userdata)
         return
       } else {
-        results = gtftools.list(list, page, '🚘ID:', emote.fpp, true, '`', 10, userdata);
+        pageargs["list"] = list
+        pageargs["other"] = "`"
       }
 
       embed.setDescription(results);
-
-      if (!viewonly) {
-        embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-      }
       
-       pageargs["list"] = list
+    pageargs["list"] = list
     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata)
     gtftools.formpages(pageargs, embed, msg, userdata)
     }
-    /*   var newcar = [id, make, name, sell, rating, ["FPP " + fpp], ["Col 0"], ["E S 0"], ["Tr S 0"], ["Su S 0"], ["We S 0"], ["Tu S 0"], ["Nos S 0"], ["Oil 100"], ["Clean 100"], ["Dam 100"], ["Rim 0"]] */
   },
 };

@@ -31,6 +31,8 @@ module.exports.error = function(name, desc, embed, msg, userdata) {
 
 module.exports.success = function(name, desc, time, special, embed, msg, userdata, dm) {
   var embed = new Discord.MessageEmbed();
+  var user = msg.guild.members.cache.get(userdata["id"]).user.username;
+  embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
   embed.setColor(0x216c2a);
   embed.setDescription("__**" + name + "**__" + "\n" + desc);
   if (special == true) {

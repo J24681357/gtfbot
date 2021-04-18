@@ -22,7 +22,9 @@
     "forever": "^3.0.4",
     "mongodb": "^3.6.3",
     "probe-image-size": "latest",
-    "random-normal": "^1.0.0"
+    "random-normal": "^1.0.0",
+    "request": "latest",
+    "shelljs": "^0.8.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"

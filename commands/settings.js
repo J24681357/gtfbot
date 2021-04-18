@@ -30,12 +30,29 @@ module.exports = {
     var args = "\n" + "`Args: !settings [\"setting\"] [(number)]`" + "\n" + ""
     var page = 0
     var results = ''
-    var info = "❓ **For each setting, select an item (or number) corresponding from a setting's list.**"
+    	var pageargs = {
+			text: '',
+			list: '',
+			start: '',
+			end: '',
+			query: query,
+			command: __filename
+				.split('/')
+				.splice(-1)[0]
+				.split('.')[0],
+			rows: 3,
+			page: 0,
+			numbers: true,
+			reactions: true,
+			dm: false,
+			footer: "❓ **For each setting, select an item (or number) corresponding from a setting's list.**",
+      "special": "",
+			other: '',
+		};
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
 
     var checked = false;
-    var reactionson = true
 
     embed.setTitle("⚙ __GTF Settings__");
     if (query[0] == 1) {
@@ -49,7 +66,9 @@ module.exports = {
     if (query[0] == "time") {
       checked = true
       var number = parseInt(query[1])
-      results = require("../functions/profile/f_settings").time(results, number, query, embed, msg, userdata)
+      pageargs["query"] = query
+      pageargs["rows"] = 10
+      results = require("../functions/profile/f_settings").time(results, number, pageargs, embed, msg, userdata)
       if (results == "PAGES") {
         return
       }
@@ -58,7 +77,9 @@ module.exports = {
     if (query[0] == "progressbar") {
       checked = true
       var number = parseInt(query[1])
-      results = require("../functions/profile/f_settings").progressbar(results, number, query, embed, msg, userdata)
+      pageargs["query"] = query
+      pageargs["rows"] = 10
+      results = require("../functions/profile/f_settings").progressbar(results, number, pageargs, embed, msg, userdata)
 
       if (results == "PAGES") {
         return
@@ -68,8 +89,9 @@ module.exports = {
     if (query[0] == "units") {
       checked = true
       var number = parseInt(query[1])
-
-      results = require("../functions/profile/f_settings").units(results, number, query, embed, msg, userdata)
+      pageargs["query"] = query
+      pageargs["rows"] = 10
+      results = require("../functions/profile/f_settings").units(results, number, pageargs, embed, msg, userdata)
 
       if (results == "PAGES") {
         return
@@ -94,13 +116,12 @@ module.exports = {
       var m = ["KM","MI"]
   var list = [["__**Mileage Units**__ - !settings units [(number)]\r" + m[stats.setting("MILEAGE", userdata)], " "],
            ["__**Time Zone Offset**__ - !settings time [(number)]\r" + stats.setting("TIME OFFSET", userdata), " "],
-            ["__**Progress Bar Color**__ - !settings progressbar [(number)]:\r" + stats.setting("PROGRESSBAR", userdata).join(" ")]]
-
-       results = gtftools.list(list, page, "", "", true, "", 3, [query, "settings"], embed, msg, userdata)
-
-        embed.setDescription(results)
-        embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-        gtftools.createpages(results, list, page, "", "", true, "", 3, [query, "settings", reactionson, info], embed, msg, userdata)                   
+            ["__**Progress Bar Color**__ - !settings progressbar [(number)]:\r" + stats.setting("PROGRESSBAR", userdata).join(" "), " "]
+            ]
+            
+        pageargs['list'] = list;
+				pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+				gtftools.formpages(pageargs, embed, msg, userdata);                
     return
     }
   }

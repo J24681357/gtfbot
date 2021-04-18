@@ -30,8 +30,8 @@ module.exports = {
     var page = 0
     var results = ""
     var info = ''
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
 
-    /* Setup */
 
 
     //////////EXP//////////
@@ -80,7 +80,7 @@ module.exports = {
     msg.channel.send(embed).then(msg => {
       function careerprofile() {
         embed.setTitle("__Career Progress__");
-        var list1 = [["__Beginner__", require("../data/career/races").beginner()], ["__Amateur__", require("../data/career/races").amateur()], ["__IC League__", require("../data/career/races").icleague()], ["__IB League__", require("../data/career/races").ibleague()], ["__IA League__", require("../data/career/races").ialeague()]]
+        var list1 = [["__Beginner__", require("../data/career/races").beginner()], ["__Amateur__", require("../data/career/races").amateur()], ["__IC League__", require("../data/career/races").icleague()], ["__IB League__", require("../data/career/races").ibleague()], ["__IA League__", require("../data/career/races").ialeague()], ["__S League__", require("../data/career/races").sleague()]]
         results2 = ""
         for (var level = 0; level < list1.length; level++) {
           var results2 = results2 + list1[level][0] + "\n"

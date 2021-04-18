@@ -30,6 +30,23 @@ module.exports = {
     var args = ""
     var page = 0
     var results = ""
+    var pageargs = {
+      "text": "",
+      "list": "",
+      "start": '', 
+      "end": "",
+      "query": query,
+      "command": __filename.split("/").splice(-1)[0].split(".")[0],
+      "rows": 7,
+      "page": 0,
+      "numbers": true,
+      "reactions": true,
+      "dm": false,
+      "footer":  "❓ **For each setting, select an item (or number) corresponding from a setting's list.**",
+         "special": "",
+      "other": ""
+    }
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
     var info = "❓ **For each setting, select an item (or number) corresponding from a setting's list.**"
 
     /* Setup */
@@ -40,7 +57,6 @@ module.exports = {
     embed.setTitle("__" + title + "__")
 
     var selectedtype = false
-    var reactionson = true
     var list = []
 
     var engine = require(gtf.PARTS).find({ "name": gtfcar["engine"]["current"], "type": "engine" })
@@ -68,7 +84,7 @@ module.exports = {
     }
     var part = []
 
-    if (query[0] == "transmission" || query[0] == "trans" || query[0] == "tr") {
+    if (query[0] == "transmission" || query[0] == "Transmission" || query[0] == "trans" || query[0] == "tr") {
       list.map(function(x) {
         if (x.includes("Transmission")) {
           selectedtype = true
@@ -77,7 +93,7 @@ module.exports = {
       })
     }
 
-    if (query[0] == "suspension" || query[0] == "susp" || query[0] == "su") {
+    if (query[0] == "suspension" || query[0] == "Suspension" || query[0] == "susp" || query[0] == "su") {
       list.map(function(x) {
         if (x.includes("Suspension")) {
           selectedtype = true
@@ -90,12 +106,9 @@ module.exports = {
       var list = list.map(function(x) {
         return [x, " "]
       })
-      var page = 0
-      results = gtftools.list(list, page, "", "", true, "", 7, [query, "tuning"], embed, msg, userdata)
-console.log(info)
-      embed.setDescription(results + "\n" + info)
-      embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata))
-      gtftools.createpages(results, list, page, "", "", true, "", 7, [query, "tuning", info], embed, msg, userdata)
+      pageargs['list'] = list;
+		pageargs['text'] = gtftools.formpage(pageargs, embed, msg, userdata);
+		gtftools.formpages(pageargs, embed, msg, userdata);
       return
     } else {
       var info = "**❓ Use the left and right arrows to adjust car tuning for each part.\n To apply changes, click the " + emote.yes + " emote.**"
@@ -107,6 +120,7 @@ console.log(info)
       var select = 0
       var reset = true
       var index = 0
+      var page = 0
 
       stats.addcount(userdata)
       results = JSON.stringify(results)
