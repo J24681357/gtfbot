@@ -807,7 +807,7 @@
     },
     {
       "make": "Daihatsu",
-      "name": "Daihatsu Mira TX CVT (CX) ",
+      "name": "Daihatsu Mira TX CVT (CX)",
       "year": "1999",
       "type": "Production",
       "power": 58,
@@ -818,7 +818,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.productioncars.com/send_file.php/daihatsu_mira_tx_green_2d_1998.jpg"
+      "image": "https://lh3.googleusercontent.com/proxy/BDD1X1PzFpLOUgSpRhoACVyIf4z17HgrnIK1lwiVJkBeP9qt0ElZJ6kMeQsOuBfbXItstpoEAzm8N3OyTHQTzHh4GrKuIh9w7Wro8oF6ZF04"
     }
   ],
   "dodge": [
@@ -3422,6 +3422,21 @@
     }
   ],
   "suzuki": [
+    {
+      "make": "Suzuki",
+      "name": "Suzuki Cappuccino",
+      "year": "1991",
+      "type": "Production",
+      "power": 63,
+      "weight": 1543,
+      "tires": "Comfort: Medium",
+      "drivetrain": "FR",
+      "carcostm": 0.5,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://autodelic.files.wordpress.com/2017/12/1991-1997-suzuki-cappuccino-3735_7117_969x727193116078.jpg"
+    },
     {
       "make": "Suzuki",
       "name": "Suzuki Swift Sport",

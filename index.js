@@ -81,31 +81,23 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 client.on('ready', () => {
 
-  var fs = require('fs');
-  var request = require('request');
+//var cars = require(gtf.CARS).find({})
 
-var download = function(uri, filename, callback){
-  request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length'])
-    var file = filename.split("/")
-   file.pop()
-  var shell = require('shelljs');
-shell.mkdir('-p', file.join("/"))
+var index = 0
 
-setTimeout(function() {
-  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-}, 2000)
-  })
-
-    
+/*
+setInterval(function(){
+  if (index == cars.length) {
+    console.log("Complete")
   }
-var car = require(gtf.CARS).find({"make":["Mazda"]})[1]
-var make = car["make"].replace(/ /gi, "-").toLowerCase()
-var name = car["name"].replace(/ /gi, "-").toLowerCase()
-download(car["image"], './images/cars/'+ make + "/" + name + '.png', function(){
-  console.log('done');
-});
+  var car = cars[index]
+  downloadimage(car)
+  console.log(car["name"] + "\n" + (index+1) + " / " + cars.length + " images saved.")
+index++
+}, 2500)
+*/
+
+ 
 
   var gtfbot = {}
 
@@ -998,4 +990,32 @@ var executecommand = function(command, args, msg, userdata) {
     require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
     console.error(error);
   }
+}
+
+var downloadimage = function(car) {
+   var fs = require('fs');
+  var request = require('request');
+  
+  var type = "error"
+
+var download = function(uri, filename, callback){
+
+  request.head(uri, function(err, res, body){
+    var type = res.headers['content-type'].split("/")[1]
+    var file = filename.split("/")
+   file.pop()
+   filename = filename + ".png"
+  var shell = require('shelljs');
+shell.mkdir('-p', file.join("/"))
+
+setTimeout(function() {
+  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+}, 2500)
+  })
+
+  }
+var make = car["make"].replace(/ /gi, "-").toLowerCase()
+var name = car["name"].replace(/ /gi, "-").toLowerCase()
+download(car["image"], './images/cars/'+ make + "/" + name + "-" + car["year"], function(){
+});
 }
