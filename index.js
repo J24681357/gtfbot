@@ -81,7 +81,7 @@ const cooldowns = new Discord.Collection();
 client.on('ready', () => {
 
 var cars = require(gtf.CARS).find({})
-var index = 0
+var index = 140
 var makes = Object.keys(gtfcars)
 //var newJSON = {}
 var newJSON = JSON.parse(fs.readFileSync('./new.json', 'utf8'));
@@ -1017,13 +1017,13 @@ var downloadimage = function(car) {
 var download = function(uri, filename, callback){
 
   request.head(uri, function(err, res, body){
-    var type = res.headers['content-type'].split("/")[1]
+    var type = res.headers['content-type']
     var file = filename.split("/")
    file.pop()
    filename = filename + ".png"
   var shell = require('shelljs');
 shell.mkdir('-p', file.join("/"))
-if (type == "html" || type == "jpg") {
+if (type.includes("html") || !type.includes("image")) {
   console.log("The image may not be available")
 }
 
