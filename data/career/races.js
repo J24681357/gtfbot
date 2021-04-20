@@ -21,7 +21,7 @@ module.exports.beginner = function() {
       makes: [],
       models: [],
       drivetrains: [],
-      types: ["Production"],
+      types: ["Production", "Aftermarket"],
       prize: ["CREDITS", { id: -1, name: " ", item: 5000 }],
     },
     b2: {
@@ -40,7 +40,7 @@ module.exports.beginner = function() {
       makes: ["Mazda"],
       models: ["MX-5", "Roadster", "Miata"],
       drivetrains: [],
-      types: ["Production", "Race Car"],
+      types: ["Production", "Race Car", "Aftermarket"],
       prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Mazda"], fullname: ["Mazda MX-5 GT4 2012"] }],
     },
     b3: {
@@ -59,7 +59,7 @@ module.exports.beginner = function() {
       makes: [],
       models: [],
       drivetrains: [],
-      types: ["Production"],
+      types: ["Production", "Aftermarket"],
       prize: ["CREDITS", { id: -1, name: " ", item: 6000 }],
     },
   };
@@ -86,7 +86,7 @@ module.exports.amateur = function() {
       makes: [],
       models: [],
       drivetrains: [],
-      types: ["Production"],
+      types: ["Production", "Aftermarket"],
       prize: ["CREDITS", { id: -1, name: " ", item: 10000 }],
     },
     a2: {
@@ -174,7 +174,7 @@ module.exports.icleague = function() {
       makes: [],
       models: [],
       drivetrains: [],
-      types: ["Production"],
+      types: ["Production", "Aftermarket"],
       prize: ["CREDITS", { id: -1, name: " ", item: 20000 }],
     },
     ic2: {

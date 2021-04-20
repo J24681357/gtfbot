@@ -3,7 +3,7 @@ var emote = require('/home/runner/gtfbot/index');
 var gtftools = require('/home/runner/gtfbot/functions/misc/f_tools');
 
 const Discord = require('discord.js');
-var gtf = process.env;
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports = {

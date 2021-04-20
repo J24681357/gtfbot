@@ -1844,6 +1844,21 @@
       "special": [],
       "image": "https://i.gaw.to/photos/6/3/63455_2015_lamborghini_Huracan.jpg?1024x640"
     },
+      {
+      "make": "Lamborghini",
+      "name": "Lamborghini Miura P400 Bertone Prototype CN.0706",
+      "year": "1967",
+      "type": "Production",
+      "power": 349,
+      "weight": 2161,
+      "tires": "Sports: Hard",
+      "drivetrain": "MR",
+      "carcostm": 24,
+      "aerom": 1,
+      "condition": 100,
+      "special": ["x3"],
+      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1966_Lamborghini_MiuraP400Prototipo-0-1536.jpg"
+    },
     {
       "make": "Lamborghini",
       "name": "Lamborghini Veneno",

@@ -4,7 +4,7 @@ var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -105,7 +105,9 @@ module.exports = {
     } else {
       embed.setTitle('__Arcade Mode - Selection Menu__');
 
-      results2 = '1️⃣' + ' ' + "Race" + '\n' + emote.gtlogowhite + ' ' + 'Race (GT Sport Loaner Car)' + '\n\n' + '❓ **Click one of the reactions to select an option.**';
+      results2 = '1️⃣' + ' ' + "Race" + '\n' + 
+      "2️⃣" + " " + "Race (My Courses)" + "\n"  + 
+      emote.gtlogowhite + ' ' + 'Race (GT Sport Loaner Car)' + '\n\n' + '❓ **Click one of the reactions to select an option.**';
 
       embed.setDescription(results2);
       embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
@@ -145,7 +147,7 @@ module.exports = {
           return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
         }
 
-        var emojilist = [['1️⃣', '1️⃣', selectgaragemode], ['🦝', '🦝', selectgaragemodecoursemaker], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
+        var emojilist = [['1️⃣', '1️⃣', selectgaragemode], ['2️⃣', '2️⃣', selectgaragemodecoursemaker], [emote.gtlogowhite, 'gtlogowhite', selectgtsportmode]];
 
         gtftools.createreactions(emojilist, msg, userdata);
 
@@ -184,7 +186,9 @@ function selectcourse() {
   var tracks = Object.keys(coursestats).map(function(id) {
         return coursestats[id]
     });
-    embed.setDescription(tracks.map(t => t["name"]).join("\n"))
+    
+    var results = tracks.map(t => t["name"]).join("\n") + "\n\n" + "**❓ Select your track from the reactions below.**"
+    embed.setDescription(results)
     msg.channel.send(embed).then(msg => {
       var numberlist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣"]
 
