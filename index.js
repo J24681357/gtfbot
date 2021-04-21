@@ -80,31 +80,35 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 client.on('ready', () => {
 
-var cars = require(gtf.CARS).find({})
-var index = 140
-var makes = Object.keys(gtfcars)
-//var newJSON = {}
-var newJSON = JSON.parse(fs.readFileSync('./new.json', 'utf8'));
+/*
 
+var cars = require(gtf.CARS).find({})
+var index = 0
+var makes = Object.keys(gtfcars)
+var newJSON = {}
+var newJSON = JSON.parse(fs.readFileSync('./new.json', 'utf8'));
+*/
 /*for (var a = 0; a < makes.length; a++) {
   newJSON[makes[a]] = []
 }
 fs.writeFile("new.json", JSON.stringify(newJSON), function(err) { if (err) { console.log(err); } });*/
 
-/*for (var make = 0; make < makes.length; make++) {
+/*
+for (var make = 0; make < makes.length; make++) {
     for (var i = 0; i < gtfcars[makes[make]].length; i++) {
       var car = gtfcars[makes[make]][i]
-      var makee = car["make"].replace(/ /gi, "-").toLowerCase()
-      var name = car["name"].replace(/ /gi, "-").toLowerCase()
-      var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + 'images/cars/'+ makee + "/" + name + "-" + car["year"] + ".png"
+      var makee = car["make"].replace(/ /gi, "").toLowerCase()
+      var name = car["name"].replace(/ /gi, "").toLowerCase()
+      var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + 'images/cars/'+ makee + "/" + name + "" + car["year"] + ".png"
       car["image"] = urll
       delete car["id"]
   newJSON[makes[make]].push(car)
     }
   }
 
-  fs.writeFile("new2.json", JSON.stringify(newJSON), function(err) { if (err) { console.log(err); } });*/
-
+  fs.writeFile("new2.json", JSON.stringify(newJSON), function(err) { if (err) { console.log(err); } });
+  */
+/*
 setInterval(function(){
   if (index == cars.length) {
     console.log("Complete")
@@ -114,7 +118,7 @@ setInterval(function(){
   console.log(car["name"] + "\n" + (index+1) + " / " + cars.length + " images saved.")
 index++
 }, 2500)
-
+*/
   var gtfbot = {}
 
   module.exports.update = client.emojis.cache.get('419605168510992394').toString();
@@ -1033,9 +1037,9 @@ setTimeout(function() {
   })
 
   }
-  var name = car["name"].replace(/ /gi, "-").toLowerCase()
-  var make = car["make"].replace(/ /gi, "-").toLowerCase()
+  var name = car["name"].replace(/ /gi, "").toLowerCase()
+  var make = car["make"].replace(/ /gi, "").toLowerCase()
 
-download(car["image"], './images/cars/'+ make + "/" + name + "-" + car["year"], function(){
+download(car["image"], './images/cars/'+ make + "/" + name + "" + car["year"], function(){
 });
 }
