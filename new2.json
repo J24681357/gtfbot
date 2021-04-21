@@ -13,7 +13,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.guide-autosport.com/wp-content/uploads/photo-gallery/Abarth%20124%20Spider/abarth-124-spider-15.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/abarth/abarth124spider2016.png"
     },
     {
       "make": "Abarth",
@@ -30,7 +30,7 @@
       "special": [
         "x10"
       ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1952_Abarth_1500_Biposto_BAT_1_-_Flickr_-_edvvc_%281%29.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/abarth/abarth1500bipostobertoneb.a.t11952.png"
     },
     {
       "make": "Abarth",
@@ -45,7 +45,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.autoviva.com/img/photos/817/abarth_grande_punto_abarth_1_4t_jet_155cv_large_13817.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/abarth/abarthgrandepunto2009.png"
     },
     {
       "make": "Abarth",
@@ -60,7 +60,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.ausmotive.com/images2/Fiat-Abarth-Punto-Evo-01.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/abarth/abarthpuntoevo2011.png"
     }
   ],
   "acura": [
@@ -77,7 +77,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.ed.edmunds-media.com/acura/cl/2001/oem/2001_acura_cl_coupe_32-type-s_fq_oem_1_500.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/acura/acuracl3.2type-s2001.png"
     },
     {
       "make": "Acura",
@@ -92,7 +92,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.automobilemag.com/uploads/sites/11/2020/07/2001-Acura-Integra-Type-R-lead-image.jpg?fit=around%7C875:492"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/acura/acuraintegratype-r1997.png"
     },
     {
       "make": "Acura",
@@ -107,7 +107,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.rarecarsforsaleblog.com/wp-content/uploads/2014/01/lowmileage91nsx2a.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/acura/acuransx1991.png"
     },
     {
       "make": "Acura",
@@ -122,7 +122,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.hgmsites.net/hug/acura-tlx_100697908_h.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/acura/acuratlx2020.png"
     }
   ],
   "alfa-romeo": [
@@ -139,7 +139,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://blog.consumerguide.com/wp-content/uploads/sites/2/2016/12/Screen-Shot-2016-12-29-at-2.38.22-PM.png"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeo4c2016.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -154,7 +154,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.ytimg.com/vi/yPjlu97kKfg/maxresdefault.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeo8ccompetizione2008.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -169,7 +169,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://pbs.twimg.com/media/EI6u9p2WkAA5EJ8.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeo4cgr.3(granturismo)2014.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -184,7 +184,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.pinimg.com/originals/19/6b/e1/196be123e918d24f26ecebf9b6797344.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeo156gta3.2iv624v2002.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -199,7 +199,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Alfa_Romeo_Brera_Ti_2011_%2810750450035%29.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeobrera3.2jtsv6q42006.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -214,7 +214,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/OQPyR/s1/2017-alfa-romeo-giulia-first-drive.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeogiuliaquadrifoglio2017.png"
     },
     {
       "make": "Alfa-Romeo",
@@ -229,7 +229,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.driving.co.uk/s3/st-driving-prod/uploads/2014/03/mito-09-2.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alfa-romeo/alfaromeomito1.4tsport2009.png"
     }
   ],
   "aston-martin": [
@@ -246,7 +246,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.thesupercarblog.com/wp-content/uploads/2016/02/Aston-Martin-DB11-2016-Geneva-Motor-Show-1-1024x576.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartindb112016.png"
     },
     {
       "make": "Aston-Martin",
@@ -261,7 +261,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.autoexpress.co.uk/image/private/s--weMhqEwM--/v1562254507/autoexpress/images/car_photo_534283.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartinone-772011.png"
     },
     {
       "make": "Aston-Martin",
@@ -276,7 +276,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://supervettura.azureedge.net/blobs/Cars/59/ac1bf35f-7cc1-4d88-891f-c8e2f57f25aa.jpg?width=1920&height=1080&mode=crop"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartinvulcan2016.png"
     },
     {
       "make": "Aston-Martin",
@@ -291,7 +291,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/ASTONMARTINV8VantageS-4374_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartinv8vantages2015.png"
     },
     {
       "make": "Aston-Martin",
@@ -306,7 +306,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://www.granturismo-club.com/images/GT-sport/Voitures/Big/14.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartinv8vantagegr.4(granturismo)2015.png"
     },
     {
       "make": "Aston-Martin",
@@ -321,7 +321,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.motortrend.com/uploads/sites/5/2013/10/2015-Aston-Martin-V12-Vantage-S-front-three-quarters-in-motion-021.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/aston-martin/astonmartinv12vantages2014.png"
     }
   ],
   "alpine": [
@@ -338,7 +338,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.sportscarmarket.com/wp-content/uploads/2016/06/1971-alpine-a110-1600s-coupe-pass-front.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alpine/alpinea1101600s1972.png"
     },
     {
       "make": "Alpine",
@@ -353,7 +353,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.hdwallpapers.in/walls/2017_alpine_a110_premiere_edition_4k-HD.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/alpine/alpinea110premièreédition2017.png"
     }
   ],
   "audi": [
@@ -370,7 +370,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/testdrive2_chapters/audi-a4-30-tdi-quattro-review-2016-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audia43.0tdiquattro2016.png"
     },
     {
       "make": "Audi",
@@ -385,7 +385,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1982-audi-quttro-106-1590079979.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audiquattro1982.png"
     },
     {
       "make": "Audi",
@@ -400,7 +400,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/1982-audi-quttro-106-1590079979.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audiquattro(usspec)1982.png"
     },
     {
       "make": "Audi",
@@ -415,7 +415,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/AUDI-TT-RS-Coupe-4073_2.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audittrscoupe2010.png"
     },
     {
       "make": "Audi",
@@ -430,7 +430,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cimg3.ibsrv.net/ibimg/hgm/1920x1080-1/100/479/2016-audi-tt-tts-first-drive--spain-september-2014_100479843.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audittscoupe2016.png"
     },
     {
       "make": "Audi",
@@ -445,7 +445,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/ymp6b/s3/2009-160134-audi-r8-v10-5-2-fsi-quattro-2009-naias1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audir85.2fsiquattro2009.png"
     },
     {
       "make": "Audi",
@@ -460,7 +460,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://parkers-images.bauersecure.com/pagefiles/192354/cut-out/600x400/audi_r8_gts.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audir8gtspyder2012.png"
     },
     {
       "make": "Audi",
@@ -475,7 +475,7 @@
       "aerom": 8,
       "condition": 100,
       "special": [],
-      "image": "https://www.lemans.org/media/cache/api_news_large/assets/fileuploads/57/4f/574f5518293f6.jpeg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/audi/audir18tdi(audisportteamjoest)2011.png"
     }
   ],
   "bentley": [
@@ -492,7 +492,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/1Op63/s1/2018-bentley-continental-gt.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bentley/bentleycontinentalgtw122018.png"
     },
     {
       "make": "Bentley",
@@ -507,7 +507,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/new_bentley_continental_gt3_-_1.jpg?itok=WfNort5n9"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bentley/bentleycontinentalgt32018.png"
     }
   ],
   "BMW": [
@@ -524,7 +524,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q2/395918/2011-bmw-1-series-m-coupe-test-review-car-and-driver-photo-396361-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmw1mcoupe2011.png"
     },
     {
       "make": "BMW",
@@ -539,7 +539,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.topcarrating.com/bmw/1989-bmw-m3-sport-evolution-e30.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm3sportevolution(e30)1989.png"
     },
     {
       "make": "BMW",
@@ -554,7 +554,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://vms.atcdn.co.uk/media/804f52f27a7e483dacee97fc1cea407f?width=900"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm3coupe(e92)2007.png"
     },
     {
       "make": "BMW",
@@ -569,7 +569,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://lh3.googleusercontent.com/proxy/UoLWdtvkYv5PfHS525mcBklNrNCPR4g8eVlLGPDMcS5SUjs5bTpnUJka7eTTtlQMlNPvxoiR_-qpajYESTMNRAjqJNCBPE1jhd0VIn88OEM762pHpPIiznBWAEwrvyVvAohK38Sgxlx6cSWYzjc98g"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm4gr.4(granturismo)2014.png"
     },
     {
       "make": "BMW",
@@ -584,7 +584,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carmagazine.co.uk/Images/upload/32335/images/0004f0e2126c-8e36-43ba-9.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm4coupe(f82)2014.png"
     },
     {
       "make": "BMW",
@@ -599,7 +599,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://farm1.static.flickr.com/835/40845249744_95993ef14c.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm6gt3(walkenhorstmotorsport)2016.png"
     },
     {
       "make": "BMW",
@@ -614,7 +614,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2019/10/bmw_m8_coupe_fire_red_033.jpg?itok=R5f-6nSQ"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bmw/bmwm8competition2020.png"
     }
   ],
   "bugatti": [
@@ -634,7 +634,7 @@
         "Vision Gran Turismo",
         "Concept"
       ],
-      "image": "https://i.pinimg.com/originals/da/8c/af/da8cafc04570a83f8e8eb3ea7c2f3f08.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bugatti/bugattivisiongranturismo2015.png"
     },
     {
       "make": "Bugatti",
@@ -649,7 +649,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://uncrate.com/p/2016/02/bugatti-chiron-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bugatti/bugattichiron2016.png"
     },
     {
       "make": "Bugatti",
@@ -664,7 +664,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://assets.bugatti.com/fileadmin/_processed_/sei/p121/se-image-4f750982624e527a8b1003408e4febcf.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/bugatti/bugattichironsport2018.png"
     }
   ],
   "chevrolet": [
@@ -681,7 +681,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.blogcdn.com/www.autoblog.com/media/2012/01/01-2012-chevrolet-camaro-zl1-fd.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcamarozl12012.png"
     },
     {
       "make": "Chevrolet",
@@ -696,7 +696,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.ed.edmunds-media.com/chevrolet/cobalt/2005/oem/2005_chevrolet_cobalt_coupe_ss-supercharged_fq_oem_2_500.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcobaltsssupercharged2005.png"
     },
     {
       "make": "Chevrolet",
@@ -711,7 +711,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/CHEVROLET-Corvette-C1-Roadster-1832_30.jpeg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcorvetteconvertible(c1)1954.png"
     },
     {
       "make": "Chevrolet",
@@ -726,7 +726,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.pinimg.com/originals/81/90/94/8190945b183baaff0ba68635f0f3666a.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcorvettez06(c6)2006.png"
     },
     {
       "make": "Chevrolet",
@@ -741,7 +741,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/13q1/494260/2014-chevrolet-c7-corvette-stingray-z51-photos-and-info-news-car-and-driver-photo-495546-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcorvettestingray(c7)2014.png"
     },
     {
       "make": "Chevrolet",
@@ -756,7 +756,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s.aolcdn.com/dims-global/dims3/GLOB/legacy_thumbnail/1049x590/quality/80/https://s.blogcdn.com/slideshows/images/slides/715/144/3/S7151443/slug/l/dsc-6134-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletcorvettezr1(c7)2019.png"
     },
     {
       "make": "Chevrolet",
@@ -771,7 +771,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/5/2013/02/2014-Chevrolet-SS-Daytona1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/chevrolet/chevroletsupersport2014.png"
     }
   ],
   "daihatsu": [
@@ -788,7 +788,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carzone.ie/reviews/images/338_daihatsu_copen2003_04.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/daihatsu/daihatsucopen2002.png"
     },
     {
       "make": "Daihatsu",
@@ -803,7 +803,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.j-spec.com.au/f17848/2014-Daihatsu-Copen-Robe_01.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/daihatsu/daihatsucopenrobe2014.png"
     },
     {
       "make": "Daihatsu",
@@ -818,13 +818,13 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://lh3.googleusercontent.com/proxy/BDD1X1PzFpLOUgSpRhoACVyIf4z17HgrnIK1lwiVJkBeP9qt0ElZJ6kMeQsOuBfbXItstpoEAzm8N3OyTHQTzHh4GrKuIh9w7Wro8oF6ZF04"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/daihatsu/daihatsumiratxcvt(cx)1999.png"
     }
   ],
   "dodge": [
     {
       "make": "Dodge",
-      "name": "Dodge Challenger R/T",
+      "name": "Dodge Challenger RT",
       "year": "1970",
       "type": "Production",
       "power": 425,
@@ -835,7 +835,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://ccmarketplace.azureedge.net/cc-temp/listing/103/311/9809467-1970-dodge-challenger-r-t-thumb-c.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgechallengerrt1970.png"
     },
     {
       "make": "Dodge",
@@ -850,7 +850,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.discordapp.net/attachments/306637248219185154/477275433813934092/2010DodgeChallengerSRT8BeautyLeft001small.png"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgechallengersrt-102010.png"
     },
     {
       "make": "Dodge",
@@ -865,7 +865,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://smartcdn.prod.postmedia.digital/driving/images?url=http://smartcdn.prod.postmedia.digital/driving/wp-content/uploads/2014/10/img_2340.jpg&w=580&h=370"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgechargersrthellcat2015.png"
     },
     {
       "make": "Dodge",
@@ -880,7 +880,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.thetruthaboutcars.com/wp-content/uploads/2014/06/IMG_0339.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgedartgt2014.png"
     },
     {
       "make": "Dodge",
@@ -895,7 +895,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/02q4/267343/dodge-viper-srt-10-photo-6196-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgevipersrt-102003.png"
     },
     {
       "make": "Dodge",
@@ -910,7 +910,7 @@
       "aerom": 1.5,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/5/2007/11/112_0711_18z-2008_dodge_viper_SRT10_ACR-front_view.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgevipersrt-10acr2008.png"
     },
     {
       "make": "Dodge",
@@ -925,7 +925,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b77152c3d0_-_2013-srt-viper-lg.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgevipergts2013.png"
     },
     {
       "make": "Dodge",
@@ -940,7 +940,22 @@
       "aerom": 1.5,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/10/2015/09/2016-Dodge-Viper-ACR-front-three-quarter-in-studio-02.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgeviperacr2016.png"
+    },
+    {
+      "make": "Dodge",
+      "name": "Dodge Challenger RT",
+      "year": "1970",
+      "type": "Production",
+      "power": 425,
+      "weight": 3801,
+      "tires": "Sports: Hard",
+      "drivetrain": "FR",
+      "carcostm": 2,
+      "aerom": 1,
+      "condition": 100,
+      "special": [],
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/dodge/dodgechallengerrt1970.png"
     }
   ],
   "ferrari": [
@@ -957,7 +972,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.blogcdn.com/www.autoblog.com/media/2009/09/01-ferrari-458-live.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrari458italia2009.png"
     },
     {
       "make": "Ferrari",
@@ -974,7 +989,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://pictures.topspeed.com/IMG/jpg/200909/ferrari-512-bb-4.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrari512bb1976.png"
     },
     {
       "make": "Ferrari",
@@ -989,7 +1004,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://www.kudosprime.com/gts/images/users/car_99_1_59ed276ed237c.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrari458italiagr.4(granturismo)2009.png"
     },
     {
       "make": "Ferrari",
@@ -1004,7 +1019,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.carbuzz.com/gallery-images/1600/341000/300/341322.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrari488gtb2016.png"
     },
     {
       "make": "Ferrari",
@@ -1019,7 +1034,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b68c0a4a86_-_2011-ferrari-599-gto-2-lg.jpg?resize=480:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrari599gto2011.png"
     },
     {
       "make": "Ferrari",
@@ -1034,7 +1049,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carmagazine.co.uk/Images/upload/28935/images/ferrari6.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrarif12berlinetta2012.png"
     },
     {
       "make": "Ferrari",
@@ -1051,7 +1066,7 @@
       "special": [
         "Hybrid"
       ],
-      "image": "http://cdn.hiconsumption.com/wp-content/uploads/2013/03/2013-Ferrari-LaFerrari-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ferrari/ferrarilaferrari2013.png"
     }
   ],
   "fiat": [
@@ -1068,7 +1083,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.discordapp.net/attachments/306637248219185154/464628184009146370/2008_fiat_500-pic-28253-1600x1200.png"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/fiat/fiat5002008.png"
     },
     {
       "make": "Fiat",
@@ -1085,7 +1100,7 @@
       "special": [
         "Electric"
       ],
-      "image": "https://cnet1.cbsistatic.com/img/L1UhafgNrmhn-mQFr1brUlUUFoA=/770x433/2015/12/09/9b2be60f-3a8d-465b-bf3d-2f54eab95e92/2016fiat500e-018.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/fiat/fiat500e2015.png"
     },
     {
       "make": "Fiat",
@@ -1100,7 +1115,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://ph-classic-prod-images.s3.amazonaws.com/nimg/36306/PHHero_FiatCoupeTurbo_06.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/fiat/fiatcoupéturbo20v1996.png"
     }
   ],
   "ford": [
@@ -1117,7 +1132,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://3dprint.com/wp-content/uploads/2015/08/gt.png"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordgt2006.png"
     },
     {
       "make": "Ford",
@@ -1132,7 +1147,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q2/678295/2017-ford-gt-supercar-first-ride-review-car-and-driver-photo-679402-s-original.jpg?fill=2:1&resize=1200:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordgt2017.png"
     },
     {
       "make": "Ford",
@@ -1147,7 +1162,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.dealeraccelerate.com/cam/34/1895/78567/1920x1440/1971-ford-mustang-mach-1"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordmustangmach13511971.png"
     },
     {
       "make": "Ford",
@@ -1162,7 +1177,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.nada.com/b2b/Portals/0/SunBlogNuke/Temp/9899a1f1-a904-458e-90b0-bd6ffbbd3772/2015%20Ford%20Mustang%20GT.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordmustanggtpremiumfastback2015.png"
     },
     {
       "make": "Ford",
@@ -1177,7 +1192,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.ytimg.com/vi/zqz6QQl4mAw/maxresdefault.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordmustangshelbygt5002020.png"
     },
     {
       "make": "Ford",
@@ -1194,7 +1209,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://www.gtplanet.net/wp-content/uploads/2017/11/Gran-Turismo-Sport-Mustang-Gr3-alxndrustinov-860x484.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordmustanggr.3roadcar(granturismo)2015.png"
     },
     {
       "make": "Ford",
@@ -1209,7 +1224,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1992_Ford_escortrscosworth4.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordescortrscosworth1992.png"
     },
     {
       "make": "Ford",
@@ -1224,7 +1239,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2016-ford-focus-rs-101-1557785824.jpg?crop=0.817xw:1.00xh;0.115xw,0&resize=640:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordfocusrs2016.png"
     },
     {
       "make": "Ford",
@@ -1239,7 +1254,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.discordapp.net/attachments/306637248219185154/447594082366259231/FordFocusST2.png?width=650&height=425"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ford/fordfocusst2015.png"
     }
   ],
   "HKS": [
@@ -1256,7 +1271,7 @@
       "aerom": 3,
       "condition": 100,
       "special": [],
-      "image": "http://speedhunters-wp-production.s3.amazonaws.com/wp-content/uploads/2009/07/01190000/ct1_0ARE_0.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/hks/hksct230r2008.png"
     }
   ],
   "honda": [
@@ -1273,7 +1288,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/HONDAN360-2936_2.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondan3601967.png"
     },
     {
       "make": "Honda",
@@ -1288,7 +1303,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://icdn-1.motor1.com/images/mgl/Oq4gR/s4/honda-civic-si-japanese-spec.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondacivicsi1986.png"
     },
     {
       "make": "Honda",
@@ -1303,7 +1318,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://c.encycarpedia.com/ci/11212.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondacivictype-r(fd2)2008.png"
     },
     {
       "make": "Honda",
@@ -1318,7 +1333,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.imgur.com/JU15l5l.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondacivictype-r(fk2)2015.png"
     },
     {
       "make": "Honda",
@@ -1335,7 +1350,7 @@
       "special": [
         "Hybrid"
       ],
-      "image": "http://japanopenmarket.com/wp-content/uploads/2016/04/Insight-Grade-LS.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondainsightls2009.png"
     },
     {
       "make": "Honda",
@@ -1350,7 +1365,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://img.favcars.com/honda/integra/honda_integra_2001_images_1_b.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondaintegratype-r(dc5)2004.png"
     },
     {
       "make": "Honda",
@@ -1365,7 +1380,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1992_Honda_NSXR-0-1536.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondansxtype-r1992.png"
     },
     {
       "make": "Honda",
@@ -1380,7 +1395,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.ytimg.com/vi/wmbgwafA0Ek/maxresdefault.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondansxtype-r2002.png"
     },
     {
       "make": "Honda",
@@ -1395,7 +1410,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://www.kudosprime.com/gts/images/users/car_125_1_59ed1d3b269ce.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondansxgr.4(granturismo)2017.png"
     },
     {
       "make": "Honda",
@@ -1410,7 +1425,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.automobilemag.com/uploads/sites/11/2013/05/1970-1972-Honda-600-front-left-view.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/honda/hondazact1970.png"
     }
   ],
   "hyundai": [
@@ -1427,7 +1442,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/5/2012/02/2013-Hyundai-Genesis-Coupe-left-side-front-three-quarter-on-track.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/hyundai/hyundaigenesiscoupe3.8track2013.png"
     },
     {
       "make": "Hyundai",
@@ -1442,7 +1457,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "http://www.igcd.net/images/139/313.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/hyundai/hyundaigenesisgr.4(granturismo)2013.png"
     },
     {
       "make": "Hyundai",
@@ -1457,7 +1472,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cnet4.cbsistatic.com/img/w20XMdbfWBqbK0dQk39a3wgbuMA=/724x407/2018/01/11/f423bcf0-c60b-4cc7-bef0-4b16c390aef7/30946-2019velosterturbo.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/hyundai/hyundaivelosterturbo7dct2019.png"
     }
   ],
   "infiniti": [
@@ -1474,7 +1489,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/11q3/409396/infiniti-fx-sebastian-vettel-version-news-car-and-driver-photo-417001-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/infiniti/infinitifx50vetteledition2013.png"
     },
     {
       "make": "Infiniti",
@@ -1489,7 +1504,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://momentcar.com/images/infiniti-g37-coupe-4.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/infiniti/infinitig37coupe2012.png"
     },
     {
       "make": "Infiniti",
@@ -1504,7 +1519,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://images.thetruthaboutcars.com/2010/10/96g20.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/infiniti/infinitig201990.png"
     }
   ],
   "jaguar": [
@@ -1524,7 +1539,7 @@
         "Hybrid",
         "Concept"
       ],
-      "image": "https://car-images.bauersecure.com/upload/30489/images/1040x585/000084f33b70-ac91-417c-9.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarc-x75prototype2013.png"
     },
     {
       "make": "Jaguar",
@@ -1541,7 +1556,7 @@
       "special": [
         "x10"
       ],
-      "image": "https://bangshift.com/assets/galleries/demonstration-day-2014-at-simeone-museum/simeone-museum-demo-day-cobra-gt40-jag-porsche009.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguard-type1956.png"
     },
     {
       "make": "Jaguar",
@@ -1556,7 +1571,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/Jaguar-F-type-Coupe-d.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarf-typercoupe2014.png"
     },
     {
       "make": "Jaguar",
@@ -1571,7 +1586,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "http://www.igcd.net/images/133/850.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarf-typegr.4(granturismo)2014.png"
     },
     {
       "make": "Jaguar",
@@ -1586,7 +1601,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://pictures.topspeed.com/IMG/crop/201102/jaguar-xkr-s_800x0w.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarxkr-s2011.png"
     },
     {
       "make": "Jaguar",
@@ -1601,7 +1616,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://st.motortrend.com/uploads/sites/5/2014/01/2014-Jaguar-XKR-S-GT-front-three-quarter-in-motion-02.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarxkr-sgt2014.png"
     },
     {
       "make": "Jaguar",
@@ -1616,7 +1631,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://farm7.static.flickr.com/6152/6193229221_c10ff72621_b.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarxkrgtrsr(rocketsportsracing)2011.png"
     },
     {
       "make": "Jaguar",
@@ -1631,7 +1646,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.ultimatecarpage.com/images/car/223/Jaguar-XJ220-3461.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jaguar/jaguarxj2201992.png"
     }
   ],
   "jeep": [
@@ -1648,7 +1663,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.gaw.to/vehicles/photos/08/41/084107_2018_jeep_Grand_Cherokee.jpg?640x400"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/jeep/jeepgrandcherokeetrackhawk2018.png"
     }
   ],
   "KTM": [
@@ -1665,7 +1680,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/motor/2017/06/19/104410/KTM-X-BOW.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/ktm/ktmx-bowr2012.png"
     }
   ],
   "Kia": [
@@ -1682,7 +1697,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.slashgear.com/wp-content/uploads/2017/09/kia-stinger-1-980x620.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/kia/kiastinger2017.png"
     },
     {
       "make": "Kia",
@@ -1697,7 +1712,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.motortrend.com/uploads/sites/5/2019/02/2020-Kia-Soul-GT-2.jpg?fit=around%7C875:492"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/kia/kiasoulgt-line1.6turbo2020.png"
     }
   ],
   "koenigsegg": [
@@ -1714,7 +1729,7 @@
       "aerom": 1.5,
       "condition": 100,
       "special": [],
-      "image": "https://c.encycarpedia.com/ci/1174.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/koenigsegg/koenigseggagerar2011.png"
     }
   ],
   "lamborghini": [
@@ -1731,7 +1746,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.motortrend.com/uploads/sites/5/2011/05/2012-lamborghini-aventador-LP-700-4-promo.jpg?fit=around%7C875:492"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghiniaventadorlp700-42011.png"
     },
     {
       "make": "Lamborghini",
@@ -1746,7 +1761,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.motortrend.com/uploads/sites/5/2016/02/2015-Lamborghini-Aventador-LP750-4-SV-homepage.jpg?fit=around%7C875:492"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghiniaventadorlp750sv2015.png"
     },
     {
       "make": "Lamborghini",
@@ -1763,7 +1778,7 @@
       "special": [
         "x10"
       ],
-      "image": "https://www.ultimatecarpage.com/images/car/1289/Lamborghini-Countach-LP400-9503.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinicountachlp4001974.png"
     },
     {
       "make": "Lamborghini",
@@ -1780,7 +1795,7 @@
       "special": [
         "x10"
       ],
-      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/8839731.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinicountachlp5000qv1988.png"
     },
     {
       "make": "Lamborghini",
@@ -1797,7 +1812,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://blog.dupontregistry.com/wp-content/uploads/2015/07/diablo-sv-main.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinidiablosv1997.png"
     },
     {
       "make": "Lamborghini",
@@ -1812,7 +1827,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://static.cargurus.com/images/site/2008/04/22/14/39/2004_lamborghini_gallardo-pic-11930-640x480.jpeg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinigallardo2004.png"
     },
     {
       "make": "Lamborghini",
@@ -1827,7 +1842,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://st.motortrend.com/uploads/sites/10/2015/09/2011-lamborghini-gallardo-LP-570-4-superleggera-front-three-quarter-static.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinigallardolp570-4superleggera2011.png"
     },
     {
       "make": "Lamborghini",
@@ -1842,9 +1857,9 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.gaw.to/photos/6/3/63455_2015_lamborghini_Huracan.jpg?1024x640"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinihuracánlp610-42015.png"
     },
-      {
+    {
       "make": "Lamborghini",
       "name": "Lamborghini Miura P400 Bertone Prototype CN.0706",
       "year": "1967",
@@ -1856,8 +1871,10 @@
       "carcostm": 24,
       "aerom": 1,
       "condition": 100,
-      "special": ["x3"],
-      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1966_Lamborghini_MiuraP400Prototipo-0-1536.jpg"
+      "special": [
+        "x3"
+      ],
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghinimiurap400bertoneprototypecn.07061967.png"
     },
     {
       "make": "Lamborghini",
@@ -1872,7 +1889,7 @@
       "aerom": 1.5,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/vkPeK/s1/le-10-lamborghini-piu-rare-e-costose-di-sempre.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lamborghini/lamborghiniveneno2014.png"
     }
   ],
   "lancia": [
@@ -1889,7 +1906,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.topcarrating.com/lancia/1987-lancia-delta-hf-integrale-16v-831.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lancia/lanciadeltahfintegrale16v1989.png"
     },
     {
       "make": "Lancia",
@@ -1904,7 +1921,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.autouncle.com/it/car_images/4cca105f-6896-4124-8791-a66a3c3497b8_lancia-ypsilon-1-3-multijet-2012.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lancia/lanciaypsilon1.3multijetii2012.png"
     },
     {
       "make": "Lancia",
@@ -1921,7 +1938,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://pictures.topspeed.com/IMG/crop/201809/lancia-stratos-hf-st-5_800x0w.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lancia/lanciastratoshfstradale1974.png"
     }
   ],
   "lexus": [
@@ -1938,7 +1955,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.fastestlaps.com/lexus-gs350-f-sport.jpg?550x250m"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexusgs350f-sportawd2014.png"
     },
     {
       "make": "Lexus",
@@ -1953,7 +1970,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2005/2005-lexus-is-frontside_leis-051.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexusis3002005.png"
     },
     {
       "make": "Lexus",
@@ -1968,7 +1985,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/lexus-lf-a-1_0.jpg?itok=ft5czLwa"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexuslfa2010.png"
     },
     {
       "make": "Lexus",
@@ -1983,7 +2000,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.automobilemag.com/uploads/sites/11/2020/04/2012-Lexus-LFA-Nurburgring-Package-lead-image.jpg?fit=around%7C875:492"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexuslfanürburgringpackage2012.png"
     },
     {
       "make": "Lexus",
@@ -1998,7 +2015,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.cstatic-images.com/stock/400x500/1454105511838.png"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexuslc5002017.png"
     },
     {
       "make": "Lexus",
@@ -2013,7 +2030,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.askmen.com/1080x540/cars/car_reviews/lexus-rc-f-review-1098814-TwoByOne.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexusrcf2014.png"
     },
     {
       "make": "Lexus",
@@ -2028,7 +2045,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/vM896/s3/2020-lexus-rc-f-track-edition.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexusrcftrackedition2020.png"
     },
     {
       "make": "Lexus",
@@ -2043,7 +2060,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.hgmsites.net/med/2010-lexus-sc-430_100314159_m.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lexus/lexussc4302010.png"
     }
   ],
   "lotus": [
@@ -2060,7 +2077,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.classicandperformancecar.com/uploads/cms_article/5001_5100/lotus-elise-mk1-mk2-buying-guide-and-review-1996-present-5045_13011_640X470.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lotus/lotuselise1996.png"
     },
     {
       "make": "Lotus",
@@ -2075,7 +2092,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.fastestlaps.com/lotus-elise-111r.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lotus/lotuselise111r2004.png"
     },
     {
       "make": "Lotus",
@@ -2090,7 +2107,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://latimesblogs.latimes.com/.a/6a00d8341c630a53ef01538f30746e970b-800wi"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lotus/lotusevoras2011.png"
     },
     {
       "make": "Lotus",
@@ -2105,7 +2122,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://image.superstreetonline.com/f/39027170+w+h+q80+re0+cr1/epcp-1210-01%2B2013-lotus-exige-s%2Bcover.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lotus/lotusexigesv62013.png"
     },
     {
       "make": "Lotus",
@@ -2120,7 +2137,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://motoring.pxcrush.net/motoring/general/editorial/exige-i-jlq2.jpg?width=640"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/lotus/lotusexigecup430(type49)2018.png"
     }
   ],
   "mazda": [
@@ -2137,7 +2154,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://image-cdn.beforward.jp/large/202012/2190488/BH658664_f290f9.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdaatenzasedanxdlpackage2015.png"
     },
     {
       "make": "Mazda",
@@ -2152,7 +2169,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.automobilemag.com/uploads/sites/11/2017/10/1992-Autozam-AZ1-02.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdaautozamaz-11991.png"
     },
     {
       "make": "Mazda",
@@ -2167,7 +2184,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.fastestlaps.com/mazda-eunos-cosmo-20b-ccs.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdaeunoscosmo20bccs1990.png"
     },
     {
       "make": "Mazda",
@@ -2182,7 +2199,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/miatas019-1549393871.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdamx-5(na)1989.png"
     },
     {
       "make": "Mazda",
@@ -2197,7 +2214,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Mazda_Roadster_02_-_Tokyo_Auto_Salon_2015.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdaroadsters(nd)2015.png"
     },
     {
       "make": "Mazda",
@@ -2212,7 +2229,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://newsroom.mazda.com/en/publicity/release/2003/200304/0409.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdarx-8types2007.png"
     },
     {
       "make": "Mazda",
@@ -2229,7 +2246,7 @@
       "special": [
         "Concept"
       ],
-      "image": "https://cdn.slashgear.com/wp-content/uploads/2020/05/Mazda-RX-Vision-GT3-Concept-Gran-Turismo_18-680x383.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdarxvisiongt3concept2020.png"
     },
     {
       "make": "Mazda",
@@ -2244,7 +2261,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://media.caradvice.com.au/image/private/c_fill,q_auto,f_auto,w_1200,h_900/a5ed861f7ff3c939dc26924daeab7e90.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdamx-5gt42012.png"
     },
     {
       "make": "Mazda",
@@ -2259,7 +2276,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://picolio.auto123.com/auto123-media/articles/2015/12/61624/Mazda-RX-7-Spirit-R_002fr.JPG"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mazda/mazdarx-7spiritrtypea(fd)2002.png"
     }
   ],
   "maserati": [
@@ -2276,7 +2293,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/07q4/267366/2008-maserati-granturismo-photo-8746-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/maserati/maseratighiblis2014.png"
     },
     {
       "make": "Maserati",
@@ -2291,7 +2308,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/07q4/267366/2008-maserati-granturismo-photo-8746-s-original.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/maserati/maseratigranturismos2008.png"
     },
     {
       "make": "Maserati",
@@ -2306,7 +2323,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://2.bp.blogspot.com/-XRKnDThMUq0/TwAlk-Ka4nI/AAAAAAAAB7Q/-AnY6m8mrqw/s1600/maserati+mc12+wallpaper+%25281%2529.JPG"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/maserati/maseratimc122004.png"
     }
   ],
   "mclaren": [
@@ -2323,7 +2340,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.ultimatecarpage.com/images/car/6741/McLaren-720S-Coupe-68897.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mclaren/mclaren720scoupe2018.png"
     }
   ],
   "mini": [
@@ -2340,7 +2357,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.pinimg.com/originals/d6/fa/21/d6fa2173c159dfa537d20c64840bae72.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mini/minicoopersivfinaledition2000.png"
     },
     {
       "make": "Mini",
@@ -2355,7 +2372,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.torquenews.com/sites/default/files/image-1084/%5Btitle-raw%5D/100390328_2013-mini-john-cooper-works-gp_0.jpeg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mini/minijohncooperworksgp2012.png"
     },
     {
       "make": "Mini",
@@ -2370,7 +2387,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.ytimg.com/vi/K_KcfLVHx0w/maxresdefault.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mini/minicoopers2014.png"
     }
   ],
   "mitsubishi": [
@@ -2387,7 +2404,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.fastestlaps.com/mitsubishi-eclipse-gsx.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishieclipsegsx1995.png"
     },
     {
       "make": "Mitsubishi",
@@ -2402,7 +2419,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://file.kbb.com/kbb/vehicleimage/housenew/480x360/2006/2006-mitsubishi-eclipse-frontside_mieclgt061.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishieclipsegt2006.png"
     },
     {
       "make": "Mitsubishi",
@@ -2417,7 +2434,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://i.pinimg.com/originals/ea/8f/94/ea8f949d77122f2928f1e135bc0088d9.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishiftogpversionr1999.png"
     },
     {
       "make": "Mitsubishi",
@@ -2434,7 +2451,7 @@
       "special": [
         "Electric"
       ],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2014-mitsubishi-imiev-16-1559940388.jpg?crop=0.891xw:0.998xh;0,0.00481xh&resize=640:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishii-miev2012.png"
     },
     {
       "make": "Mitsubishi",
@@ -2449,7 +2466,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/evo6tm-288.jpg?itok=fw7APKM5"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishilancerevolutionvigsrt.m.e.specialcolorpackage1999.png"
     },
     {
       "make": "Mitsubishi",
@@ -2464,7 +2481,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.geocities.ws/go2idmisc/EVO_IV-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishilancerevolutionivgsr1996.png"
     },
     {
       "make": "Mitsubishi",
@@ -2479,7 +2496,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.dragtimes.com/images/15552-2006-Mitsubishi-Lancer-EVO.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishilancerevolutionixmr2006.png"
     },
     {
       "make": "Mitsubishi",
@@ -2494,7 +2511,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/5/2015/10/2015-mitsubishi-lancer-evolution-final-edition-us-front-three-quarter-03.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mitsubishi/mitsubishilancerevolutionxfinaledition2015.png"
     }
   ],
   "mercedes-benz": [
@@ -2511,7 +2528,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.blogcdn.com/www.autoblog.com/media/2011/11/01-mercedes-c63-amg-black-series.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzc63amgblackseries2012.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2526,7 +2543,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://dam.which.co.uk/b71070c9-47a8-4f4c-8608-05ec07904492.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzslsamg2010.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2541,7 +2558,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://dealeraccelerate-all.s3.amazonaws.com/flemings/images/1/6/0/2/1602/34105_7ff1a83d72_low_res.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzsl5002003.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2556,7 +2573,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_large/v1/editorial/mercedes-amg-gt-s-2015-%286%29.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzamggts2015.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2571,7 +2588,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "http://www.dailysportscar.com/wp-content/uploads/2016/05/29-HTP-Motorsports-Mercedes-N24-2016-Qualifying.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzgtsamggt3(amg-teamhtp-motorsport)2016.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2586,7 +2603,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "http://www.thedetroitbureau.com/wp-content/uploads/2010/03/2011-Mercedes-Benz-SLS-AMG-GT3.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzslsamggt32011.png"
     },
     {
       "make": "Mercedes-Benz",
@@ -2601,7 +2618,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://i.ytimg.com/vi/ohucLw3Qpao/maxresdefault.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mercedes-benz/mercedes-benzslsamggr.4(granturismo)2010.png"
     }
   ],
   "mugen": [
@@ -2620,7 +2637,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/01q3/267338/mugen-s2000-road-test-review-car-and-driver-photo-9547-s-original.jpg?fill=2:1&resize=1200:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/mugen/mugens20002000.png"
     }
   ],
   "opel": [
@@ -2637,7 +2654,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://img-ik.cars.co.za/images/2019/4/OpelCorsaGSi/tr:n-news_large/gsi1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/opel/opelcorsagsi2018.png"
     },
     {
       "make": "Opel",
@@ -2652,7 +2669,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/OPELSpeedster-458_3.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/opel/opelspeedster2001.png"
     }
   ],
   "pagani": [
@@ -2669,7 +2686,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.ultimatecarpage.com/images/car/4607/Pagani-Huayra-36304.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/pagani/paganihuayra2011.png"
     }
   ],
   "peugeot": [
@@ -2686,7 +2703,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://ranwhenparkeddotnet.files.wordpress.com/2013/03/peugeot-106-rallye-5.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeot1061.6rallye2003.png"
     },
     {
       "make": "Peugeot",
@@ -2701,7 +2718,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.motorstown.com/images/peugeot-206-2.0-s16-02.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeot2062.0s161999.png"
     },
     {
       "make": "Peugeot",
@@ -2716,7 +2733,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/PEUGEOT207RC-2639_8.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeot207rc2009.png"
     },
     {
       "make": "Peugeot",
@@ -2731,7 +2748,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://res.cloudinary.com/carsguide/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/Peugeot-208-GTi-%281%29.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeot208gti2014.png"
     },
     {
       "make": "Peugeot",
@@ -2746,7 +2763,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/pug-2811.jpg?itok=HMeaBiaB"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeot5081.6lpuretech2252018.png"
     },
     {
       "make": "Peugeot",
@@ -2764,7 +2781,7 @@
         "Vision Gran Turismo",
         "Concept"
       ],
-      "image": "https://lh3.googleusercontent.com/proxy/28b6Vl0zrdbJEzlHRISgCa-IEvPHpMFoRVNdfazv31nEHKe6pmjADJaYb_XWEe31_6YeFm6GmebydeL6ZOIHqpsLcAEClqRjpCQLIsr0iBQa7ibsAtRyYRkllxwK1q0qU3d8SouKP7GouxpdPGiEuLTo7-mZSkjCVdgO3yK2gyQYyM0FdJ3hi2nr_dJwMiRvBBb0NsG9Ze4oYdJdRXIK0RTY3FD0K18"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/peugeot/peugeotvisiongranturismogr.32017.png"
     }
   ],
   "nio": [
@@ -2783,7 +2800,7 @@
       "special": [
         "Electric"
       ],
-      "image": "https://www.slashgear.com/wp-content/uploads/2016/11/nio-ep9-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nio/nioep92019.png"
     }
   ],
   "nissan": [
@@ -2800,7 +2817,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s35.wheelsage.org/format/picture/picture-thumb-medium/n/nissan/180sx_type_x_sport_package/nissan_180sx_type_x_sport_package_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissan180sxtypex19961994.png"
     },
     {
       "make": "Nissan",
@@ -2815,7 +2832,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.torquenews.com/sites/default/files/image-1080/2015_370z_nismo_-_1-600_0.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissan370znismo2015.png"
     },
     {
       "make": "Nissan",
@@ -2830,7 +2847,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.cnet.com/a/img/4pgFMD66qhdFFBc8rPx2ON3a5_c=/868x488/2014/10/23/9c0e5396-c1f7-4ee9-b05d-04632b85c1ad/2014-nissan-juke-nismors-pan-000.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissanjukenismors2014.png"
     },
     {
       "make": "Nissan",
@@ -2847,7 +2864,7 @@
       "special": [
         "Electric"
       ],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/nissan-leaf.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissanleaf2018.png"
     },
     {
       "make": "Nissan",
@@ -2862,7 +2879,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/NISSANSkylineGT-RV-Spec-R33--4039_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissanskylinegt-rv-spec(r33)1997.png"
     },
     {
       "make": "Nissan",
@@ -2877,7 +2894,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carscoops.com/wp-content/uploads/2017/12/NISSAN_SKYLINE_GT-R_VSPEC_II_NUR_BNR34_00.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissanskylinegt-rv-speciinur(r34)2002.png"
     },
     {
       "make": "Nissan",
@@ -2892,7 +2909,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.wheels.ca/wp-content/uploads/2016/06/28061424/Nissan-GT-R-Premium-pricing-808x455.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissangt-rpremiumedition2017.png"
     },
     {
       "make": "Nissan",
@@ -2907,7 +2924,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://static.wikia.nocookie.net/gran-turismo/images/4/49/Nissan_GT-R_Gr.4.jpg/revision/latest?cb=20181204104359"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissangt-rgr.4(granturismo)2016.png"
     },
     {
       "make": "Nissan",
@@ -2922,7 +2939,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://cdn-8.motorsport.com/static/img/mgl/1700000/1710000/1719000/1719400/1719428/s8/endurance-24-hours-of-the-n-rburgring-2014-24-schulze-motorsport-nissan-gt-r-nismo-gt3-ka.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/nissan/nissangt-rnismogt3n24(schulzemotorsport)2013.png"
     }
   ],
   "noble": [
@@ -2939,7 +2956,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2016/08/li1109657noble-007.jpg?itok=UeSCJ1my"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/noble/noblem6002010.png"
     }
   ],
   "pontiac": [
@@ -2956,7 +2973,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/PONTIACGTO-481_12.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/pontiac/pontiacgto6.02006.png"
     },
     {
       "make": "Pontiac",
@@ -2971,7 +2988,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://o.aolcdn.com/images/dims3/GLOB/legacy_thumbnail/800x450/format/jpg/quality/85/http://www.blogcdn.com/www.autoblog.com/media/2009/06/solsticecoupe_rev1002_opt.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/pontiac/pontiacsolsticegxpcoupe2009.png"
     },
     {
       "make": "Pontiac",
@@ -2986,7 +3003,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://dxsdcl7y7vn9x.cloudfront.net/3/432928/15323102/978537538.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/pontiac/pontiacfirebirdtransamgta1987.png"
     }
   ],
   "porsche": [
@@ -3005,7 +3022,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://bringatrailer.com/wp-content/uploads/2018/05/1970_porsche_914-6_152874995721410cb064a6f7f5Screen-Shot-2018-06-11-at-1.44.11-PM.png?fit=940%2C622"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porsche914/61970.png"
     },
     {
       "make": "Porsche",
@@ -3020,7 +3037,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/546b279804cb1_-_05_cay_s_2007-lg.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porschecaymans2007.png"
     },
     {
       "make": "Porsche",
@@ -3035,7 +3052,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.fastestlaps.com/porsche-cayman-gt4-718.jpg?550x250m"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porschecaymangt4(718)2019.png"
     },
     {
       "make": "Porsche",
@@ -3053,7 +3070,7 @@
         "Electric",
         "x2"
       ],
-      "image": "https://cdn.motor1.com/images/mgl/BoN14/s1/2020-porsche-taycan.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porschetaycanturbos2020.png"
     },
     {
       "make": "Porsche",
@@ -3070,7 +3087,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE911Turbo-930--2987_5.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porsche911turbo(930)1981.png"
     },
     {
       "make": "Porsche",
@@ -3085,7 +3102,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/PORSCHE-911-GT3--996--2927_27.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porsche911gt3(996)2001.png"
     },
     {
       "make": "Porsche",
@@ -3100,7 +3117,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://pictures.topspeed.com/IMG/crop/201706/2018-porsche-911-gt2-rs-71_800x0w.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porsche911gt2rs(991)2018.png"
     },
     {
       "make": "Porsche",
@@ -3115,7 +3132,7 @@
       "aerom": 8,
       "condition": 100,
       "special": [],
-      "image": "https://i2.wp.com/www.porscheroadandrace.com/wp-content/uploads/2016/11/s_2-porsche-919-hybrid-le-mans-24h-2016_3783-gs.jpg?resize=1000%2C622&ssl=1"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porsche919hybrid2016.png"
     },
     {
       "make": "Porsche",
@@ -3130,7 +3147,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://supercars.net/blog/wp-content/uploads/2016/05/Porsche-Carrera-GT-FA-Speed-1600x1200.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/porsche/porschecarreragt2003.png"
     }
   ],
   "redbull": [
@@ -3149,7 +3166,7 @@
       "special": [
         "Concept"
       ],
-      "image": "https://live.staticflickr.com/65535/48302857387_31d20674c7_b.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/redbull/redbullx2019competition2019.png"
     }
   ],
   "renault": [
@@ -3166,7 +3183,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/clio-rstrophy-386.jpg?itok=s51ZHj9l"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultsportclior.s.220edctrophy2016.png"
     },
     {
       "make": "Renault",
@@ -3181,7 +3198,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://ag-spots-2015.o.auroraobjects.eu/2015/05/21/other/2880-1800-crop-renault-clio-v6-phase-ii-c674221052015092242_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultsportcliov6phaseii2005.png"
     },
     {
       "make": "Renault",
@@ -3196,7 +3213,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://auta5p.eu/vystavy/zeneva_2012/zeneva_242.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaulttwingogordinir.s.ii2012.png"
     },
     {
       "make": "Renault",
@@ -3211,7 +3228,7 @@
       "aerom": 5,
       "condition": 100,
       "special": [],
-      "image": "https://www.snaplap.net/wp-content/uploads/2017/01/RenaultSportRS01GT3-1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultsportr.s.01gt32016.png"
     },
     {
       "make": "Renault",
@@ -3226,7 +3243,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://car-images.bauersecure.com/upload/30599/images/01renaultcliorscupreview.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultcliocupracecar2013.png"
     },
     {
       "make": "Renault",
@@ -3241,7 +3258,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.imcdb.org/i449905.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultsportclior.s.ii2011.png"
     },
     {
       "make": "Renault",
@@ -3256,7 +3273,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.conceptcarz.com/images/Renault/2012-Renault-Megane-RS-Trophy-01-800.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/renault/renaultsportméganer.s.trophy2011.png"
     }
   ],
   "scion": [
@@ -3273,7 +3290,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.carscoops.com/2013/03/e1f7b6c8-scion-tc-125255b225255d.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/scion/sciontc2014.png"
     },
     {
       "make": "Scion",
@@ -3288,7 +3305,7 @@
       "aerom": 2,
       "condition": 100,
       "special": [],
-      "image": "https://pictures.topspeed.com/IMG/crop/201210/2013-scion-fr-s-evasive-m_800x0w.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/scion/scionfr-sevasivemotorsports2013.png"
     },
     {
       "make": "Scion",
@@ -3303,7 +3320,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.autotrader.com/scaler/620/420/cms/content/articles/reviews/new/scion/xb/2012/170150.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/scion/scionxb2012.png"
     }
   ],
   "SEAT": [
@@ -3320,7 +3337,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://live.staticflickr.com/5536/10325719183_a1f4428417_b.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/seat/seatibizai1.2i1991.png"
     },
     {
       "make": "SEAT",
@@ -3335,7 +3352,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carmagazine.co.uk/Images/upload/19931/images/5SeatIbizaCupraCARreview.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/seat/seatibizacupra2009.png"
     }
   ],
   "shelby": [
@@ -3354,7 +3371,7 @@
       "special": [
         "x3"
       ],
-      "image": "https://www.supercars.net/blog/wp-content/uploads/2016/03/1967_shelby_cobra-pic-3528941083313090031.jpeg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/shelby/shelbycobra4271966.png"
     }
   ],
   "subaru": [
@@ -3371,7 +3388,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cdn.motor1.com/images/mgl/2Xq6p/s1/low-mileage-1998-subaru-impreza-22b-sti.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/subaru/subaruimpreza22bstiversioncoupe1998.png"
     },
     {
       "make": "Subaru",
@@ -3386,7 +3403,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://st.motortrend.com/uploads/sites/5/2010/05/2010-subaru-impreza-WRX-STI-special-edition-front-three-quarter-promo.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/subaru/subaruimprezawrxsti2008.png"
     },
     {
       "make": "Subaru",
@@ -3401,7 +3418,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.carscoops.com/wp-content/uploads/2014/08/Subaru-WRX-STI-JDM-spec-0.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/subaru/subaruimprezawrxstitypes2014.png"
     },
     {
       "make": "Subaru",
@@ -3418,7 +3435,7 @@
       "special": [
         "x2"
       ],
-      "image": "https://www.kudosprime.com/gts/images/users/car_166_1_5a0c92edc175b.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/subaru/subaruwrxgr.broadcar(granturismo)2015.png"
     },
     {
       "make": "Subaru",
@@ -3433,7 +3450,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://imagesvc.timeincapp.com/v3/foundry/image/?q=70&w=1440&url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2019%2F01%2Ff8a9911_cover-1-e1547491895241.jpg%3Fquality%3D85"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/subaru/subaruwrxstis2092020.png"
     }
   ],
   "suzuki": [
@@ -3450,7 +3467,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://autodelic.files.wordpress.com/2017/12/1991-1997-suzuki-cappuccino-3735_7117_969x727193116078.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/suzuki/suzukicappuccino1991.png"
     },
     {
       "make": "Suzuki",
@@ -3465,7 +3482,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://parkers-images.bauersecure.com/pagefiles/190687/cut-out/600x400/suzuki_swift_sport.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/suzuki/suzukiswiftsport2007.png"
     },
     {
       "make": "Suzuki",
@@ -3480,7 +3497,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://carsguide-res.cloudinary.com/image/upload/f_auto%2Cfl_lossy%2Cq_auto%2Ct_default/v1/editorial/suzuki-swift-sport-manual-my19-1001x565-%281%29.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/suzuki/suzukiswiftsport2020.png"
     }
   ],
   "tesla": [
@@ -3501,7 +3518,7 @@
         "Concept",
         "x2"
       ],
-      "image": "https://www.tesla.com/xNVh4yUEc3B9/04_Desktop.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tesla/teslacybertrackprototype(trimotorawd)2019.png"
     },
     {
       "make": "Tesla",
@@ -3518,7 +3535,7 @@
       "special": [
         "Electric"
       ],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2018-tesla-model-s-100d-1545165580.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tesla/teslamodelsp100d2019.png"
     }
   ],
   "toyota": [
@@ -3537,7 +3554,7 @@
       "special": [
         "x5"
       ],
-      "image": "https://cimg1.ibsrv.net/ibimg/hgm/1920x1080-1/100/767/1967-toyota-2000gt-chassis-no-mf10-10100--photo-credit-darin-schnabel-rm-sothebys_100767253.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyota2000gt1967.png"
     },
     {
       "make": "Toyota",
@@ -3552,7 +3569,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-toyota-gr-86-front-three-quarters-1617596343.jpg?crop=1xw:1xh;center,top&resize=980:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotagr862022.png"
     },
     {
       "make": "Toyota",
@@ -3567,7 +3584,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.motoringresearch.com/wp-content/uploads/2014/10/Toyota_GT86.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotagt862015.png"
     },
     {
       "make": "Toyota",
@@ -3582,7 +3599,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://t1-cms-3.images.toyota-europe.com/toyotaone/gben/header_tcm-3060-1542578.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotagrsuprarz2019.png"
     },
     {
       "make": "Toyota",
@@ -3597,7 +3614,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.caradvice.com.au/image/private/q_auto/v1600224708/subp3xmnp6wvmib2tnuo.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotagryaris2021.png"
     },
     {
       "make": "Toyota",
@@ -3612,7 +3629,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://picture1.goo-net.com/7000903807/30171010/J/70009038073017101000200.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotamr2gt-s1997.png"
     },
     {
       "make": "Toyota",
@@ -3627,7 +3644,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.automobilemag.com/uploads/sites/11/2015/11/2016-Toyota-Prius-Four-Touring-front-three-quarter-in-motion-02.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotapriusfourtouring2016.png"
     },
     {
       "make": "Toyota",
@@ -3642,7 +3659,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "http://www.diseno-art.com/images_8/Toyota-Supra.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotasuprarz1997.png"
     },
     {
       "make": "Toyota",
@@ -3660,7 +3677,7 @@
         "Hybrid",
         "Boost"
       ],
-      "image": "https://www.ultimatecarpage.com/images/car/6560/Toyota-TS050-Hybrid-125597.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/toyota/toyotats050hybrid2016.png"
     }
   ],
   "TVR": [
@@ -3677,7 +3694,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/images/big-read/2018/05/b3f869a10da70b8c756a69a7f1c5b6be/dsc09046.jpg?itok=KhNmwGHr"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tvr/tvrgriffith2018.png"
     },
     {
       "make": "TVR",
@@ -3692,7 +3709,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/TVRSagaris-683_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tvr/tvrsagaris2005.png"
     },
     {
       "make": "TVR",
@@ -3707,7 +3724,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://www.ultimatecarpage.com/images/car/2566/TVR-Tuscan-T400R-19314.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tvr/tvrtuscant400rn-gt2003.png"
     },
     {
       "make": "TVR",
@@ -3722,7 +3739,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.oldtimeraustralia.com/wp-content/uploads/2011/06/IMG_0064_5_1.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/tvr/tvrtuscanspeed62000.png"
     }
   ],
   "volkswagen": [
@@ -3739,7 +3756,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://s1.cdn.autoevolution.com/images/gallery/VOLKSWAGENGolfIGTI-1733_2.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagengolfigti1983.png"
     },
     {
       "make": "Volkswagen",
@@ -3754,7 +3771,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://carwow-uk-wp-2.imgix.net/vw-golf-gti-red-driving-front-1-lead-scaled.jpg?auto=format&cs=tinysrgb&fit=crop&h=800&ixlib=rb-1.1.0&q=60&w=1600"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagengolfviii2021.png"
     },
     {
       "make": "Volkswagen",
@@ -3769,7 +3786,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://images.honestjohn.co.uk/imagecache/file/crop/1200x800/media/12725504/volkswagen-golf-mk4-r32-3.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagengolfr32iv2004.png"
     },
     {
       "make": "Volkswagen",
@@ -3784,7 +3801,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://cartype.com/pics/7211/full/vw_scirocco-r__3_10.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagensciroccor2010.png"
     },
     {
       "make": "Volkswagen",
@@ -3799,7 +3816,7 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://lh3.googleusercontent.com/proxy/vM-JxYtcucYPLHi5J-pQENIGDGcPW7ZkUuNyYlQj3tdEFUOHFT3O9Jp5a8VazRyw0UdjkZHgHKNm62m3JMf_Rd42M-ltY06HQe_e35ndpCNDBzGd8bDv70yY6Su3MfTtArPSdF4NPJM"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagensciroccogt24(volkswagenmotorsport)2008.png"
     },
     {
       "make": "Volkswagen",
@@ -3814,11 +3831,11 @@
       "aerom": 4,
       "condition": 100,
       "special": [],
-      "image": "https://www.gtplanet.net/forum/media/volkswagen-scirocco-gr-4.37595/full"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volkswagen/volkswagensciroccogr.4(granturismo)2010.png"
     }
   ],
   "volvo": [
-    {https://carsalesbase.com/wp-content/uploads/2020/05/Polestar_1-auto-sales-statistics-Europe.jpg
+    {
       "make": "Volvo",
       "name": "Volvo 122 S Amazon",
       "year": "1969",
@@ -3831,7 +3848,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://media.autoweek.nl/m/m1cyjs7bjx8f_800.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volvo/volvo122samazon1969.png"
     },
     {
       "make": "Volvo",
@@ -3846,7 +3863,7 @@
       "aerom": 1,
       "condition": 100,
       "special": [],
-      "image": "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/10q2/350803/2011-volvo-c30-r-design-photo-352757-s-986x603.jpg?resize=980:*"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volvo/volvoc30r-design2011.png"
     },
     {
       "make": "Volvo",
@@ -3864,7 +3881,7 @@
         "Hybrid",
         "x2"
       ],
-      "image": "https://carsalesbase.com/wp-content/uploads/2020/05/Polestar_1-auto-sales-statistics-Europe.jpg"
+      "image": "https://raw.githubusercontent.com/J24681357/gtfbot/master/images/cars/volvo/volvopolestar12020.png"
     }
   ]
 }

@@ -18,7 +18,7 @@ var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/G
 const prefix = '!';
 var dw = JSON.parse(fs.readFileSync('./users/dw.json', 'utf8'));
 module.exports.dwcar = dw;
-var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist.json', 'utf8'));
+var gtfcars = JSON.parse(fs.readFileSync('./users/gtfcarlist_2021.json', 'utf8'));
 var gtftracks = JSON.parse(fs.readFileSync('./users/gtftracklist.json', 'utf8'));
 var gtfparts = JSON.parse(fs.readFileSync('./users/gtfpartlist.json', 'utf8'));
 var gtfpaints = JSON.parse(fs.readFileSync('./users/gtfpaints.json', 'utf8'));
@@ -80,45 +80,8 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 client.on('ready', () => {
 
-/*
+gtftools.checkcarlist(gtfcars)
 
-var cars = require(gtf.CARS).find({})
-var index = 0
-var makes = Object.keys(gtfcars)
-var newJSON = {}
-var newJSON = JSON.parse(fs.readFileSync('./new.json', 'utf8'));
-*/
-/*for (var a = 0; a < makes.length; a++) {
-  newJSON[makes[a]] = []
-}
-fs.writeFile("new.json", JSON.stringify(newJSON), function(err) { if (err) { console.log(err); } });*/
-
-/*
-for (var make = 0; make < makes.length; make++) {
-    for (var i = 0; i < gtfcars[makes[make]].length; i++) {
-      var car = gtfcars[makes[make]][i]
-      var makee = car["make"].replace(/ /gi, "").toLowerCase()
-      var name = car["name"].replace(/ /gi, "").toLowerCase()
-      var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + 'images/cars/'+ makee + "/" + name + "" + car["year"] + ".png"
-      car["image"] = urll
-      delete car["id"]
-  newJSON[makes[make]].push(car)
-    }
-  }
-
-  fs.writeFile("new2.json", JSON.stringify(newJSON), function(err) { if (err) { console.log(err); } });
-  */
-/*
-setInterval(function(){
-  if (index == cars.length) {
-    console.log("Complete")
-  }
-  var car = cars[index]
-  downloadimage(car)
-  console.log(car["name"] + "\n" + (index+1) + " / " + cars.length + " images saved.")
-index++
-}, 2500)
-*/
   var gtfbot = {}
 
   module.exports.update = client.emojis.cache.get('419605168510992394').toString();
@@ -1010,36 +973,4 @@ var executecommand = function(command, args, msg, userdata) {
     require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
     console.error(error);
   }
-}
-
-var downloadimage = function(car) {
-   var fs = require('fs');
-  var request = require('request');
-  
-  var type = "error"
-
-var download = function(uri, filename, callback){
-
-  request.head(uri, function(err, res, body){
-    var type = res.headers['content-type']
-    var file = filename.split("/")
-   file.pop()
-   filename = filename + ".png"
-  var shell = require('shelljs');
-shell.mkdir('-p', file.join("/"))
-if (type.includes("html") || !type.includes("image")) {
-  console.log("The image may not be available")
-}
-
-setTimeout(function() {
-  request(car["image"]).pipe(fs.createWriteStream(filename)).on('close', callback);
-}, 2500)
-  })
-
-  }
-  var name = car["name"].replace(/ /gi, "").toLowerCase()
-  var make = car["make"].replace(/ /gi, "").toLowerCase()
-
-download(car["image"], './images/cars/'+ make + "/" + name + "" + car["year"], function(){
-});
 }

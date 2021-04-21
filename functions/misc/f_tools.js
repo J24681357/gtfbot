@@ -551,3 +551,61 @@ filter11.stop()
   increase()
   }
 }
+
+module.exports.checkcarlist = function(gtfcars) {
+   var fs = require('fs');
+  var request = require('request');
+
+  var index = 0
+var makes = Object.keys(gtfcars)
+
+for (var make = 0; make < makes.length; make++) {
+    for (var i = 0; i < gtfcars[makes[make]].length; i++) {
+      var car = gtfcars[makes[make]][i]
+      if (!car["image"].includes("raw.githubusercontent.com")) {
+        console.log("Saving car image for " + car["name"])
+        downloadimage(car)
+        var makee = car["make"].replace(/ /gi, "").toLowerCase()
+        var name = car["name"].replace(/ /gi, "").toLowerCase()
+        var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + 'images/cars/'+ makee + "/" + name + "" + car["year"] + ".png"
+      car["image"] = urll
+        delete car["id"]
+        gtfcars[makes[make]].push(car)
+      }
+    }
+  }
+
+fs.writeFile("./users/gtfcarlist_2021.json", JSON.stringify(gtfcars), function(err) { if (err) { console.log(err); } })
+
+var downloadimage = function(car) {
+  
+  var type = "error"
+
+var download = function(uri, filename, callback){
+
+  request.head(uri, function(err, res, body){
+    var type = res.headers['content-type'].toLowerCase()
+    console.log(type)
+    var file = filename.split("/")
+   file.pop()
+   filename = filename + ".png"
+  var shell = require('shelljs');
+shell.mkdir('-p', file.join("/"))
+if (!type.includes("image")) {
+  console.log("The image may not be available")
+}
+
+setTimeout(function() {
+  request(car["image"]).pipe(fs.createWriteStream(filename)).on('close', callback);
+}, 2500)
+  })
+
+  }
+  var name = car["name"].replace(/ /gi, "").toLowerCase()
+  var make = car["make"].replace(/ /gi, "").toLowerCase()
+
+download(car["image"], './images/cars/'+ make + "/" + name + "" + car["year"], function(){
+});
+}
+
+}
