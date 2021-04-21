@@ -577,7 +577,7 @@ for (var make = 0; make < makes.length; make++) {
 
 fs.writeFile("./users/gtfcarlist_2021.json", JSON.stringify(gtfcars), function(err) { if (err) { console.log(err); } })
 
-var downloadimage = function(car) {
+function downloadimage(car) {
   
   var type = "error"
 
