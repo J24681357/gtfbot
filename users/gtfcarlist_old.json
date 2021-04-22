@@ -2591,13 +2591,6 @@
     "rating": "⭐1.5",
     "manufacturercost": 20000
   },
-  "483": {
-    "make": "Maserati",
-    "name": "Maserati Ghibli S 2014",
-    "image": "https://cnet2.cbsistatic.com/img/hAOqM7rrAwd1IVp-7yvC7l0LMnM=/830x467/2014/05/22/cd42fa61-f9b8-4568-842e-79bcd6141267/2014-maserati-ghibli-s-q4-06v.jpg",
-    "rating": "⭐2",
-    "manufacturercost": 20000
-  },
   "484": {
     "make": "Maserati",
     "name": "Maserati GranTurismo Coupe 2018",
@@ -2784,13 +2777,6 @@
     "make": "Mazda",
     "name": "Mazda Protege MP3 2001",
     "image": "https://s3.us-east-2.amazonaws.com/prod.mm.com/img/new-cars/mazdamp3.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
-  "517": {
-    "make": "Mazda",
-    "name": "Mazda RX-3 1973",
-    "image": "http://bestcarmag.com/sites/default/files/6680345blue_mazda_rx3_by_lpagan401-d1vao44.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
   },
