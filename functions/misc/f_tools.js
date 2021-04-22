@@ -307,9 +307,7 @@ module.exports.formpages = function(args, embed, msg, userdata) {
     function up() {
     var index = 0
 
-    console.log(args["text"])
     args["text"] = gtftools.formpage(args, userdata)
-    console.log(args["text"])
       
     select--
     if (select <= -1) {
@@ -564,20 +562,21 @@ for (var make = 0; make < makes.length; make++) {
       var car = gtfcars[makes[make]][i]
       if (!car["image"].includes("raw.githubusercontent.com")) {
         console.log("Saving car image for " + car["name"])
-        downloadimage(car)
+        var oldcar = JSON.parse(JSON.stringify(car))
+        downloadimage(oldcar)
         var makee = car["make"].replace(/ /gi, "").toLowerCase()
         var name = car["name"].replace(/ /gi, "").toLowerCase()
         var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + 'images/cars/'+ makee + "/" + name + "" + car["year"] + ".png"
       car["image"] = urll
         delete car["id"]
-        gtfcars[makes[make]].push(car)
+        gtfcars[makes[make]][i] = car
       }
     }
   }
 
 fs.writeFile("./users/gtfcarlist_2021.json", JSON.stringify(gtfcars), function(err) { if (err) { console.log(err); } })
 
-function downloadimage(car) {
+function downloadimage(oldcar) {
   
   var type = "error"
 
@@ -596,15 +595,16 @@ if (!type.includes("image")) {
 }
 
 setTimeout(function() {
-  request(car["image"]).pipe(fs.createWriteStream(filename)).on('close', callback);
+  request(oldcar["image"]).pipe(fs.createWriteStream(filename)).on('close', callback);
+  console.log(oldcar["image"])
 }, 2500)
   })
 
   }
-  var name = car["name"].replace(/ /gi, "").toLowerCase()
-  var make = car["make"].replace(/ /gi, "").toLowerCase()
+  var name = oldcar["name"].replace(/ /gi, "").toLowerCase()
+  var make = oldcar["make"].replace(/ /gi, "").toLowerCase()
 
-download(car["image"], './images/cars/'+ make + "/" + name + "" + car["year"], function(){
+download(oldcar["image"], './images/cars/'+ make + "/" + name + "" + oldcar["year"], function(){
 });
 }
 
