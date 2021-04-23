@@ -29,7 +29,6 @@ module.exports = {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
-
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     var args = '';
@@ -228,5 +227,7 @@ function selectcourse() {
         
       });
     }
-  },
+  }
+
+
 };

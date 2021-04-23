@@ -5,6 +5,41 @@ var gtftools = require("../../functions/misc/f_tools");
 const Discord = require("discord.js");
 var gtf = process.env;
 ////////////////////////////////////////////////////
+module.exports.alert = function(object, msg, userdata) {
+  var name = object["name"]
+  var desc = object["description"] 
+  var embed = object["embed"]
+  var seconds = object["seconds"]
+  var color = ""
+  if (name.includes("⚠")) {
+ color = 0xffff00
+  } 
+  if (name.includes("❌")) {
+     color = 0xff0000;
+  }
+  var message = msg.content.split(" ").join(" ");
+  if (message.length == 0) {
+    message = "";
+  }
+  
+if (embed == "") {
+  var embed = new Discord.MessageEmbed();
+  embed.setAuthor(msg.author.username, msg.author.displayAvatarURL());
+  embed.setColor(color)
+  embed.addField(name + ' "' + message + '"', desc);
+  return msg.channel.send(embed).then(msg => {
+        if (seconds > 0) {
+          msg.delete({ timeout: seconds * 1000 });
+          userdata["count"]--
+        }
+      });
+  } else {
+    embed.addField(name + ' "' + message + '"', desc);
+    embed.setColor(color)
+  }
+  return;
+};
+
 
 module.exports.warning = function(name, desc, embed, msg, userdata) {
   embed.setColor(0xffff00);

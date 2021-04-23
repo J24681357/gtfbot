@@ -46,6 +46,7 @@ module.exports = {
 
     var car = stats.currentcar(userdata);
      var ocar = require(gtf.CARS).find({"make":[car["make"]], "fullname":[car["name"]],"year":[car["year"]]})[0]
+     console.log(ocar)
     var ready = true;
     if (ocar["type"] == "Production") {
       
@@ -60,7 +61,7 @@ module.exports = {
           }
           return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
     } else {
-       require(gtf.EMBED).error("❌ Production Cars Only", "Production cars are only allowed for this event.", embed, msg, userdata)
+      	require(gtf.EMBED).alert({name:'❌ Production Cars Only', description:'Production cars are only allowed for this event.',embed:"", seconds:3}, msg, userdata);
       return
     }
   },

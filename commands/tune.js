@@ -131,7 +131,7 @@ module.exports = {
         var part = select[number - 1]
         var cond = require(gtf.PARTS).checkpartsavail(part, car)
         if (cond.includes("❌")) {
-          require(gtf.EMBED).error("❌ Part Unavailable", "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
+          	require(gtf.EMBED).alert({name:"❌ Part Unavailable", description: "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.",embed:"", seconds:3}, msg, userdata);
           return
         }
         if (cond.includes("✅")) {
