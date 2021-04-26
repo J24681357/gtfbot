@@ -2,9 +2,9 @@ var stats = require("../functions/profile/f_stats")
 var gtftools = require("../functions/misc/f_tools")
 var emote = require("../index")
 
-var gtf = process.env
 const Discord = require("discord.js")
 const client = new Discord.Client()
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports.list = function(args) {

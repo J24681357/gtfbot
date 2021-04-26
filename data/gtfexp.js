@@ -1,10 +1,10 @@
-var stats = require("/home/runner/gtfbot/functions/profile/f_stats");
-var emote = require("/home/runner/gtfbot/index");
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports.checklevel = function(level, embed, msg, userdata) {

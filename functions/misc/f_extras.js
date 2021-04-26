@@ -3,9 +3,8 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtf = process.env
+var gtf = require('../../files/directories');
 ////////////////////////////////////////////////////
-var emote = require("../../index");
 var gtfuser = require("../../index");
 var fs = require("fs");
 

@@ -1,4 +1,3 @@
-
 module.exports.USERID = "704873671356973106"
 module.exports.SERVERID = "239493425131552778"
 module.exports.WEATHER="/home/runner/gtfbot/data/gtfweather"

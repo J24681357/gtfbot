@@ -1,8 +1,9 @@
+var gtftools = require("../functions/misc/f_tools");
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
-var gtftools = require("/home/runner/gtfbot/functions/misc/f_tools");
 
 module.exports.find = function(args) {
   if (args === undefined) {

@@ -1,8 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
-
 
 var gtscarlist = function() {
   var total = 1
@@ -346,7 +345,7 @@ module.exports.GTSCar = function(name) {
   }
   var list = gtscarlist()
   if (name == "Random" || name == "R" || name == "random") {
-    return require(process.env.GTSCARS).RandomGTSCar();
+    return require(gtf.GTSCARS).RandomGTSCar();
   }
   if (!isNaN(name)) {
     index = parseInt(name);

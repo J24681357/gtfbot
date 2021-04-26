@@ -4,8 +4,9 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../../files/directories');
 ////////////////////////////////////////////////////
+
 module.exports.time = function(results, number, pageargs, embed, msg, userdata) {
     var list = []
     var page = 0

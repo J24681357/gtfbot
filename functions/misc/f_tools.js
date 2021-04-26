@@ -3,9 +3,8 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtf = process.env
+var gtf = require('../../files/directories');
 ////////////////////////////////////////////////////
-
 
 module.exports.randomInt = function(min, max) {
   return Math.floor(min + Math.random()*(max + 1 - min))

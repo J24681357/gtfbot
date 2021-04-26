@@ -4,17 +4,8 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = process.env
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
-
-module.exports.nitrous = function() {
-  return [["Normal (NOS)", 10000, "FPP", [300000]], ["Red (NOS)", 10000, "FPP", [300000]], ["Orange (NOS)", 10000, "FPP", [300000]], ["Yellow (NOS)", 10000, "FPP", [300000]],["Lime (NOS)", 10000, "FPP", [300000]], ["Green (NOS)", 10000, "FPP", [300000]], ["Aqua (NOS)", 10000, "FPP", [300000]], ["Blue (NOS)", 10000, "FPP", [300000]], ["Purple (NOS)", 10000, "FPP", [300000]], ["Brown (NOS)", 10000, "FPP", [300000]], ["White (NOS)", 10000, "FPP", [300000]]]
-}
-
-var oilchange = ["Oil Change", 1000, "FPP"];
-var fuel = ["Fuel", 1000]
-
-//////////////////
 
 module.exports.list = function(args) {
   var paint = require(gtf.LISTS).gtfpaintslist

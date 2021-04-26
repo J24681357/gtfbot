@@ -1,4 +1,4 @@
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'daily',
     description: 'N/A: Daily prizes of credits and cars.',
@@ -6,7 +6,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
         ]
   }
 })
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'course',
     description: 'Creates a procedurally generated race track.',
@@ -56,7 +56,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
 }
 })
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'seasonal',
     description: 'N/A: Participate in daily seasonal events that are randomized.',
@@ -68,7 +68,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
       }]
 }
 })
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'replay',
     description: 'N/A: Manage and load your saved replays.',
@@ -103,7 +103,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
       }]
 }
 })
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'paint',
     description: 'N/A: Display paints in GT Auto to paint your current car.',
@@ -142,7 +142,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
       }]
 }
 })
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'career',
     description: 'N/A: Participate career races from different league.',
@@ -181,7 +181,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
 }
 }) 
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'profile',
     description: 'N/A: Displays your information, stats, and career progression.',
@@ -190,7 +190,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   }
 })
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'car',
     description: 'N/A: Displays the list of manufacturers you can choose from.',
@@ -216,7 +216,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
 }
 })
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'tune',
     description: 'N/A: Display tuning parts in GT Auto to tune your current car.',
@@ -263,7 +263,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
 
 !tune - ", "!tune [\"type\"] - Displays a list of [\"type\"] in GTF Auto.", "!tune [\"type\"] [(number)] - Purchases a performance part from the [(number)] associated from the list of [\"type\"] parts.\nThis applies to your current car.\nThe current [\"type\"] part on your current car will be sold and replaced, but you must purchase the part with its full price first.", "!tune [\"type\"] [stock] - Revert the [\"type\"] installed to your car to Stock.
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'dwex',
     description: 'Send a random car from the GT Fitness car list.',
@@ -283,7 +283,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   }
 })
 
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
     name: 'settings',
     description: 'N/A: Configure settings for the GTF bot.',

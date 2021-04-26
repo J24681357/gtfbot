@@ -1,5 +1,5 @@
-var gtf = process.env;
-var emote = require("/home/runner/gtfbot/index");
+var gtf = require('../../files/directories');
+var emote = require("../../index");
 
 /*90-87*/
 //limit 8.000

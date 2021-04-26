@@ -3,7 +3,8 @@ var emote = require('../index');
 var gtftools = require('../functions/misc/f_tools');
 
 const Discord = require('discord.js');
-var gtf = process.env;
+const client = new Discord.Client();
+var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports = {
