@@ -11,7 +11,7 @@ module.exports = {
   title: 'Drift Trial',
   cooldown: 3,
   level: 5,
-  channels: ["testing"],
+  channels: ["testing", "gtf-demo"],
 
   delete: false,
   availitoeveryone:true,
@@ -118,7 +118,7 @@ module.exports = {
           var ocar = require(gtf.CARS).find({"make":[gtfcar["make"]], "fullname":[gtfcar["name"]],"year":[gtfcar["year"]]})[0]
 
           if (ocar["drivetrain"] == "FF") {
-            require(gtf.EMBED).error('❌ FF Cars Prohibited', 'Front Wheel Drive cars are not allowed in a Drift Trial.', embed, msg, userdata);
+            require(gtf.EMBED).alert({name:"❌ FF Cars Prohibited", description: "Front Wheel Drive cars are not allowed in a Drift Trial.", embed:"", seconds:0}, msg, userdata);
             return
           }
           var raceprep = {

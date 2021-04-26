@@ -117,7 +117,7 @@ module.exports = {
       if (number != "S") {
         if (number <= 0 || isNaN(number) || number === undefined || number > select.length) {
           if (number !== undefined) {
-            require(gtf.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
+                      	require(gtf.EMBED).alert({name:"⚠ Invalid ID", description: "This ID does not exist.", embed:embed, seconds:0}, msg, userdata);
           }
           itempurchase = false
         }
@@ -131,11 +131,11 @@ module.exports = {
         var part = select[number - 1]
         var cond = require(gtf.PARTS).checkpartsavail(part, car)
         if (cond.includes("❌")) {
-          	require(gtf.EMBED).alert({name:"❌ Part Unavailable", description: "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**.",embed:"", seconds:3}, msg, userdata);
+          	require(gtf.EMBED).alert({name:"❌ Part Unavailable", description: "**" + part["type"] + " " + part["name"] + "** is unavailable for **" + car["name"] + "**."+ "\n\n" + "**❗ Choose another option when this message disappears.**",embed:"", seconds:3}, msg, userdata);
           return
         }
         if (cond.includes("✅")) {
-          require(gtf.EMBED).error("❌ Part Already Installed", "**" + part["type"] + " " + part["name"] + "** is already installed for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).alert({name:"❌ Part Already Installed", description: "**" + part["type"] + " " + part["name"] + "** is already installed for **" + car["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**",embed:"", seconds:3}, msg, userdata);
           return
         }
       }

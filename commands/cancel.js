@@ -36,7 +36,7 @@ module.exports = {
     /* Setup */
 
     if (!stats.raceinprogressstat(userdata)[0]) {
-      require(gtf.EMBED).error("❌ Error", "You are not in a session.", embed, msg, userdata)
+                          	require(gtf.EMBED).alert({name:"❌ Error", description: "You are not in a session.", embed:"", seconds:0}, msg, userdata);
       return
     } else {
       if (query[0] == "✨✨✨") {

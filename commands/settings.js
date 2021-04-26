@@ -99,7 +99,7 @@ module.exports = {
     }
 
     if (query[2] !== undefined && !checked) {
-      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata)
+        require(gtf.EMBED).alert({name:"⚠ Warning", description: "Invalid arguments.",embed:embed, seconds:0}, msg, userdata);
     }
     
     if (checked) {

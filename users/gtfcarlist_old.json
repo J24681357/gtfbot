@@ -2037,13 +2037,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "368": {
-    "make": "Isuzu",
-    "name": "Isuzu Bellett 1600 GT-R 1969",
-    "image": "http://3.bp.blogspot.com/-X7YHKjlDHxY/Ui6bsyRg-xI/AAAAAAAARCg/5fEFH925vPw/s1600/1.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 10000
-  },
   "369": {
     "make": "Isuzu",
     "name": "Isuzu Gemini Sedan (JT150) 1987",
@@ -2106,13 +2099,6 @@
     "image": "http://www.2040-cars.com/_content/cars/images/59/814259/001.jpg",
     "rating": "⭐1",
     "manufacturercost": 10000
-  },
-  "380": {
-    "make": "Jaguar",
-    "name": "Jaguar E-Type S1 1961",
-    "image": "https://i.ytimg.com/vi/PaP3FTrIru0/maxresdefault.jpg",
-    "rating": "⭐1",
-    "manufacturercost": 20000
   },
   "383": {
     "make": "Jaguar",

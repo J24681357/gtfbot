@@ -13,7 +13,7 @@ module.exports = {
   cooldown: 5,
   level: 4,
   description: ['!daily - Earns a random prize between credits and cars.\nYou need to drive 26.2mi/42.1km in a span of 24 hours in order to use this command.\nYou can set your time zone in the settings.'],
-  channels: ["testing"],
+  channels: ["testing", "gtf-demo"],
   
   delete: false,
   availinmaint:false,
@@ -38,14 +38,14 @@ module.exports = {
     var prizes = [];
 
     if (userdata["dailyworkout"]) {
-      require(gtf.EMBED).error('❌ Daily Workout Completed', 'You have already earned your daily workout for the day.', embed, msg, userdata);
+      require(gtf.EMBED).alert({name:"❌ Daily Workout Completed", description: 'You have already earned your daily workout for the day.', embed:"", seconds:0}, msg, userdata);
       return;
     }
 
     require(gtf.EMBED).checkgarageerror(embed, msg, userdata);
 
     if (parseFloat(stats.mileage('KM', false, userdata)) < 42.1 && parseFloat(stats.mileage('MI', false, userdata)) < 26.2) {
-      require(gtf.EMBED).error('❌ Invalid Daily Workout', 'You are unable to earn your daily workout car because you have not drove 26.2mi/42.1km.', embed, msg, userdata);
+       require(gtf.EMBED).alert({name:"❌ Invalid Daily Workout", description: "You are unable to earn your daily workout car because you have not drove 26.2mi/42.1km.", embed:"", seconds:0}, msg, userdata);
       return;
     }
     userdata["dailyworkout"] = true

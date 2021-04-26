@@ -105,7 +105,7 @@ module.exports = {
       embed.setTitle('__Arcade Mode - Selection Menu__');
 
       results2 = '1️⃣' + ' ' + "Race" + '\n' + 
-      "2️⃣" + " " + "Race (My Courses)" + "\n"  + 
+      "~~2️⃣" + " " + "Race (My Courses)~~" + "\n"  + 
       emote.gtlogowhite + ' ' + 'Race (GT Sport Loaner Car)' + '\n\n' + '❓ **Click one of the reactions to select an option.**';
 
       embed.setDescription(results2);
@@ -171,13 +171,7 @@ module.exports = {
 
 function selectcourse() {
    if (Object.keys(coursestats).length == 0) {
-                require(gtf.EMBED).error(
-            "❌ No Courses",
-            "You have no courses saved.",
-            embed,
-            msg, userdata
-          );
-      return
+      require(gtf.EMBED).alert({name:"❌ No Courses", description: "You have no courses saved." + "\n\n" + "Select another option when this message disappears.", embed:"", seconds:3}, msg, userdata);
       }
        info = ""
 

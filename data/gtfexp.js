@@ -13,7 +13,7 @@ module.exports.checklevel = function(level, embed, msg, userdata) {
   if (currentlevel >= level || level == 0) {
     return true
   } else {
-  require(gtf.EMBED).error("🔒 " + "Level " + level + " Required", "Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**", embed, msg,userdata)
+     require(gtf.EMBED).alert({name:"❌ " + "Level " + level + " Required", description: "🔒 Your level does not meet the requirements." + "\n\n" + "**Level: Lv." + currentlevel + emote.exp + " -> " + "Lv." + level + "**",embed:"", seconds:3}, msg, userdata);
     return false
   }
 }

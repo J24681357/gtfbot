@@ -522,6 +522,8 @@ filter11.stop()
     const notbot = r.users.cache
           .filter(clientuser => clientuser.id == id)
           .first();
+          console.log(reactid)
+          console.log(stats.count(userdata))
         if (reactid != stats.count(userdata)) {
             return
         }

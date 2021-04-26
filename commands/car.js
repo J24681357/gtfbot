@@ -93,7 +93,8 @@ if (query.length === 0) {
       list = []
       if (query.length != 0) {
  if (query[0].length !== 0) {
-        require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata);
+            require(gtf.EMBED).alert({name:"⚠ Warning", description: "Invalid arguments.", embed:embed, seconds:0}, msg, userdata);
+
         query.pop()
     }
       }
@@ -123,7 +124,7 @@ if (query.length === 0) {
 
 if (query.length >= 2) {
      if ( (query[1] > total || isNaN(query[1]) || query[1] < 0)) {
-        require(gtf.EMBED).warning("⚠ Invalid ID", "Please use numbers associated with the list above.", embed, msg, userdata)
+      require(gtf.EMBED).alert({name:"⚠ Invalid ID", description: "Please use numbers associated with the list above.", embed:embed, seconds:0}, msg, userdata);
         query.pop()
     } else {
       itempurchase = true;

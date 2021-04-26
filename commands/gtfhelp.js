@@ -57,7 +57,7 @@ module.exports = {
       );
 
     if (!command) {
-      require(gtf.EMBED).error("❌ Error", "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed, msg, userdata);
+      require(gtf.EMBED).alert({name:"❌ Error", description: "Invalid command." + "\n❓**!gtfhelp [\"command\"]** - Shows arguments for a **[\"command\"]**.", embed:"", seconds:0}, msg, userdata);
       return;
     }
     var description = command.description.map(function(x) {

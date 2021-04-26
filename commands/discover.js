@@ -12,7 +12,7 @@ module.exports = {
   title: 'GTS Livery Search',
   cooldown: 0,
   level: 0,
-  channels: ["testing"],
+  channels: ["testing", "gtf-mode"],
 
   delete: false,
   availinmaint:false,
@@ -45,7 +45,7 @@ module.exports = {
 
  
     if (query.length == 0) {
-      require(gtf.EMBED).error('❌ Invalid Arguments', 'Your query is empty.', embed, msg, userdata);
+       	require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Your query is empty.", embed:"", seconds:0}, msg, userdata);
       return
     }
 
@@ -72,13 +72,7 @@ module.exports = {
     embed.setTitle('__**GTS Livery Search**__');
     embed.setDescription(results);
     if (query === undefined) {
-      require(gtf.EMBED).error(
-        '❌ Error',
-        'Invalid arguments.',
-        embed,
-        msg,
-        userdata
-      );
+      require(gtf.EMBED).alert({name:"❌ Error", description: "'Invalid arguments.", embed:"", seconds:0}, msg, userdata);
       return;
     }
     msg.channel.send(embed).then(msg => {
@@ -99,13 +93,8 @@ module.exports = {
                 
                 msg.delete({})
                 embed.setTitle('__**GTS Livery Search**__');
-                require(gtf.EMBED).error(
-                  '❌ Error',
-                  'API excceeded the amount of results to process this query.\n',
-                  embed,
-                  msg,
-                  userdata
-                );
+                require(gtf.EMBED).alert({name:"❌ Error", description: "API excceeded the amount of results to process this query.\n", embed:"", seconds:0}, msg, userdata);
+
                 return;
               }
               var liveries = data
@@ -147,19 +136,12 @@ module.exports = {
                 });
               if (liveries.length == 0) {
                 msg.delete({})
-
-                require(gtf.EMBED).error(
-                  '❌ Error',
-                  'Query returned an error for any of these reasons:' +
+require(gtf.EMBED).alert({name:'❌ Error', description: 'Query returned an error for any of these reasons:' +
                   '\n\n' +
                   'Query is invalid.\n' +
                   'There were no decals found.\n' +
                   'API excceeded the amount of results to process.\n' +
-                  'Website has got an error.',
-                  embed,
-                  msg,
-                  userdata
-                );
+                  'Website has got an error.', embed:"", seconds:0}, msg, userdata);
                 return;
               }
               function update() {

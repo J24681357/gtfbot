@@ -117,6 +117,20 @@ module.exports.find = function(args) {
         }
       }
 
+        if (args["upperyear"] !== undefined) {
+        if (args["upperyear"].length == 0) {
+          count++;
+        } else {
+          var upperyears = args["upperyear"];
+          for (var iupyear = 0; iupyear < upperyears.length; iupyear ++) {
+            if (parseInt(upperyears[iupyear]) <= parseInt(makekey[i]["year"])) {
+              count++;
+              break;
+            }
+          }
+        }
+      }
+
       if (args["types"] !== undefined) {
         if (args["types"].length == 0) {
           count++;
@@ -130,6 +144,8 @@ module.exports.find = function(args) {
           }
         }
       }
+
+      
 
       if (args["upperfpp"] !== undefined) {
         if (args["upperfpp"].length == 0) {

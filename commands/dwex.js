@@ -12,7 +12,7 @@ var sizeOf = require('probe-image-size');
 module.exports = {
   name: 'dwex',
   title: 'GT Fitness Daily Workout',
-  cooldown: 0,
+  cooldown: 5,
   level: 0,
   channels: ["gtf-mode", "testing", "gtf-test-mode"],
   aliases: ['rc', 'rcar'],

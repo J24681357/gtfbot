@@ -58,13 +58,7 @@ module.exports = {
     var selected = false;
 
     if (stats.gifts(userdata).length == 0) {
-      require(gtf.EMBED).error(
-        '❌ No Gifts',
-        'You do not have any gifts available.',
-        embed,
-        msg,
-        userdata
-      );
+          require(gtf.EMBED).alert({name:"❌ No Gifts", description: "You do not have any gifts available.", embed:"", seconds:0}, msg, userdata);
       return;
     }
     embed.setTitle(

@@ -66,6 +66,9 @@ module.exports.intro = function(userdata, command, msg) {
           achievements: [],
           t: "N/A",
           lastonline: "START",
+          test1: [],
+          test2: [],
+          test3: [],
 
           settings: {
             "RACE DM": 0,

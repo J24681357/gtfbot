@@ -76,12 +76,7 @@ module.exports = {
           number === undefined ||
           number > require(gtf.LISTS).gtfexp.length
         ) {
-          require(gtf.EMBED).error(
-            "❌ Invalid Number",
-            "This level does not exist.",
-            embed,
-            msg, userdata
-          );
+          require(gtf.EMBED).alert({name:"❌ Invalid Number", description: "This level does not exist.", embed:"", seconds:0}, msg, userdata);
           return;
         }
         number = number - 1

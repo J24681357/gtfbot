@@ -22,7 +22,7 @@ module.exports = {
   requireuserdata:true,
   usedduringrace: true,
   usedinlobby: true,
-  description: ['!dw - Chooses a random car from the GT Sport car list.', '!dw ["challenge"] - Starts a random Daily Workout challenge where you would need to earn a car that meets a category.\nYou can earn credits here.'],
+  description: ['!dw - Chooses a random car from the GT Sport car list.'],
   execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
@@ -94,13 +94,13 @@ module.exports = {
     ];
     var mode = ['Make', 'Category', 'Country'];
 
-    if (query[0] == 'challenge') {
+   /* if (query[0] == 'challenge') {
       if (dw.dwcar['daily']['start']) {
-        require(gtf.EMBED).error('❌ Daily Workout Challenge Active', 'There is already a Daily Workout Challenge in progress.', embed, msg, userdata);
+        //'❌ Daily Workout Challenge Active', 'There is already a Daily Workout Challenge in progress.', embed, msg, userdata);
         return;
       }
       if (new Date().getTime() < dw.dwcar['daily']['time']) {
-        require(gtf.EMBED).error('❌ Global Cooldown', 'A challenge cannot be started yet. Please wait in ' + '`' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + '` minutes.', embed, msg, userdata);
+        //'❌ Global Cooldown', 'A challenge cannot be started yet. Please wait in ' + '`' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + '` minutes.', embed, msg, userdata);
         return;
       }
       var modenumber = gtftools.randomInt(0, 2);
@@ -141,7 +141,7 @@ module.exports = {
           1
         );
       });
-    } else {
+      */
 
       embed.setTitle(emote.gtlogowhite + ' __GTS Daily Workout__');
       var prize = '';
@@ -181,6 +181,5 @@ module.exports = {
         embed.setFooter('Daily Workout Challenge Active - ' + mode[number] + ': ' + dw.dwcar['daily']['select'] + ' | Prize: ' + dw.dwcar['daily']['prize'] + ' credits');
       }
       msg.channel.send(embed)
-    }
-  },
+  }
 };

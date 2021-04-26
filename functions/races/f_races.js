@@ -815,7 +815,7 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
   }
   var event = races[Object.keys(races)[number - 1]];
   if (stats.currentcarmain(userdata) == 'No car.') {
-    require(gtf.EMBED).error('❌ Error', 'You do not have a current car.', embed, msg, userdata);
+     require(gtf.EMBED).alert({name:"❌ Error", description: "You do not have a current car.",embed:"", seconds:0}, msg, userdata);
     return;
   }
 
@@ -823,9 +823,8 @@ module.exports.careerevent = function(races, number, embed, msg, callback, userd
   var regulations = require(gtf.GTF).checkregulations(currentcar, event);
 
   if (!regulations[0]) {
-    require(gtf.EMBED)
-      .error('❌ Regulations Breached', 'Your **' + currentcar['name'] + '** does not meet the regulations for **' + event['title'] + '**.' + '\n\n' + regulations[1].join('\n') + '\n\n' + 'React to 🚘 to see what cars in your garage are currently eligible.', embed, msg, userdata)
-      .then(msg => {
+    require(gtf.EMBED).alert({name:"❌ Regulations Breached", description: 'Your **' + currentcar['name'] + '** does not meet the regulations for **' + event['title'] + '**.' + '\n\n' + regulations[1].join('\n') + '\n\n' + 'React to 🚘 to see what cars in your garage are currently eligible.', embed:"", seconds:0}, msg, userdata);
+      msg.channel.send(embed).then(msg => {
         function func() {
           var btgarage = require('../../commands/garage');
           btgarage.execute(msg, ['regulate!🏴', event], userdata);

@@ -64,8 +64,8 @@ module.exports = {
         gtftools.createreactions(emojilist, msg, userdata);
       });
     } else {
-      var aspec = "__**🏁Career Mode**__\n/career" + "\n" + "__**🎉Seasonal Events**__\n/seasonal" + "\n" + "__**🅰Arcade Mode**__\n/arcade" + "\n" + "__**🇩Drift Trial**__\n/drift" + "\n" + "__**🇸Top Speed Run**__\n/ssrx";
-      var places = "__**🛒GTF Car Dealerships**__\n/car" + "\n" + "__**📦GTF Auto - Tuning Shop**__\n/tune" + "\n" + "__**🎨GTF Auto - Paint Shop**__\n/paint" + "\n" + "__**🛠Car Tuning**__\n/tuning" + + "__**GTF Course Maker**__\n/course" + "\n";
+      var aspec = "__**🏁Career Mode**__\n/career" + "\n" + "__**🎉Seasonal Events**__\n/seasonal" + "\n" + "__**🅰Arcade Mode**__\n/arcade" + "\n" + "__**🇩Drift Trial**__\n/drift" + "\n" + "__**🇸Top Speed Run**__\n/ssrx" + "\n" + "__**👥GTF Online Lobby (BETA)**__\n/lobby";
+      var places = "__**🛒GTF Car Dealerships**__\n/car" + "\n" + "__**📦GTF Auto - Tuning Shop**__\n/tune" + "\n" + "__**🎨GTF Auto - Paint Shop**__\n/paint" + "\n" + "__**🛠Car Tuning**__\n/tuning";
       var myhome = "__**🚘Garage**__\n/garage" + "\n" + "__**👤Profile**__\n/profile" + "\n" + "__**🎞Replay Theater**__\n/replay" + "\n" + "__**⚙Settings**__\n/settings";
       var other = "__**🇱GTF Experience Levels**__\n/levels" + "\n" + "__**🌀Miscellaneous**__\n/home 2";
       embed.addField("A-Spec", aspec, true);

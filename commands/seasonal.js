@@ -122,14 +122,14 @@ module.exports = {
       var ready = true
     }
       if (!ready && query.length != 0) {
-        require(gtf.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
+        require(gtf.EMBED).alert({name:"⚠ Warning", description: "This event does not exist.",embed:embed, seconds:0}, msg, userdata);
       }
       embed.setTitle("🏁" + " __Seasonal Events__")
 
       var number = query[0]
       if (!gtftools.betweenInt(number, 1, Object.keys(races).length)) {
         if (number !== undefined) {
-          require(gtf.EMBED).warning("⚠ Warning", "This event does not exist.", embed, msg, userdata)
+            require(gtf.EMBED).alert({name:"⚠ Warning", description: "This event does not exist.",embed:embed, seconds:0}, msg, userdata);
           }
       }
       if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {

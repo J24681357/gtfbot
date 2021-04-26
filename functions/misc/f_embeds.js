@@ -24,13 +24,15 @@ module.exports.alert = function(object, msg, userdata) {
   
 if (embed == "") {
   var embed = new Discord.MessageEmbed();
-  embed.setAuthor(msg.author.username, msg.author.displayAvatarURL());
+  embed.setAuthor(msg.guild.members.cache.get(userdata["id"]).user.username, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
   embed.setColor(color)
   embed.addField(name + ' "' + message + '"', desc);
   return msg.channel.send(embed).then(msg => {
         if (seconds > 0) {
-          msg.delete({ timeout: seconds * 1000 });
-          userdata["count"]--
+          msg.delete({ timeout: seconds * 1000 }).then(() => {
+            require(gtf.MAIN).embedcounts[userdata["id"]]--
+          })
+          
         }
       });
   } else {
@@ -38,30 +40,6 @@ if (embed == "") {
     embed.setColor(color)
   }
   return;
-};
-
-
-module.exports.warning = function(name, desc, embed, msg, userdata) {
-  embed.setColor(0xffff00);
-  var message = msg.content.split(" ").join(" ");
-  if (message.length == 0) {
-    message = "";
-  }
-  embed.addField(name + ' "' + message + '"', desc);
-  return;
-};
-
-module.exports.error = function(name, desc, embed, msg, userdata) {
-
-  var embed = new Discord.MessageEmbed();
-  var gtfhelp = "";
-  if (name.includes("Invaluserdata")) {
-    gtfhelp = "\n\n**❓ Maybe __!gtfhelp__ can help you.**";
-  }
-  embed.setAuthor(msg.author.username, msg.author.displayAvatarURL());
-  embed.setColor(0xff0000);
-  embed.addField(name + ' "' + msg.content.split(" ").join(" ") + '"', desc + gtfhelp, true);
-  return msg.channel.send(embed);
 };
 
 module.exports.success = function(name, desc, time, special, embed, msg, userdata, dm) {
@@ -97,8 +75,8 @@ module.exports.success = function(name, desc, time, special, embed, msg, userdat
 };
 
 module.exports.checkgarageerror = function(embed, msg, userdata) {
-  if (stats.garagecount(userdata) >= require(gtf.GTF).garagelimit) {
-    require(gtf.EMBED).error("❌ Garage Full", "You have reached your garage limit of " + require(gtf.GTF).garagelimit + " or above.\nSell one of your cars using **!garage sell** in order to add cars to your garage.", embed, msg, userdata);
+  if (stats.garagecount(userdata) > require(gtf.GTF).garagelimit) {
+    require(gtf.EMBED).alert({name:"❌ Garage Full", description: "You have reached your garage limit of " + require(gtf.GTF).garagelimit + " or above.\nSell one of your cars using **!garage sell** in order to add more cars to your garage.", embed:"", seconds:0}, msg, userdata);
     return true;
   } else {
     return false;

@@ -54,7 +54,7 @@ module.exports = {
         /// 0 - 20
         allsegment = parseFloat(query[i].split("=")[1])
         if (!gtftools.betweenInt(allsegment, 2, 20)) {
-          require(gtf.EMBED).error('❌ Invalid Arguments', 'Segment lengths must be between 2 and 20.', embed, msg, userdata);
+           require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Segment lengths must be between 2 and 20.", embed:"", seconds:0}, msg, userdata);
           return
         }
         minsegment = allsegment
@@ -65,7 +65,7 @@ module.exports = {
         maxsegment = parseFloat(query[i].split("=")[1])
         if (allsegment.toString().length != 0) {
           if (!gtftools.betweenInt(maxsegment, 2, 20)) {
-            require(gtf.EMBED).error('❌ Invalid Arguments', 'Maximum segment length must be between 2 and 20.', embed, msg, userdata);
+                  require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Maximum segment length must be between 2 and 20.", embed:"", seconds:0}, msg, userdata);
             return
           }
         }
@@ -76,7 +76,7 @@ module.exports = {
 
         if (allsegment.toString().length != 0) {
           if (!gtftools.betweenInt(minsegment, 2, 20)) {
-            require(gtf.EMBED).error('❌ Invalid Arguments', 'Mininum segment length must be between 2 and 20.', embed, msg, userdata);
+              require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Mininum segment length must be between 2 and 20.", embed:"", seconds:0}, msg, userdata);
             return
           }
         }
@@ -85,7 +85,7 @@ module.exports = {
         /// 0.0 - 1.0
         curviness = parseFloat(query[i].split("=")[1])
           if (!gtftools.betweenInt(curviness, 0, 1)) {
-            require(gtf.EMBED).error('❌ Invalid Arguments', 'Curviness value must be between 0 and 1.', embed, msg, userdata);
+                require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Curviness value must be between 0 and 1.", embed:"", seconds:0}, msg, userdata);
             return
           }
       }
@@ -93,7 +93,7 @@ module.exports = {
         /// 50-150
         maxangle = parseFloat(query[i].split("=")[1])
         if (!gtftools.betweenInt(maxangle, 50, 150)) {
-          require(gtf.EMBED).error('❌ Invalid Arguments', 'Max angle value must be between 50 and 150.', embed, msg, userdata);
+          require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Max Angle value must be between 50 and 150.", embed:"", seconds:0}, msg, userdata);
           return
         }
       }
@@ -105,12 +105,12 @@ module.exports = {
 
     
           if (maxsegment < minsegment) {
-              require(gtf.EMBED).error('❌ Invalid Arguments', 'Maximum segment length is lower than the minimum segment length', embed, msg, userdata);
+                 require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Maximum segment length is lower than the minimum segment length.", embed:"", seconds:0}, msg, userdata);
             return
           }
           
           if (minsegment > minsegment) {
-              require(gtf.EMBED).error('❌ Invalid Arguments', 'Minimum segment length is greater than the maximum segment length', embed, msg, userdata);
+             require(gtf.EMBED).alert({name:"❌ Invalid Arguments", description: "Minimum segment length is greater than the maximum segment length.", embed:"", seconds:0}, msg, userdata);
             return
           }
 

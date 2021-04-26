@@ -34,7 +34,7 @@ module.exports = {
 
     /* Setup */
     if (userdata['version'] >= gtfuser.gtfbotconfig['version']) {
-      require(gtf.EMBED).error('❌ Up to Date', 'Your save is already up to the latest version.', embed, msg, userdata);
+      require(gtf.EMBED).alert({name:"❌ Up to Date", description: 'Your save is already up to the latest version.', embed:"", seconds:0}, msg, userdata);
       return;
     }
     if (userdata['version'] === undefined) {

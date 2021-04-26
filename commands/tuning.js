@@ -79,7 +79,7 @@ module.exports = {
     }*/
 
     if (list.length == 0) {
-      require(gtf.EMBED).error("❌ No Tunable Parts", "There are no parts to tune for the **" + gtfcar["name"] + "**.", embed, msg, userdata)
+      require(gtf.EMBED).alert({name:"❌ No Tunable Parts", description: "There are no parts to tune for the **" + gtfcar["name"] + "**.",embed:"", seconds:0}, msg, userdata);
       return
     }
     var part = []

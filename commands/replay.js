@@ -75,12 +75,7 @@ console.log(replaystats)
         
   function replay() {
     if (Object.keys(replaystats).length == 0) {
-                require(gtf.EMBED).error(
-            "❌ No Replays",
-            "There are no replays saved.",
-            embed,
-            msg, userdata
-          );
+       require(gtf.EMBED).alert({name:"❌ No Replays", description: "There are no replays saved.",embed:"", seconds:0}, msg, userdata);
       return
     }
 
@@ -131,12 +126,7 @@ console.log(replaystats)
           number === undefined ||
           number > replaystats.length
         ) {
-          require(gtf.EMBED).error(
-            "❌ Invalid ID",
-            "This ID does not exist in your replay theater.",
-            embed,
-            msg, userdata
-          );
+          require(gtf.EMBED).alert({name:"❌ Invalid ID", description: "This ID does not exist in your replay theater.",embed:"", seconds:0}, msg, userdata);
           return;
         }
       var name = replaystats[number.toString()][0]
@@ -165,12 +155,7 @@ console.log(replaystats)
           number === undefined ||
           number > replaystats.length
         ) {
-          require(gtf.EMBED).error(
-            "❌ Invalid ID",
-            "This ID does not exist in your replay theater.",
-            embed,
-            msg, userdata
-          );
+        require(gtf.EMBED).alert({name:"❌ Invalid ID", description: "This ID does not exist in your replay theater.",embed:"", seconds:0}, msg, userdata);
           return;
         }
         var replaydetails = replaystats[number.toString()]

@@ -57,7 +57,7 @@ module.exports = {
       msg.channel.send(embed);
       return 
     } else {
-      require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata)
+      require(gtf.EMBED).alert({name:"❌ Error", description:  "Invalid arguments.", embed:"", seconds:0}, msg, userdata);
       return
     }
   }

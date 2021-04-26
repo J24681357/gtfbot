@@ -33,7 +33,7 @@ module.exports.time = function(results, number, pageargs, embed, msg, userdata) 
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
       success = false;
     if (!isNaN(number)) {
-      require(gtf.EMBED).warning("⚠ Invalid Number", "Invalid time zone.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"⚠ Invalid Number", description: "Invalid time zone.",embed:embed, seconds:0}, msg, userdata);
     }
   }
   if (number === undefined) {
@@ -67,7 +67,7 @@ module.exports.units = function(results, number, pageargs, embed, msg, userdata)
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
     success = false;
     if (!isNaN(number)) {
-      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments.", embed, msg, userdata);
+      require(gtf.EMBED).alert({name:"⚠ Invalid Number", description: "Invalid arguments.",embed:embed, seconds:0}, msg, userdata);
     }
   }
   if (number === undefined) {
@@ -100,7 +100,7 @@ module.exports.progressbar = function(results, number, pageargs, embed, msg, use
   if (number <= 0 || number >= (list.length + 1) || (number.length != 0 && isNaN(number))) {
       success = false;
     if (!isNaN(number)) {
-      require(gtf.EMBED).warning("⚠ Warning", "Invalid arguments", embed, msg, userdata);
+       require(gtf.EMBED).alert({name:"⚠ Invalid Number", description: "Invalid arguments.",embed:embed, seconds:0}, msg, userdata);
     }
   }
   console.log(number)

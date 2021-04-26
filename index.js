@@ -271,7 +271,7 @@ client.on('message', async msg => {
           embed.setAuthor(user, msg.author.displayAvatarURL());
           embed.setColor(0x800080);
           embed.setDescription('⏲ You have a cooldown of ' + timeLeft.toFixed(1) + ' seconds for `!' + command.name + '`.' + ' Please wait.');
-          msg.channel.send(embed)
+          //msg.channel.send(embed)
           return;
         }
       }
@@ -341,8 +341,7 @@ client.on('message', async msg => {
         var embed = new Discord.MessageEmbed();
         var user = msg.author.username;
         embed.setAuthor(user, msg.author.displayAvatarURL());
-
-        require(gtf.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
+        require(gtf.EMBED).alert({name:"⚠️ Session In Progress", description: 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed:"", seconds:0}, msg, userdata);
         msg.channel.send(embed).then(msg => {
           function exit() {
             return require('./commands/cancel').execute(msg, ['✨✨✨'], userdata);
@@ -363,7 +362,7 @@ client.on('message', async msg => {
         var embed = new Discord.MessageEmbed();
         var user = msg.guild.members.cache.get(userdata["id"]).user.username;
         embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-        require(gtf.EMBED).warning('⚠️ Lobby In Session', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
+         require(gtf.EMBED).alert({name:"⚠️ Lobby In Session", description: 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed:"", seconds:0}, msg, userdata);
         msg.channel.send(embed);
         return;
         }
@@ -609,6 +608,8 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   ]
 */
 client.ws.on('INTERACTION_CREATE', async interaction => {
+
+
   interaction.guild = client.guilds.cache.get(interaction.guild_id)
    interaction.channel = client.channels.cache.get(interaction.channel_id)
    interaction.member = interaction.guild.members.cache.get(interaction.member.user.id)
@@ -670,8 +671,6 @@ function findAllByKey(obj, keyToFind) {
   const commandName = interaction.data.name.toLowerCase();
 
     var command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
- 
-
 client.api.interactions(interaction.id, interaction.token).callback.post({data: {
   type: 4,
   data: {
@@ -753,7 +752,7 @@ function load_msg(msg) {
           embed.setAuthor(user, msg.author.displayAvatarURL());
           embed.setColor(0x800080);
           embed.setDescription('⏲ You have a cooldown of ' + timeLeft.toFixed(1) + ' seconds for `!' + command.name + '`.' + ' Please wait.');
-          msg.channel.send(embed)
+          //msg.channel.send(embed)
           return;
         }
       }
@@ -821,7 +820,7 @@ function load_msg(msg) {
         var user = msg.author.username;
         embed.setAuthor(user, msg.author.displayAvatarURL());
 
-        require(gtf.EMBED).warning('⚠️ Session In Progress', 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed, msg);
+        require(gtf.EMBED).alert({name:"⚠️ Session In Progress", description: 'You are unable to use `!' + commandName + "` until you've finished your session." + '\n\n' + '**❓ If you want to exit your current session, click the ' + emote.exit + ' reaction.**', embed:"", seconds:0}, msg, userdata);
         msg.channel.send(embed).then(msg => {
           function exit() {
             return require('./commands/cancel').execute(msg, ['✨✨✨'], userdata);
@@ -838,7 +837,7 @@ function load_msg(msg) {
         var embed = new Discord.MessageEmbed();
         var user = msg.guild.members.cache.get(userdata["id"]).user.username;
         embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-        require(gtf.EMBED).warning('⚠️ Lobby In Session', 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed, msg);
+        require(gtf.EMBED).alert({name:"⚠️ Lobby In Session", description: 'You are unable to use `!' + commandName + '` until you have left from your current lobby.', embed:"", seconds:0}, msg, userdata);
         msg.channel.send(embed);
         return;
       }

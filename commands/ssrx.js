@@ -61,7 +61,7 @@ module.exports = {
           }
           return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
     } else {
-      	require(gtf.EMBED).alert({name:'❌ Production Cars Only', description:'Production cars are only allowed for this event.',embed:"", seconds:3}, msg, userdata);
+      	require(gtf.EMBED).alert({name:'❌ Production Cars Only', description:'Production cars are only allowed for this event.',embed:"", seconds:0}, msg, userdata);
       return
     }
   },

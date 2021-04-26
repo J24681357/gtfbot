@@ -108,7 +108,7 @@ select = require(gtf.PAINTS).find({ "type": type })
       if (number != "S") {
         if (number <= 0 || isNaN(number) || number === undefined || number > select.length) {
           if (number !== undefined) {
-            require(gtf.EMBED).warning("⚠ Invalid ID", "This ID does not exist.", embed, msg, userdata)
+            require(gtf.EMBED).alert({name:"⚠ Invalid ID", description: "This ID does not exist.", embed:embed, seconds:0}, msg, userdata);
           }
           itempurchase = false
         }
@@ -122,11 +122,11 @@ select = require(gtf.PAINTS).find({ "type": type })
         var paint = select[number - 1]
         var cond = require(gtf.PAINTS).checkpaintsavail(paint, car)
         if (cond.includes("❌")) {
-          require(gtf.EMBED).error("❌ Paint Unavailable", "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).alert({name:"❌ Paint Unavailable", description: "**" + paint["type"] + " " + paint["name"] + "** is unavailable for **" + car["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**",embed:"", seconds:3}, msg, userdata);
           return
         }
         if (cond.includes("✅")) {
-          require(gtf.EMBED).error("❌ Paint Same Color", "**" + paint["type"] + " " + paint["name"] + "** is already applied for **" + car["name"] + "**.", embed, msg, userdata)
+          require(gtf.EMBED).alert({name:"❌ Same Paint", description: "**" + paint["type"] + " " + paint["name"] + "** is already applied for **" + car["name"] + "**." + "\n\n" + "**❗ Choose another option when this message disappears.**",embed:"", seconds:3}, msg, userdata);
           return
         }
       }

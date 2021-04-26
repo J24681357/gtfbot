@@ -107,7 +107,7 @@ if (!playerfound) {
 
     if (query[0] == "create") {
       if (userdata["inlobby"][0]) {
-        require(gtf.EMBED).error("❌ Error", "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed, msg, userdata);
+         require(gtf.EMBED).alert({name:"❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed:"", seconds:0}, msg, userdata);
         return
       }
 
@@ -170,7 +170,7 @@ if (!playerfound) {
     }
     else if (query[0] == "join") {
       if (userdata["inlobby"][0]) {
-        require(gtf.EMBED).error("❌ Error", "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed, msg, userdata);
+         require(gtf.EMBED).alert({name:"❌ Error", description: "You are already in a lobby" + "." + " Exit from your current lobby before joining a new one.", embed:"", seconds:0}, msg, userdata);
         return
       }
       
@@ -190,15 +190,15 @@ if (!playerfound) {
 
 
       if (!success) {
-        require(gtf.EMBED).error("❌ Error", "This ID does not exist in GTF lobbies.", embed, msg, userdata);
+         require(gtf.EMBED).alert({name:"❌ Error", description: "This ID does not exist in GTF lobbies.", embed:"", seconds:0}, msg, userdata);
         return
       }
       if (stats.currentcar(userdata) == "No car.") {
-         require(gtf.EMBED).error("❌ Error", "You do not have a current car.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "You do not have a current car.", embed:"", seconds:0}, msg, userdata);
         return
       }
       if (currentlobby["players"].length + 1 > currentlobby["maxplayers"]) {
-          require(gtf.EMBED).error("❌ Error", "This lobby is full.", embed, msg, userdata);
+          require(gtf.EMBED).alert({name:"❌ Error", description: "This lobby is full.", embed:"", seconds:0}, msg, userdata);
           return
       }
         userdata["inlobby"] = stats.inlobby(true, currentlobby["host"], userdata)
@@ -233,7 +233,7 @@ if (!playerfound) {
     }
     else if (query[0] == "list") {
       if (Object.keys(lobbies["lobbies"]).length == 0) {
-      require(gtf.EMBED).error("❌ Empty", "There are no GTF lobbies online.", embed, msg, userdata)
+      require(gtf.EMBED).alert({name:"❌ Empty", description: "There are no GTF lobbies online.", embed:"", seconds:0}, msg, userdata);
       return
       } else {
       var list = []
@@ -255,12 +255,12 @@ if (!playerfound) {
     else if (query[0] == "exit" || query[0] == "delete" || query[0] == "quit") {
       var member = msg.member
       if (!stats.inlobbystat(userdata)[0]) {
-        require(gtf.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed:"", seconds:0}, msg, userdata);
         return
       }
       var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
       if (msg.channel.name !== currentlobby["channelname"]) {
-        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "This lobby command can only be used in your current lobby.", embed:"", seconds:0}, msg, userdata);
         return
       }
 
@@ -308,18 +308,18 @@ if (!playerfound) {
     else if (query[0] == "settings" || query[0] == "set") {
       
       if (stats.inlobbystat(userdata)[1] != userdata["id"])  {
-         require(gtf.EMBED).error("❌ Not The Host", "Only the host can change lobby settings.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Not The Host", description: "Only the host can change lobby settings.", embed:"", seconds:0}, msg, userdata);
         return
       }
       if (msg.channel.name !== lobbies["lobbies"][stats.inlobbystat(userdata)[1]]["channelname"]) {
-        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "This lobby command can only be used in your current lobby.", embed:"", seconds:0}, msg, userdata);
         return
       }
 
       var changes = []
         var setting = query[1]
         if (setting === undefined) {
-           require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
+          require(gtf.EMBED).alert({name:"❌ Error", description: "Invalid arguments.", embed:"", seconds:0}, msg, userdata);
         return
         }
         
@@ -336,7 +336,7 @@ if (!playerfound) {
             return
       }
       if (changes.length == 0) {
-        require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "Invalid arguments.", embed:"", seconds:0}, msg, userdata);
         return
       } else {
           var embed2 = new Discord.MessageEmbed()
@@ -353,13 +353,13 @@ if (!playerfound) {
 
     } else if (query[0] == "info") {
       if (!stats.inlobbystat(userdata)[0]) {
-        require(gtf.EMBED).error("❌ Not In Lobby", "You are not in a lobby. Find a lobby from the list in **!lobby list**.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Not In Lobby", description: "You are not in a lobby. Find a lobby from the list in **/lobby list**.", embed:"", seconds:0}, msg, userdata);
         return
       }
 
       var currentlobby = lobbies["lobbies"][stats.inlobbystat(userdata)[1]]
       if (msg.channel.name !== currentlobby["channelname"]) {
-        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "This lobby command can only be used in your current lobby.", embed:"", seconds:0}, msg, userdata);
         return
       }
       embed.setTitle("__" + currentlobby["channelname"] + "__")
@@ -399,17 +399,17 @@ if (!playerfound) {
     }
     else if (query[0] == "race" || query[0] == "start") {
         if (userdata["inlobby"][1] != userdata["id"])  {
-         require(gtf.EMBED).error("❌ Not The Host", "Only the host can start a race.", embed, msg, userdata);
+           require(gtf.EMBED).alert({name:"❌ Not The Host", description: "Only the host can start a race.", embed:"", seconds:0}, msg, userdata);
         return
       }
        var currentlobby = lobbies["lobbies"][userdata["id"]]
       if (msg.channel.name !== currentlobby["channelname"]) {
-        require(gtf.EMBED).error("❌ Error", "This lobby command can only be used in your current lobby.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "This lobby command can only be used in your current lobby.", embed:"", seconds:0}, msg, userdata);
         return
       }
        
       if (currentlobby["isready"])  {
-         require(gtf.EMBED).error("❌ Race Starting", "The race is already starting.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Race Starting", description: "The race is already starting.", embed:"", seconds:0}, msg, userdata);
         return
       }
       
@@ -447,7 +447,7 @@ var index = 0
 
           lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"] = lobbies["lobbies"][currentlobby["host"]]["players"].filter(x => x["ready"])
                 if (lobbies["lobbies"][currentlobby["host"]]["racesettings"]["players"].length == 0)  {
-         require(gtf.EMBED).error("❌ Race Aborted", "No players were on the track.", embed, msg, userdata);
+                  require(gtf.EMBED).alert({name:"❌ Race Aborted", description: "No players were on the track.", embed:"", seconds:0}, msg, userdata);
       currentlobby["isready"] = false
        require(gtf.LOBBY).save(lobbies,userdata)
         return
@@ -472,7 +472,7 @@ var index = 0
       })
 
     } else {
-       require(gtf.EMBED).error("❌ Error", "Invalid arguments.", embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Error", description: "Invalid arguments.", embed:"", seconds:0}, msg, userdata);
     }
 }
   }

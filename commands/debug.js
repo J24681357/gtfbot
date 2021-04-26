@@ -330,7 +330,7 @@ module.exports = {
         return msg.channel.send(embed);
         }
       } else {
-        require(gtf.EMBED).error('❌ Invalid', 'Invalid command.', embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Invalid", description: 'Invalid command.', embed:"", seconds:0}, msg, userdata);
         return
       }
     }
