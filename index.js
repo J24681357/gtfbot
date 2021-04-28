@@ -78,12 +78,11 @@ for (const file of commandFiles) {
 }
 
 const cooldowns = new Discord.Collection();
-client.on('ready', () => {
 
+client.on('ready', () => {
 gtftools.checkcarlist(gtfcars)
 
   var gtfbot = {}
-
   module.exports.update = client.emojis.cache.get('419605168510992394').toString();
   module.exports.flag = client.emojis.cache.get('646244286635180033').toString();
   module.exports.transparent = client.emojis.cache.get('666878765552369684').toString();
@@ -143,6 +142,7 @@ gtftools.checkcarlist(gtfcars)
 
   module.exports.gt6progressbar = client.emojis.cache.get('713512070213140542').toString();
   module.exports.gt6progressbarblack = client.emojis.cache.get('713512070477512786').toString();
+
   var emote = require('./index');
 
   MongoClient.connect(url, { useUnifiedTopology: true },
@@ -243,8 +243,8 @@ client.on('message', async msg => {
       if (command.channels.length >= 1) {
         if (!command.channels.some(name => msg.channel.name.includes(name))) {
           userdata = { "id": msg.author.id }
-          require(gtf.EMBED).error('❌ Incorrect Channel', 'Commands are not allowed in this channel.', embed, msg, userdata);
-          return;
+           require(gtf.EMBED).alert({name:"❌ Incorrect Channel", description: 'Commands are not allowed in this channel.', embed:"", seconds:0}, msg, userdata);
+           return;
         }
       }
     }
@@ -323,11 +323,8 @@ client.on('message', async msg => {
       if (roles.length > 0) {
         roles[0] = '❌ ' + roles[0];
         roles = roles.join('\n❌ ');
-        const embed = new Discord.MessageEmbed();
-        var user = msg.guild.members.cache.get(msg.author.id).user.username;
-        embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
-        embed.setColor(0xff0000);
-        embed.setDescription(' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles);
+
+        require(gtf.EMBED).alert({name:"❌ Missing Roles", description: ' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles, embed:"", seconds:0}, msg, userdata);
         msg.channel.send(embed);
         return;
       }
@@ -407,7 +404,7 @@ client.on('message', async msg => {
 
     if (command.requirecar) {
       if (stats.garagecount(userdata) == 0) {
-        require(gtf.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
+         require(gtf.EMBED).alert({name:"❌ No Car", description: 'You do not have a current car.', embed:"", seconds:0}, msg, userdata);
         return;
       }
     }
@@ -420,7 +417,7 @@ client.on('message', async msg => {
       executecommand(command, args, msg, userdata)
     } catch (error) {
       var embed = new Discord.MessageEmbed();
-      require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
+      require(gtf.EMBED).alert({name:"❌ Unexpected Error", description: 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed:"", seconds:0}, msg, userdata);
       console.error(error);
     }
   }
@@ -469,7 +466,7 @@ client.on('message', async msg => {
 */
 //client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands("825481564476538900").delete()
 //client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands("825464762841956423").delete()
-client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
+/*client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   data: {
   "name": "lobby",
   "description": "Test: Does the same as /lobby info.",
@@ -547,6 +544,7 @@ client.api.applications(process.env.USERID).guilds(gtf.SERVERID).commands.post({
   ]
 }
 })
+*/
 
 
 
@@ -683,7 +681,7 @@ setTimeout(function(){
   load_msg(interaction)
   } catch (error) {
     var embed = new Discord.MessageEmbed();
-    require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, interaction, {id:interaction.author.id});
+    require(gtf.EMBED).alert({name:"❌ Unexpected Error", description: 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed:"", seconds:0}, msg, {id:interaction.author.id});
     console.error(error);
   }
   return
@@ -725,7 +723,7 @@ function load_msg(msg) {
       if (command.channels.length >= 1) {
         if (!command.channels.some(name => msg.channel.name.includes(name))) {
           userdata = { "id": msg.author.id }
-          require(gtf.EMBED).error('❌ Incorrect Channel', 'Commands are not allowed in this channel.', embed, msg, userdata);
+          require(gtf.EMBED).alert({name:"❌ Incorrect Channel", description: 'Commands are not allowed in this channel.', embed:"", seconds:0}, msg, userdata);
           return;
         }
       }
@@ -782,7 +780,7 @@ function load_msg(msg) {
 
     if (command.name != 'update') {
       if (userdata['version'] === undefined || userdata['version'] < require(gtf.MAIN).gtfbotconfig['version']) {
-        require(gtf.EMBED).error('❌ Version Incompatible', 'Your save data needs to be updated in order to use current features. Use **!update** to update your save to the latest version.', embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ Version Incompatible", description: 'Your save data needs to be updated in order to use current features. Use **!update** to update your save to the latest version.', embed:"", seconds:0}, msg, userdata);
         return;
       }
     }
@@ -801,12 +799,7 @@ function load_msg(msg) {
       if (roles.length > 0) {
         roles[0] = '❌ ' + roles[0];
         roles = roles.join('\n❌ ');
-        const embed = new Discord.MessageEmbed();
-        var user = msg.guild.members.cache.get(msg.author.id).user.username;
-        embed.setAuthor(user, msg.guild.members.cache.get(msg.author.id).user.displayAvatarURL);
-        embed.setColor(0xff0000);
-        embed.setDescription(' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles);
-        msg.channel.send(embed);
+         require(gtf.EMBED).alert({name:"❌ Missing Roles", description: ' **❌ You are unable to use `!' + commandName + '`, because of insufficient roles.** \n\n' + roles, embed:"", seconds:0}, msg, userdata);
         return;
       }
     }
@@ -880,7 +873,7 @@ function load_msg(msg) {
 
     if (command.requirecar) {
       if (stats.garagecount(userdata) == 0) {
-        require(gtf.EMBED).error('❌ No Car', 'You do not have a current car.', embed, msg, userdata);
+        require(gtf.EMBED).alert({name:"❌ No Car", description: 'You do not have a current car.', embed:"", seconds:0}, msg, userdata);
         return;
       }
     }
@@ -969,7 +962,8 @@ var executecommand = function(command, args, msg, userdata) {
 
   } catch (error) {
     var embed = new Discord.MessageEmbed();
-    require(gtf.EMBED).error('❌ Unexpected Error', 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed, msg, userdata);
+    
+    require(gtf.EMBED).alert({name:"❌ Unexpected Error", description: 'Oops, an unexpected error has occurred.\n' + '**' + error + '**', embed:"", seconds:0}, msg, userdata);
     console.error(error);
   }
 }

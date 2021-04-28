@@ -639,6 +639,7 @@ module.exports.resumerace = function(userdata, client) {
           undefined,
           ""
         ];
+        stats.save(userdata)
         return
       }
       var embed = new Discord.MessageEmbed(msg.embeds[0])

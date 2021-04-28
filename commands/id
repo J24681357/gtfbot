@@ -9,7 +9,7 @@ var gtf = require('../files/directories');
 
 module.exports = {
   name: "id",
-  title: "GT Fitness: ID Database",
+  title: "GT Fitness: Database",
   cooldown: 3,
   level: 0,
   channels: ["gtf-demo", "testing"],

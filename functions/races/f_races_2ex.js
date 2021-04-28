@@ -287,7 +287,6 @@ module.exports.createfinalreactions = function(
   checkpoint,
   userdata
 ) {
-  if (!checkpoint[0]) {
     function func() {
       require(gtf.REPLAY).savem( racesettings["title"],results2,racedetails,"__Starting Grid - " +
           racesettings["category"] +
@@ -343,11 +342,7 @@ module.exports.createfinalreactions = function(
 
       if (racesettings["mode"] == "CAREER") {
         //stats.updatecurrentcarclean(-1)
-        if (!checkpoint[0]) {
           emojilist.push([emote.exit, "gtfexit", goback]);
-        }
       }
-
-    gtftools.createreactions(emojilist, msg, userdata);
-  }
+    gtftools.createreactions(emojilist, msg, userdata)
 };

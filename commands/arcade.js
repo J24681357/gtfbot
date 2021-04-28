@@ -26,6 +26,7 @@ module.exports = {
     '!arcade ["mode"] - Enter a race in Arcade mode with the difficulty of [mode] with cars from GT Sport.\nYou can obtain credits and EXP here.\nThe amount you earn is based on your finishing position and [mode].',
   ],
   execute(msg, query, userdata) {
+    try {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
@@ -54,7 +55,6 @@ module.exports = {
     var mode = 'ARCADE';
 
     var racemode;
-    var racedetails = '';
     var levelselect = '';
     var ready = false;
 
@@ -221,7 +221,10 @@ function selectcourse() {
         
       });
     }
+  } catch (error) {
+    throw error
   }
 
+  } /// execute
 
-};
+  } 

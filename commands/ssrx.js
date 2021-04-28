@@ -59,6 +59,7 @@ module.exports = {
             "track": require(gtf.TRACKS).find({"name":["Special Stage Route X"]})[0],
             "other": []
           }
+          raceprep["track"]["length"] = 10
           return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
     } else {
       	require(gtf.EMBED).alert({name:'❌ Production Cars Only', description:'Production cars are only allowed for this event.',embed:"", seconds:0}, msg, userdata);

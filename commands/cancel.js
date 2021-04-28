@@ -8,12 +8,12 @@ var gtf = require('../files/directories');
 ////////////////////////////////////////////////////
 
 module.exports = {
-  "name": "cancel",
-  "title": "Cancel Session",
-  "cooldown": 5,
-  "level": 0,
-  "roles": [],
-  "channels": ["testing", "gtf-demo"],
+  name: "cancel",
+  title: "Cancel Session",
+  cooldown: 5,
+  level: 0,
+  roles: [],
+  channels: ["testing", "gtf-demo"],
 
   "delete": false,
   "availinmaint": false,
@@ -24,6 +24,7 @@ module.exports = {
   "aliases": ["exit", "quit"],
   "description": ["!cancel - Cancels any active session."],
   "execute"(msg, query, userdata) {
+    try {
     /* Setup */
     const embed = new Discord.MessageEmbed()
     embed.setColor(0x0151b0)
@@ -74,6 +75,9 @@ module.exports = {
       stats.raceinprogress(false, ["", ""], "EXIT", userdata)
       return
     }
+  } catch {
+    throw error
   }
+  } // execute
 }
 

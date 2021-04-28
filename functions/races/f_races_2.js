@@ -159,7 +159,7 @@ module.exports.readysetgo = function(
   } else {
     var totaltime = userdata["raceinprogress"][2];
     resumerace =
-      "\n⚠ Bot has restarted while in progress. Reactions will not appear in the race results.";
+      "";
     startracetime = 0;
     racelength = totaltime - new Date().getTime() - 4000;
   }
@@ -283,7 +283,7 @@ module.exports.readysetgo = function(
         } else {
           embed.addField(stats.main(userdata), field2);
         }
-        msg.channel.send(ping + " **FINISH**", embed).then(msg => {
+        msg.channel.send(ping + " **FINISH**", embed).then(msg2 => {
           race2ex.createfinalreactions(
             user,
             racedetails,
@@ -293,7 +293,7 @@ module.exports.readysetgo = function(
             racefinished,
             results2,
             embed,
-            msg,
+            msg2,
             args,
             checkpoint,
             userdata

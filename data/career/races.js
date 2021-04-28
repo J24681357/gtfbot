@@ -452,7 +452,7 @@ module.exports.sleague = function() {
       "fpplimit": 2000,
       "upperfpp": 2000,
       "lowerfpp": 1000,
-      "makes": ["Red-Bull"],
+      "makes": ["RedBull"],
       "models": ["X2019 Competition"],
       "drivetrains": [],
       "types": ["Redbull X"],
