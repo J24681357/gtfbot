@@ -4,10 +4,10 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = require('../../files/directories');
+var gtf = require("../../files/directories");
 ////////////////////////////////////////////////////
 
-module.exports.purchase = function(user, item, type, embed, msg, userdata) {
+module.exports.purchase = function (user, item, type, embed, msg, userdata) {
   var applytocurrentcar = "";
   var oldpartmessage = "";
   var installedoncurrentcar = "";
@@ -40,7 +40,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
   if (type == "PART") {
     if (stats.currentcarmain(userdata) == "No car.") {
-      require(gtf.EMBED).alert({name:'❌ No Car', description: "You do not have a current car.", embed:"", seconds:0}, msg, userdata);
+      require(gtf.EMBED).alert({ name: "❌ No Car", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
       return;
     }
     var car = stats.currentcar(userdata);
@@ -56,7 +56,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (item["name"] == "Stock") {
       part_tostock = true;
       if (car[type1]["current"] == "Stock") {
-        require(gtf.EMBED).alert({name:'❌ Part Already Stock', description: "This part is already stock in your **" + car["name"] + "**.", embed:"", seconds:0}, msg, userdata);
+        require(gtf.EMBED).alert({ name: "❌ Part Already Stock", description: "This part is already stock in your **" + car["name"] + "**.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
     }
@@ -89,7 +89,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
   if (type == "PAINT") {
     if (stats.currentcarmain(userdata) == "No car.") {
-     require(gtf.EMBED).alert({name:'❌ No Car', description: "You do not have a current car.", embed:"", seconds:0}, msg, userdata);
+      require(gtf.EMBED).alert({ name: "❌ No Car", description: "You do not have a current car.", embed: "", seconds: 0 }, msg, userdata);
       return;
     }
     var car = stats.currentcar(userdata);
@@ -105,7 +105,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
     if (item["name"] == "Stock") {
       part_tostock = true;
       if (car[type1]["current"] == "Stock") {
-        require(gtf.EMBED).alert({name:'❌ Paint Already Applied', description: "This paint is already painted on your **" + car["name"] + "**.", embed:"", seconds:0}, msg, userdata);
+        require(gtf.EMBED).alert({ name: "❌ Paint Already Applied", description: "This paint is already painted on your **" + car["name"] + "**.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
     }
@@ -119,7 +119,16 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   }
 
   if (stats.credits(userdata) - mcost < 0) {
-    require(gtf.EMBED).alert({name:'❌ Insufficient Credits', description: "You have insufficient credits to purchase the **" + name + "**.\n\n" + "**Credits: " + stats.credits(userdata) + emote.credits + "** -> **" + mcost.toString().replace(/\B(?=(\d{3}) +(?!\d))/g, ",") + "\n\n" + "❗ Choose another option when this message disappears.", embed:"", seconds:3}, msg, userdata);
+    require(gtf.EMBED).alert(
+      {
+        name: "❌ Insufficient Credits",
+        description: "You have insufficient credits to purchase the **" + name + "**.\n\n" + "**Credits: " + stats.credits(userdata) + emote.credits + "** -> **" + mcost.toString().replace(/\B(?=(\d{3}) +(?!\d))/g, ",") + "\n\n" + "❗ Choose another option when this message disappears.",
+        embed: "",
+        seconds: 3,
+      },
+      msg,
+      userdata
+    );
 
     return;
   }
@@ -194,7 +203,7 @@ module.exports.purchase = function(user, item, type, embed, msg, userdata) {
   });
 };
 
-module.exports.sell = function(user, item, type, embed, msg, userdata) {
+module.exports.sell = function (user, item, type, embed, msg, userdata) {
   embed.setColor(0xffff00);
 
   var results = "";
@@ -204,7 +213,7 @@ module.exports.sell = function(user, item, type, embed, msg, userdata) {
     var sell = require(gtf.PERF).perf(item, "GARAGE")["sell"];
     if (stats.currentcar(userdata) != null) {
       if (stats.currentcar(userdata)[0] == id) {
-        require(gtf.EMBED).alert({name:'❌ Current Car', description: "You cannot sell a car you are currently in." + "\n\n" + "❗ Choose another option when this message disappears", embed:"", seconds:3}, msg, userdata);
+        require(gtf.EMBED).alert({ name: "❌ Current Car", description: "You cannot sell a car you are currently in." + "\n\n" + "❗ Choose another option when this message disappears", embed: "", seconds: 3 }, msg, userdata);
         return;
       }
     }
@@ -242,40 +251,73 @@ module.exports.sell = function(user, item, type, embed, msg, userdata) {
   });
 };
 
-module.exports.sellcalc = function(cost) {
+module.exports.sellcalc = function (cost) {
   return -Math.ceil((-cost * 0.3 + 1) / 100) * 100;
 };
 
-module.exports.costcalc = function(gtfcar, fpp) {
+module.exports.costcalc = function (gtfcar, fpp) {
   var cost = gtfcar["carcostm"] * 10000;
-  
+
   if (fpp == undefined) {
   } else {
     var offset = fpp - 250;
     if (offset < 0) {
       cost = -((-offset) ** 1.8) + cost;
     } else {
-      cost = ((offset) ** 1.8) + cost;
+      cost = offset ** 1.8 + cost;
     }
   }
 
   return Math.round(cost / 100) * 100;
 };
 
-module.exports.fourcargifts = function(title, results, prizes, embed, msg, userdata) {
-  var select = [[emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " "]];
+module.exports.fourcargifts = function (title, results, prizes, embed, msg, userdata) {
+  var select = [
+    [emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " "],
+  ];
   embed.fields = [];
   embed.setTitle("__" + title + "__");
   embed.setDescription(results);
   embed.setColor(0x8b0000);
   msg.channel.send(embed).then(msg => {
     var index = 0;
-    var results1 = function(index) {
-      return select[index][0] + "||" + prizes[0]["name"] + " " + prizes[0]["year"] + "||" + "\n" + select[index][1] + "||" + prizes[1]["name"] + " " + prizes[1]["year"] + "||" + "\n" + select[index][2] + "||" + prizes[2]["name"] + " " + prizes[2]["year"] + "||" + "\n" + select[index][3] + "||" + prizes[3]["name"] + " " + prizes[3]["year"] + "||";
+    var results1 = function (index) {
+      return (
+        select[index][0] +
+        "||" +
+        prizes[0]["name"] +
+        " " +
+        prizes[0]["year"] +
+        "||" +
+        "\n" +
+        select[index][1] +
+        "||" +
+        prizes[1]["name"] +
+        " " +
+        prizes[1]["year"] +
+        "||" +
+        "\n" +
+        select[index][2] +
+        "||" +
+        prizes[2]["name"] +
+        " " +
+        prizes[2]["year"] +
+        "||" +
+        "\n" +
+        select[index][3] +
+        "||" +
+        prizes[3]["name"] +
+        " " +
+        prizes[3]["year"] +
+        "||"
+      );
     };
 
     gtftools.interval(
-      function() {
+      function () {
         index = Math.floor(Math.random() * select.length);
         var final = results1(index);
         embed.setDescription(final);
@@ -286,7 +328,7 @@ module.exports.fourcargifts = function(title, results, prizes, embed, msg, userd
     );
 
     gtftools.interval(
-      function() {
+      function () {
         var item = prizes[index];
 
         stats.addcar(item, undefined, userdata);
@@ -303,23 +345,25 @@ module.exports.fourcargifts = function(title, results, prizes, embed, msg, userd
   });
 };
 
-module.exports.fourgifts = function(title, results, prizes, embed, msg, userdata) {
-  var select = [[emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " "], [emote.transparent + " ", emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " "]];
+module.exports.fourgifts = function (title, results, prizes, embed, msg, userdata) {
+  var select = [
+    [emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " ", emote.transparent + " "],
+    [emote.transparent + " ", emote.transparent + " ", emote.transparent + " ", emote.rightarrow + " "],
+  ];
   embed.fields = [];
   embed.setTitle("__" + title + "__");
   embed.setDescription(results);
   embed.setColor(0x8b0000);
   msg.channel.send(embed).then(msg => {
     var index = 0;
-    var results1 = function(index) {
-      return select[index][0] + "||" + prizes[0][1]["name"] +  "||" + "\n" + 
-      select[index][1] + "||" + prizes[1][1]["name"] + "||" + "\n" + 
-      select[index][2] + "||" + prizes[2][1]["name"] + "||" + "\n" + 
-      select[index][3] + "||" + prizes[3][1]["name"] + "||";
+    var results1 = function (index) {
+      return select[index][0] + "||" + prizes[0][1]["name"] + "||" + "\n" + select[index][1] + "||" + prizes[1][1]["name"] + "||" + "\n" + select[index][2] + "||" + prizes[2][1]["name"] + "||" + "\n" + select[index][3] + "||" + prizes[3][1]["name"] + "||";
     };
 
     gtftools.interval(
-      function() {
+      function () {
         index = Math.floor(Math.random() * select.length);
         var final = results1(index);
         embed.setDescription(final);
@@ -329,11 +373,9 @@ module.exports.fourgifts = function(title, results, prizes, embed, msg, userdata
       4
     );
 
-    setTimeout(
-      function() {
-        var item = prizes[index];
-        stats.gift("🎉 " + item[1]["name"] , item, embed, msg, userdata)
-      },
-      9000)
+    setTimeout(function () {
+      var item = prizes[index];
+      stats.gift("🎉 " + item[1]["name"], item, embed, msg, userdata);
+    }, 9000);
   });
 };

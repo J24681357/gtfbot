@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = require('../files/directories');
+var gtf = require("../files/directories");
 ////////////////////////////////////////////////////
 
 module.exports = {
@@ -32,8 +32,7 @@ module.exports = {
     var page = 0;
     var results = "";
     var info = "";
-    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      // 
-
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     var main = stats.main(userdata);
     var main2 = args + stats.currentcarmain(userdata);
@@ -59,7 +58,10 @@ module.exports = {
           var showcasenumber = -1;
           require("../commands/gtf").execute(msg, "", userdata);
         }
-        var emojilist = [["🚘", "🚘", daily], ["❔", "❔", gtf]];
+        var emojilist = [
+          ["🚘", "🚘", daily],
+          ["❔", "❔", gtf],
+        ];
 
         gtftools.createreactions(emojilist, msg, userdata);
       });
@@ -163,11 +165,26 @@ module.exports = {
           clearInterval(s);
           require("../commands/myhome").execute(msg, ["2"], userdata);
         }
-        var emojilist = [["🏁", "🏁", career, "Once"], ["🎉", "🎉", seasonal], ["🅰", "🅰", arcade], ["🇩", "🇩", drift], ["🇸", "🇸", ssrx], ["🛒", "🛒", gtfdealership], ["🛠", "🛠", gtftuning], ["🎨", "🎨", gtfpaints], ["🚘", "🚘", garage], ["👤", "👤", profile], ["🎞", "🎞", replay], ["⚙", "⚙", settings], ["🇱", "🇱", levels], ["🌀", "🌀", misc]];
+        var emojilist = [
+          ["🏁", "🏁", career, "Once"],
+          ["🎉", "🎉", seasonal],
+          ["🅰", "🅰", arcade],
+          ["🇩", "🇩", drift],
+          ["🇸", "🇸", ssrx],
+          ["🛒", "🛒", gtfdealership],
+          ["🛠", "🛠", gtftuning],
+          ["🎨", "🎨", gtfpaints],
+          ["🚘", "🚘", garage],
+          ["👤", "👤", profile],
+          ["🎞", "🎞", replay],
+          ["⚙", "⚙", settings],
+          ["🇱", "🇱", levels],
+          ["🌀", "🌀", misc],
+        ];
 
         //gtftools.createreactions(emojilist, msg, userdata)
 
-        var s = setInterval(function() {
+        var s = setInterval(function () {
           showcasenumber++;
           if (showcasenumber == -1 || stats.count(userdata) != count) {
             clearInterval(s);

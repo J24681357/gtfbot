@@ -4,10 +4,10 @@ var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = require('../../files/directories');
+var gtf = require("../../files/directories");
 ////////////////////////////////////////////////////
 
-module.exports.speedcalc = function(number, gtfcar) {
+module.exports.speedcalc = function (number, gtfcar) {
   // based from careerdifficultycalc
   var rnorm = require("random-normal");
   var topspeed = rnorm({ mean: number * 1.3, dev: 15 });
@@ -20,13 +20,13 @@ module.exports.speedcalc = function(number, gtfcar) {
   return [Math.round(topspeed), Math.round(topspeed * 1.609)];
 };
 
-module.exports.perf = function(gtfcar, condition) {
+module.exports.perf = function (gtfcar, condition) {
   var power = gtfcar["power"];
   var weight = gtfcar["weight"];
   var aero = gtfcar["aerom"];
 
   var drivetrain = gtfcar["drivetrain"];
-  
+
   var sell = require(gtf.MARKETPLACE).sellcalc(require(gtf.MARKETPLACE).costcalc(gtfcar));
 
   if (condition == "DEALERSHIP") {
@@ -116,7 +116,7 @@ module.exports.perf = function(gtfcar, condition) {
   }
 };
 
-module.exports.topspeed = function(car) {
+module.exports.topspeed = function (car) {
   var sellperf = require(gtf.PERF).sell(car);
   var lowest = Math.floor(100 + sellperf ** 0.475 - 30);
   var highest = Math.floor(100 + sellperf ** 0.475);
@@ -125,7 +125,7 @@ module.exports.topspeed = function(car) {
   return [Math.round(speed * 1.609), speed];
 };
 
-module.exports.careerdifficultycalc = function(difficulty, car, fpplimit) {
+module.exports.careerdifficultycalc = function (difficulty, car, fpplimit) {
   var num = Math.round((parseInt(car["fpp"]) / fpplimit) * difficulty);
   console.log("Diff:" + Math.round((parseInt(car["fpp"]) / fpplimit) * difficulty));
   if (num > difficulty + 5) {
@@ -134,7 +134,7 @@ module.exports.careerdifficultycalc = function(difficulty, car, fpplimit) {
   return num;
 };
 
-module.exports.partpreview = function(part, car, condition) {
+module.exports.partpreview = function (part, car, condition) {
   if (condition == "GARAGE") {
     var car5 = JSON.stringify(car);
     var car2 = JSON.parse(car5);
@@ -143,7 +143,7 @@ module.exports.partpreview = function(part, car, condition) {
   }
 };
 
-module.exports.partinstall = function(part, userdata) {
+module.exports.partinstall = function (part, userdata) {
   var installedpart = userdata["garage"][stats.currentcarnum(userdata) - 1][part["type"].toLowerCase()];
   installedpart["current"] = part["name"];
   for (var i = 0; i < installedpart["tuning"].length; i++) {
@@ -159,7 +159,7 @@ module.exports.partinstall = function(part, userdata) {
   userdata["garage"][stats.currentcarnum(userdata) - 1]["fpp"] = require(gtf.PERF).perf(userdata["garage"][stats.currentcarnum(userdata) - 1], "GARAGE")["fpp"];
 };
 
-module.exports.paint = function(paint, userdata) {
+module.exports.paint = function (paint, userdata) {
   var installedpart = userdata["garage"][stats.currentcarnum(userdata) - 1]["color"];
   installedpart["current"] = paint["type"] + " " + paint["name"];
   userdata["garage"][stats.currentcarnum(userdata) - 1]["color"] = installedpart;

@@ -3,75 +3,68 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtf = require('../../files/directories');
+var gtf = require("../../files/directories");
 ////////////////////////////////////////////////////
 
-module.exports.delete = function(number, replaydata, userdata) {
-  delete replaydata[number.toString()]
+module.exports.delete = function (number, replaydata, userdata) {
+  delete replaydata[number.toString()];
 
-  var MongoClient = require('mongodb').MongoClient;
-  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+  var MongoClient = require("mongodb").MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
-  MongoClient.connect(url, { useUnifiedTopology: true },
-    function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-      dbo.collection("REPLAYS").replaceOne({ "id": userdata["id"] }, replaydata)
-    }
-  )
-}
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("GTFitness");
+    dbo.collection("REPLAYS").replaceOne({ id: userdata["id"] }, replaydata);
+  });
+};
 
-module.exports.clear = function(userdata) {
+module.exports.clear = function (userdata) {
+  var MongoClient = require("mongodb").MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
-  var MongoClient = require('mongodb').MongoClient;
-  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("GTFitness");
+    dbo.collection("REPLAYS").deleteOne({ id: userdata["id"] });
+  });
+};
 
-  MongoClient.connect(url, { useUnifiedTopology: true },
-    function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-      dbo.collection("REPLAYS").deleteOne({ "id": userdata["id"] })
-    }
-  )
-}
+module.exports.load = function (number, id) {
+  var replay = gtfuser.allreplays[id]["replays"][number - 1];
+  var title = replay[1][0];
+  var results = replay[1][1];
+  var racedetails = replay[1][2];
+  var grid = replay[1][3];
 
-module.exports.load = function(number, id) {
-  var replay = gtfuser.allreplays[id]["replays"][number - 1]
-  var title = replay[1][0]
-  var results = replay[1][1]
-  var racedetails = replay[1][2]
-  var grid = replay[1][3]
+  return ["🎥 __" + title + "__", results, racedetails, grid];
+};
 
-  return ["🎥 __" + title + "__", results, racedetails, grid]
-}
+module.exports.savem = function (title, results, racedetails, grid, userdata) {
+  var replaydata = "";
+  var found = false;
 
-module.exports.savem = function(title, results, racedetails, grid, userdata) {
-  var replaydata = ""
-  var found = false
+  var MongoClient = require("mongodb").MongoClient;
+  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
-  var MongoClient = require('mongodb').MongoClient;
-  var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF"
+  MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("GTFitness");
 
-  MongoClient.connect(url, { useUnifiedTopology: true },
-    function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("GTFitness");
-
-      dbo.collection("REPLAYS").find({"id": userdata["id"]}).forEach(row => {
-        replaydata = row
-        delete replaydata["_id"]
-        add()
-        dbo.collection("REPLAYS").replaceOne({ "id": userdata["id"] }, replaydata)
-        found = true
-      })
-
-    }
-  )
-
+    dbo
+      .collection("REPLAYS")
+      .find({ id: userdata["id"] })
+      .forEach(row => {
+        replaydata = row;
+        delete replaydata["_id"];
+        add();
+        dbo.collection("REPLAYS").replaceOne({ id: userdata["id"] }, replaydata);
+        found = true;
+      });
+  });
 
   function add() {
-    var size = replaydata["replays"].length + 1
-    replaydata["replays"][size] = [title, results, racedetails, grid, stats.lastonline(userdata)]
+    var size = replaydata["replays"].length + 1;
+    replaydata["replays"][size] = [title, results, racedetails, grid, stats.lastonline(userdata)];
   }
-
-}
+};

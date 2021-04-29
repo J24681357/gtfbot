@@ -3,7 +3,7 @@ var emote = require("../index");
 var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtf = require('../files/directories');
+var gtf = require("../files/directories");
 ////////////////////////////////////////////////////
 
 /////////////////////VARIABLES/////////////////
@@ -13,7 +13,7 @@ module.exports.courselimit = 5;
 module.exports.giftlimit = 5;
 
 ////////////////////////////
-module.exports.checkregulations = function(gtfcar, regulations) {
+module.exports.checkregulations = function (gtfcar, regulations) {
   var car = require(gtf.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
 
   var fpplimit = regulations["fpplimit"];
@@ -109,7 +109,7 @@ module.exports.checkregulations = function(gtfcar, regulations) {
     return [false, errors1];
   }
 };
-module.exports.loadingscreen = function(title, carname) {
+module.exports.loadingscreen = function (title, carname) {
   if (carname === undefined) {
     carname = "";
   } else if (carname != "") {

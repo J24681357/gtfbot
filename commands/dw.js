@@ -1,100 +1,100 @@
-var stats = require('../functions/profile/f_stats');
-var emote = require('../index');
-var gtftools = require('../functions/misc/f_tools');
+var stats = require("../functions/profile/f_stats");
+var emote = require("../index");
+var gtftools = require("../functions/misc/f_tools");
 
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = require('../files/directories');
+var gtf = require("../files/directories");
 ////////////////////////////////////////////////////
-var dw = require('../index');
+var dw = require("../index");
 
 module.exports = {
-  name: 'dw',
-  title: 'GT Sport Daily Workout',
+  name: "dw",
+  title: "GT Sport Daily Workout",
   cooldown: 0,
   level: 0,
   channels: ["gtf-mode", "testing", "gtf-test-mode"],
 
   delete: false,
   requirecar: false,
-  availitoeveryone:true,
-  availinmaint:true,
-  requireuserdata:true,
+  availitoeveryone: true,
+  availinmaint: true,
+  requireuserdata: true,
   usedduringrace: true,
   usedinlobby: true,
-  description: ['!dw - Chooses a random car from the GT Sport car list.'],
+  description: ["!dw - Chooses a random car from the GT Sport car list."],
   execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
-    
+
     var user = msg.guild.members.cache.get(userdata["id"]).user.username;
     embed.setAuthor(user, msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
-    var args = '';
-    var page = 0
-    var results = ''
-    var info = ''    
+    var args = "";
+    var page = 0;
+    var results = "";
+    var info = "";
     //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     /* Setup */
     var modeselect = [
       [
-        'Abarth ',
-        'Alfa Romeo ',
-        'Alpine ',
-        'Amuse ',
-        'Aston Martin ',
-        'Audi ',
-        'BMW ',
-        'Bugatti ',
-        'Chevrolet ',
-        'Citroën ',
-        'Daihatsu ',
-        'De Tomaso ',
-        'Dodge ',
-        'Eckerts Rod & Custom ',
-        'Ferrari ',
-        'Fiat ',
-        'Ford ',
-        'Gran Turismo ',
-        'Greddy ',
-        'Honda ',
-        'Hyundai ',
-        'Infiniti ',
-        'IsoRivolta ',
-        'Jaguar ',
-        'KTM ',
-        'Lamborghini ',
-        'Lancia ',
-        'Lexus ',
-        'Maserati ',
-        'Mazda ',
-        'McLaren ',
-        'Mercedes-Benz ',
-        'Mitsubishi ',
-        'Nissan ',
-        'Pagani ',
-        'Peugeot ',
-        'Plymouth ',
-        'Pontiac ',
-        'Porsche ',
-        'RE Amemiya ',
-        'Renault ',
-        'RenaultSport ',
-        'Shelby ',
-        'Subaru ',
-        'Super Formula ',
-        'Tesla Motors ',
-        'Toyota ',
-        'TVR ',
-        'Volkswagen ',
+        "Abarth ",
+        "Alfa Romeo ",
+        "Alpine ",
+        "Amuse ",
+        "Aston Martin ",
+        "Audi ",
+        "BMW ",
+        "Bugatti ",
+        "Chevrolet ",
+        "Citroën ",
+        "Daihatsu ",
+        "De Tomaso ",
+        "Dodge ",
+        "Eckerts Rod & Custom ",
+        "Ferrari ",
+        "Fiat ",
+        "Ford ",
+        "Gran Turismo ",
+        "Greddy ",
+        "Honda ",
+        "Hyundai ",
+        "Infiniti ",
+        "IsoRivolta ",
+        "Jaguar ",
+        "KTM ",
+        "Lamborghini ",
+        "Lancia ",
+        "Lexus ",
+        "Maserati ",
+        "Mazda ",
+        "McLaren ",
+        "Mercedes-Benz ",
+        "Mitsubishi ",
+        "Nissan ",
+        "Pagani ",
+        "Peugeot ",
+        "Plymouth ",
+        "Pontiac ",
+        "Porsche ",
+        "RE Amemiya ",
+        "Renault ",
+        "RenaultSport ",
+        "Shelby ",
+        "Subaru ",
+        "Super Formula ",
+        "Tesla Motors ",
+        "Toyota ",
+        "TVR ",
+        "Volkswagen ",
       ],
-      ['N100', 'N200', 'N300', 'N400', 'N500', 'N600', 'N700', 'N800', 'N1000', 'Gr.X', 'Gr.B', 'Gr.4', 'Gr.3', 'Gr.2', 'Gr.1'],
-      ['Austria', 'France', 'Germany', 'Japan', 'Korea', 'PDI', 'UK', 'USA'],
+      ["N100", "N200", "N300", "N400", "N500", "N600", "N700", "N800", "N1000", "Gr.X", "Gr.B", "Gr.4", "Gr.3", "Gr.2", "Gr.1"],
+      ["Austria", "France", "Germany", "Japan", "Korea", "PDI", "UK", "USA"],
     ];
-    var mode = ['Make', 'Category', 'Country'];
+    var mode = ["Make", "Category", "Country"];
 
-   /* if (query[0] == 'challenge') {
+    /* if (query[0] == 'challenge') {
       if (dw.dwcar['daily']['start']) {
         //'❌ Daily Workout Challenge Active', 'There is already a Daily Workout Challenge in progress.', embed, msg, userdata);
         return;
@@ -143,43 +143,43 @@ module.exports = {
       });
       */
 
-      embed.setTitle(emote.gtlogowhite + ' __GTS Daily Workout__');
-      var prize = '';
-      var car = require(gtf.GTSCARS).RandomGTSCar();
-      if (dw.dwcar['daily']['start']) {
-        if (dw.dwcar['daily']['mode'] == 0) {
-          var carselect = car.name;
-        }
-        if (dw.dwcar['daily']['mode'] == 1) {
-          var carselect = car.category;
-        }
-        if (dw.dwcar['daily']['mode'] == 2) {
-          var carselect = car.country;
-        }
+    embed.setTitle(emote.gtlogowhite + " __GTS Daily Workout__");
+    var prize = "";
+    var car = require(gtf.GTSCARS).RandomGTSCar();
+    if (dw.dwcar["daily"]["start"]) {
+      if (dw.dwcar["daily"]["mode"] == 0) {
+        var carselect = car.name;
+      }
+      if (dw.dwcar["daily"]["mode"] == 1) {
+        var carselect = car.category;
+      }
+      if (dw.dwcar["daily"]["mode"] == 2) {
+        var carselect = car.country;
+      }
 
-        if (carselect.includes(dw.dwcar['daily']['select'])) {
-          var prize = dw.dwcar['daily']['prize'];
-          dw.dwcar['daily'] = {
-            select: 'None',
-            start: false,
-            prize: 500,
-            completed: true,
-            mode: 0,
-            time: dw.dwcar['daily']['time'],
-          };
-          //stats.addcredits(prize, userdata);
-          embed.setColor(0x216c2a);
-          msg.channel.send('**FINISH**\n' + '<@&663248894003773440>');
-          prize = '\n\n' + user + ' has won the Daily Workout Challenge! ' + '**+' + prize + '**' + emote.credits + '\n\n' + '`Global Cooldown: ' + Math.floor((dw.dwcar['daily']['time'] - new Date().getTime()) / 1000 / 60) + ' minutes`';
-        }
+      if (carselect.includes(dw.dwcar["daily"]["select"])) {
+        var prize = dw.dwcar["daily"]["prize"];
+        dw.dwcar["daily"] = {
+          select: "None",
+          start: false,
+          prize: 500,
+          completed: true,
+          mode: 0,
+          time: dw.dwcar["daily"]["time"],
+        };
+        //stats.addcredits(prize, userdata);
+        embed.setColor(0x216c2a);
+        msg.channel.send("**FINISH**\n" + "<@&663248894003773440>");
+        prize = "\n\n" + user + " has won the Daily Workout Challenge! " + "**+" + prize + "**" + emote.credits + "\n\n" + "`Global Cooldown: " + Math.floor((dw.dwcar["daily"]["time"] - new Date().getTime()) / 1000 / 60) + " minutes`";
       }
-      results = '** 🚘 ' + car.name + '**' + ' `' + car.category + '`' + prize;
-      embed.setDescription(results);
-      if (dw.dwcar['daily']['start']) {
-        var mode = ['Make', 'Category', 'Country'];
-        var number = dw.dwcar['daily']['mode'];
-        embed.setFooter('Daily Workout Challenge Active - ' + mode[number] + ': ' + dw.dwcar['daily']['select'] + ' | Prize: ' + dw.dwcar['daily']['prize'] + ' credits');
-      }
-      msg.channel.send(embed)
-  }
+    }
+    results = "** 🚘 " + car.name + "**" + " `" + car.category + "`" + prize;
+    embed.setDescription(results);
+    if (dw.dwcar["daily"]["start"]) {
+      var mode = ["Make", "Category", "Country"];
+      var number = dw.dwcar["daily"]["mode"];
+      embed.setFooter("Daily Workout Challenge Active - " + mode[number] + ": " + dw.dwcar["daily"]["select"] + " | Prize: " + dw.dwcar["daily"]["prize"] + " credits");
+    }
+    msg.channel.send(embed);
+  },
 };

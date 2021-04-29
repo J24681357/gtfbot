@@ -3,32 +3,32 @@ var emote = require("../../index");
 var gtftools = require("../../functions/misc/f_tools");
 
 const Discord = require("discord.js");
-var gtf = require('../../files/directories');
+var gtf = require("../../files/directories");
 ////////////////////////////////////////////////////
 var gtfuser = require("../../index");
 var fs = require("fs");
 
-module.exports.message = function(client, title, text, color, image, channelid, reactions, number) {
+module.exports.message = function (client, title, text, color, image, channelid, reactions, number) {
   var server = client.guilds.cache.get(gtf.SERVERID);
   var channel = server.channels.cache.get(channelid);
   var embed = new Discord.MessageEmbed();
   var description = text;
 
-  if (typeof channel == 'undefined') {
-    channel.send('Invalid');
+  if (typeof channel == "undefined") {
+    channel.send("Invalid");
     return;
   }
 
   channel.messages.fetch().then(msg => {
     var arr = Array.from(msg.entries()).reverse();
 
-    if (typeof arr[number - 1] === 'undefined') {
+    if (typeof arr[number - 1] === "undefined") {
       embed.setTitle(title);
       embed.setDescription(description);
       if (color.length != 0) {
         embed.setColor(color);
       }
-      if (typeof image !== 'undefined') {
+      if (typeof image !== "undefined") {
         if (image.length != 0) {
           embed.setThumbnail(image);
         }
@@ -44,7 +44,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
         if (color.length != 0) {
           embed.setColor(color);
         }
-        if (typeof image !== 'undefined') {
+        if (typeof image !== "undefined") {
           if (image.length != 0) {
             embed.setThumbnail(image);
           }
@@ -62,7 +62,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
         if (color.length != 0) {
           embed.setColor(color);
         }
-        if (typeof image !== 'undefined') {
+        if (typeof image !== "undefined") {
           if (image.length != 0) {
             embed.setThumbnail(image);
           }
@@ -77,7 +77,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
         if (color.length != 0) {
           embed.setColor(color);
         }
-        if (typeof image !== 'undefined') {
+        if (typeof image !== "undefined") {
           if (image.length != 0) {
             embed.setThumbnail(image);
           }
@@ -90,7 +90,7 @@ module.exports.message = function(client, title, text, color, image, channelid, 
           time = 3000 * (reactions.length + 1);
           var i = 0;
           gtftools.interval(
-            function() {
+            function () {
               msg.react(reactions[i][0]);
               i++;
             },
@@ -99,12 +99,12 @@ module.exports.message = function(client, title, text, color, image, channelid, 
           );
         }
 
-        setTimeout(function() {
-          var filters = function(index) {
+        setTimeout(function () {
+          var filters = function (index) {
             var filterzero = (reaction, user) => reaction.emoji.name === reactions[index][0];
             const filter11 = msg.createReactionCollector(filterzero, { timer: 1000 });
 
-            filter11.on('collect', r => {
+            filter11.on("collect", r => {
               try {
                 for (const user of r.users.cache.values()) {
                   if (user.id == gtf.USERID) {
@@ -112,8 +112,8 @@ module.exports.message = function(client, title, text, color, image, channelid, 
                   }
                   r.users.remove(user).then(
                     x =>
-                      function() {
-                        console.log('E');
+                      function () {
+                        console.log("E");
                       }
                   );
                   var useri = msg.guild.members.cache.get(user.id);
@@ -139,29 +139,28 @@ module.exports.message = function(client, title, text, color, image, channelid, 
   });
 };
 
-module.exports.updatecommandslist = function(client) {
+module.exports.updatecommandslist = function (client) {
   var commandslist = fs
-      .readdirSync("/app/commands")
-      .filter(file => file.endsWith(".js")).map(file => file.split(".js")[0]);
+    .readdirSync("/app/commands")
+    .filter(file => file.endsWith(".js"))
+    .map(file => file.split(".js")[0]);
   var size = commandslist.length;
   var index = 0;
   gtftools.interval(
-    function() {
+    function () {
       if (commandslist[index] == "gift" || commandslist[index] == "lobby") {
-        index++
+        index++;
       } else {
-      var results = require("../../commands/gtfhelp").execute("", [commandslist[index]], "TEXT")
+        var results = require("../../commands/gtfhelp").execute("", [commandslist[index]], "TEXT");
 
-      require(gtf.EXTRA).message(client, results[0], results[1], results[2], "", '703096311129571358', [], index + 1);
-      index++;
-      if (index == size) {
-         console.log('Commands List Updated.');
+        require(gtf.EXTRA).message(client, results[0], results[1], results[2], "", "703096311129571358", [], index + 1);
+        index++;
+        if (index == size) {
+          console.log("Commands List Updated.");
+        }
       }
-    }
     },
     2500,
     size
   );
 };
-
- 

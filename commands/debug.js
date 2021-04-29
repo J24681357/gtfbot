@@ -4,7 +4,7 @@ var gtftools = require("../functions/misc/f_tools");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var gtf = require('../files/directories');
+var gtf = require("../files/directories");
 ////////////////////////////////////////////////////
 var fs = require("fs");
 
@@ -13,41 +13,35 @@ module.exports = {
   title: "DEBUG",
   cooldown: 3,
   level: 0,
-  channels: ["gtf-demo","testing"],
+  channels: ["gtf-demo", "testing"],
 
   delete: false,
-  availitoeveryone:true,
+  availitoeveryone: true,
   availinmaint: false,
   requireuserdata: false,
   requirecar: false,
   usedduringrace: true,
   usedinlobby: true,
-  description: [
-    "!debug - (ADMIN ONLY) This command is only used for testing purposes."
-  ],
+  description: ["!debug - (ADMIN ONLY) This command is only used for testing purposes."],
   execute(msg, query, userdata) {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
 
     var user = msg.author.username;
-    embed.setAuthor(
-      user,
-      msg.author.displayAvatarURL()
-    );
+    embed.setAuthor(user, msg.author.displayAvatarURL());
     var args = "\n" + "`SPECIAL PURPOSES`" + "\n";
-    var page = 0
-    var results = ""
-    var info = ' '
-        //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
+    var page = 0;
+    var results = "";
+    var info = " ";
+    //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //      //
 
     var extra = emote.transparent;
     var deletee = false;
 
     let MongoClient = require("mongodb").MongoClient;
-    var url =
-      "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
-    MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
+    var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
+    MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
       if (err) throw err;
       g();
     });
@@ -68,20 +62,16 @@ module.exports = {
         var extra = require("../functions/misc/f_extras");
         return;
       }
-      if (query[0] == "updateseasonals" || query[0] == "changeseasonals" ) {
+      if (query[0] == "updateseasonals" || query[0] == "changeseasonals") {
         var success = true;
-        require(gtf.SEASONAL).changeseasonals(true)
+        require(gtf.SEASONAL).changeseasonals(true);
       }
 
       if (query[0] == "arcaderacelength") {
         var success = true;
         var racemode = query[1];
         var racesettings = require(gtf.RACE).setrace(query[1], "ARCADE");
-        var speed = gtftools.catcalc(
-          racesettings["category"],
-          racesettings["weather"],
-          ""
-        );
+        var speed = gtftools.catcalc(racesettings["category"], racesettings["weather"], "");
         var racelength = (racesettings["km"] / speed) * 3600 * 1000;
 
         var extra =
@@ -120,7 +110,7 @@ module.exports = {
         } else {
           require(gtf.MAIN).gtfbotconfig["maintenance"] = "YES";
         }
-        setTimeout(function() {
+        setTimeout(function () {
           require("../commands/restart").execute(msg, [""], userdata);
         }, 1000);
       }
@@ -131,7 +121,7 @@ module.exports = {
         } else {
           require(gtf.MAIN).gtfbotconfig["maintenance"] = "PARTIAL";
         }
-        setTimeout(function() {
+        setTimeout(function () {
           require("../commands/restart").execute(msg, [""], userdata);
         }, 1000);
       }
@@ -140,7 +130,7 @@ module.exports = {
         success = true;
         stats.addcredits(parseInt(query[1]), userdata);
       }
-      
+
       if (query[0] == "removecredits") {
         success = true;
         stats.addcredits(-parseInt(query[1]), userdata);
@@ -153,34 +143,13 @@ module.exports = {
       ///GIFTS
       if (query[0] == "giftcredits") {
         success = true;
-        stats.addgift(
-          query[1] + emote.credits,
-          query[1],
-          "CREDITS",
-          "USERNAME",
-          true,
-          userdata
-        );
+        stats.addgift(query[1] + emote.credits, query[1], "CREDITS", "USERNAME", true, userdata);
       }
       if (query[0] == "giftrandomcar") {
         success = true;
-        var car = require(gtf.CARS).random({}, 1)[0]
-          stats.addgift(
-          car["name"],
-          car,
-          "CAR",
-          "USERNAME",
-          true,
-          userdata
-        );
-        results =
-          "`" +
-          query[0] +
-          "` success to " +
-          msg.author.username +
-          "." +
-          "\n" +
-          "Added new car to gifts.";
+        var car = require(gtf.CARS).random({}, 1)[0];
+        stats.addgift(car["name"], car, "CAR", "USERNAME", true, userdata);
+        results = "`" + query[0] + "` success to " + msg.author.username + "." + "\n" + "Added new car to gifts.";
       }
       if (query[0] == "cleargifts") {
         success = true;
@@ -188,11 +157,11 @@ module.exports = {
       }
       if (query[0] == "dailyworkoutoff") {
         success = true;
-        userdata["dailyworkout"] = false
+        userdata["dailyworkout"] = false;
       }
       if (query[0] == "dailyworkouton") {
         success = true;
-        userdata["dailyworkout"] = true
+        userdata["dailyworkout"] = true;
       }
       if (query[0] == "forcecancel") {
         success = true;
@@ -209,15 +178,11 @@ module.exports = {
       if (query[0] == "cleargarage") {
         success = true;
         userdata["garage"] = [];
-        userdata["currentcarnum"] = 0
+        userdata["currentcarnum"] = 0;
       }
       if (query[0] == "addrandomcar") {
         success = true;
-        var prizes = require(gtf.CARS).randomcars(
-          ["Any"],
-          [""],
-          parseInt(query[1])
-        );
+        var prizes = require(gtf.CARS).randomcars(["Any"], [""], parseInt(query[1]));
         for (var i = 0; i < prizes.length; i++) {
           var item = prizes[i];
           var name = item[0];
@@ -226,20 +191,11 @@ module.exports = {
 
           stats.addcar(name, make, costtoperf, undefined, userdata);
         }
-        results =
-          "`" +
-          query[0] +
-          "` success to " +
-          msg.guild.members.cache.get(userdata).user.username +
-          "." +
-          "\n" +
-          "Added " +
-          query[1] +
-          " random cars to garage.";
+        results = "`" + query[0] + "` success to " + msg.guild.members.cache.get(userdata).user.username + "." + "\n" + "Added " + query[1] + " random cars to garage.";
       }
-       if (query[0] == "setmileage") {
+      if (query[0] == "setmileage") {
         success = true;
-        userdata["mileage"] = [query[1], query[1]]
+        userdata["mileage"] = [query[1], query[1]];
         results = "Success.";
       }
       if (query[0] == "addmileage") {
@@ -249,7 +205,7 @@ module.exports = {
       }
       if (query[0] == "setexp") {
         success = true;
-        userdata["exp"] = query[1]
+        userdata["exp"] = query[1];
         results = "Success.";
       }
       if (query[0] == "addexp") {
@@ -259,14 +215,14 @@ module.exports = {
       }
       if (query[0] == "resetexp") {
         success = true;
-        userdata["exp"] = 0
-        userdata["level"] = 0
-         results = "Success.";
+        userdata["exp"] = 0;
+        userdata["level"] = 0;
+        results = "Success.";
       }
 
       if (query[0] == "resetexplevel") {
         success = true;
-        userdata["level"] = 0
+        userdata["level"] = 0;
         results = "Success.";
       }
       if (query[0] == "careergift") {
@@ -292,48 +248,26 @@ module.exports = {
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];
         var tracks = event["tracks"];
-        var track = require(gtf.TRACKS).find({"name":tracks[1]})[0]
-        var racesettings = require(gtf.RACE).setcareerrace(
-          event,
-          track,
-          stats.currentcar(userdata),
-          0
-        );
-        stats.gift(
-          emote.goldmedal +
-            " Congrats! All GOLD in " +
-            racesettings["title"].split(" - ")[0] +
-            " " +
-            emote.goldmedal,
-          racesettings["prize"],
-          embed,
-          msg,
-          userdata
-        );
+        var track = require(gtf.TRACKS).find({ name: tracks[1] })[0];
+        var racesettings = require(gtf.RACE).setcareerrace(event, track, stats.currentcar(userdata), 0);
+        stats.gift(emote.goldmedal + " Congrats! All GOLD in " + racesettings["title"].split(" - ")[0] + " " + emote.goldmedal, racesettings["prize"], embed, msg, userdata);
 
         results = "Success.";
       }
       if (success) {
-        results =
-          "`" +
-          query[0] +
-          "` success to " +
-          msg.guild.members.cache.get(userdata["id"]).user.username +
-          "." +
-          "\n" +
-          extra;
+        results = "`" + query[0] + "` success to " + msg.guild.members.cache.get(userdata["id"]).user.username + "." + "\n" + extra;
         embed.setDescription(results);
         //embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
         if (deletee) {
-          stats.save(userdata, "DELETE")
+          stats.save(userdata, "DELETE");
         } else {
-      stats.save(userdata)
-        return msg.channel.send(embed);
+          stats.save(userdata);
+          return msg.channel.send(embed);
         }
       } else {
-        require(gtf.EMBED).alert({name:"❌ Invalid", description: 'Invalid command.', embed:"", seconds:0}, msg, userdata);
-        return
+        require(gtf.EMBED).alert({ name: "❌ Invalid", description: "Invalid command.", embed: "", seconds: 0 }, msg, userdata);
+        return;
       }
     }
-  }
+  },
 };
