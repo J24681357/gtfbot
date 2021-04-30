@@ -481,10 +481,23 @@ module.exports.preparerace = function (mode, levelselect, carmode, event, args, 
           msg.edit(embed);
         }
         function cargrid() {
-          if (carmode == "GARAGE" || mode == "DRIFT") {
-            results = "__Starting Grid | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.join("\n");
+          if (carmode == "GARAGE" || mode == "DRIFT" || mode == "SSRX") {
+            results = "__Starting Grid | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map( function(x) {
+              if (x["user"]) {
+                return "**" + x["position"] + ". " + x["name"] + "**"
+              } else {
+              return x["position"] + ". " + x["name"]
+              }
+            }).join("\n");
           } else {
-            results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.join("\n");
+            console.log(finalgrid)
+            results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => function() {
+              if (x["user"]) {
+                return "**" + x["position"] + ". " + x["name"] + "**"
+              } else {
+              return x["position"] + ". " + x["name"]
+              }
+            }).join("\n");
           }
 
           embed.setDescription(results);
@@ -659,9 +672,21 @@ module.exports.raceprep = function (raceprep, embed, msg, userdata) {
         }
         function cargrid() {
           if (raceprep["carselect"] == "GARAGE" || raceprep["mode"] == "DRIFT") {
-            results = "__Starting Grid | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.join("\n");
+            results = "__Starting Grid | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map( function(x) {
+              if (x["user"]) {
+                return "**" + x["position"] + ". " + x["name"] + "**"
+              } else {
+              return x["position"] + ". " + x["name"]
+              }
+            }).join("\n");
           } else {
-            results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.join("\n");
+            results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map( function(x) {
+              if (x["user"]) {
+                return "**" + x["position"] + ". " + x["name"] + "**"
+              } else {
+              return x["position"] + ". " + x["name"]
+              }
+            }).join("\n");
           }
 
           embed.setDescription(results);
@@ -696,7 +721,7 @@ module.exports.creategrid = function (args, car, amount) {
     } else {
       var carname = car["name"];
     }
-    var finalgrid = ["**1. " + carname + "**" + " `You`"];
+    var finalgrid = [{ place: 1, position: 1, name: carname, user: true, points: 0}];
     return finalgrid;
   }
 
@@ -707,10 +732,12 @@ module.exports.creategrid = function (args, car, amount) {
     var position = gtftools.randomInt(2, amount - 1);
     while (amount > 1) {
       if (position == amount) {
-        finalgrid.push("**" + (index + 1) + ". " + grid[Math.floor(Math.random() * grid.length)].name + "**" + " `You`");
+        
+        finalgrid.push({ place: (index + 1), position: (index + 1), name: grid[Math.floor(Math.random() * grid.length)].name, user: true, points: 0});
         index++;
       }
-      finalgrid.push(index + 1 + ". " + grid[Math.floor(Math.random() * grid.length)].name);
+      
+      finalgrid.push({ place: (index + 1), position: (index + 1), name: grid[Math.floor(Math.random() * grid.length)].name, user: false, points: 0});
       amount--;
       index++;
     }
@@ -725,10 +752,10 @@ module.exports.creategrid = function (args, car, amount) {
     var position = gtftools.randomInt(2, amount - 1);
     while (index < randomcars.length) {
       if (position == amount) {
-        finalgrid.push("**" + (index + 1) + ". " + car["name"] + "**" + " `You`");
+        finalgrid.push({ place: (index + 1), position: (index + 1), name: car["name"], user: true, points: 0});
         index++;
       }
-      finalgrid.push(index + 1 + ". " + randomcars[index]["name"] + " " + randomcars[index]["year"]);
+       finalgrid.push({ place: (index + 1), position: (index + 1), name: randomcars[index]["name"], user: false, points: 0});
       amount--;
       index++;
     }

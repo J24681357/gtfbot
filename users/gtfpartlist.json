@@ -188,7 +188,7 @@
       "cost": 10000,
       "percent": 125,
       "eligible": [
-        "Production"
+        "Production", "Race Car", "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -357,7 +357,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -372,7 +373,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -387,7 +389,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -402,7 +405,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -417,7 +421,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -432,7 +437,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -447,7 +453,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -462,7 +469,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
@@ -477,7 +485,8 @@
       "percent": 0,
       "eligible": [
         "Production",
-        "Race Car"
+        "Race Car",
+        "Rally Car"
       ],
       "prohibited": [
         "Electric"
