@@ -42,7 +42,7 @@ module.exports.intro = function (userdata, command, msg) {
           id: userid,
           raceinprogress: [false, ["", ""], 0],
           racedetails: [],
-          careerraces: [],
+          careerraces: {},
           inlobby: [false, ""],
           dailyworkout: false,
 

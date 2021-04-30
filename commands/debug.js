@@ -62,6 +62,10 @@ module.exports = {
         var extra = require("../functions/misc/f_extras");
         return;
       }
+      if (query[0] == "rawuserdata") {
+        msg.channel.send(JSON.stringify(userdata), { split: true });
+        return;
+      }
       if (query[0] == "updateseasonals" || query[0] == "changeseasonals") {
         var success = true;
         require(gtf.SEASONAL).changeseasonals(true);

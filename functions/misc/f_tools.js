@@ -583,11 +583,12 @@ module.exports.checkcarlist = function (gtfcars) {
   var index = 0;
   var makes = Object.keys(gtfcars);
 
+  
   for (var make = 0; make < makes.length; make++) {
+    var group = []
     for (var i = 0; i < gtfcars[makes[make]].length; i++) {
-      var car = gtfcars[makes[make]][i];
+      var car = gtfcars[makes[make]][i]
       if (!car["image"].includes("raw.githubusercontent.com")) {
-        console.log("Saving car image for " + car["name"]);
         var oldcar = JSON.parse(JSON.stringify(car));
         downloadimage(oldcar);
         var makee = car["make"].replace(/ /gi, "").toLowerCase();
@@ -595,9 +596,12 @@ module.exports.checkcarlist = function (gtfcars) {
         var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + "images/cars/" + makee + "/" + name + "" + car["year"] + ".png";
         car["image"] = urll;
         delete car["id"];
-        gtfcars[makes[make]][i] = car;
       }
+      
+      group.push(car)
     }
+    group = group.sort((a, b) => a["name"].toString().localeCompare(b["name"]))
+    gtfcars[makes[make]] = group
   }
 
   fs.writeFile("./users/gtfcarlist_2021.json", JSON.stringify(gtfcars), function (err) {
