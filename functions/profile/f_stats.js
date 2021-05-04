@@ -339,6 +339,7 @@ module.exports.addcar = function (car, arg, userdata) {
     "weight reduction": weight,
     turbo: turbo,
     nitrous: { current: "Stock", tuning: 0 },
+    body: 0,
     oil: 100,
     damage: 100,
     rims: 0,
@@ -357,80 +358,91 @@ module.exports.addcar = function (car, arg, userdata) {
 };
 
 module.exports.updatecareerrace = function (raceid, place, userdata) {
-  var raceidcomplete = raceid.split("-").slice(0, -1).join("-") + "-";
-
+  raceid = raceid.split("-")
+  var racenum = raceid.pop()
+  raceid = raceid.join("-").toLowerCase()
+  /*
   for (var i = 0; i < userdata["careerraces"].length; i++) {
     if (userdata["careerraces"][i][0] == raceidcomplete) {
       if (userdata["careerraces"][i][1] == "✅") {
         return;
       }
     }
+  }*/
+  if (userdata["careerraces"][raceid] === undefined) {
+    userdata["careerraces"][raceid] = [0,0,0,0,0,0,0,0,0,0]
   }
-  for (var i = 0; i < userdata["careerraces"].length; i++) {
-    if (place.includes(">")) {
-      place = place.split(" ")[1];
-    }
-    if (userdata["careerraces"][i][0] == raceid) {
-      var currentnumber = userdata["careerraces"][i][1];
-      currentnumber = parseInt(currentnumber.split(/[A-Z]/gi)[0]);
-      var placenumber = parseInt(place.split(/[A-Z]/gi)[0]);
-      if (placenumber <= currentnumber) {
-        userdata["careerraces"][i][1] = place;
-      }
 
-      return;
-    }
-  }
   if (place.includes(">")) {
-    place = place.split(" ")[1];
+     place = place.split(" ")[1];
+   }
+  var currentnumber = userdata["careerraces"][raceid][racenum-1];
+  if (currentnumber == 0) {
+    userdata["careerraces"][raceid][racenum-1] = place;
+  } else {
+  currentnumber = parseInt(currentnumber.split(/[A-Z]/gi)[0]);
+  var placenumber = parseInt(place.split(/[A-Z]/gi)[0]);
+  if (placenumber <= currentnumber) {
+    userdata["careerraces"][raceid][racenum-1] = place;
   }
-  userdata["careerraces"].push([raceid, place]);
-};
+}
+console.log(userdata["careerraces"])
+}
 
 module.exports.checkcareerrace = function (raceid, userdata) {
-  var raceidcomplete = raceid.split("-").slice(0, -1).join("-") + "-";
-  for (var i = 0; i < userdata["careerraces"].length; i++) {
-    if (userdata["careerraces"][i][0] == raceid) {
-      return "`" + userdata["careerraces"][i][1] + "`";
-    }
-    if (userdata["careerraces"][i][0] == raceidcomplete) {
-      if (userdata["careerraces"][i][1] == "✅") {
-        return "`" + "1st" + "`";
-      }
-    }
+  raceid = raceid.split("-")
+  var racenum = raceid.pop()
+  raceid = raceid.join("-").toLowerCase()
+
+  if (userdata["careerraces"] == null) {
+    userdata["careerraces"] = {}
   }
-  return "";
-};
+
+  if (typeof userdata["careerraces"][raceid] === 'undefined') {
+    userdata["careerraces"][raceid] = [0,0,0,0,0,0,0,0,0,0]
+  }
+
+  if (userdata["careerraces"][raceid][racenum-1] == 0) {
+    return ""
+  } else {
+  return "`" + userdata["careerraces"][raceid][racenum-1] + "`"
+  }
+}
 
 module.exports.isracescomplete = function (eventid, total, pnumber, userdata) {
   var count = 0;
   var i = 0;
-  var regex = new RegExp("^" + eventid + "-");
-  var events = userdata["careerraces"].filter(x => x[0].match(regex) != null);
+  eventid = eventid.toLowerCase()
+  events = userdata["careerraces"][eventid]
 
-  if (events.length == 0) {
-    return false;
+  if (userdata["careerraces"][eventid] === undefined) {
+    userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
   }
-  if (events[0][1] == "✅") {
-    return false;
-  }
+  events = userdata["careerraces"][eventid]
+
   while (i < events.length || i < count) {
-    if (events[i][1].split(/[A-Z]/gi)[0] <= pnumber) {
+    if (events[i] == "✅") {
+      return false;
+    }
+    if (events[i] == 0) {
+      break;
+    }
+    if (events[i].split(/[A-Z]/gi)[0] <= pnumber) {
       count++;
     }
     i++;
   }
+
   if (count == total) {
     return true;
   } else {
     return false;
   }
-};
+}
 
 module.exports.gift = function (title, gift, embed, msg, userdata) {
   var type = gift[0];
   if (type == "CREDITS") {
-    console;
     stats.addcredits(parseInt(gift[1]["item"]), userdata);
     userdata["gifts"] = userdata["gifts"].filter(x => x[1]["id"] !== gift[1]["id"]);
 
@@ -455,18 +467,27 @@ module.exports.gift = function (title, gift, embed, msg, userdata) {
 };
 
 module.exports.eventcomplete = function (eventid, userdata) {
-  var regex = new RegExp("\\b" + eventid + "-", "gi");
-  userdata["careerraces"] = userdata["careerraces"].filter(x => x[0].match(regex) == null);
-  userdata["careerraces"].push([eventid + "-", "✅"]);
+  eventid = eventid.toLowerCase()
+  events = userdata["careerraces"][eventid]
+  
+  for (var i = 0; i < events.length; i++) {
+      userdata["careerraces"][eventid][i] = "✅"
+    }
 };
 
 module.exports.eventstatus = function (eventid, userdata) {
-  eventid = eventid + "-";
-  var list = userdata["careerraces"].filter(x => x[0] == eventid);
-  if (list.length == 0) {
+  eventid = eventid.toLowerCase()
+  events = userdata["careerraces"][eventid]
+
+  if (userdata["careerraces"][eventid] === undefined) {
+    userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
+  }
+  events = userdata["careerraces"][eventid]
+
+  if (events.length == 0) {
     return "⬛";
   } else {
-    return list[0][1];
+    return userdata["careerraces"][eventid][0]
   }
 };
 

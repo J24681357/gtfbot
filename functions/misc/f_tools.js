@@ -260,10 +260,7 @@ module.exports.formpages = function (args, embed, msg, userdata) {
         }
       }
 
-      console.log(args["query"]);
       args["query"].push(pick);
-
-      console.log(args["query"]);
 
       require("../../commands/" + args["command"]).execute(msg2, args["query"], userdata);
       return stats.save(userdata);
@@ -588,16 +585,23 @@ module.exports.checkcarlist = function (gtfcars) {
     var group = []
     for (var i = 0; i < gtfcars[makes[make]].length; i++) {
       var car = gtfcars[makes[make]][i]
-      if (!car["image"].includes("raw.githubusercontent.com")) {
+      if (!car["image"][0].includes("raw.githubusercontent.com")) {
         var oldcar = JSON.parse(JSON.stringify(car));
         downloadimage(oldcar);
+        var totalimages =  car["image"].length
         var makee = car["make"].replace(/ /gi, "").toLowerCase();
         var name = car["name"].replace(/ /gi, "").toLowerCase();
-        var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + "images/cars/" + makee + "/" + name + "" + car["year"] + ".png";
-        car["image"] = urll;
+       for (var j = 0; j < totalimages.length; j++) {
+         if (j >= 1) {
+           var extra = j.toString()
+         } else {
+           var extra = ""
+         }
+         var urll = "https://raw.githubusercontent.com/J24681357/gtfbot/master/" + "images/cars/" + makee + "/" + name + "" + car["year"] + extra + ".png";
+        car["image"][j] = urll;
+       }        
         delete car["id"];
       }
-      
       group.push(car)
     }
     group = group.sort((a, b) => a["name"].toString().localeCompare(b["name"]))
@@ -614,9 +618,9 @@ module.exports.checkcarlist = function (gtfcars) {
     var type = "error";
 
     var download = function (uri, filename, callback) {
+      console.log(uri)
       request.head(uri, function (err, res, body) {
         var type = res.headers["content-type"].toLowerCase();
-        console.log(type);
         var file = filename.split("/");
         file.pop();
         filename = filename + ".png";
@@ -627,14 +631,12 @@ module.exports.checkcarlist = function (gtfcars) {
         }
 
         setTimeout(function () {
-          request(oldcar["image"]).pipe(fs.createWriteStream(filename)).on("close", callback);
-          console.log(oldcar["image"]);
+          request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
         }, 2500);
       });
     };
     var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
     var make = oldcar["make"].replace(/ /gi, "").toLowerCase();
-
-    download(oldcar["image"], "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
+    download(oldcar["image"][0], "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
   }
 };

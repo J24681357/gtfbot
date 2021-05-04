@@ -195,6 +195,7 @@ module.exports = {
           }
 
           var achieve = stats.isracescomplete(league + "-" + (t + 1), raceevent["tracks"].length, 1, userdata);
+          console.log(achieve)
           if (achieve) {
             stats.eventcomplete(league + "-" + (t + 1), userdata);
             stats.gift(emote.goldmedal + " Congrats! All GOLD in " + raceevent["title"].split(" - ")[0] + " " + emote.goldmedal, raceevent["prize"], embed, msg, userdata);

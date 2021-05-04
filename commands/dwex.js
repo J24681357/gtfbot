@@ -70,8 +70,9 @@ module.exports = {
 
     embed.setTitle(emote.gtflogo + " __GTF Daily Workout__");
     var car = require(gtf.CARS).random({}, 1)[0];
+    var imagestyle = 1
     embed.setDescription("**" + car["name"] + " " + car["year"] + "**" + " `" + car["type"] + "`\n" + car["power"] + "hp | " + car["weight"] + "lbs");
-    embed.setImage(car["image"]);
+    embed.setImage(car["image"][imagestyle-1]);
     msg.channel.send(embed);
   },
 };

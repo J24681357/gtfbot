@@ -211,7 +211,7 @@ module.exports = {
           embed.setTitle(car["name"] + " " + car["year"]);
 
           embed.setDescription("Find this car using **!car " + car["make"] + " " + "**.");
-          embed.setImage(car["image"]);
+          embed.setImage(car["image"][0]);
           embed.fields = [];
           msg.edit(embed);
           return;

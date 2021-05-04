@@ -89,6 +89,20 @@ module.exports.find = function (args) {
       }
     }
 
+    if (args["types"] !== undefined) {
+      if (args["types"].length == 0) {
+        count++;
+      } else {
+        var types = args["types"];
+        for (var itype = 0; itype < types.length; itype++) {
+          if (track["type"] == types[itype]) {
+            count++;
+            break;
+          }
+        }
+      }
+    }
+
     if (count == total) {
       final.unshift(track);
     }

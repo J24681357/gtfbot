@@ -9,7 +9,7 @@ var gtf = require("../../files/directories");
 module.exports.setrace = function (racemode, mode, track) {
   if (racemode == "beginner") {
     var title = "Arcade Mode - Beginner";
-    var track = require(gtf.TRACKS).random({}, 1)[0];
+    var track = require(gtf.TRACKS).random({types:["Original", "Real", "City"]}, 1)[0];
     var km = track["length"];
     var limit = 10.0;
     var time = require(gtf.TIME).random({}, 1)[0];

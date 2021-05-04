@@ -81,6 +81,8 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 
 client.on("ready", () => {
+  
+console.log(require(gtf.TRACKS).find({ types: ["Original"] }))
   gtftools.checkcarlist(gtfcars);
 
   var gtfbot = {};
@@ -276,7 +278,7 @@ client.on("message", async msg => {
 
     if (userdata["lastonline"] != currdate) {
       userdata["dailyworkout"] = false;
-      userdata["careerraces"] = userdata["careerraces"].filter(x => !x[0].match(/seasonal/gi));
+      userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => !key.match(/seasonal/gi)).forEach(key => delete raw[key]);
 
       stats.setmileage(0, 0, userdata);
       userdata["lastonline"] = currdate;
@@ -941,8 +943,10 @@ var executecommand = function (command, args, msg, userdata) {
   try {
     command.execute(msg, args, userdata);
   } catch (error) {
+    if (error == "DONE") {
+      return
+    }
     var embed = new Discord.MessageEmbed();
-
     require(gtf.EMBED).alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
     console.error(error);
   }

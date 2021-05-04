@@ -24,7 +24,7 @@ module.exports.purchase = function (user, item, type, embed, msg, userdata) {
     var fpp = require(gtf.PERF).perf(item, "DEALERSHIP")["fpp"];
     var dealershipcost = require(gtf.MARKETPLACE).costcalc(item, fpp);
     var mcost = dealershipcost;
-    var link = item["image"];
+    var link = item["image"][0];
     var make = item["make"];
 
     embed.setImage(link);
@@ -336,7 +336,7 @@ module.exports.fourcargifts = function (title, results, prizes, embed, msg, user
         embed.setColor(0x216c2a);
         results = results1(index) + "\n\n" + "🎊 __**New Car Acquired**__ 🎊" + "\n" + item["name"] + " " + item["year"];
         embed.setDescription(results);
-        embed.setImage(item["image"]);
+        embed.setImage(item["image"][0]);
         msg.edit(embed);
       },
       9000,

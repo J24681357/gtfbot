@@ -216,5 +216,5 @@ module.exports = {
     } catch (error) {
       throw error;
     }
-  }, /// execute
+  } /// execute
 };

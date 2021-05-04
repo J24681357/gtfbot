@@ -26,6 +26,7 @@ module.exports = {
     '!car ["info"] - Displays info about the GTF Car Dealership command.',
   ],
   execute(msg, query, userdata) {
+    try {
     /* Setup */
     const embed = new Discord.MessageEmbed();
     embed.setColor(0x0151b0);
@@ -146,5 +147,11 @@ module.exports = {
     pageargs["end"] = emote.fpp;
     pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata);
     gtftools.formpages(pageargs, embed, msg, userdata);
-  },
+    } catch (error) {
+      var embed = new Discord.MessageEmbed();
+      require(gtf.EMBED).alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, userdata);
+      
+      throw "DONE"
+    }
+  } // execute
 };
