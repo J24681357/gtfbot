@@ -74,7 +74,7 @@ module.exports = {
         "\n" +
         "__**Weight Reduction**__ - !tune [weight-reduction|weight|we] ['stock'|(number)]" +
         "\n" +
-        "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]";
+        "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]"
       var list = results.split("\n").map(function (x) {
         return [x, " "];
       });

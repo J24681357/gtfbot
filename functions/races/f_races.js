@@ -449,11 +449,12 @@ module.exports.preparerace = function (mode, levelselect, carmode, event, args, 
   }
   embed.setDescription(loading);
 
+
   msg.channel.send(embed).then(msg => {
     setTimeout(function () {
       embed.setDescription(results + "\n\n" + racedetails);
-      embed.thumbnail = [];
 
+   
       if (mode == "GARAGE") {
         embed.addField(stats.main(userdata), racesettings["misc"]["car"]["name"]);
       } else {
@@ -461,6 +462,7 @@ module.exports.preparerace = function (mode, levelselect, carmode, event, args, 
         //args +
       }
       msg.edit(embed).then(msg => {
+        
         var startingrace = false;
         stats.raceinprogress(false, undefined, undefined, userdata);
         var racefinished = false;
@@ -490,7 +492,6 @@ module.exports.preparerace = function (mode, levelselect, carmode, event, args, 
               }
             }).join("\n");
           } else {
-            console.log(finalgrid)
             results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => function() {
               if (x["user"]) {
                 return "**" + x["position"] + ". " + x["name"] + "**"
@@ -620,9 +621,6 @@ module.exports.raceprep = function (raceprep, embed, msg, userdata) {
   }
 
   embed.setTitle("__" + racesettings["title"] + "__");
-  if (racesettings["image"].length != 0) {
-    embed.setThumbnail(racesettings["image"]);
-  }
   var results = "**READY**";
   var track = racesettings["track"];
   var time = racesettings["time"];
@@ -638,11 +636,13 @@ module.exports.raceprep = function (raceprep, embed, msg, userdata) {
     var loading = require(gtf.GTF).loadingscreen("**" + racesettings["track"] + "**", carname);
   }
   embed.setDescription(loading);
+  if (racesettings["track"] == "Generic Track") {
+    //embed.setThumbnail(racesettings["track"]["image"])
+  }
 
   msg.channel.send(embed).then(msg => {
     setTimeout(function () {
       embed.setDescription(results + "\n\n" + racedetails);
-      embed.thumbnail = [];
 
       if (raceprep["mode"] == "GARAGE") {
         embed.addField(stats.main(userdata), racesettings["misc"]["car"]["name"]);
@@ -755,7 +755,7 @@ module.exports.creategrid = function (args, car, amount) {
         finalgrid.push({ place: (index + 1), position: (index + 1), name: car["name"], user: true, points: 0});
         index++;
       }
-       finalgrid.push({ place: (index + 1), position: (index + 1), name: randomcars[index]["name"], user: false, points: 0});
+       finalgrid.push({ place: (index + 1), position: (index + 1), name: randomcars[index]["name"] + " " + randomcars[index]["year"], user: false, points: 0});
       amount--;
       index++;
     }

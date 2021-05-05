@@ -588,10 +588,10 @@ module.exports.checkcarlist = function (gtfcars) {
       if (!car["image"][0].includes("raw.githubusercontent.com")) {
         var oldcar = JSON.parse(JSON.stringify(car));
         downloadimage(oldcar);
-        var totalimages =  car["image"].length
+        var totalimages = car["image"].length
         var makee = car["make"].replace(/ /gi, "").toLowerCase();
         var name = car["name"].replace(/ /gi, "").toLowerCase();
-       for (var j = 0; j < totalimages.length; j++) {
+       for (var j = 0; j < totalimages; j++) {
          if (j >= 1) {
            var extra = j.toString()
          } else {
@@ -618,7 +618,6 @@ module.exports.checkcarlist = function (gtfcars) {
     var type = "error";
 
     var download = function (uri, filename, callback) {
-      console.log(uri)
       request.head(uri, function (err, res, body) {
         var type = res.headers["content-type"].toLowerCase();
         var file = filename.split("/");

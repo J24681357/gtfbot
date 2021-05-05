@@ -308,13 +308,6 @@
     "rating": "⭐2",
     "manufacturercost": 15000
   },
-  "75": {
-    "make": "BMW",
-    "name": "BMW M4 Gr.4 2014",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q_dJKMTowDhLPibdC3ITn0xmGPPHdmO0DYCYFZo0BexUJu8d",
-    "rating": "<:gt4:698962765095632967>",
-    "manufacturercost": 15000
-  },
   "77": {
     "make": "BMW",
     "name": "BMW Z8 2001",
@@ -2273,13 +2266,6 @@
     "name": "Lamborghini Sesto Elemento 2010",
     "image": "https://www.supercars.net/blog/wp-content/uploads/2016/04/2010_Lamborghini_SestoElemento1.jpg",
     "rating": "⭐3",
-    "manufacturercost": 30000
-  },
-  "424": {
-    "make": "Lamborghini",
-    "name": "Lamborghini Urraco 1979",
-    "image": "https://images-ext-1.discordapp.net/external/eKQO1XECUylanihOfOiwfiXEt_rd82OxlQ8eXFYcm5g/http/bestcarmag.com/sites/default/files/62114871974-Lamborghini-Urraco-P300-V1-1080.jpg?width=705&height=397",
-    "rating": "⭐1.5",
     "manufacturercost": 30000
   },
   "426": {

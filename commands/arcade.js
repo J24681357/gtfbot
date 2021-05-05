@@ -106,7 +106,7 @@ module.exports = {
       } else {
         embed.setTitle("__Arcade Mode - Selection Menu__");
 
-        results2 = "1️⃣" + " " + "Race" + "\n" + "~~2️⃣" + " " + "Race (My Courses)~~" + "\n" + emote.gtlogowhite + " " + "Race (GT Sport Loaner Car)" + "\n\n" + "❓ **Click one of the reactions to select an option.**";
+        results2 = "1️⃣" + " " + "Race" + "\n" + "~~2️⃣" + " " + "Race (My Courses)~~" + "\n" + "3️⃣" + " " + "Race (Custom Course)" + "\n\n" + "❓ **Click one of the reactions to select an option.**";
 
         embed.setDescription(results2);
         embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
@@ -130,6 +130,10 @@ module.exports = {
             embed.fields = [];
             return selecttrack();
           }
+          function selectgaragemodecoursemakerrandom() {
+             embed.fields = [];
+            return selectrandomtrack();
+          }
 
           function selectgtsportmode() {
             embed.fields = [];
@@ -149,7 +153,7 @@ module.exports = {
           var emojilist = [
             ["1️⃣", "1️⃣", selectgaragemode],
             ["2️⃣", "2️⃣", selectgaragemodecoursemaker],
-            [emote.gtlogowhite, "gtlogowhite", selectgtsportmode],
+            ["3️⃣","3️⃣", selectgaragemodecoursemakerrandom]
           ];
 
           gtftools.createreactions(emojilist, msg, userdata);
@@ -211,6 +215,37 @@ module.exports = {
               });
             }
           }
+
+          function selectrandomtrack() {
+            var t = require(gtf.COURSEMAKER).trackparams({
+          min: 40,
+          max: 80,
+          minSegmentLength: 2,
+          maxSegmentLength: 10,
+          curviness: 0.3,
+          maxAngle: 120,
+          type: "Circuit",
+        });
+        var track = require(gtf.COURSEMAKER).drawtrack(t)
+               
+        track["name"] = "Generic Track";
+        track["type"] = "Course Maker";
+        track["options"] = ["Drift"];
+        track["author"] = "ARCADE";
+                var raceprep = {
+                    mode: mode,
+                    modearg: levelselect,
+                    carselect: "GARAGE",
+                    car: stats.currentcar(userdata),
+                    trackselect: "SELECT",
+                    track: track,
+                    racesettings: {},
+                    other: [],
+                  };
+              return require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
+                 
+          }
+
         });
       }
     } catch (error) {

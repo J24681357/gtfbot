@@ -413,11 +413,20 @@ module.exports.isracescomplete = function (eventid, total, pnumber, userdata) {
   var count = 0;
   var i = 0;
   eventid = eventid.toLowerCase()
+  if (userdata["careerraces"] == null) {
+    userdata["careerraces"] = {}
+  }
   events = userdata["careerraces"][eventid]
+
 
   if (userdata["careerraces"][eventid] === undefined) {
     userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
   }
+
+  if (userdata["careerraces"][eventid].length == 0) {
+    userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
+  }
+
   events = userdata["careerraces"][eventid]
 
   while (i < events.length || i < count) {
@@ -487,7 +496,14 @@ module.exports.eventstatus = function (eventid, userdata) {
   if (events.length == 0) {
     return "⬛";
   } else {
-    return userdata["careerraces"][eventid][0]
+    if (events[0] == "✅") {
+      return "✅"
+    }
+    if (events.some(item => item !== 0)) {
+      return "⏲"
+    } else {
+      return "⬛"
+    }
   }
 };
 
@@ -589,6 +605,7 @@ module.exports.main = function (userdata) {
 
   var levelup = require(gtf.EXP).islevelup(userdata);
   var gifts = "";
+  console.log(levelup)
   if (levelup[0]) {
     levelup = "`⬆`" + "\n" + "**Level " + userdata["level"] + " Unlocks: " + levelup[2].join(",") + "**";
   } else {

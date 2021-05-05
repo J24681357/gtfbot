@@ -82,7 +82,6 @@ const cooldowns = new Discord.Collection();
 
 client.on("ready", () => {
   
-console.log(require(gtf.TRACKS).find({ types: ["Original"] }))
   gtftools.checkcarlist(gtfcars);
 
   var gtfbot = {};
@@ -278,7 +277,7 @@ client.on("message", async msg => {
 
     if (userdata["lastonline"] != currdate) {
       userdata["dailyworkout"] = false;
-      userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => !key.match(/seasonal/gi)).forEach(key => delete raw[key]);
+      userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => key.match(/seasonal/gi)).forEach(key => delete userdata["careerraces"][key]);
 
       stats.setmileage(0, 0, userdata);
       userdata["lastonline"] = currdate;
@@ -927,7 +926,6 @@ client.login(process.env.SECRET).then(function () {
       gtftools.interval(
         function () {
           stats.resumerace(keys[index1], client);
-          console.log("Good");
           index1++;
         },
         1000,
