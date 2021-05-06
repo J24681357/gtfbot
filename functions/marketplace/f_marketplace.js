@@ -119,6 +119,7 @@ module.exports.purchase = function (user, item, type, embed, msg, userdata) {
   }
 
   if (stats.credits(userdata) - mcost < 0) {
+    console.log(mcost)
     require(gtf.EMBED).alert(
       {
         name: "❌ Insufficient Credits",
