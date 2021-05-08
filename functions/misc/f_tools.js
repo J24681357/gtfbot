@@ -585,15 +585,16 @@ module.exports.checkcarlist = function (gtfcars) {
     var group = []
     for (var i = 0; i < gtfcars[makes[make]].length; i++) {
       var car = gtfcars[makes[make]][i]
-      if (!car["image"][0].includes("raw.githubusercontent.com")) {
+      var totalimages = car["image"].length
+      var makee = car["make"].replace(/ /gi, "").toLowerCase();
+      var name = car["name"].replace(/ /gi, "").toLowerCase();
+
+      for (var j = 0; j < totalimages; j++) {
+      if (!car["image"][j].includes("raw.githubusercontent.com")) {
         var oldcar = JSON.parse(JSON.stringify(car));
-        downloadimage(oldcar);
-        var totalimages = car["image"].length
-        var makee = car["make"].replace(/ /gi, "").toLowerCase();
-        var name = car["name"].replace(/ /gi, "").toLowerCase();
-       for (var j = 0; j < totalimages; j++) {
+        downloadimage(oldcar, oldcar["image"][j], j);
          if (j >= 1) {
-           var extra = j.toString()
+           var extra = "-" + j.toString()
          } else {
            var extra = ""
          }
@@ -614,7 +615,7 @@ module.exports.checkcarlist = function (gtfcars) {
     }
   });
 
-  function downloadimage(oldcar) {
+  function downloadimage(oldcar, imagelink, j) {
     var type = "error";
 
     var download = function (uri, filename, callback) {
@@ -622,7 +623,12 @@ module.exports.checkcarlist = function (gtfcars) {
         var type = res.headers["content-type"].toLowerCase();
         var file = filename.split("/");
         file.pop();
-        filename = filename + ".png";
+         if (j >= 1) {
+           var extra = filename = filename + "-" + j.toString() + ".png"; 
+         } else {
+           filename = filename + ".png";
+         }
+        
         var shell = require("shelljs");
         shell.mkdir("-p", file.join("/"));
         if (!type.includes("image")) {
@@ -636,6 +642,6 @@ module.exports.checkcarlist = function (gtfcars) {
     };
     var name = oldcar["name"].replace(/ /gi, "").toLowerCase();
     var make = oldcar["make"].replace(/ /gi, "").toLowerCase();
-    download(oldcar["image"][0], "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
+    download(imagelink, "./images/cars/" + make + "/" + name + "" + oldcar["year"], function () {});
   }
 };

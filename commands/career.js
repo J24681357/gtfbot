@@ -231,6 +231,7 @@ module.exports = {
             return [x, " "];
           });
         pageargs["list"] = list;
+        pageargs["rows"] = 3
         pageargs["text"] = gtftools.formpage(pageargs, embed, msg, userdata);
         gtftools.formpages(pageargs, embed, msg, userdata);
         return;

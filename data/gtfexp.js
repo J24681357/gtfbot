@@ -31,7 +31,7 @@ module.exports.islevelup = function (userdata) {
       levelup++;
       levelupbool = true;
       if (typeof explevels[(i + 1).toString()]["rewards"] == "undefined") {
-        leveldetails.push(explevels[(i + 1).toString()]["rewards"]);
+        leveldetails.push(explevels[(i + 1).toString()]["rewards"].join("\n"));
       }
     } else {
       break;

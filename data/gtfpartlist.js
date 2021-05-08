@@ -152,8 +152,8 @@ module.exports.checkpartsavail = function (part, gtfcar) {
 
   var bfpplimit = perf["fpp"] < part["fpplimit"];
   var bweightlimit = perf["oweight"] > part["weightlowerlimit"];
-  var btype = part["eligible"].includes(ocar["type"]);
-  var prohibitcheck = ocar["special"].includes(part["prohibited"][0]);
+  var btype = part["eligible"].some(x => ocar["type"].includes(x))
+  var prohibitcheck = part["prohibited"].some(x => ocar["special"].includes(x))
   if (btype && bfpplimit && bweightlimit && !prohibitcheck) {
     if (gtfcar[part["type"].toLowerCase()]["list"].includes(part["name"])) {
       if (gtfcar[part["type"].toLowerCase()]["current"] == part["name"]) {

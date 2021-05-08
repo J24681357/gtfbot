@@ -287,6 +287,9 @@ module.exports.setracesettings = function (raceprep) {
     category = category[Math.floor(Math.random() * category.length)];
   }
   var image = "";
+  if (track["image"] !== undefined) {
+    image = track["image"]
+  }
 
   var racesettings = {
     title: title,
@@ -319,201 +322,6 @@ module.exports.setracesettings = function (raceprep) {
     racesettings["points"] = 0;
   }
   return racesettings;
-};
-
-module.exports.preparerace = function (mode, levelselect, carmode, event, args, embed, msg, userdata) {
-  var results2 = "";
-  if (mode == "CAREER") {
-    embed.fields = [];
-    var racesettings = require(gtf.RACE).setrace(event);
-    var loading = event["misc"]["loading"];
-  } else if (mode == "ONLINE") {
-    embed.fields = [];
-    var racesettings = event;
-    var grid = racesettings["players"].length;
-    var finalgrid = racesettings["players"].map(function (x) {
-      return [x["car"]["name"], "`" + msg.guild.members.cache.get(x["id"]).user.username + "`"].join(" ");
-    });
-    racesettings["category"] = ["CUSTOM"];
-
-    var pl = ["st", "nd", "rd", "th"];
-    var positions = [];
-
-    var startingprize = 1000;
-    var prize = startingprize;
-    for (var x = 0; x < grid; x++) {
-      if (x % 10 == 0 && x + 1 != 11) {
-        positions.push(emote.goldtrophy + " " + (x + 1) + "st|" + prize);
-      } else if (x % 10 == 1 && x + 1 != 12) {
-        positions.push(emote.silvertrophy + " " + (x + 1) + "nd|" + prize);
-      } else if (x % 10 == 2 && x + 1 != 13) {
-        positions.push(emote.bronzetrophy + " " + (x + 1) + "rd|" + prize);
-      } else {
-        positions.push(x + 1 + "th|" + startingprize);
-      }
-      prize = Math.ceil((startingprize - prize / grid) / 100) * 100;
-    }
-    event["positions"] = positions;
-    event["misc"] = { loading: racesettings["title"] };
-  } else if (mode == "SSRX") {
-    var racesettings = require(gtf.RACE).setrace(tracksettings);
-  } else {
-    if (levelselect.length != 0) {
-      var racesettings = require(gtf.RACE).setrace(levelselect, mode);
-    }
-  }
-
-  racesettings["mode"] = mode;
-
-  if (carmode == "GARAGE") {
-    var car = stats.currentcar(userdata);
-    var carname = car["name"];
-    racesettings["misc"] = { car: car };
-    if (mode == "CAREER") {
-      var racesettingsmakes = racesettings["makes"];
-      var racesettingsmodels = racesettings["models"];
-      var racesettingstypes = racesettings["types"];
-      var racesettingsdt = racesettings["drivetrains"];
-
-      var args = {
-        makes: racesettingsmakes,
-        models: racesettingsmodels,
-        types: racesettingstypes,
-        drivetrains: racesettingsdt,
-        upperfpp: racesettings["upperfpp"],
-        lowerfpp: racesettings["lowerfpp"],
-        condition: "CUSTOM",
-        gtscarclass: "",
-      };
-      var finalgrid = require(gtf.RACE).creategrid(args, racesettings["misc"]["car"], racesettings["grid"]);
-
-      var grid = racesettings["grid"];
-    } else {
-      var grid = racesettings["grid"];
-      var car = racesettings["misc"]["car"];
-      racesettings["category"] = ["CUSTOM"];
-      var args = {
-        makes: [],
-        models: [],
-        types: [require(gtf.CARS).find({ make: [car["make"]], fullname: [car["name"]], year: [car["year"]] })[0]["type"]],
-        upperfpp: racesettings["misc"]["car"]["fpp"] + 50,
-        lowerfpp: racesettings["misc"]["car"]["fpp"] - 50,
-        condition: "CUSTOM",
-        gtscarclass: [],
-        drivetrains: [],
-      };
-      var finalgrid = require(gtf.RACE).creategrid(args, racesettings["misc"]["car"], racesettings["grid"]);
-    }
-  } else if (carmode == "ONLINE") {
-  } else {
-    var args = {
-      makes: racesettingsmakes,
-      models: racesettingsmodels,
-      types: racesettingstypes,
-      upperfpp: racesettings["fpplimit"] + 50,
-      lowerfpp: racesettings["fpplimit"] - 50,
-      condition: "GTS",
-      gtscarclass: racesettings["category"],
-      drivetrains: [],
-    };
-
-    racesettings["misc"] = { car: "" };
-
-    var finalgrid = require(gtf.RACE).creategrid(args, racesettings["misc"]["car"], racesettings["grid"]);
-    var carname = "";
-
-    if (carmode == "GTSPORT") {
-      var grid = racesettings["category"].join(" ") + " | " + racesettings["grid"];
-      if (mode == "DRIFT") {
-        var grid = racesettings["grid"];
-      }
-    } else {
-      var grid = racesettings["grid"];
-    }
-  }
-
-  embed.setTitle("__" + racesettings["title"] + "__");
-  var results = "**READY**";
-  var track = racesettings["track"];
-  var time = racesettings["time"];
-  var weather = racesettings["weather"];
-  var laps = racesettings["laps"];
-  var distancekm = racesettings["km"];
-  var distancemi = racesettings["mi"];
-  var racedetails = "__Race Details__" + "\n" + "**Track:** " + track + "\n" + "**Time/Weather:** " + time + " | " + weather + "\n" + "**Lap(s):** " + laps + "\n" + "**Total Distance:** " + distancekm + " km" + " | " + distancemi + " mi" + "\n" + "**Grid:** " + grid + " cars";
-
-  if (mode == "CAREER") {
-    loading = require(gtf.GTF).loadingscreen(loading, "");
-  } else {
-    var loading = require(gtf.GTF).loadingscreen("**" + racesettings["track"] + "**", carname);
-  }
-  embed.setDescription(loading);
-
-
-  msg.channel.send(embed).then(msg => {
-    setTimeout(function () {
-      embed.setDescription(results + "\n\n" + racedetails);
-
-   
-      if (mode == "GARAGE") {
-        embed.addField(stats.main(userdata), racesettings["misc"]["car"]["name"]);
-      } else {
-        embed.addField(stats.main(userdata), "⠀");
-        //args +
-      }
-      msg.edit(embed).then(msg => {
-        
-        var startingrace = false;
-        stats.raceinprogress(false, undefined, undefined, userdata);
-        var racefinished = false;
-
-        function flagstartrace() {
-          embed.setColor(0x0151b0);
-          var user = msg.guild.members.cache.get(userdata["id"]).toString();
-
-          require("../../functions/races/f_races_2").readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [false, null], userdata);
-        }
-        function trackdetails() {
-          if (racefinished) {
-            results = results2;
-          } else {
-            results = "**READY**";
-          }
-          embed.setDescription(results + "\n\n" + racedetails);
-          msg.edit(embed);
-        }
-        function cargrid() {
-          if (carmode == "GARAGE" || mode == "DRIFT" || mode == "SSRX") {
-            results = "__Starting Grid | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map( function(x) {
-              if (x["user"]) {
-                return "**" + x["position"] + ". " + x["name"] + "**"
-              } else {
-              return x["position"] + ". " + x["name"]
-              }
-            }).join("\n");
-          } else {
-            results = "__Starting Grid - " + racesettings["category"] + " | " + racesettings["grid"] + " cars" + "__" + "\n" + finalgrid.map(x => function() {
-              if (x["user"]) {
-                return "**" + x["position"] + ". " + x["name"] + "**"
-              } else {
-              return x["position"] + ". " + x["name"]
-              }
-            }).join("\n");
-          }
-
-          embed.setDescription(results);
-          msg.edit(embed);
-        }
-        var emojilist = [
-          [emote.flag, "flag", flagstartrace, "Once"],
-          [emote.tracklogo, "trackgtfitness", trackdetails],
-          [emote.cargrid, "gtfcargrid", cargrid],
-        ];
-
-        gtftools.createreactions(emojilist, msg, userdata);
-      });
-    }, 3000);
-  });
 };
 
 module.exports.raceprep = function (raceprep, embed, msg, userdata) {
@@ -636,8 +444,9 @@ module.exports.raceprep = function (raceprep, embed, msg, userdata) {
     var loading = require(gtf.GTF).loadingscreen("**" + racesettings["track"] + "**", carname);
   }
   embed.setDescription(loading);
-  if (racesettings["track"] == "Generic Track") {
-    //embed.setThumbnail(racesettings["track"]["image"])
+  if (racesettings["image"].length != 0) {
+    const attachment = new Discord.MessageAttachment(racesettings["image"], "course.png");
+    embed.attachFiles(attachment).setThumbnail("attachment://course.png");
   }
 
   msg.channel.send(embed).then(msg => {

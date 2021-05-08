@@ -63,18 +63,32 @@ module.exports = {
     var selectedtype = false;
 
     if (query.length == 0) {
+      var partscount = {"Engine":0, "Transmission":0, "Suspension":0, "Tires":0, "Weight Reduction":0, "Turbo Kits":0}
+      var keys = Object.keys(partscount)
+      for (var x = 0; x < keys.length; x++) {
+        var type = keys[x]
+        var select = require(gtf.PARTS).find({ type: type });
+        for (var y = 0; y < select.length; y++) {
+         var part = select[y]
+          var cond = require(gtf.PARTS).checkpartsavail(part, car);
+          if (!cond.includes("❌")) {
+            partscount[type]++
+          }
+      }
+      }
+      console.log(partscount)
       results =
-        "__**Engine**__ - !tune [engine|eng|e] ['stock'|(number)] " +
+        "__**Engine**__ " + "`🔧" + partscount["Engine"] + "`" +
         "\n" +
-        "__**Transmission**__ - !tune [transmission|trans|tr] " +
+        "__**Transmission**__ " + "`🔧" + partscount["Transmission"] + "`" +
         "\n" +
-        "__**Suspension**__ - !tune [suspension|susp|su] ['stock'|(number)]" +
+        "__**Suspension**__ " + "`🔧" + partscount["Suspension"] + "`" +
         "\n" +
-        "__**Tires**__ - !tune [tires|tire|tr] ['stock'|(number)]" +
+        "__**Tires**__ "  + "`🔧" + partscount["Tires"] + "`" +
         "\n" +
-        "__**Weight Reduction**__ - !tune [weight-reduction|weight|we] ['stock'|(number)]" +
-        "\n" +
-        "__**Turbo Kits**__ - !tune [turbo|tu] ['stock'|(number)]"
+        "__**Weight Reduction**__ " + "`🔧" + partscount['Weight Reduction'] + "`" +
+         "\n" +
+        "__**Turbo Kits**__ " + "`🔧" + partscount['Turbo Kits'] + "`"
       var list = results.split("\n").map(function (x) {
         return [x, " "];
       });
@@ -95,6 +109,7 @@ module.exports = {
       var selectedtype = true;
       var type = "transmission";
       var select = require(gtf.PARTS).find({ type: type });
+      
     }
 
     if (query[0] == "suspension" || query[0] == "susp" || query[0] == "sus" || query[0] == "su" || parseInt(query[0]) == 3) {

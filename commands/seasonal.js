@@ -202,8 +202,17 @@ module.exports = {
         }
 
         var ready = true;
-
-        require(gtf.RACE).preparerace(mode, "", "GARAGE", event, args, embed, msg, userdata);
+        var raceprep = {
+          mode: mode,
+          modearg: "",
+          carselect: "GARAGE",
+          car: stats.currentcar(userdata),
+          trackselect: "N/A",
+          track: {},
+          racesettings: event,
+          other: [],
+        };
+        require(gtf.RACE).raceprep(raceprep, embed, msg, userdata);
       }
     }
   },
