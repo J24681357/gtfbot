@@ -113,7 +113,9 @@ module.exports = {
       var ocar = require(gtf.CARS).find({ make: [car["make"]], fullname: [car["name"]], year: [car["year"]] })[0];
       results = stats.view(car, userdata);
       stats.addcount(userdata);
-      embed.setThumbnail(ocar["image"][0]);
+      var carimagenumber = stats.carimage(car)
+      console.log(carimagenumber)
+      embed.setThumbnail(ocar["image"][carimagenumber]);
       embed.setDescription(results);
       msg.channel.send(embed).then(msg => {
         function view2() {

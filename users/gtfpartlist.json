@@ -524,5 +524,29 @@
       "fpplimit": 9999,
       "weightlowerlimit": 0
     }
-  ]
+  ],
+  "aero-kits": [{
+      "type": "Aero Kits",
+      "name": "Aero Kit 1",
+      "cost": 10000,
+      "percent": 0,
+      "eligible": [
+        "Production"
+      ],
+      "prohibited": [],
+      "fpplimit": 9999,
+      "weightlowerlimit": 0
+    },
+    {
+      "type": "Aero Kits",
+      "name": "Aero Kit 2",
+      "cost": 15000,
+      "percent": 0,
+      "eligible": [
+        "Production"
+      ],
+      "prohibited": [],
+      "fpplimit": 9999,
+      "weightlowerlimit": 0
+    }]
 }

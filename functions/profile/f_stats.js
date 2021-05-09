@@ -243,6 +243,7 @@ module.exports.view = function (gtfcar, userdata) {
     " | " +
     gtftools.numFormat(perf["weight"]) +
     "lbs**" +
+    " | " + gtfcar["aero kits"]["current"] +
     "\n\n" +
     "**Paint:** " +
     gtfcar["color"]["current"] +
@@ -304,6 +305,14 @@ module.exports.updatecurrentcarclean = function (number, userdata) {
   }
 };
 
+module.exports.carimage = function(gtfcar) {
+  if (gtfcar["aero kits"]["current"] == "Stock") {
+    return 0
+  } else {
+    return parseInt(gtfcar["aero kits"]["current"].split(" ")[2])
+  }
+}
+
 module.exports.addcar = function (car, arg, userdata) {
   var fullname = car["name"] + " " + car["year"];
 
@@ -318,6 +327,7 @@ module.exports.addcar = function (car, arg, userdata) {
   var susp = { current: "Stock", list: [], tuning: [0, 0] };
   var weight = { current: "Stock", list: [], tuning: [0] };
   var turbo = { current: "Stock", list: [], tuning: [0] };
+  var aerokits = { current: "Stock", list: [], tuning: [0] };
 
   var condition = 100;
 
@@ -338,8 +348,8 @@ module.exports.addcar = function (car, arg, userdata) {
     tires: tires,
     "weight reduction": weight,
     turbo: turbo,
+    "aero kits": aerokits,
     nitrous: { current: "Stock", tuning: 0 },
-    body: 0,
     oil: 100,
     damage: 100,
     rims: 0,

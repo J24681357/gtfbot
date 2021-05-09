@@ -53,6 +53,10 @@ module.exports.purchase = function (user, item, type, embed, msg, userdata) {
     replacement = "\n**" + type1.charAt(0).toUpperCase() + type1.slice(1) + " " + car[type1.toLowerCase()]["current"] + " -> " + name + "**\n" + "⚠ Any tuning adjustments from **!tuning** will be reset." + "\n";
 
     type1 = type1.toLowerCase();
+    if (type1 == "aero kits") {
+      var ocar = require(gtf.CARS).find({ make: [car["make"]], fullname: [car["name"]], year: [car["year"]] })[0];
+      embed.setImage(ocar["image"][parseInt(item["name"].split(" ").pop())])
+    }
     if (item["name"] == "Stock") {
       part_tostock = true;
       if (car[type1]["current"] == "Stock") {

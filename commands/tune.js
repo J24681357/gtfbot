@@ -63,7 +63,7 @@ module.exports = {
     var selectedtype = false;
 
     if (query.length == 0) {
-      var partscount = {"Engine":0, "Transmission":0, "Suspension":0, "Tires":0, "Weight Reduction":0, "Turbo Kits":0}
+      var partscount = {"Engine":0, "Transmission":0, "Suspension":0, "Tires":0, "Weight Reduction":0, "Turbo":0, "Aero Kits":0}
       var keys = Object.keys(partscount)
       for (var x = 0; x < keys.length; x++) {
         var type = keys[x]
@@ -71,12 +71,12 @@ module.exports = {
         for (var y = 0; y < select.length; y++) {
          var part = select[y]
           var cond = require(gtf.PARTS).checkpartsavail(part, car);
-          if (!cond.includes("❌")) {
+          console.log(cond)
+          if (cond != "❌") {
             partscount[type]++
           }
       }
       }
-      console.log(partscount)
       results =
         "__**Engine**__ " + "`🔧" + partscount["Engine"] + "`" +
         "\n" +
@@ -88,7 +88,8 @@ module.exports = {
         "\n" +
         "__**Weight Reduction**__ " + "`🔧" + partscount['Weight Reduction'] + "`" +
          "\n" +
-        "__**Turbo Kits**__ " + "`🔧" + partscount['Turbo Kits'] + "`"
+        "__**Turbo Kits**__ " + "`🔧" + partscount['Turbo'] + "`" + "\n" +
+        "__**Aero Kits**__ " + "`🔧" + partscount['Aero Kits'] + "`"
       var list = results.split("\n").map(function (x) {
         return [x, " "];
       });
@@ -133,6 +134,12 @@ module.exports = {
     if (query[0] == "turbo" || query[0] == "supercharger" || query[0] == "tu" || parseInt(query[0]) == 6) {
       selectedtype = true;
       var type = "turbo";
+      var select = require(gtf.PARTS).find({ type: type });
+    }
+
+    if (query[0] == "aero-kits" || query[0] == "aero-kit" || query[0] == "aero" || parseInt(query[0]) == 7) {
+      selectedtype = true;
+      var type = "aero-kits";
       var select = require(gtf.PARTS).find({ type: type });
     }
 

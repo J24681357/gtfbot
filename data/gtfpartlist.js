@@ -150,6 +150,20 @@ module.exports.checkpartsavail = function (part, gtfcar) {
   var ocar = require(gtf.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
   var perf = require(gtf.PERF).perf(ocar, "DEALERSHIP");
 
+  if (part["type"] == "Aero Kits") {
+    var nameid = parseInt(part["name"].split(" ").pop()) - 1
+    var list = ["❌", "❌"]
+    var kits = ocar["image"].length - 1
+    for (var x = 0; x < kits; x++) {
+      if (gtfcar[part["type"].toLowerCase()]["current"] == part["name"]) {
+        list[x] = "✅"
+      } else {
+        list[x] = require(gtf.PERF).partpreview(part, gtfcar, "GARAGE")["fpp"].toString();
+      }
+    }
+    return list[nameid]
+  }
+
   var bfpplimit = perf["fpp"] < part["fpplimit"];
   var bweightlimit = perf["oweight"] > part["weightlowerlimit"];
   var btype = part["eligible"].some(x => ocar["type"].includes(x))

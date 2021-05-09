@@ -277,7 +277,7 @@ client.on("message", async msg => {
 
     if (userdata["lastonline"] != currdate) {
       userdata["dailyworkout"] = false;
-      userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => key.match(/seasonal/gi)).forEach(key => delete userdata["careerraces"][key]);
+      //userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => key.match(/seasonal/gi)).forEach(key => delete userdata["careerraces"][key]);
 
       stats.setmileage(0, 0, userdata);
       userdata["lastonline"] = currdate;
