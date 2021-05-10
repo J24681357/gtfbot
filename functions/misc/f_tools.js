@@ -609,7 +609,7 @@ module.exports.checkcarlist = function (gtfcars) {
     gtfcars[makes[make]] = group
   }
 
-  fs.writeFile("./users/gtfcarlist_2021.json", JSON.stringify(gtfcars), function (err) {
+  fs.writeFile("./jsonfiles/gtfcarlist_2021.json", JSON.stringify(gtfcars), function (err) {
     if (err) {
       console.log(err);
     }
@@ -620,6 +620,10 @@ module.exports.checkcarlist = function (gtfcars) {
 
     var download = function (uri, filename, callback) {
       request.head(uri, function (err, res, body) {
+        if (res === undefined) {
+          console.log("The image may not be available for " + uri);
+          return
+        }
         var type = res.headers["content-type"].toLowerCase();
         var file = filename.split("/");
         file.pop();
@@ -632,7 +636,7 @@ module.exports.checkcarlist = function (gtfcars) {
         var shell = require("shelljs");
         shell.mkdir("-p", file.join("/"));
         if (!type.includes("image")) {
-          console.log("The image may not be available");
+          console.log("The image may not be available for " + uri);
         }
 
         setTimeout(function () {

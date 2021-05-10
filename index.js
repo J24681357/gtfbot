@@ -16,15 +16,15 @@ let MongoClient = require("mongodb").MongoClient;
 var url = "mongodb+srv://GTFitness:DqbqWQH0qvdKj3sR@cluster0.pceit.mongodb.net/GTF";
 
 const prefix = "!";
-var dw = JSON.parse(fs.readFileSync("./users/dw.json", "utf8"));
+var dw = JSON.parse(fs.readFileSync("./jsonfiles/dw.json", "utf8"));
 module.exports.dwcar = dw;
-var gtfcars = JSON.parse(fs.readFileSync("./users/gtfcarlist_2021.json", "utf8"));
-var gtftracks = JSON.parse(fs.readFileSync("./users/gtftracklist.json", "utf8"));
-var gtfparts = JSON.parse(fs.readFileSync("./users/gtfpartlist.json", "utf8"));
-var gtfpaints = JSON.parse(fs.readFileSync("./users/gtfpaints.json", "utf8"));
-var gtfexp = JSON.parse(fs.readFileSync("./users/gtfexp.json", "utf8"));
-var gtfweather = JSON.parse(fs.readFileSync("./users/gtfweather.json", "utf8"));
-var gtftime = JSON.parse(fs.readFileSync("./users/gtftime.json", "utf8"));
+var gtfcars = JSON.parse(fs.readFileSync("./jsonfiles/gtfcarlist_2021.json", "utf8"));
+var gtftracks = JSON.parse(fs.readFileSync("./jsonfiles/gtftracklist.json", "utf8"));
+var gtfparts = JSON.parse(fs.readFileSync("./jsonfiles/gtfpartlist.json", "utf8"));
+var gtfpaints = JSON.parse(fs.readFileSync("./jsonfiles/gtfpaints.json", "utf8"));
+var gtfexp = JSON.parse(fs.readFileSync("./jsonfiles/gtfexp.json", "utf8"));
+var gtfweather = JSON.parse(fs.readFileSync("./jsonfiles/gtfweather.json", "utf8"));
+var gtftime = JSON.parse(fs.readFileSync("./jsonfiles/gtftime.json", "utf8"));
 module.exports.gtfcarlist = gtfcars;
 module.exports.gtftracklist = gtftracks;
 module.exports.gtfweather = gtfweather;
@@ -83,6 +83,7 @@ const cooldowns = new Discord.Collection();
 client.on("ready", () => {
   
   gtftools.checkcarlist(gtfcars);
+
 
   var gtfbot = {};
   module.exports.update = client.emojis.cache.get("419605168510992394").toString();

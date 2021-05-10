@@ -70,9 +70,19 @@ module.exports = {
 
     embed.setTitle(emote.gtflogo + " __GTF Daily Workout__");
     var car = require(gtf.CARS).random({}, 1)[0];
-    var imagestyle = 1
-    embed.setDescription("**" + car["name"] + " " + car["year"] + "**" + " `" + car["type"] + "`\n" + car["power"] + "hp | " + car["weight"] + "lbs");
-    embed.setImage(car["image"][imagestyle-1]);
+    var imagestyle = 0
+    var extra = ""
+    if (car["image"].length >= 2) {
+      var choose = ["A", "A", "B", "B","B", "B","B","B","B", "B"]
+      if (choose[Math.floor(Math.random() * choose.length)] == "A") {
+        imagestyle = gtftools.randomInt(1, car["image"].length - 1)
+        extra = " | `⭐" + imagestyle + "`" 
+      } else {
+        imagestyle = 0
+      }
+    }
+    embed.setDescription("**" + car["name"] + " " + car["year"] + "**" + " `" + car["type"] + "`\n" + car["power"] + "hp | " + car["weight"] + "lbs" + extra);
+    embed.setImage(car["image"][imagestyle]);
     msg.channel.send(embed);
   },
 };
