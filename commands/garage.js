@@ -109,13 +109,9 @@ module.exports = {
         require(gtf.EMBED).alert({ name: "❌ Invalid ID", description: "This ID does not exist in your garage.", embed: "", seconds: 0 }, msg, userdata);
         return;
       }
-      var car = stats.garage(userdata)[number - 1];
-      var ocar = require(gtf.CARS).find({ make: [car["make"]], fullname: [car["name"]], year: [car["year"]] })[0];
-      results = stats.view(car, userdata);
+      var car = stats.garage(userdata)[number - 1]
+      results = stats.view(car, embed, userdata);
       stats.addcount(userdata);
-      var carimagenumber = stats.carimage(car)
-      console.log(carimagenumber)
-      embed.setThumbnail(ocar["image"][carimagenumber]);
       embed.setDescription(results);
       msg.channel.send(embed).then(msg => {
         function view2() {

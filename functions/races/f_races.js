@@ -156,6 +156,7 @@ module.exports.setracesettings = function (raceprep) {
   if (raceprep["mode"] == "ARCADE") {
     if (raceprep["modearg"] == "beginner") {
       var title = "Arcade Mode - Beginner";
+      var type = "LAPS"
       var limit = 10.0;
       var time = require(gtf.TIME).random({}, 1)[0];
       var weather = require(gtf.WEATHER).random({}, 1)[0];
@@ -167,6 +168,7 @@ module.exports.setracesettings = function (raceprep) {
       var clean = 5;
     } else if (raceprep["modearg"] == "amateur") {
       var title = "Arcade Mode - Amateur";
+      var type = "LAPS"
       var limit = 15.0;
       var time = require(gtf.TIME).random({}, 1)[0];
       var weather = require(gtf.WEATHER).random({}, 1)[0];
@@ -177,19 +179,21 @@ module.exports.setracesettings = function (raceprep) {
       var clean = 4;
     } else if (raceprep["modearg"] == "professional") {
       var title = "Arcade Mode - Professional";
+      var type = "LAPS"
       var limit = 30.0;
       var time = require(gtf.TIME).random({}, 1)[0];
       var weather = require(gtf.WEATHER).random({}, 1)[0];
       var grid = ["12", "13", "14", "15", "16", "17", "18", "19", "20"];
       var category = [["N700"], ["N800"], ["N1000"], ["Gr.4"], ["Gr.B"], ["Gr.3"], ["Gr.2"], ["Gr.1"], ["N700", "N800"], ["N800", "N900", "N1000"]];
       var place = [emote.gold + " 1st|5000", emote.silver + " 2nd|4000", emote.bronze + " 3rd|3000", "4th|2700", "5th|2400", "6th|2100", "7th|1800", "8th|1500", "9th|1300", "10th|1200", "11th|1100", "12th|1000"];
-      var chance = 50;
+      var chance = 60;
       var clean = 3;
     }
   }
   if (raceprep["mode"] == "DRIFT") {
     if (raceprep["modearg"] == "driftbeginner") {
       var title = "Drift Trial - Beginner";
+      var type = "LAPS"
       var limit = 1;
       var time = require(gtf.TIME).random({}, 1)[0];
       var weather = require(gtf.WEATHER).random({}, 1)[0];
@@ -201,6 +205,7 @@ module.exports.setracesettings = function (raceprep) {
     }
     if (raceprep["modearg"] == "driftprofessional") {
       var title = "Drift Trial - Professional";
+      var type = "LAPS"
       var limit = 1;
       var time = require(gtf.TIME).random({}, 1)[0];
       var weather = require(gtf.WEATHER).random({}, 1)[0];
@@ -210,23 +215,10 @@ module.exports.setracesettings = function (raceprep) {
       var chance = 50;
       var clean = 0;
     }
-  }
-  if (raceprep["mode"] == "SSRX") {
-    var title = "Special Stage Route X - 10000m Top Speed Run";
-    var limit = 1.0;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["1"];
-    var category = ["CUSTOM"];
-    var place = [emote.gold + " 1st|0"];
-    var chance = 50;
-    var clean = 3;
-  }
-
-  if (raceprep["modearg"] == "endurance") {
-    var track = require(gtf.TRACKS).random({}, 1)[0];
+    if (raceprep["modearg"] == "endurance") {
+    var type = "TIME"
     var km = 0;
-    var limit = ["1 Hour", "2 Hours", "3 Hours", "4 Hours", "8 Hours", "12 Hours", "24 Hours"];
+    var limit = ["60m"]; //, "120m", "180m", "240m", "480m", "720m", "1440m"
     limit = limit[Math.floor(Math.random() * limit.length)];
     var time = require(gtf.TIME).random({}, 1)[0];
     var weather = require(gtf.WEATHER).random({}, 1)[0];
@@ -238,12 +230,26 @@ module.exports.setracesettings = function (raceprep) {
       x[1] = parseInt(x[1]) * parseInt(limit.split(" ")[0]);
       return x.join("|");
     });
-    var chance = 35;
+    var chance = 60;
     var clean = 1;
 
     var title = "Arcade Mode - " + limit + " of " + track[0][0];
+  }
+  }
+  if (raceprep["mode"] == "SSRX") {
+    var title = "Special Stage Route X - 10000m Top Speed Run";
+    var type = "LAPS"
+    var limit = 1.0;
+    var time = require(gtf.TIME).random({}, 1)[0];
+    var weather = require(gtf.WEATHER).random({}, 1)[0];
+    var grid = ["1"];
+    var category = ["CUSTOM"];
+    var place = [emote.gold + " 1st|0"];
+    var chance = 50;
+    var clean = 3;
   } else if (raceprep["modearg"] == "R" || raceprep["modearg"] == "ONLINE") {
     var title = "ONLINE LOBBY";
+    var type = "LAPS"
     var track = require(gtf.TRACKS).random({}, 1)[0];
     var km = track["length"];
     var limit = 0;
@@ -304,6 +310,7 @@ module.exports.setracesettings = function (raceprep) {
     drivetrains: [],
     cleanbonus: clean,
     difficulty: chance,
+    type: type,
     laps: distance[0],
     km: distance[1],
     mi: distance[2],

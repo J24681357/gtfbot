@@ -218,7 +218,7 @@ module.exports.addexp = function (number, userdata) {
   }
 };
 
-module.exports.view = function (gtfcar, userdata) {
+module.exports.view = function (gtfcar, embed, userdata) {
   var ocar = require(gtf.CARS).find({ make: [gtfcar["make"]], fullname: [gtfcar["name"]], year: [gtfcar["year"]] })[0];
   var garage = stats.garage(userdata);
   var perf = require(gtf.PERF).perf(gtfcar, "GARAGE");
@@ -269,6 +269,8 @@ module.exports.view = function (gtfcar, userdata) {
     "**Nitrous:** " +
     gtfcar["nitrous"]["current"] +
     "\n";
+    var carimagenumber = stats.carimage(car)
+    embed.setThumbnail(ocar["image"][carimagenumber]);
 
   return cardetails;
 };

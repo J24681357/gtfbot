@@ -179,6 +179,10 @@ module.exports = {
       require(gtf.MARKETPLACE).purchase(msg.member, part, "PART", embed, msg, userdata);
       return;
     }
+    if (select.length == 0) {
+      require(gtf.EMBED).alert({name:"❌ Error", description:  "Invalid arguments.", embed:"", seconds:0}, msg, userdata);
+      return
+    }
 
     var select3 = select.map(function (x) {
       var cond = require(gtf.PARTS).checkpartsavail(x, car);

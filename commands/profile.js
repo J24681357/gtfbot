@@ -148,7 +148,7 @@ module.exports = {
 
       var emojilist = [
         [emote.leftarrow, "leftarrow", profile],
-        [emote.rightarrow, "rightarrow", careerprofile],
+        ["🏆", "🏆", careerprofile],
       ];
 
       gtftools.createreactions(emojilist, msg, userdata);

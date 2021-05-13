@@ -432,6 +432,59 @@ client.on("message", async msg => {
   });
 });
 
+client.api.applications(gtf.USERID).guilds(gtf.SERVERID).commands.post({
+  data: {
+    name: 'tune',
+    description: 'N/A: Display tuning parts in GT Auto to tune your current car.',
+    options: [{
+      "name": "type",
+      "description": "N/A: Select the performance type you want to view.",
+      "type": 3,
+      "required": true,
+      "choices": [
+          {
+            "name": "❗ Display Available Parts",
+            "value": "list"
+      },
+  {
+            "name": "Engine",
+            "value": "engine"
+      },
+      {
+            "name": "Transmission",
+            "value": "transmission"
+        },
+        {
+            "name": "Suspension",
+            "value": "suspension"
+        },
+        {
+            "name": "Tires",
+            "value": "tires"
+        },
+        {
+            "name": "Weight Reduction",
+            "value": "weight"
+        },
+        {
+            "name": "Turbo Kits",
+            "value": "turbo"
+        },
+        {
+            "name": "Aero Kits",
+            "value": "aero"
+        }]
+      },
+      {
+      "name": "number",
+      "description": "N/A: Pick a number associated with the type. Type \"S\" to revert to stock.",
+      "type": 4,
+      "required": false
+      }
+      ]
+}
+}) 
+
 /*var choices2 = [
   {
             "name": "Decal",
@@ -747,7 +800,7 @@ client.ws.on("INTERACTION_CREATE", async interaction => {
 
       if (userdata["lastonline"] != currdate) {
         userdata["dailyworkout"] = false;
-        userdata["careerraces"] = userdata["careerraces"].filter(x => !x[0].match(/seasonal/gi));
+        //userdata["careerraces"] = Object.keys(userdata["careerraces"]).filter(key => key.match(/seasonal/gi)).forEach(key => delete userdata["careerraces"][key]);
 
         stats.setmileage(0, 0, userdata);
         userdata["lastonline"] = currdate;

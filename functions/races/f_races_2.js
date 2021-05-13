@@ -33,6 +33,10 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
   var results3 = start.join("");
   embed.fields = [];
 
+  if (racesettings["type"] == "TIME") {
+    racelength = 3600000
+  }
+
   if (racesettings["mode"] == "SSRX") {
     let ssrx1 = race2ex.ssrxracelength(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, checkpoint, userdata);
     var speedmph = ssrx1[0];
