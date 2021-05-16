@@ -651,18 +651,18 @@ module.exports.careerevent = function (races, number, embed, msg, callback, user
 
   if (!regulations[0]) {
     require(gtf.EMBED).alert(
-      { name: "❌ Regulations Breached", description: "Your **" + currentcar["name"] + "** does not meet the regulations for **" + event["title"] + "**." + "\n\n" + regulations[1].join("\n") + "\n\n" + "React to 🚘 to see what cars in your garage are currently eligible.", embed: "", seconds: 0 },
+      { name: "❌ Regulations Breached", description: "Your **" + currentcar["name"] + "** does not meet the regulations for **" + event["title"] + "**." + "\n\n" + regulations[1].join("\n") + "\n\n" + "React to 🚘 to see what cars in your garage are currently eligible. (Not avaiable)", embed: "", seconds: 0, reactions: []},
       msg,
       userdata
-    );
-    msg.channel.send(embed).then(msg => {
+    )
+   /* msg.channel.send(embed).then(msg => {
       function func() {
         var btgarage = require("../../commands/garage");
         btgarage.execute(msg, ["regulate!🏴", event], userdata);
       }
       var emojilist = [["🚘", "🚘", func]];
       gtftools.createreactions(emojilist, msg, userdata);
-    });
+    });*/
     return "Invalid";
   }
 

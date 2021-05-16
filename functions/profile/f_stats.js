@@ -703,7 +703,7 @@ module.exports.resumerace = function (userdata, client) {
       return;
     }
     var embed = new Discord.MessageEmbed(msg.embeds[0]);
-    embed.setColor(0xffff00);
+    
     var race = require("../../functions/races/f_races_2").readysetgo(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, [true], userdata);
   });
   return true;

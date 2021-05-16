@@ -5,13 +5,6 @@
     "rating": "⭐1",
     "manufacturercost": 10000
   },
-  "12": {
-    "make": "Alfa-Romeo",
-    "name": "Alfa Romeo 4C Gr.3 Road Car",
-    "image": "https://vignette.wikia.nocookie.net/gran-turismo/images/5/5f/Alfa_Romeo_4C_Gr.3_Road_Car.jpg",
-    "rating": "🔧2.5",
-    "manufacturercost": 15000
-  },
   "13": {
     "make": "Alfa-Romeo",
     "name": "Alfa Romeo 4C Gr.4 2014",
@@ -2359,14 +2352,6 @@
     "rating": "⭐1",
     "manufacturercost": 20000
   },
-  "447": {
-    "make": "Lexus",
-    "name": "Lexus LS 600h L 2009",
-    "image": "https://static.cargurus.com/images/site/2009/07/14/20/59/2009-lexus-ls-600h-l-base-pic-7299-1600x1200.jpeg",
-    "rating": "⭐0.5",
-    "manufacturercost": 20000
-  },
-  "448": 
   "450": {
     "make": "Lexus",
     "name": "Lexus RC350 2015",

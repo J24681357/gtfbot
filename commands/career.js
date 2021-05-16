@@ -181,6 +181,9 @@ module.exports = {
       if (gtftools.betweenInt(number, 1, Object.keys(races).length)) {
         embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
         var event = require(gtf.RACE).careerevent(races, number, embed, msg, asyncrace, userdata);
+        if (event == "Invalid") {
+          return
+        }
       } else {
         var results2 = "";
         var ids = Object.keys(races);

@@ -19,7 +19,6 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
   var resumerace = "";
   var progressbarblackarcolor = stats.setting("PROGRESSBAR", userdata)[0];
   var progressbarblack = stats.setting("PROGRESSBAR", userdata)[1];
-  console.log(racesettings["positions"]);
 
   var lights = [
     [emote.redlightb, emote.yellowlightb, emote.yellowlightb, emote.greenlightb],
@@ -74,6 +73,7 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
     var totaltime = userdata["raceinprogress"][2];
     resumerace = "";
     startracetime = 0;
+    index = 4
     racelength = totaltime - new Date().getTime() - 4000;
   }
 
@@ -81,12 +81,20 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
     return lights[index][0] + "➖➖➖" + lights[index][0] + "\n" + lights[index][1] + ready[index] + lights[index][1] + "\n" + lights[index][2] + "➖➖➖" + lights[index][2] + "\n" + lights[index][3] + "➖➖➖" + lights[index][3];
   };
   index++;
-
   gtftools.interval(
     function () {
+      console.log(index)
       var starttime = "";
       if (index == 4) {
+        index = 4
         starttime = "\n~" + gtftools.milltominandsecs(racelength) + " minutes" + showcar + resumerace;
+      }
+      if (index == 5) {
+        index = 5
+        starttime = "\n~" + gtftools.milltominandsecs(racelength) + " minutes" + showcar + resumerace;
+        embed.setDescription("**❗ Bot has restarted while in a race. Bar will appear when refreshed.**" +  starttime);
+        msg.edit(embed);
+        return
       }
       embed.setDescription(results(index) + starttime);
       msg.edit(embed);
