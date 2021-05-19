@@ -63,7 +63,8 @@ module.exports = {
         return;
       }
       if (query[0] == "rawuserdata") {
-        msg.channel.send(JSON.stringify(userdata), { split: true });
+        const attachment = new Discord.MessageAttachment(Buffer.from(JSON.stringify(userdata), 'utf8'), "userdata.txt");
+        msg.channel.send(attachment)
         return;
       }
       if (query[0] == "updateseasonals" || query[0] == "changeseasonals") {
@@ -229,25 +230,61 @@ module.exports = {
         userdata["level"] = 0;
         results = "Success.";
       }
+      if (query[0] == "careerracecomplete") {
+         success = true;
+        if (!query[1].includes("-")) {
+          return;
+        }
+ if (query[1].split("-")[0].match(/b/g)) {
+          var races = require("../data/career/races").beginner();
+        }
+        if (query[1].split("-")[0].match(/a/g)) {
+          var races = require("../data/career/races").amateur();
+        }
+        if (query[1].split("-")[0].match(/ic/g)) {
+          var races = require("../data/career/races").icleague();
+        }
+        if (query[1].split("-")[0].match(/ib/g)) {
+          var races = require("../data/career/races").ibleague();
+        }
+        if (query[1].split("-")[0].match(/ia/g)) {
+          var races = require("../data/career/races").ialeague();
+        }
+        if (query[1].split("-")[0].match(/s/g)) {
+          var races = require("../data/career/races").sleague();
+        }
+
+        var event = races[Object.keys(races)[parseInt(query[1].split("-")[1]) - 1]];
+        var tracks = event["tracks"];
+        var track = require(gtf.TRACKS).find({ name: tracks[parseInt(query[1].split("-")[2]) - 1]})[0];
+        var racesettings = require(gtf.RACE).setcareerrace(event, track, stats.currentcar(userdata), parseInt(query[1].split("-")[2]) - 1);
+
+        stats.updatecareerrace(racesettings["raceid"], "1st", userdata);
+
+        results = "Success.";
+      }
       if (query[0] == "careergift") {
         success = true;
         if (!query[1].includes("-")) {
           return;
         }
-        if (query[1].split("-")[0] == "B") {
+        if (query[1].split("-")[0].match(/b/g)) {
           var races = require("../data/career/races").beginner();
         }
-        if (query[1].split("-")[0] == "A") {
+        if (query[1].split("-")[0].match(/a/g)) {
           var races = require("../data/career/races").amateur();
         }
-        if (query[1].split("-")[0] == "IC") {
+        if (query[1].split("-")[0].match(/ic/g)) {
           var races = require("../data/career/races").icleague();
         }
-        if (query[1].split("-")[0] == "IB") {
+        if (query[1].split("-")[0].match(/ib/g)) {
           var races = require("../data/career/races").ibleague();
         }
-        if (query[1].split("-")[0] == "IA") {
+        if (query[1].split("-")[0].match(/ia/g)) {
           var races = require("../data/career/races").ialeague();
+        }
+        if (query[1].split("-")[0].match(/s/g)) {
+          var races = require("../data/career/races").sleague();
         }
 
         var event = races[Object.keys(races)[query[1].split("-")[1] - 1]];

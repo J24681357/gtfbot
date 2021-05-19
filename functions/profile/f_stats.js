@@ -430,7 +430,6 @@ module.exports.isracescomplete = function (eventid, total, pnumber, userdata) {
   }
   events = userdata["careerraces"][eventid]
 
-
   if (userdata["careerraces"][eventid] === undefined) {
     userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
   }
@@ -438,7 +437,6 @@ module.exports.isracescomplete = function (eventid, total, pnumber, userdata) {
   if (userdata["careerraces"][eventid].length == 0) {
     userdata["careerraces"][eventid] = [0,0,0,0,0,0,0,0,0,0]
   }
-
   events = userdata["careerraces"][eventid]
 
   while (i < events.length || i < count) {
@@ -489,6 +487,9 @@ module.exports.gift = function (title, gift, embed, msg, userdata) {
 
 module.exports.eventcomplete = function (eventid, userdata) {
   eventid = eventid.toLowerCase()
+  
+  console.log(userdata["careerraces"])
+  
   events = userdata["careerraces"][eventid]
   
   for (var i = 0; i < events.length; i++) {
