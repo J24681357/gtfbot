@@ -40,7 +40,7 @@ module.exports = {
         end: "",
         query: query,
         command: __filename.split("/").splice(-1)[0].split(".")[0],
-        rows: 3,
+        rows: 4,
         page: 0,
         numbers: false,
         reactions: true,
@@ -71,26 +71,35 @@ module.exports = {
         if (parseInt(racemode) == 3) {
           racemode = "pro";
         }
+        if (parseInt(racemode) == 4) {
+          racemode = "endurance";
+        }
       }
 
       if (racemode == "beginner" || racemode == "b" || racemode == "sunday") {
         ready = true;
         levelselect = "beginner";
-      } else if (racemode == "amateur" || racemode == "a") {
+      } else if (racemode.match(/amateur/g) | racemode.match(/a/g)) {
         if (!require(gtf.EXP).checklevel(5, embed, msg, userdata)) {
           return;
         }
         ready = true;
         levelselect = "amateur";
-      } else if (racemode == "professional" || racemode == "pro") {
-        if (!require(gtf.EXP).checklevel(20, embed, msg, userdata)) {
+      } else if (racemode.match(/professional/g) || racemode.match(/pro/g)) {
+        if (!require(gtf.EXP).checklevel(15, embed, msg, userdata)) {
           return;
         }
         ready = true;
         levelselect = "professional";
+      } else if (racemode.match(/endurance/g) || racemode.match(/endur/g)) {
+        if (!require(gtf.EXP).checklevel(20, embed, msg, userdata)) {
+          return;
+        }
+        ready = true;
+        levelselect = "endurance";
       } else {
         embed.setTitle("__Arcade Mode__");
-        results = "__**Beginner**__ - !arcade [beginner] " + "\n" + "__**Amateur**__ - !arcade [amateur] " + emote.exp + "`Lv.5`" + "\n" + "__**Professional**__ - !arcade [professional] " + emote.exp + "`Lv.20`" + "\n" + " ";
+        results = "__**Beginner**__ - !arcade [beginner] " + "\n" + "__**Amateur**__ - !arcade [amateur] " + emote.exp + "`Lv.5`" + "\n" + "__**Professional**__ - !arcade [professional] " + emote.exp + "`Lv.15`" + "\n" + "__**Endurance**__ - !arcade [endurance] " + emote.exp + "`Lv.20`" + "\n" + " ";
         embed.setDescription(results);
       }
       if (!ready) {

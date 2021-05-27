@@ -635,6 +635,7 @@ module.exports.checkcarlist = function (gtfcars) {
         
         var shell = require("shelljs");
         shell.mkdir("-p", file.join("/"));
+        console.log(filename + " " + "image saved.")
         if (!type.includes("image")) {
           console.log("The image may not be available for " + uri);
         }

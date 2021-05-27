@@ -32,9 +32,7 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
   var results3 = start.join("");
   embed.fields = [];
 
-  if (racesettings["type"] == "TIME") {
-    racelength = 3600000
-  }
+
 
   if (racesettings["mode"] == "SSRX") {
     let ssrx1 = race2ex.ssrxracelength(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, checkpoint, userdata);
@@ -60,6 +58,10 @@ module.exports.readysetgo = function (user, racedetails, racesettings, finalgrid
     let drift1 = race2ex.driftracelength(user, racedetails, racesettings, finalgrid, startingrace, racefinished, embed, msg, args, checkpoint, userdata);
     var showcar = drift1[0];
     racelength = drift1[1];
+  }
+  console.log(racesettings["laps"])
+  if (racesettings["type"] == "TIME") {
+    racelength = parseInt(racesettings["laps"].split("m")[0]) * (60*1000)
   }
 
   if (!checkpoint[0]) {

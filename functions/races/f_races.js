@@ -6,151 +6,6 @@ const Discord = require("discord.js");
 var gtf = require("../../files/directories");
 ////////////////////////////////////////////////////
 
-module.exports.setrace = function (racemode, mode, track) {
-  if (racemode == "beginner") {
-    var title = "Arcade Mode - Beginner";
-    var track = require(gtf.TRACKS).random({types:["Original", "Real", "City"]}, 1)[0];
-    var km = track["length"];
-    var limit = 10.0;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-
-    var grid = ["8", "9", "10", "11", "12"];
-    var category = [["N100"], ["N200"], ["N300"], ["Gr.4"], ["N100", "N200"], ["N200", "N300"]];
-    var place = [emote.gold + " 1st|1000", emote.silver + " 2nd|800", emote.bronze + " 3rd|600", "4th|500", "5th|400", "6th|300", "7th|200", "8th|100"];
-    var chance = 60;
-    var clean = 5;
-  } else if (racemode == "amateur") {
-    var title = "Arcade Mode - Amateur";
-    var track = require(gtf.TRACKS).random({}, 1)[0];
-    var km = track["length"];
-    var limit = 15.0;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["10", "11", "12", "13", "14", "15", "16"];
-    var category = [["N300"], ["N400"], ["N500"], ["N600"], ["Gr.4"], ["Gr.B"], ["Gr.3"], ["N300", "N400"], ["N400", "N500"], ["N500", "N600"]];
-    var place = [emote.gold + " 1st|2500", emote.silver + " 2nd|2000", emote.bronze + " 3rd|1500", "4th|1300", "5th|1100", "6th|900", "7th|700", "8th|500", "9th|400", "10th|300"];
-    var chance = 55;
-    var clean = 4;
-  } else if (racemode == "professional") {
-    var title = "Arcade Mode - Professional";
-    var track = require(gtf.TRACKS).random({}, 1)[0];
-    var km = track["length"];
-    var limit = 30.0;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["12", "13", "14", "15", "16", "17", "18", "19", "20"];
-    var category = [["N700"], ["N800"], ["N1000"], ["Gr.4"], ["Gr.B"], ["Gr.3"], ["Gr.2"], ["Gr.1"], ["N700", "N800"], ["N800", "N900", "N1000"]];
-    var place = [emote.gold + " 1st|5000", emote.silver + " 2nd|4000", emote.bronze + " 3rd|3000", "4th|2700", "5th|2400", "6th|2100", "7th|1800", "8th|1500", "9th|1300", "10th|1200", "11th|1100", "12th|1000"];
-    var chance = 50;
-    var clean = 3;
-  } else if (racemode == "driftbeginner") {
-    var title = "Drift Trial - Beginner";
-    var track = require(gtf.TRACKS).random({ options: ["Drift"] }, 1)[0];
-    var km = track["length"];
-    var limit = 1;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["1"];
-    var category = [["N100", "N200", "N300", "N400", "N500", "N600", "N700", "N800", "N900", "N1000"]];
-    var place = [emote.gold + " 1st|1000", emote.silver + " 2nd|800", emote.bronze + " 3rd|500", "4th|200"];
-    var chance = 50;
-    var clean = 0;
-  } else if (racemode == "driftprofessional") {
-    var title = "Drift Trial - Professional";
-    var track = require(gtf.TRACKS).random({ options: ["Drift"] }, 1)[0];
-    var km = track["length"];
-    var limit = 1;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["1"];
-    var category = [["N100", "N200", "N300", "N400", "N500", "N600", "N700", "N800", "N900", "N1000"]];
-    var place = [emote.gold + " 1st|1000", emote.silver + " 2nd|800", emote.bronze + " 3rd|500", "4th|200"];
-    var chance = 50;
-    var clean = 0;
-  } else if (racemode == "endurance") {
-    var track = require(gtf.TRACKS).random({}, 1)[0];
-    var km = 0;
-    var limit = ["1 Hour", "2 Hours", "3 Hours", "4 Hours", "8 Hours", "12 Hours", "24 Hours"];
-    limit = limit[Math.floor(Math.random() * limit.length)];
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = ["24"];
-    var category = [["N100"], ["N200"], ["N300"], ["N400"], ["N500"], ["N600"], ["N700"], ["N800"], ["N900"], ["N1000"], ["Gr.4"], ["Gr.B"], ["Gr.3"], ["Gr.2"], ["Gr.1"]];
-    var place = [emote.gold + " 1st|10000", emote.silver + " 2nd|9000", emote.bronze + " 3rd|8000", "4th|7500", "5th|7000", "6th|6500", "7th|6000", "8th|5500", "9th|5000", "10th|4700", "11th|4000", "12th|3700", "13th|3400", "14th|3100", "15th|2800", "16th|2500"];
-    place = place.map(function (x) {
-      x = x.split("|");
-      x[1] = parseInt(x[1]) * parseInt(limit.split(" ")[0]);
-      return x.join("|");
-    });
-    var chance = 35;
-    var clean = 1;
-
-    var title = "Arcade Mode - " + limit + " of " + track[0][0];
-  } else if (racemode == "R" || racemode == "ONLINE") {
-    var title = "ONLINE LOBBY";
-    var track = require(gtf.TRACKS).random({}, 1)[0];
-    var km = track["length"];
-    var limit = 0;
-    var time = require(gtf.TIME).random({}, 1)[0];
-    var weather = require(gtf.WEATHER).random({}, 1)[0];
-    var grid = [["ONLINE"]];
-    var category = ["ONLINE"];
-    var place = ["ONLINE"];
-    var chance = 50;
-    var clean = 1;
-  } else {
-    racesettings = racemode;
-    var time = require(gtf.TIME).random({ name: racesettings["time"] }, 1)[0];
-    var weather = require(gtf.WEATHER).random({ name: racesettings["weather"] }, 1)[0];
-
-    racesettings["time"] = time["emoji"] + " " + time["hour"].toString() + ":" + time["seconds"];
-    racesettings["weather"] = weather["emoji"] + " " + weather["name"] + " 💧" + weather["wetsurface"] + "%";
-    return racesettings;
-  }
-
-  if (!isNaN(limit)) {
-    var distance = gtftools.lapcalc(km, limit);
-  } else {
-    distance = [limit, "N/A", "N/A"];
-  }
-  grid = grid[Math.floor(Math.random() * grid.length)];
-  if (mode == "GARAGE") {
-    category = ["CUSTOM"];
-  } else {
-    category = category[Math.floor(Math.random() * category.length)];
-  }
-
-  var racesettings = {
-    title: title,
-    grid: grid,
-    category: category,
-    time: time["emoji"] + " " + time["hour"].toString() + ":" + time["seconds"],
-    weather: weather["emoji"] + " " + weather["name"] + " 💧" + weather["wetsurface"] + "%",
-    positions: place,
-    track: track["name"],
-    drivetrains: [],
-    cleanbonus: clean,
-    difficulty: chance,
-    laps: distance[0],
-    km: distance[1],
-    mi: distance[2],
-  };
-
-  if (racemode == "driftbeginner") {
-    racesettings["originalsectors"] = 3;
-    racesettings["sectors"] = 3;
-    racesettings["current"] = 0;
-    racesettings["points"] = 0;
-  }
-  if (racemode == "driftprofessional") {
-    racesettings["originalsectors"] = 6;
-    racesettings["sectors"] = 6;
-    racesettings["current"] = 0;
-    racesettings["points"] = 0;
-  }
-  return racesettings;
-};
 
 module.exports.setracesettings = function (raceprep) {
   if (raceprep["mode"] == "ARCADE") {
@@ -188,6 +43,27 @@ module.exports.setracesettings = function (raceprep) {
       var place = [emote.gold + " 1st|5000", emote.silver + " 2nd|4000", emote.bronze + " 3rd|3000", "4th|2700", "5th|2400", "6th|2100", "7th|1800", "8th|1500", "9th|1300", "10th|1200", "11th|1100", "12th|1000"];
       var chance = 60;
       var clean = 3;
+    } else if (raceprep["modearg"] == "endurance") {
+      var type = "TIME"
+    var km = 0;
+    var limit = ["30m", "45m", "60m"];
+    limit = limit[Math.floor(Math.random() * limit.length)];
+    var time = require(gtf.TIME).random({}, 1)[0];
+    var weather = require(gtf.WEATHER).random({}, 1)[0];
+    var grid = ["24"];
+    var category = [["N100"], ["N200"], ["N300"], ["N400"], ["N500"], ["N600"], ["N700"], ["N800"], ["N900"], ["N1000"], ["Gr.4"], ["Gr.B"], ["Gr.3"], ["Gr.2"], ["Gr.1"]];
+    var place = [emote.gold + " 1st|10000", emote.silver + " 2nd|9000", emote.bronze + " 3rd|8000", "4th|7500", "5th|7000", "6th|6500", "7th|6000", "8th|5500", "9th|5000", "10th|4700", "11th|4000", "12th|3700", "13th|3400", "14th|3100", "15th|2800", "16th|2500"];
+    console.log(parseInt(limit.split("m")[0]))
+    place = place.map(function (x) {
+      x = x.split("|");
+      x[1] = parseInt(x[1]) *  (parseInt(limit.split("m")[0]) / 60);
+      return x.join("|");
+    });
+    console.log(place)
+    var chance = 35;
+    var clean = 1;
+
+    var title = ""
     }
   }
   if (raceprep["mode"] == "DRIFT") {
@@ -233,7 +109,7 @@ module.exports.setracesettings = function (raceprep) {
     var chance = 60;
     var clean = 1;
 
-    var title = "Arcade Mode - " + limit + " of " + track[0][0];
+    var title = "Arcade Mode - " + limit.replace("m", " Minutes") + " of " + track[0][0];
   }
   }
   if (raceprep["mode"] == "SSRX") {
@@ -281,6 +157,9 @@ module.exports.setracesettings = function (raceprep) {
     var km = track["length"];
   }
 
+if (raceprep["modearg"] == "endurance") {
+  title = "Arcade Mode - " + limit + " of " + track["name"];
+}
   if (!isNaN(limit)) {
     var distance = gtftools.lapcalc(km, limit);
   } else {
@@ -443,7 +322,14 @@ module.exports.raceprep = function (raceprep, embed, msg, userdata) {
   var laps = racesettings["laps"];
   var distancekm = racesettings["km"];
   var distancemi = racesettings["mi"];
-  var racedetails = "__Race Details__" + "\n" + "**Track:** " + track + "\n" + "**Time/Weather:** " + time + " | " + weather + "\n" + "**Lap(s):** " + laps + "\n" + "**Total Distance:** " + distancekm + " km" + " | " + distancemi + " mi" + "\n" + "**Grid:** " + grid + " cars";
+  if (racesettings["type"] == "LAPS") {
+    var lapntime = "**Lap(s):** " + laps
+  }
+  if (racesettings["type"] == "TIME") {
+    var lapntime = "**Time:** " + laps.replace("m", " Minutes")
+  }
+
+  var racedetails = "__Race Details__" + "\n" + "**Track:** " + track + "\n" + "**Time/Weather:** " + time + " | " + weather + "\n" + lapntime + "\n" + "**Total Distance:** " + distancekm + " km" + " | " + distancemi + " mi" + "\n" + "**Grid:** " + grid + " cars";
 
   if (raceprep["mode"] == "CAREER") {
     loading = require(gtf.GTF).loadingscreen(loading, "");
@@ -609,8 +495,13 @@ module.exports.start = function (racesettings, racedetails, user, userdata) {
   prize = parseFloat(place[index].split("|")[1]);
 
   if (racesettings["mode"] == "ARCADE") {
+      if (racesettings["type"] == "TIME") {
+    prize = Math.round(parseFloat(prize))
+  } else {
     prize = Math.round(parseFloat(prize + prize * (racesettings["km"] / 30)));
   }
+  }
+
 
   if (clean < racesettings["cleanbonus"]) {
     cprize = Math.round(prize * 0.5);
