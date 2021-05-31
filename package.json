@@ -16,11 +16,13 @@
   },
   "dependencies": {
     "canvas": "^2.7.0",
+    "discord-buttons": "^2.4.1",
     "discord.js": "latest",
     "discord.js-rate-limiter": "^1.0.4",
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "mongodb": "^3.6.3",
+    "node": "^16.1.0",
     "probe-image-size": "latest",
     "random-normal": "^1.0.0",
     "request": "latest",

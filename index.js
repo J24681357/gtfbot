@@ -8,7 +8,6 @@ var gtf = require("./files/directories");
 ////////////////////////////////////////////////////
 var extra = require("./functions/misc/f_extras");
 var emote = require("./index");
-
 var fs = require("fs");
 
 var data = {};
@@ -33,6 +32,7 @@ module.exports.gtfpartlist = gtfparts;
 module.exports.gtfpaintlist = gtfpaints;
 module.exports.gtfexp = gtfexp;
 module.exports.embedcounts = {};
+
 
 module.exports.alluserdata = function () {
   MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
@@ -648,6 +648,20 @@ client.ws.on("INTERACTION_CREATE", async interaction => {
   interaction.channel = client.channels.cache.get(interaction.channel_id);
   interaction.member = interaction.guild.members.cache.get(interaction.member.user.id);
   interaction.author = interaction.member.user;
+
+  if (Object.keys(interaction["data"]).includes("custom_id")) {
+  embed.setColor(0x0151b0);
+  interaction.content = interaction["data"]["custom_id"].split("__").join(" ")
+  
+    try {
+      load_msg(interaction);
+      console.log(interaction.content)
+    } catch (error) {
+      require(gtf.EMBED).alert({ name: "❌ Unexpected Error", description: "Oops, an unexpected error has occurred.\n" + "**" + error + "**", embed: "", seconds: 0 }, msg, { id: interaction.author.id });
+      console.error(error);
+    }
+    return
+  }
 
   const args = interaction.data.options;
 

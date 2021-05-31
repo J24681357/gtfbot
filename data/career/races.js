@@ -76,10 +76,9 @@ module.exports.beginner = function () {
     },
   };
 }; /*
-
- ,
    */ // ["RANDOMCAR", {"make": "Any", "upperfpp":300, "lowerfpp": 200}] // length 12.000
-/*86-84*/ module.exports.amateur = function () {
+   /*86-84*/
+module.exports.amateur = function () {
   return {
     a1: {
       title: "Clubman Cup",
@@ -332,7 +331,7 @@ module.exports.ibleague = function () {
       types: ["Production"],
       prize: ["CREDITS", { id: -1, name: " ", item: 45000 }],
     },
-    ic4: {
+    ib4: {
       title: "Tesla Racing Series",
       eventid: "IB-4",
       positions: [emote.goldtrophy + " 1st|3500", emote.silvertrophy + " 2nd|3000", emote.bronzetrophy + " 3rd|2500", "4th|2000", "5th|1600", "6th|1500", "7th|1200", "8th|1100", "9th|1000", "10th|800", "11th|700", "12th|600"],
@@ -355,11 +354,32 @@ module.exports.ibleague = function () {
       types: ["Production"],
       prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Tesla"], fullname: ["Tesla Cybertrack Prototype (Tri Motor AWD) 2019"] }],
     },
-  };
+    ib5: {
+    title: "GT4 World Championship",
+      eventid: "IB-5",
+      positions: [emote.goldtrophy + " 1st|7500", emote.silvertrophy + " 2nd|6000", emote.bronzetrophy + " 3rd|5000", "4th|4000", "5th|3000", "6th|2000", "7th|1800", "8th|1700", "9th|1400", "10th|1200", "11th|1100", "12th|1000", "13th|900", "14th|800"],
+      tracks: [
+        [1, 'Brands Hatch GP Circuit', 5],
+        [2, 'Trial Mountain Circuit 2010', 5],
+        [3, 'Willow Springs (Big Willow)', 5],
+      ],
+      category: ["Gr.4"],
+      time: ["R"],
+      weather: ["Clear"],
+      grid: 20,
+      difficulty: 76,
+      fpplimit: 600,
+      upperfpp: 590,
+      lowerfpp: 500,
+      makes: [],
+      models: [],
+      drivetrains: [],
+      types: ["Race Car: GT4"],
+      prize: ["RANDOMCAR", { id: -1, name: " ", make: ["Saleen"], fullname: ["Saleen S1 GT4 Concept 2019"] }]
+  }
+  }
 };
 /*
-
-    },
 
     ib4: {
       "title": 'GT4 World Championship',

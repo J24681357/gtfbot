@@ -115,7 +115,13 @@ module.exports = {
     embed.setDescription(results);
     embed.setThumbnail(msg.guild.members.cache.get(userdata["id"]).user.displayAvatarURL());
     embed.addField(stats.main(userdata), args + stats.currentcarmain(userdata));
-    msg.channel.send(embed).then(msg => {
+
+    /*let button = new disbut.MessageButton()
+  .setStyle('red')
+  .setLabel('My First Button!')
+  .setID("")*/
+
+    msg.channel.send(embed, {button:button}).then(msg => {
       function careerprofile() {
         embed.setTitle("__Career Progress__");
         var list1 = [
