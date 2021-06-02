@@ -369,7 +369,7 @@ module.exports.ibleague = function () {
       grid: 20,
       difficulty: 76,
       fpplimit: 600,
-      upperfpp: 590,
+      upperfpp: 580,
       lowerfpp: 500,
       makes: [],
       models: [],
