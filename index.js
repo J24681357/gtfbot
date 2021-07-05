@@ -53,7 +53,19 @@ module.exports.alluserdata = function () {
 };
 require(gtf.MAIN).alluserdata();
 
+
+var listinmaint = [];
 client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  if (command.availinmaint) {
+    listinmaint.push(command.name);
+  }
+  client.commands.set(command.name, command);
+}
+
 var date = new Date();
 
 const express = require("express");
@@ -66,17 +78,7 @@ server.listen(3000, () => {});
 
 // Server Settings
 var executions = 0;
-var listinmaint = [];
 
-const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  if (command.availinmaint) {
-    listinmaint.push(command.name);
-  }
-  client.commands.set(command.name, command);
-}
 
 const cooldowns = new Discord.Collection();
 
